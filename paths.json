@@ -1,10 +1,10 @@
 {
   "mappings": [
-    "/content/universal-editor/:/",
-    "/content/universal-editor/configuration:/.helix/config.json",
-    "/content/universal-editor/metadata:/metadata.json"
+    "/content/2025/38/sharpshark24941/:/",
+    "/content/2025/38/sharpshark24941/configuration:/.helix/config.json",
+    "/content/2025/38/sharpshark24941/metadata.json"
   ],
   "includes": [
-    "/content/universal-editor/"
+    "/content/2025/38/sharpshark24941/"
   ]
 }
