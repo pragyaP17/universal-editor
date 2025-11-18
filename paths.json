@@ -1,10 +1,10 @@
 {
   "mappings": [
-   "/content/eds-poc/:/",
-    "/content/eds-poc/configuration:/.helix/config.json",
-    "/content/eds-poc/metadata:/metadata.json"
+   "/content/nvidiapoc-ue/:/",
+    "/content/nvidiapoc-ue/configuration:/.helix/config.json",
+    "/content/nvidiapoc-ue/metadata:/metadata.json"
   ],
   "includes": [
-   "/content/eds-poc"
+   "/content/nvidiapoc-ue"
   ]
 }
