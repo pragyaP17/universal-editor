@@ -243,14 +243,10 @@ main > .section:first-of-type {
 }
 
 
-.align-center-heading h1,
-.align-center-heading h2,
-.align-center-heading h3,
-.align-center-heading h4,
-.align-center-heading h5,
-.align-center-heading h6 {
+.align-center-heading > .default-content-wrapper >:is(h1, h2, h3, h4, h5, h6):first-child {
   text-align: center;
 }
+
 
 .background-black {
   background: rgb(26 26 26) none no-repeat scroll 0% 0% / auto padding-box border-box;
