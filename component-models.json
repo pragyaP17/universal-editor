@@ -48,9 +48,9 @@
         "label": "Title"
       },
       {
-        "component": "select",
-        "name": "classes",
-        "label": "Title Type",
+        "component": "multiselect",
+        "name": "titleLevel",
+        "label": "Title Level",
         "options": [
           {
             "name": "h1",
@@ -75,10 +75,25 @@
           {
             "name": "h6",
             "value": "h6"
+          }
+        ]
+      },
+      {
+        "component": "multiselect",
+        "name": "titleSize",
+        "label": "Title Size",
+        "options": [
+          {
+            "name": "small",
+            "value": "small"
           },
           {
-            "name": "h3-small",
-            "value": "h3-small"
+            "name": "medium",
+            "value": "medium"
+          },
+          {
+            "name": "large",
+            "value": "large"
           }
         ]
       }
