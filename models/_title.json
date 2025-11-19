@@ -26,7 +26,7 @@
         },
         {
           "component": "select",
-          "name": "titleType",
+          "name": "classes",
           "label": "Title Type",
           "options": [
             {
@@ -53,6 +53,7 @@
               "name": "h6",
               "value": "h6"
             }
+         
           ]
         }
       ]

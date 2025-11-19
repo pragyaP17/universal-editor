@@ -258,7 +258,7 @@ main > .section:first-of-type {
 }
 
 /* Title type styles */
-.h3-small {
+.h3-small h1 {
   font-size: 18px;
 } 
 
