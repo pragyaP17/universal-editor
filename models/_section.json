@@ -29,12 +29,11 @@
           "component": "multiselect",
           "name": "style",
           "label": "Style",
-          "valueType": "string",
           "options": [
             {
               "name": "Highlight",
               "value": "highlight"
-            }, 
+            },
             {
               "name": "Background Transparent",
               "value": "background-transparent"
@@ -428,37 +427,10 @@
               "value": "m-y-96"
             }
           ]
-        },
-        {
-          "component": "text",
-          "name": "section-name",
-          "label": "Section Name",
-          "valueType": "string"
-        },
-        {
-          "component": "text",
-          "name": "author",
-          "label": "Author",
-          "valueType": "string",
-          "condition": "blog-detail-heading"
-        },
-        {
-          "component": "text",
-          "name": "date",
-          "label": "Date",
-          "valueType": "date",
-          "condition": "blog-detail-heading"
-        },
-        {
-          "component": "text",
-          "name": "read-time",
-          "label": "Read Time (minutes)",
-          "valueType": "string",
-          "condition": "blog-detail-heading"
         }
-          ]
-        }
-      ],
+      ]
+    }
+  ],
   "filters": [
     {
       "id": "section",
