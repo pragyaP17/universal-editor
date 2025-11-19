@@ -48,9 +48,9 @@
         "label": "Title"
       },
       {
-        "component": "select",
-        "name": "titleType",
-        "label": "Title Type",
+        "component": "multiselect",
+        "name": "style",
+        "label": "Style",
         "options": [
           {
             "name": "h1",

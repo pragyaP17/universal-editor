@@ -242,6 +242,28 @@ main > .section:first-of-type {
   margin-top: 0;
 }
 
+
+.align-center-heading h1,
+.align-center-heading h2,
+.align-center-heading h3,
+.align-center-heading h4,
+.align-center-heading h5,
+.align-center-heading h6 {
+  text-align: center;
+}
+
+.background-black {
+  background: rgb(26 26 26) none no-repeat scroll 0% 0% / auto padding-box border-box;
+  color: white;
+}
+
+/* Title type styles */
+.h3-small {
+  font-size: 18px;
+} 
+
+
+
 @media (width >= 900px) {
   main > .section > div {
     padding: 0 32px;
