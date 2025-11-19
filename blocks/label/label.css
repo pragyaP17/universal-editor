@@ -1,0 +1,23 @@
+/* Label Block Styles */
+.label-block {
+  margin: 0;
+  padding: 0;
+}
+
+.label-block label {
+  /* Typography styles are inherited from styles/typography.css */
+
+  /* Default: font-size: var(--font-scale-02); line-height: var(--line-height-lg); */
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+.label-wrapper label{
+  padding-block-end: var(--spacer-01);
+}
+
+/* Weight variations are handled by typography.css:
+ * label.medium { font-weight: var(--font-weight-medium); }
+ * label.semibold { font-weight: var(--font-weight-semibold); }
+ */

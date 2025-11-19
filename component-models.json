@@ -216,6 +216,45 @@
     ]
   },
   {
+    "id": "label",
+    "fields": [
+      {
+        "component": "text",
+        "name": "text",
+        "label": "Label Text",
+        "valueType": "string",
+        "required": true,
+        "validation": {
+          "required": true,
+          "messages": {
+            "required": "Please enter label text"
+          }
+        }
+      },
+      {
+        "component": "select",
+        "name": "weight",
+        "label": "Font Weight",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Regular",
+            "value": "regular"
+          },
+          {
+            "name": "Medium",
+            "value": "medium"
+          },
+          {
+            "name": "Semibold",
+            "value": "semibold"
+          }
+        ],
+        "default": "regular"
+      }
+    ]
+  },
+  {
     "id": "quote",
     "fields": [
       {
