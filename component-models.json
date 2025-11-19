@@ -75,10 +75,6 @@
           {
             "name": "h6",
             "value": "h6"
-          },
-          {
-            "name": "p",
-            "value": "p"
           }
         ]
       }
@@ -220,22 +216,22 @@
     ]
   },
   {
-  "id": "quote",
-  "fields": [
-     {
-       "component": "richtext",
-       "name": "quote",
-       "value": "",
-       "label": "Quote",
-       "valueType": "string"
-     },
-     {
-       "component": "text",
-       "valueType": "string",
-       "name": "author",
-       "label": "Author",
-       "value": ""
-     }
-   ]
-}
+    "id": "quote",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "quote",
+        "value": "",
+        "label": "Quote",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "author",
+        "label": "Author",
+        "value": ""
+      }
+    ]
+  }
 ]
