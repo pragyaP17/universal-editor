@@ -425,6 +425,9 @@
             {
               "name": "Vertical Margin 96",
               "value": "m-y-96"
+            },{
+                  "name": "h3-small",
+              "value": "h3-small"
             }
           ]
         }

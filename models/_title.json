@@ -25,9 +25,9 @@
           "label": "Title"
         },
         {
-          "component": "multiselect",
-          "name": "style",
-          "label": "Style",
+          "component": "select",
+          "name": "titleType",
+          "label": "Title Type",
           "options": [
             {
               "name": "h1",
@@ -52,78 +52,6 @@
             {
               "name": "h6",
               "value": "h6"
-            },
-            {
-              "name": "h1-small",
-              "value": "h1-small"
-            },
-            {
-              "name": "h1-medium",
-              "value": "h1-medium"
-            },
-            {
-              "name": "h1-large",
-              "value": "h1-large"
-            },
-            {
-              "name": "h2-small",
-              "value": "h2-small"
-            },
-            {
-              "name": "h2-medium",
-              "value": "h2-medium"
-            },
-            {
-              "name": "h2-large",
-              "value": "h2-large"
-            },
-            {
-              "name": "h3-small",
-              "value": "h3-small"
-            },
-            {
-              "name": "h3-medium",
-              "value": "h3-medium"
-            },
-            {
-              "name": "h3-large",
-              "value": "h3-large"
-            },
-            {
-              "name": "h4-small",
-              "value": "h4-small"
-            },
-            {
-              "name": "h4-medium",
-              "value": "h4-medium"
-            },
-            {
-              "name": "h4-large",
-              "value": "h4-large"
-            },
-            {
-              "name": "h5-small",
-              "value": "h5-small"
-            },
-            {
-              "name": "h5-medium",
-              "value": "h5-medium"
-            },
-            {
-              "name": "h5-large",
-              "value": "h5-large"
-            },
-            {
-              "name": "h6-small",
-              "value": "h6-small"
-            },
-            {
-              "name": "h6-medium",
-              "value": "h6-medium"
-            },
-            {
-              "name": "h6-large",
-              "value": "h6-large"
             }
           ]
         }
