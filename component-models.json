@@ -49,8 +49,8 @@
       },
       {
         "component": "multiselect",
-        "name": "titleLevel",
-        "label": "Title Level",
+        "name": "titleType",
+        "label": "Title Type",
         "options": [
           {
             "name": "h1",
@@ -75,25 +75,10 @@
           {
             "name": "h6",
             "value": "h6"
-          }
-        ]
-      },
-      {
-        "component": "multiselect",
-        "name": "titleSize",
-        "label": "Title Size",
-        "options": [
-          {
-            "name": "small",
-            "value": "small"
           },
           {
-            "name": "medium",
-            "value": "medium"
-          },
-          {
-            "name": "large",
-            "value": "large"
+            "name": "h3-small",
+            "value": "h3-small"
           }
         ]
       }
