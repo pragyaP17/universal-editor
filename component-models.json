@@ -125,6 +125,7 @@
   },
   {
     "id": "section",
+    "displayName": "name",
     "fields": [
       {
         "component": "text",
