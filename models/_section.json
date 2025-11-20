@@ -34,8 +34,8 @@
           "valueType": "string",          
           "options": [
             {
-              "name": "Highlight",
-              "value": "highlight"
+              "name": "General Container",
+              "value": "general-container"
             },
             {
               "name": "Background Transparent",
@@ -43,7 +43,7 @@
             },
             {
               "name": "Background Black",
-              "value": "background-black"
+              "value": "bg-color-black"
             },
             {
               "name": "Align Center",
@@ -84,6 +84,14 @@
             {
               "name": "Align List Items",
               "value": "align-list-items"
+            },
+            {
+              "name": "Padding Y 60",
+              "value": "p-y-60"
+            },
+            {
+              "name": "Padding Y 75",
+              "value": "p-y-75"
             }
           ]
         }

@@ -20,7 +20,7 @@ Creates a proper 2-column layout.
 */
 .columns.block.columns-2-cols > div {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1.5fr 1fr;
   gap: 80px;
   align-items: center;
   width: 100%;

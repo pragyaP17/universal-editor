@@ -248,7 +248,7 @@ main > .section:first-of-type {
 }
 
 
-.background-black {
+.bg-color-black {
   background: rgb(26 26 26) none no-repeat scroll 0% 0% / auto padding-box border-box;
   color: white;
 }
