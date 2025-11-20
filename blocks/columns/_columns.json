@@ -36,7 +36,7 @@
         },
          {
       "component": "multiselect",
-      "name": "classes",
+      "name": "style",
       "label": "Layout style",
       "valueType": "string",
       "options": [
