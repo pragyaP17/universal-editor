@@ -35,24 +35,15 @@
           "value": "",
           "label": "No of Rows"
         },
-        {
-          "component": "multiselect",
-          "name": "style",
-          "label": "Style",
-          "valueType": "string",
-          "options": [
-            {
-              "name": "Column40-60",
-              "value": "col40-60"
-            },
-            {
-              "name": "Column60-40",
-              "value": "col60-40"
-            },
-            {
-              "name": "Column50-50",
-              "value": "col50-50"
-            }
+         {
+      "component": "multiselect",
+      "name": "classes",
+      "label": "Layout style",
+      "valueType": "string",
+      "options": [
+        { "name": "Column 40-60", "value": "columns-40-60" },
+        { "name": "Column 60-40", "value": "columns-60-40" },
+        { "name": "Column 50-50", "value": "columns-50-50" }
           ]
         }
       ]
