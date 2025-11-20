@@ -29,23 +29,34 @@
           "name": "titleType",
           "label": "Title Type",
           "options": [
-            { "name": "h1", "value": "h1" },
-            { "name": "h2", "value": "h2" },
-            { "name": "h3", "value": "h3" },
-            { "name": "h4", "value": "h4" },
-            { "name": "h5", "value": "h5" },
-            { "name": "h6", "value": "h6" },
-            { "name": "h3-small", "value": "h3-small" }
-          ]
-        },
-        {
-          "component": "multiselect",
-          "name": "style",
-          "label": "Style",
-          "options": [
-            { "name": "Align Center Heading", "value": "align-center-heading" },
-            { "name": "Align Left Heading", "value": "align-left-heading" },
-            { "name": "Align Right Heading", "value": "align-right-heading" }
+            {
+              "name": "h1",
+              "value": "h1"
+            },
+            {
+              "name": "h2",
+              "value": "h2"
+            },
+            {
+              "name": "h3",
+              "value": "h3"
+            },
+            {
+              "name": "h4",
+              "value": "h4"
+            },
+            {
+              "name": "h5",
+              "value": "h5"
+            },
+            {
+              "name": "h6",
+              "value": "h6"
+            },
+            {
+              "name":"h3-small",
+              "value":"h3-small"
+            }
           ]
         }
       ]

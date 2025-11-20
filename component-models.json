@@ -81,25 +81,6 @@
             "value": "h3-small"
           }
         ]
-      },
-      {
-        "component": "multiselect",
-        "name": "style",
-        "label": "Style",
-        "options": [
-          {
-            "name": "Align Center Heading",
-            "value": "align-center-heading"
-          },
-          {
-            "name": "Align Left Heading",
-            "value": "align-left-heading"
-          },
-          {
-            "name": "Align Right Heading",
-            "value": "align-right-heading"
-          }
-        ]
       }
     ]
   },
