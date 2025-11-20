@@ -231,14 +231,14 @@
         "valueType": "number",
         "name": "columns",
         "value": "",
-        "label": "Columns"
+        "label": "No of Columns"
       },
       {
         "component": "text",
         "valueType": "number",
         "name": "rows",
         "value": "",
-        "label": "Rows"
+        "label": "No of Rows"
       },
       {
         "component": "multiselect",
