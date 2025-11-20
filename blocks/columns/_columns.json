@@ -10,7 +10,7 @@
             "template": {
               "columns": "2",
               "rows": "1",
-              "variation":"default"
+              "variation": "default"
             }
           }
         }
@@ -35,11 +35,11 @@
           "value": "",
           "label": "No of Rows"
         },
-         {
+        {
           "component": "multiselect",
           "name": "style",
           "label": "Style",
-          "valueType": "string",          
+          "valueType": "string",
           "options": [
             {
               "name": "Column40-60",
@@ -53,10 +53,10 @@
               "name": "Column50-50",
               "value": "col50-50"
             }
+          ]
+        }
       ]
     }
-  ]
-}
   ],
   "filters": [
     {
