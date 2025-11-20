@@ -33,9 +33,29 @@
           "name": "rows",
           "value": "",
           "label": "Rows"
-        }
+        },
+         {
+          "component": "multiselect",
+          "name": "style",
+          "label": "Style",
+          "valueType": "string",          
+          "options": [
+            {
+              "name": "Column40-60",
+              "value": "col40-60"
+            },
+            {
+              "name": "Column60-40",
+              "value": "col60-40"
+            },
+            {
+              "name": "Column50-50",
+              "value": "col50-50"
+            }
       ]
     }
+  ]
+}
   ],
   "filters": [
     {

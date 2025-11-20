@@ -1,8 +1,10 @@
-/* Section Background */
-.section.background-black {
-  background: #0f0f0f;
-  padding: 80px 0;
+.section.general-container .default-content-wrapper,
+.section.general-container .columns-wrapper {
+  max-width: 984px;
+  margin: 0 auto;
+  width: 100%;
 }
+
 
 /* Max width */
 .columns-container .columns-wrapper {
@@ -21,7 +23,7 @@ Creates a proper 2-column layout.
 .columns.block.columns-2-cols > div {
   display: grid;
   grid-template-columns: 1.5fr 1fr;
-  gap: 80px;
+  gap: 120px;
   align-items: center;
   width: 100%;
 }
@@ -47,8 +49,8 @@ Creates a proper 2-column layout.
   margin-bottom: 20px;
 }
 
-.columns h1 {
-  font-size: 48px;
+.columns h3 {
+  font-size: 20px;
   line-height: 1.2;
 }
 
@@ -61,7 +63,8 @@ Creates a proper 2-column layout.
   color: #ccc;
   font-size: 18px;
   line-height: 1.6;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+  margin-top: 10px;
 }
 
 /********** Buttons (NVIDIA green) **********/
@@ -69,15 +72,16 @@ Creates a proper 2-column layout.
 .columns a.button.primary {
   background: #76b900;
   color: #000;
-  padding: 14px 28px;
+  padding: 13px 15px;
   border-radius: 4px;
   font-weight: 700;
   font-size: 16px;
+  margin: 15px;
 }
 
 .columns a.button.secondary {
  border: none;
-  padding: 14px 28px;
+  padding: 0;
   font-weight: 700;
   font-size: 16px;
   background: transparent;

@@ -263,12 +263,6 @@ padding-block: 75px;
 margin: 0;
 }
 
-.section.general-container>* {
-  max-width: 984px;
-  margin-left: auto;
-  margin-right: auto;
-  width: 100%;
-}
 
 /* Title type styles */
 .h3-small h1 {
