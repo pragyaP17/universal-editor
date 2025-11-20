@@ -81,6 +81,26 @@
             "value": "h3-small"
           }
         ]
+      },
+      {
+        "component": "multiselect",
+        "name": "classes",
+        "label": "Layout style",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "small",
+            "value": "small"
+          },
+          {
+            "name": "medium",
+            "value": "medium"
+          },
+          {
+            "name": "large",
+            "value": "large"
+          }
+        ]
       }
     ]
   },
