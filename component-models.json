@@ -86,6 +86,7 @@
         "component": "select",
         "name": "fontSize",
         "label": "Font Size",
+        "vauleType" : "string",
         "options": [
           {
             "name": "Large",
