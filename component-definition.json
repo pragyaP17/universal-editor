@@ -25,6 +25,7 @@
                 "resourceType": "core/franklin/components/title/v1/title",
                 "template": {
                   "model": "title",
+                  "type": "{titleType}",
                   "classes": "{fontSize}"
                 }
               }
