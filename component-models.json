@@ -293,6 +293,10 @@
           {
             "name": "aem-grid-4-desktop",
             "value": "aem-grid-4-desktop"
+          },
+          {
+            "name": "aem-grid-6-4-desktop",
+            "value": "aem-grid-6-4-desktop"
           }
         ]
       }
