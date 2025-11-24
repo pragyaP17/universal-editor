@@ -276,6 +276,22 @@
           {
             "name": "Column 50-50",
             "value": "columns-50-50"
+          },
+          {
+            "name": "aem-grid-12-desktop",
+            "value": "aem-grid-12-desktop"
+          },
+          {
+            "name": "aem-grid-6-desktop",
+            "value": "aem-grid-6-desktop"
+          },
+          {
+            "name": "aem-grid-5-desktop",
+            "value": "aem-grid-5-desktop"
+          },
+          {
+            "name": "aem-grid-4-desktop",
+            "value": "aem-grid-4-desktop"
           }
         ]
       }
