@@ -63,6 +63,7 @@
           "component": "select",
           "name": "fontSize",
           "label": "Font Size",
+          "valueType" : "string",
           "options": [
             {
               "name": "Large",
