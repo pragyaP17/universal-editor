@@ -58,6 +58,25 @@
               "value":"h3-small"
             }
           ]
+        },
+        {
+          "component": "select",
+          "name": "fontSize",
+          "label": "Font Size",
+          "options": [
+            {
+              "name": "Large",
+              "value": "font-size-large"
+            },
+            {
+              "name": "Medium",
+              "value": "font-size-medium"
+            },
+            {
+              "name": "Small",
+              "value": "font-size-small"
+            }
+          ]
         }
       ]
     }
