@@ -1,0 +1,162 @@
+/* Immersive Cards Container */
+.immersive-cards {
+  position: relative;
+  width: 100%;
+  min-height: 600px;
+  padding: 40px 0;
+}
+
+.immersive-cards > div {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+/* Individual Card Item */
+.immersive-cards > div > div {
+  position: relative;
+  flex: 1 1 calc(50% - 10px);
+  min-width: 300px;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+/* Card Image Container */
+.immersive-cards > div > div picture {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+}
+
+.immersive-cards > div > div picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.immersive-cards > div > div:hover picture img {
+  transform: scale(1.05);
+}
+
+/* Card Content Overlay */
+.immersive-cards .card-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 30px;
+  background: linear-gradient(to top, rgb(0 0 0 / 80%) 0%, rgb(0 0 0 / 40%) 70%, transparent 100%);
+  color: white;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+.immersive-cards > div > div:hover .card-overlay {
+  background: linear-gradient(to top, rgb(0 0 0 / 90%) 0%, rgb(0 0 0 / 60%) 70%, transparent 100%);
+}
+
+/* Card Title */
+.immersive-cards h3 {
+  font-family: var(--heading-font-family);
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0 0 10px;
+  color: white;
+  line-height: 1.2;
+}
+
+/* Card Tagline/Subtitle */
+.immersive-cards .card-tagline {
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: rgb(255 255 255 / 90%);
+  margin: 0 0 15px;
+}
+
+/* Card Description */
+.immersive-cards .card-description {
+  font-size: 16px;
+  line-height: 1.6;
+  color: rgb(255 255 255 / 95%);
+  margin: 0 0 20px;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.immersive-cards > div > div:hover .card-description {
+  max-height: 200px;
+  opacity: 1;
+}
+
+/* CTA Button */
+.immersive-cards .card-cta {
+  margin-top: 15px;
+}
+
+.immersive-cards .card-cta a {
+  display: inline-block;
+  padding: 12px 24px;
+  background: rgb(118 185 0 / 100%);
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.immersive-cards .card-cta a:hover {
+  background: rgb(118 185 0 / 90%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgb(118 185 0 / 40%);
+}
+
+/* Responsive Design */
+@media (width <= 900px) {
+  .immersive-cards > div > div {
+    flex: 1 1 100%;
+  }
+
+  .immersive-cards h3 {
+    font-size: 24px;
+  }
+
+  .immersive-cards > div > div picture {
+    height: 300px;
+  }
+}
+
+@media (width <= 600px) {
+  .immersive-cards {
+    min-height: auto;
+    padding: 20px 0;
+  }
+
+  .immersive-cards .card-overlay {
+    padding: 20px;
+  }
+
+  .immersive-cards h3 {
+    font-size: 20px;
+  }
+
+  .immersive-cards > div > div picture {
+    height: 250px;
+  }
+
+  .immersive-cards .card-description {
+    font-size: 14px;
+  }
+}

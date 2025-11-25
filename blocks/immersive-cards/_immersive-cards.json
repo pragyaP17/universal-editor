@@ -1,0 +1,90 @@
+{
+  "definitions": [
+    {
+      "title": "Immersive Cards",
+      "id": "immersive-cards",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Immersive Cards",
+              "filter": "immersive-cards"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Immersive Card Item",
+      "id": "immersive-card-item",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "Immersive Card Item",
+              "model": "immersive-card-item"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "immersive-card-item",
+      "fields": [
+        {
+          "component": "reference",
+          "valueType": "string",
+          "name": "cardImage",
+          "label": "Card Image",
+          "multi": false
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "cardImageAlt",
+          "label": "Card Image Alt Text"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "cardTitle",
+          "label": "Card Title"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "cardTagline",
+          "label": "Card Tagline"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "cardDescription",
+          "label": "Card Description"
+        },
+        {
+          "component": "aem-content",
+          "name": "cardCtaLink",
+          "label": "Card CTA Link"
+        },
+        {
+          "component": "text",
+          "name": "cardCtaText",
+          "label": "Card CTA Text"
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "immersive-cards",
+      "components": [
+        "immersive-card-item"
+      ]
+    }
+  ]
+}
