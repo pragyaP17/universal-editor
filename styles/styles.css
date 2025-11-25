@@ -261,7 +261,7 @@ main > .section:first-of-type {
 }
 
 
-.align-center-heading > .default-content-wrapper >:is(h1, h2, h3, h4, h5, h6):first-child {
+.align-center-heading > .default-content-wrapper >:is(h1, h2, h3, h4, h5, h6) {
   text-align: center;
 }
 

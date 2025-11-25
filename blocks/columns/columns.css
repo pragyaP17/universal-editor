@@ -79,46 +79,43 @@
   border-radius: none;
 }
 
-/* ============================================
-   NVIDIA-STYLE SECONDARY BUTTON (ADDED)
-   ============================================ */
+/* Secondary button */
 .columns a.button.secondary {
   background: transparent;
   color: inherit;
-  padding: 0;
+  padding: 0 20px 0 0;     /* Extra right padding */
   font-weight: 700;
   font-size: 16px;
   text-decoration: none;
   border: none;
   margin: 0;
-  position: relative;
-   position: relative;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
+  display: inline-block;    /* Instead of inline-flex */
+  overflow: visible;        /* Prevent clipping */
+  white-space: nowrap;      /* Prevent wrapping */
 }
 
-/* Green arrow “ > ” */
+/* Arrow */
 .columns a.button.secondary::after {
-  /* Use Font Awesome icon for consistent look and better control
-     Font glyph: fa-arrow-right (unicode f061) from Font Awesome 6 Free */
-  content: "\f061";
+  content: "\f105";
   color: #76b900;
-  /* Use the Font Awesome family and set solid style weight */
   font-family: "Font Awesome 6 Free";
-  font-weight: 900; /* solid icons */
-  font-style: normal;
-  font-variant: normal;
-  display: inline-block;
-  /* rely on parent .columns a.button.secondary gap for spacing */
+  font-weight: 900;
   line-height: 1;
-  font-size: 0.95em; /* match button font size */
+  font-size: 0.95em;
+  display: inline-block;    /* Enables transform */
+  transition: transform 0.3s ease, color 0.3s ease;
+   margin-left: 8px; /* adjust to your desired gap */
 }
 
-/* Hover */
-.columns a.button.secondary:hover {
-  color: #5a8a00;
-  text-decoration: none;
+/* Hover states */
+.section.bg-color-black a.button.secondary:hover::after {
+  transform: translateX(4px);
+  color: white;
+}
+
+.section.background-transparent a.button.secondary:hover::after {
+  transform: translateX(4px);
+  color: black;
 }
 
 /* ================================
