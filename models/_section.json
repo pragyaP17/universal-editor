@@ -82,8 +82,8 @@
               "value": "align-right-heading"
             },
             {
-              "name": "Align Centre Block",
-              "value": "align-centre-block"
+              "name": "Align Centre Block Mobile",
+              "value": "align-centre-block-mobile"
             },
             {
               "name": "Align List Items",
