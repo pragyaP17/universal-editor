@@ -110,7 +110,7 @@
   font-style: normal;
   font-variant: normal;
   display: inline-block;
-  margin-left: 4px; /* spacing between label and icon */
+  /* rely on parent .columns a.button.secondary gap for spacing */
   line-height: 1;
   font-size: 0.95em; /* match button font size */
 }
