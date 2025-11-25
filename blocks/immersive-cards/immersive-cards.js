@@ -1,6 +1,7 @@
 export default function decorate(block) {
   // Process each card row
   const cards = [...block.children];
+  const cardItems = [];
 
   cards.forEach((card) => {
     // Extract data from cells
@@ -43,11 +44,28 @@ export default function decorate(block) {
           cardData.description = cell.textContent.trim();
           break;
         case 4: {
-          // CTA
+          // CTA Link
           const link = cell.querySelector('a');
           if (link && link.href) {
             cardData.ctaLink = link.href;
-            cardData.ctaText = link.textContent.trim();
+            // If link has text, use it as fallback
+            if (link.textContent.trim()) {
+              cardData.ctaText = link.textContent.trim();
+            }
+          } else {
+            // If no link element, might be plain text URL
+            const cellText = cell.textContent.trim();
+            if (cellText && (cellText.startsWith('http') || cellText.startsWith('/'))) {
+              cardData.ctaLink = cellText;
+            }
+          }
+          break;
+        }
+        case 5: {
+          // CTA Text - this should override any text from the link
+          const cellText = cell.textContent.trim();
+          if (cellText) {
+            cardData.ctaText = cellText;
           }
           break;
         }
@@ -64,6 +82,12 @@ export default function decorate(block) {
     if (cardData.image) {
       card.appendChild(cardData.image);
     }
+
+    // Create close button
+    const closeButton = document.createElement('button');
+    closeButton.className = 'close-button';
+    closeButton.setAttribute('aria-label', 'Close expanded view');
+    card.appendChild(closeButton);
 
     // Create overlay container
     const overlay = document.createElement('div');
@@ -106,5 +130,54 @@ export default function decorate(block) {
     }
 
     card.appendChild(overlay);
+    cardItems.push(card);
+  });
+
+  // Add click event handlers for card expansion
+  cardItems.forEach((cardItem) => {
+    const closeButton = cardItem.querySelector('.close-button');
+
+    // Click on card to expand
+    cardItem.addEventListener('click', (e) => {
+      // Don't expand if clicking on CTA link or close button
+      if (e.target.closest('.card-cta') || e.target.closest('.close-button')) {
+        return;
+      }
+
+      const isExpanded = cardItem.classList.contains('expanded');
+
+      if (!isExpanded) {
+        // Collapse any other expanded cards
+        cardItems.forEach((item) => {
+          item.classList.remove('expanded');
+          item.classList.remove('hidden');
+        });
+
+        // Expand this card
+        cardItem.classList.add('expanded');
+
+        // Hide other cards
+        cardItems.forEach((item) => {
+          if (item !== cardItem) {
+            item.classList.add('hidden');
+          }
+        });
+      }
+    });
+
+    // Click on close button to collapse
+    if (closeButton) {
+      closeButton.addEventListener('click', (e) => {
+        e.stopPropagation();
+
+        // Collapse the card
+        cardItem.classList.remove('expanded');
+
+        // Show all cards
+        cardItems.forEach((item) => {
+          item.classList.remove('hidden');
+        });
+      });
+    }
   });
 }

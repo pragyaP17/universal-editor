@@ -4,38 +4,86 @@
   width: 100%;
   min-height: 600px;
   padding: 40px 0;
-}
-
-.immersive-cards > div {
-  position: relative;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: minmax(300px, auto);
   gap: 20px;
 }
 
+.immersive-cards:has(.card-item.expanded) {
+  min-height: 1200px;
+}
+
 /* Individual Card Item */
-.immersive-cards > div > div,
 .immersive-cards .card-item {
   position: relative;
-  flex: 1 1 calc(50% - 10px);
-  min-width: 300px;
   cursor: pointer;
   overflow: hidden;
   border-radius: 8px;
-  transition: all 0.3s ease;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1;
+}
+
+/* First card spans 2 rows in first column */
+.immersive-cards .card-item:nth-child(1) {
+  grid-column: 1;
+  grid-row: 1 / 3;
+}
+
+/* Second card - column 2, row 1 */
+.immersive-cards .card-item:nth-child(2) {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+/* Third card - column 3, row 1 */
+.immersive-cards .card-item:nth-child(3) {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+/* Fourth card - column 2, row 2 */
+.immersive-cards .card-item:nth-child(4) {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+/* Fifth card - column 3, row 2 */
+.immersive-cards .card-item:nth-child(5) {
+  grid-column: 3;
+  grid-row: 2;
+}
+
+/* Expanded Card State */
+.immersive-cards .card-item.expanded {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+  border-radius: 0;
+  z-index: 9999;
+  margin: 0;
+}
+
+/* Hidden Card State */
+.immersive-cards .card-item.hidden {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
 }
 
 /* Card Image Container */
-.immersive-cards > div > div picture,
 .immersive-cards .card-item picture {
   display: block;
   position: relative;
   width: 100%;
-  height: 400px;
+  height: 100%;
   overflow: hidden;
+  transition: height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.immersive-cards > div > div picture img,
 .immersive-cards .card-item picture img {
   width: 100%;
   height: 100%;
@@ -43,9 +91,17 @@
   transition: transform 0.3s ease;
 }
 
-.immersive-cards > div > div:hover picture img,
 .immersive-cards .card-item:hover picture img {
   transform: scale(1.05);
+}
+
+/* Expanded Card Image */
+.immersive-cards .card-item.expanded picture {
+  height: 100%;
+}
+
+.immersive-cards .card-item.expanded picture img {
+  height: 100%;
 }
 
 /* Card Content Overlay */
@@ -58,12 +114,17 @@
   background: linear-gradient(to top, rgb(0 0 0 / 80%) 0%, rgb(0 0 0 / 40%) 70%, transparent 100%);
   color: white;
   z-index: 2;
-  transition: all 0.3s ease;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.immersive-cards > div > div:hover .card-overlay,
 .immersive-cards .card-item:hover .card-overlay {
   background: linear-gradient(to top, rgb(0 0 0 / 90%) 0%, rgb(0 0 0 / 60%) 70%, transparent 100%);
+}
+
+/* Expanded Card Overlay */
+.immersive-cards .card-item.expanded .card-overlay {
+  padding: 60px 80px;
+  background: linear-gradient(to top, rgb(0 0 0 / 95%) 0%, rgb(0 0 0 / 70%) 60%, transparent 100%);
 }
 
 /* Card Title */
@@ -74,6 +135,12 @@
   margin: 0 0 10px;
   color: white;
   line-height: 1.2;
+  transition: font-size 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.immersive-cards .card-item.expanded h3 {
+  font-size: 48px;
+  margin-bottom: 20px;
 }
 
 /* Card Tagline/Subtitle */
@@ -84,6 +151,12 @@
   letter-spacing: 1px;
   color: rgb(255 255 255 / 90%);
   margin: 0 0 15px;
+  transition: font-size 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.immersive-cards .card-item.expanded .card-tagline {
+  font-size: 16px;
+  margin-bottom: 20px;
 }
 
 /* Card Description */
@@ -95,54 +168,144 @@
   max-height: 0;
   opacity: 0;
   overflow: hidden;
-  transition: all 0.3s ease;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.immersive-cards > div > div:hover .card-description,
-.immersive-cards .card-item:hover .card-description {
-  max-height: 200px;
+/* Show description only when expanded, not on hover */
+.immersive-cards .card-item.expanded .card-description {
+  max-height: 400px;
   opacity: 1;
+  margin-bottom: 30px;
+  font-size: 18px;
 }
 
 /* CTA Button */
 .immersive-cards .card-cta {
   margin-top: 15px;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .immersive-cards .card-cta a {
-  display: inline-block;
-  padding: 12px 24px;
-  background: rgb(118 185 0 / 100%);
-  color: white;
+  background: transparent;
+  color: inherit;
+  padding: 0 20px 0 0;
+  font-weight: 700;
+  font-size: 16px;
   text-decoration: none;
-  border-radius: 4px;
-  font-weight: 600;
-  font-size: 14px;
+  border: none;
+  margin: 0;
+  display: inline-block;
+  overflow: visible;
+  white-space: nowrap;
   transition: all 0.3s ease;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
 }
 
-.immersive-cards .card-cta a:hover {
-  background: rgb(118 185 0 / 90%);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgb(118 185 0 / 40%);
+/* Arrow */
+.immersive-cards .card-cta a::after {
+  content: "\203A";
+  color: #76b900;
+  font-family: "Font Awesome 6 Free", sans-serif;
+  font-weight: 900;
+  line-height: 1;
+  font-size: 1.5em;
+  display: inline-block;
+  transition: transform 0.3s ease, color 0.3s ease;
+  margin-left: 8px;
+}
+
+.immersive-cards .card-cta a:hover::after {
+  transform: translateX(4px);
+  color: white;
+}
+
+.immersive-cards .card-item.expanded .card-cta {
+  opacity: 1;
+  max-height: 100px;
+}
+
+.immersive-cards .card-item.expanded .card-cta a {
+  padding: 0 20px 0 0;
+  font-size: 16px;
+}
+
+/* Close Button */
+.immersive-cards .close-button {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  width: 48px;
+  height: 48px;
+  background: rgb(0 0 0 / 30%);
+  border: 2px solid white;
+  border-radius: 50%;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: all 0.3s ease;
+}
+
+.immersive-cards .close-button:hover {
+  background: rgb(0 0 0 / 50%);
+  transform: rotate(90deg) scale(1.1);
+}
+
+.immersive-cards .close-button::before,
+.immersive-cards .close-button::after {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 2px;
+  background: white;
+}
+
+.immersive-cards .close-button::before {
+  transform: rotate(45deg);
+}
+
+.immersive-cards .close-button::after {
+  transform: rotate(-45deg);
+}
+
+.immersive-cards .card-item.expanded .close-button {
+  display: flex;
 }
 
 /* Responsive Design */
 @media (width <= 900px) {
-  .immersive-cards > div > div,
-  .immersive-cards .card-item {
-    flex: 1 1 100%;
+  .immersive-cards {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+
+  /* Reset grid positioning for mobile */
+  .immersive-cards .card-item:nth-child(1),
+  .immersive-cards .card-item:nth-child(2),
+  .immersive-cards .card-item:nth-child(3),
+  .immersive-cards .card-item:nth-child(4),
+  .immersive-cards .card-item:nth-child(5) {
+    grid-column: 1;
+    grid-row: auto;
   }
 
   .immersive-cards h3 {
     font-size: 24px;
   }
 
-  .immersive-cards > div > div picture,
   .immersive-cards .card-item picture {
     height: 300px;
+  }
+
+  .immersive-cards .card-item.expanded .card-overlay {
+    padding: 40px 50px;
+  }
+
+  .immersive-cards .card-item.expanded h3 {
+    font-size: 36px;
   }
 }
 
@@ -150,6 +313,7 @@
   .immersive-cards {
     min-height: auto;
     padding: 20px 0;
+    gap: 15px;
   }
 
   .immersive-cards .card-overlay {
@@ -160,12 +324,35 @@
     font-size: 20px;
   }
 
-  .immersive-cards > div > div picture,
   .immersive-cards .card-item picture {
     height: 250px;
   }
 
   .immersive-cards .card-description {
     font-size: 14px;
+  }
+
+  .immersive-cards .card-item.expanded .card-overlay {
+    padding: 30px;
+  }
+
+  .immersive-cards .card-item.expanded h3 {
+    font-size: 28px;
+  }
+
+  .immersive-cards .card-item.expanded .card-description {
+    font-size: 16px;
+  }
+
+  .immersive-cards .close-button {
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .immersive-cards .close-button::before,
+  .immersive-cards .close-button::after {
+    width: 20px;
   }
 }
