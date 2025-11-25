@@ -29,14 +29,14 @@
   grid-column: 9 / span 4;
 }
 
-/* LEFT = 7 columns */
-.columns.aem-grid-6-4-desktop.block.columns-2-cols > div > div:nth-child(1) {
-  grid-column: 1 / span 7;
+/* LEFT = 5 columns */
+.columns.aem-grid-5-6-desktop.block.columns-2-cols > div > div:nth-child(1) {
+  grid-column: 1 / span 5;
 }
 
-/* RIGHT = offset 2, then span 3 */
-.columns.aem-grid-6-4-desktop.block.columns-2-cols > div > div:nth-child(2) {
-  grid-column: 9 / span 4;
+/* RIGHT = offset 1, then span 6*/
+.columns.aem-grid-5-6-desktop.block.columns-2-cols > div > div:nth-child(2) {
+  grid-column: 7 / span 6;
 }
 
 /* ================================
@@ -92,13 +92,27 @@
   border: none;
   margin: 0;
   position: relative;
+   position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
 }
 
 /* Green arrow “ > ” */
 .columns a.button.secondary::after {
-  content: " >";
+  /* Use Font Awesome icon for consistent look and better control
+     Font glyph: fa-arrow-right (unicode f061) from Font Awesome 6 Free */
+  content: "\f061";
   color: #76b900;
-  font-weight: 700;
+  /* Use the Font Awesome family and set solid style weight */
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900; /* solid icons */
+  font-style: normal;
+  font-variant: normal;
+  display: inline-block;
+  margin-left: 4px; /* spacing between label and icon */
+  line-height: 1;
+  font-size: 0.95em; /* match button font size */
 }
 
 /* Hover */
