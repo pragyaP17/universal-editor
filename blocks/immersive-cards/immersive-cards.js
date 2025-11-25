@@ -22,10 +22,10 @@ export default function decorate(block) {
           const picture = cell.querySelector('picture');
           const img = cell.querySelector('img');
           if (picture) {
-            cardData.image = picture;
+            cardData.image = picture.cloneNode(true);
             cardData.imageAlt = img?.alt || '';
           } else if (img) {
-            cardData.image = img;
+            cardData.image = img.cloneNode(true);
             cardData.imageAlt = img.alt || '';
           }
           break;
@@ -45,7 +45,7 @@ export default function decorate(block) {
         case 4: {
           // CTA
           const link = cell.querySelector('a');
-          if (link) {
+          if (link && link.href) {
             cardData.ctaLink = link.href;
             cardData.ctaText = link.textContent.trim();
           }
@@ -58,6 +58,7 @@ export default function decorate(block) {
 
     // Build card structure
     card.innerHTML = '';
+    card.className = 'card-item';
 
     // Add image if available
     if (cardData.image) {
@@ -91,7 +92,7 @@ export default function decorate(block) {
       overlay.appendChild(description);
     }
 
-    // Add CTA
+    // Add CTA - only if both link and text exist
     if (cardData.ctaLink && cardData.ctaText) {
       const ctaContainer = document.createElement('div');
       ctaContainer.className = 'card-cta';

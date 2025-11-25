@@ -14,7 +14,8 @@
 }
 
 /* Individual Card Item */
-.immersive-cards > div > div {
+.immersive-cards > div > div,
+.immersive-cards .card-item {
   position: relative;
   flex: 1 1 calc(50% - 10px);
   min-width: 300px;
@@ -25,7 +26,8 @@
 }
 
 /* Card Image Container */
-.immersive-cards > div > div picture {
+.immersive-cards > div > div picture,
+.immersive-cards .card-item picture {
   display: block;
   position: relative;
   width: 100%;
@@ -33,14 +35,16 @@
   overflow: hidden;
 }
 
-.immersive-cards > div > div picture img {
+.immersive-cards > div > div picture img,
+.immersive-cards .card-item picture img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 0.3s ease;
 }
 
-.immersive-cards > div > div:hover picture img {
+.immersive-cards > div > div:hover picture img,
+.immersive-cards .card-item:hover picture img {
   transform: scale(1.05);
 }
 
@@ -57,7 +61,8 @@
   transition: all 0.3s ease;
 }
 
-.immersive-cards > div > div:hover .card-overlay {
+.immersive-cards > div > div:hover .card-overlay,
+.immersive-cards .card-item:hover .card-overlay {
   background: linear-gradient(to top, rgb(0 0 0 / 90%) 0%, rgb(0 0 0 / 60%) 70%, transparent 100%);
 }
 
@@ -93,7 +98,8 @@
   transition: all 0.3s ease;
 }
 
-.immersive-cards > div > div:hover .card-description {
+.immersive-cards > div > div:hover .card-description,
+.immersive-cards .card-item:hover .card-description {
   max-height: 200px;
   opacity: 1;
 }
@@ -125,7 +131,8 @@
 
 /* Responsive Design */
 @media (width <= 900px) {
-  .immersive-cards > div > div {
+  .immersive-cards > div > div,
+  .immersive-cards .card-item {
     flex: 1 1 100%;
   }
 
@@ -133,7 +140,8 @@
     font-size: 24px;
   }
 
-  .immersive-cards > div > div picture {
+  .immersive-cards > div > div picture,
+  .immersive-cards .card-item picture {
     height: 300px;
   }
 }
@@ -152,7 +160,8 @@
     font-size: 20px;
   }
 
-  .immersive-cards > div > div picture {
+  .immersive-cards > div > div picture,
+  .immersive-cards .card-item picture {
     height: 250px;
   }
 
