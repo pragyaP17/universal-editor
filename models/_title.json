@@ -8,7 +8,9 @@
           "page": {
             "resourceType": "core/franklin/components/title/v1/title",
             "template": {
-              "model": "title"
+              "model": "title",
+              "type": "{titleType}",
+              "classes": "{fontSize}"
             }
           }
         }
