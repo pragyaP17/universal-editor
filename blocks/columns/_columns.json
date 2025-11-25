@@ -34,20 +34,32 @@
           "value": "",
           "label": "No of Rows"
         },
-         {
-      "component": "multiselect",
-      "name": "classes",
-      "label": "Layout style",
-      "valueType": "string",
-      "options": [
-        { "name": "Column 40-60", "value": "columns-40-60" },
-        { "name": "Column 60-40", "value": "columns-60-40" },
-        { "name": "Column 50-50", "value": "columns-50-50" },
-        {"name": "aem-grid-12-desktop","value":"aem-grid-12-desktop"},
-        {"name": "aem-grid-6-desktop","value":"aem-grid-6-desktop"},
-        {"name": "aem-grid-5-desktop","value":"aem-grid-5-desktop"},
-        {"name": "aem-grid-4-desktop","value":"aem-grid-4-desktop"},
-        {"name": "aem-grid-6-4-desktop","value":"aem-grid-6-4-desktop"}
+        {
+          "component": "multiselect",
+          "name": "classes",
+          "label": "Layout style",
+          "valueType": "string",
+          "options": [
+            {
+              "name": "aem-grid-6-4-desktop",
+              "value": "aem-grid-6-4-desktop"
+            },
+            {
+              "name": "aem-grid-12-mobile",
+              "value": "aem-grid-12-mobile"
+            },
+            {
+              "name": "aem-grid-6-4-tablet",
+              "value": "aem-grid-6-4-tablet"
+            },
+            {
+              "name": "aem-grid-5-6-desktop",
+              "value": "aem-grid-4-8-desktop"
+            },
+            {
+              "name": "aem-grid-6-tablet",
+              "value": "aem-grid-6-tablet"
+            }
           ]
         }
       ]
