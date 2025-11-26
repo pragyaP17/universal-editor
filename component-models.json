@@ -304,6 +304,13 @@
         "valueType": "string"
       },
       {
+        "component": "text",
+        "name": "imageAlt",
+        "label": "Image Alt Text",
+        "valueType": "string",
+        "description": "Accessibility: describe the image"
+      },
+      {
         "component": "boolean",
         "name": "isFeatured",
         "label": "Featured Badge",
@@ -345,7 +352,8 @@
         "component": "text",
         "name": "title",
         "label": "Title",
-        "valueType": "string"
+        "valueType": "string",
+        "required": true
       },
       {
         "component": "richtext",
@@ -377,7 +385,7 @@
       {
         "component": "text",
         "name": "cardLink",
-        "label": "Card Link",
+        "label": "Card Link (URL)",
         "valueType": "string",
         "condition": {
           "some": [
@@ -396,7 +404,8 @@
               ]
             }
           ]
-        }
+        },
+        "description": "Entire card is clickable"
       },
       {
         "component": "list",
@@ -410,7 +419,8 @@
             },
             "cta"
           ]
-        }
+        },
+        "description": "Repeatable list for CTA Card"
       },
       {
         "component": "text",
@@ -460,12 +470,13 @@
               ]
             }
           ]
-        }
+        },
+        "description": "URL for CTA button"
       },
       {
         "component": "text",
         "name": "videoUrl",
-        "label": "Video Link",
+        "label": "Video Link (YouTube)",
         "valueType": "string",
         "condition": {
           "===": [
@@ -474,7 +485,8 @@
             },
             "video"
           ]
-        }
+        },
+        "description": "YouTube video URL for modal"
       }
     ]
   }

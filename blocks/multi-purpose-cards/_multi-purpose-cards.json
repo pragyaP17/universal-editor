@@ -54,15 +54,16 @@
           ]
         },
         { "component": "reference", "name": "image", "label": "Image", "valueType": "string" },
+        { "component": "text", "name": "imageAlt", "label": "Image Alt Text", "valueType": "string", "description": "Accessibility: describe the image" },
         { "component": "boolean", "name": "isFeatured", "label": "Featured Badge", "valueType": "boolean", "condition": { "===": [ { "var": "variation" }, "linked" ] } },
         { "component": "text", "name": "tagline", "label": "Tagline", "valueType": "string", "condition": { "some": [ { "var": "variation" }, { "in": [ { "var": "" }, [ "linked", "simple-linked" ] ] } ] } },
-        { "component": "text", "name": "title", "label": "Title", "valueType": "string" },
+        { "component": "text", "name": "title", "label": "Title", "valueType": "string", "required": true },
         { "component": "richtext", "name": "description", "label": "Description", "valueType": "string", "condition": { "some": [ { "var": "variation" }, { "in": [ { "var": "" }, [ "linked", "simple-linked", "cta", "simple-cta", "video" ] ] } ] } },
-        { "component": "text", "name": "cardLink", "label": "Card Link", "valueType": "string", "condition": { "some": [ { "var": "variation" }, { "in": [ { "var": "" }, [ "linked", "simple-linked" ] ] } ] } },
-        { "component": "list", "name": "bulletPoints", "label": "Bullet Points", "valueType": "string", "condition": { "===": [ { "var": "variation" }, "cta" ] } },
+        { "component": "text", "name": "cardLink", "label": "Card Link (URL)", "valueType": "string", "condition": { "some": [ { "var": "variation" }, { "in": [ { "var": "" }, [ "linked", "simple-linked" ] ] } ] }, "description": "Entire card is clickable" },
+        { "component": "list", "name": "bulletPoints", "label": "Bullet Points", "valueType": "string", "condition": { "===": [ { "var": "variation" }, "cta" ] }, "description": "Repeatable list for CTA Card" },
         { "component": "text", "name": "ctaText", "label": "CTA Button Text", "valueType": "string", "condition": { "some": [ { "var": "variation" }, { "in": [ { "var": "" }, [ "cta", "simple-cta", "video" ] ] } ] } },
-        { "component": "text", "name": "ctaLink", "label": "CTA Button Link", "valueType": "string", "condition": { "some": [ { "var": "variation" }, { "in": [ { "var": "" }, [ "cta", "simple-cta", "video" ] ] } ] } },
-        { "component": "text", "name": "videoUrl", "label": "Video Link", "valueType": "string", "condition": { "===": [ { "var": "variation" }, "video" ] } }
+        { "component": "text", "name": "ctaLink", "label": "CTA Button Link", "valueType": "string", "condition": { "some": [ { "var": "variation" }, { "in": [ { "var": "" }, [ "cta", "simple-cta", "video" ] ] } ] }, "description": "URL for CTA button" },
+        { "component": "text", "name": "videoUrl", "label": "Video Link (YouTube)", "valueType": "string", "condition": { "===": [ { "var": "variation" }, "video" ] }, "description": "YouTube video URL for modal" }
       ]
     }
   ],
