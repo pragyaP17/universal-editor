@@ -145,6 +145,7 @@ export default function decorate(block) {
       }
 
       const isExpanded = cardItem.classList.contains('expanded');
+      const isMobile = window.innerWidth <= 600;
 
       if (!isExpanded) {
         // Collapse any other expanded cards
@@ -156,12 +157,14 @@ export default function decorate(block) {
         // Expand this card
         cardItem.classList.add('expanded');
 
-        // Hide other cards
-        cardItems.forEach((item) => {
-          if (item !== cardItem) {
-            item.classList.add('hidden');
-          }
-        });
+        // Hide other cards only on desktop/tablet (not mobile)
+        if (!isMobile) {
+          cardItems.forEach((item) => {
+            if (item !== cardItem) {
+              item.classList.add('hidden');
+            }
+          });
+        }
       }
     });
 
