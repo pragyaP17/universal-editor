@@ -1,0 +1,79 @@
+{
+  "definitions": [
+    {
+      "title": "Multi-Purpose Cards",
+      "id": "multi-purpose-cards",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Multi-Purpose Cards",
+              "filter": "multi-purpose-cards"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Multi-Purpose Card Item",
+      "id": "multi-purpose-card-item",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "Multi-Purpose Card Item",
+              "model": "multi-purpose-card-item"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "multi-purpose-cards",
+      "fields": []
+    },
+    {
+      "id": "multi-purpose-card-item",
+      "fields": [
+        {
+          "component": "select",
+          "name": "variation",
+          "label": "Card Variation",
+          "valueType": "string",
+          "required": true,
+          "options": [
+            { "name": "Linked Card", "value": "linked" },
+            { "name": "CTA Card", "value": "cta" },
+            { "name": "Simple Linked Card", "value": "simple-linked" },
+            { "name": "Video Card", "value": "video" },
+            { "name": "Simple CTA Card", "value": "simple-cta" }
+          ]
+        },
+        { "component": "reference", "name": "image", "label": "Image", "valueType": "string" },
+        { "component": "boolean", "name": "isFeatured", "label": "Featured Badge", "valueType": "boolean", "condition": { "===": [ { "var": "variation" }, "linked" ] } },
+        { "component": "text", "name": "tagline", "label": "Tagline", "valueType": "string", "condition": { "some": [ { "var": "variation" }, { "in": [ { "var": "" }, [ "linked", "simple-linked" ] ] } ] } },
+        { "component": "text", "name": "title", "label": "Title", "valueType": "string" },
+        { "component": "richtext", "name": "description", "label": "Description", "valueType": "string", "condition": { "some": [ { "var": "variation" }, { "in": [ { "var": "" }, [ "linked", "simple-linked", "cta", "simple-cta", "video" ] ] } ] } },
+        { "component": "text", "name": "cardLink", "label": "Card Link", "valueType": "string", "condition": { "some": [ { "var": "variation" }, { "in": [ { "var": "" }, [ "linked", "simple-linked" ] ] } ] } },
+        { "component": "list", "name": "bulletPoints", "label": "Bullet Points", "valueType": "string", "condition": { "===": [ { "var": "variation" }, "cta" ] } },
+        { "component": "text", "name": "ctaText", "label": "CTA Button Text", "valueType": "string", "condition": { "some": [ { "var": "variation" }, { "in": [ { "var": "" }, [ "cta", "simple-cta", "video" ] ] } ] } },
+        { "component": "text", "name": "ctaLink", "label": "CTA Button Link", "valueType": "string", "condition": { "some": [ { "var": "variation" }, { "in": [ { "var": "" }, [ "cta", "simple-cta", "video" ] ] } ] } },
+        { "component": "text", "name": "videoUrl", "label": "Video Link", "valueType": "string", "condition": { "===": [ { "var": "variation" }, "video" ] } }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "section",
+      "components": [ "multi-purpose-cards" ]
+    },
+    {
+      "id": "multi-purpose-cards",
+      "components": [ "multi-purpose-card-item" ]
+    }
+  ]
+}
