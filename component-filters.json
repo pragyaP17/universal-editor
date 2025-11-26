@@ -41,15 +41,10 @@
     ]
   },
   {
-    "id": "blocks",
-    "title": "Blocks",
-    "items": [
-      {
-        "id": "horizontal-scroller",
-        "title": "Horizontal Scroller",
-        "model": "horizontal-scroller",
-        "resourceType": "core/franklin/components/block/v1/block"
-      }
+    "id": "horizontal-scroller",
+    "components": [
+      "h-text",
+      "h-cards"
     ]
   }
 ]
