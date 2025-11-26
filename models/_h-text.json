@@ -1,0 +1,17 @@
+{
+  "models": [
+    {
+      "id": "h-text",
+      "fields": [
+        {
+          "component": "richtext",
+          "name": "text",
+          "value": "",
+          "label": "Text",
+          "valueType": "string"
+        }
+      ]
+    }
+  ]
+}
+

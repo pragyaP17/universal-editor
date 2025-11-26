@@ -1,0 +1,43 @@
+/* filepath: c:\Users\pragy\AEM Projects\Nvidia_EDS\universal-editor\blocks\h-cards\h-cards.css */
+/* Styles adapted from blocks/cards/cards.css to match card look inside scroller */
+.h-cards {
+  /* The horizontal scroller will usually wrap these; keep list baseline styles */
+}
+
+.h-cards > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 16px;
+}
+
+.h-cards > ul > li {
+  border: 1px solid #dadada;
+  background-color: var(--background-color);
+  flex: 0 0 280px; /* fixed card width to work in scroller */
+  box-sizing: border-box;
+}
+
+.h-cards .h-cards-card-body {
+  margin: 12px;
+}
+
+.h-cards .h-cards-card-image {
+  line-height: 0;
+}
+
+.h-cards > ul > li img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+}
+
+/* Responsive: slightly smaller cards on small screens */
+@media (max-width: 600px) {
+  .h-cards > ul > li {
+    flex: 0 0 220px;
+  }
+}
+
