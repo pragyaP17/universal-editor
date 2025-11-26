@@ -203,15 +203,75 @@
           }
         },
         {
-          "title": "Multi-Purpose Card Item",
-          "id": "multi-purpose-card-item",
+          "title": "Linked Card Item",
+          "id": "linked-card-item",
           "plugins": {
             "xwalk": {
               "page": {
                 "resourceType": "core/franklin/components/block/v1/block/item",
                 "template": {
-                  "name": "Multi-Purpose Card Item",
-                  "model": "multi-purpose-card-item"
+                  "name": "Linked Card Item",
+                  "model": "linked-card-item"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "CTA Card Item",
+          "id": "cta-card-item",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "CTA Card Item",
+                  "model": "cta-card-item"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Simple Linked Card Item",
+          "id": "simple-linked-card-item",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Simple Linked Card Item",
+                  "model": "simple-linked-card-item"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Video Card Item",
+          "id": "video-card-item",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Video Card Item",
+                  "model": "video-card-item"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Simple CTA Card Item",
+          "id": "simple-cta-card-item",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Simple CTA Card Item",
+                  "model": "simple-cta-card-item"
                 }
               }
             }
