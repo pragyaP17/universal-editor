@@ -219,14 +219,15 @@
     "id": "horizontal-scroller",
     "fields": [
       {
-        "component": "aem-reference",
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "label": "H Title"
+      },
+      {
+        "component": "aem-content",
         "name": "reference",
-        "label": "Reference",
-        "type": "page",
-        "root": "/content",
-        "rootPath": "/content",
-        "picker": "pathbrowser",
-        "description": "Select a page under /content"
+        "label": "Reference"
       }
     ]
   }

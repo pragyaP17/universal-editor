@@ -21,6 +21,12 @@
       "id": "horizontal-scroller",
       "fields": [
         {
+          "component": "text",
+          "valueType": "string",
+          "name": "title",
+          "label": "H Title"
+        },
+        {
           "component": "aem-reference",
           "name": "reference",
           "label": "Reference",
