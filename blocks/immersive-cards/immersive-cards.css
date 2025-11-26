@@ -300,6 +300,7 @@
   .immersive-cards .card-item.expanded {
     grid-column: 1 / -1;
     grid-row: 1 / -1;
+    height: 600px;
   }
 
   .immersive-cards h3 {
@@ -399,10 +400,10 @@
   }
 
   .immersive-cards .close-button {
-    top: 10px;
-    right: 10px;
-    width: 28px;
-    height: 28px;
+    top: -20px;
+    right: -10px;
+    width: 20px;
+    height: 20px;
     background-size: 16px 16px;
   }
 }

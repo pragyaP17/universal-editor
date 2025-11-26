@@ -154,16 +154,30 @@ export default function decorate(block) {
           item.classList.remove('hidden');
         });
 
-        // Expand this card
-        cardItem.classList.add('expanded');
-
         // Hide other cards only on desktop/tablet (not mobile)
         if (!isMobile) {
+          // Find first card that will be hidden
+          const firstHiddenCard = cardItems.find((item) => item !== cardItem);
+          if (firstHiddenCard) {
+            // Listen for transition end on the first hidden card
+            const expandAfterHide = (event) => {
+              if (event.propertyName === 'opacity') {
+                cardItem.classList.add('expanded');
+                firstHiddenCard.removeEventListener('transitionend', expandAfterHide);
+              }
+            };
+            firstHiddenCard.addEventListener('transitionend', expandAfterHide);
+          }
+
+          // Hide other cards
           cardItems.forEach((item) => {
             if (item !== cardItem) {
               item.classList.add('hidden');
             }
           });
+        } else {
+          // On mobile, expand immediately
+          cardItem.classList.add('expanded');
         }
       }
     });
