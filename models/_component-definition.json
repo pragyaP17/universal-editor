@@ -35,15 +35,6 @@
           "...": "../blocks/*/_*.json#/definitions"
         }
       ]
-    },
-    {
-      "title": "Horizontal-scroller",
-      "id": "horizontal-scroller",
-      "components": [
-        {
-          "...": "../blocks/*/_*.json#/definitions"
-        }
-      ]
     }
   ]
 }

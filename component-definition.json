@@ -156,6 +156,21 @@
               }
             }
           }
+        },
+        {
+          "title": "Horizontal Scroller",
+          "id": "horizontal-scroller",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Horizontal Scroller",
+                  "model": "horizontal-scroller"
+                }
+              }
+            }
+          }
         }
       ]
     }

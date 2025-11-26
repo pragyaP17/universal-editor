@@ -214,5 +214,20 @@
         "valueType": "string"
       }
     ]
+  },
+  {
+    "id": "horizontal-scroller",
+    "fields": [
+      {
+        "component": "aem-reference",
+        "name": "reference",
+        "label": "Reference",
+        "type": "page",
+        "root": "/content",
+        "rootPath": "/content",
+        "picker": "pathbrowser",
+        "description": "Select a page under /content"
+      }
+    ]
   }
 ]
