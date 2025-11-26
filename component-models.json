@@ -266,37 +266,8 @@
     "fields": []
   },
   {
-    "id": "multi-purpose-card-item",
+    "id": "linked-card-item",
     "fields": [
-      {
-        "component": "select",
-        "name": "variation",
-        "label": "Card Variation",
-        "valueType": "string",
-        "required": true,
-        "options": [
-          {
-            "name": "Linked Card",
-            "value": "linked"
-          },
-          {
-            "name": "CTA Card",
-            "value": "cta"
-          },
-          {
-            "name": "Simple Linked Card",
-            "value": "simple-linked"
-          },
-          {
-            "name": "Video Card",
-            "value": "video"
-          },
-          {
-            "name": "Simple CTA Card",
-            "value": "simple-cta"
-          }
-        ]
-      },
       {
         "component": "reference",
         "name": "image",
@@ -307,46 +278,19 @@
         "component": "text",
         "name": "imageAlt",
         "label": "Image Alt Text",
-        "valueType": "string",
-        "description": "Accessibility: describe the image"
+        "valueType": "string"
       },
       {
         "component": "boolean",
         "name": "isFeatured",
         "label": "Featured Badge",
-        "valueType": "boolean",
-        "condition": {
-          "===": [
-            {
-              "var": "variation"
-            },
-            "linked"
-          ]
-        }
+        "valueType": "boolean"
       },
       {
         "component": "text",
         "name": "tagline",
         "label": "Tagline",
-        "valueType": "string",
-        "condition": {
-          "some": [
-            {
-              "var": "variation"
-            },
-            {
-              "in": [
-                {
-                  "var": ""
-                },
-                [
-                  "linked",
-                  "simple-linked"
-                ]
-              ]
-            }
-          ]
-        }
+        "valueType": "string"
       },
       {
         "component": "text",
@@ -359,134 +303,200 @@
         "component": "richtext",
         "name": "description",
         "label": "Description",
-        "valueType": "string",
-        "condition": {
-          "some": [
-            {
-              "var": "variation"
-            },
-            {
-              "in": [
-                {
-                  "var": ""
-                },
-                [
-                  "linked",
-                  "simple-linked",
-                  "cta",
-                  "simple-cta",
-                  "video"
-                ]
-              ]
-            }
-          ]
-        }
+        "valueType": "string"
       },
       {
         "component": "text",
         "name": "cardLink",
         "label": "Card Link (URL)",
         "valueType": "string",
-        "condition": {
-          "some": [
-            {
-              "var": "variation"
-            },
-            {
-              "in": [
-                {
-                  "var": ""
-                },
-                [
-                  "linked",
-                  "simple-linked"
-                ]
-              ]
-            }
-          ]
-        },
         "description": "Entire card is clickable"
+      }
+    ]
+  },
+  {
+    "id": "cta-card-item",
+    "fields": [
+      {
+        "component": "reference",
+        "name": "image",
+        "label": "Image",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "imageAlt",
+        "label": "Image Alt Text",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "title",
+        "label": "Title",
+        "valueType": "string",
+        "required": true
       },
       {
         "component": "list",
         "name": "bulletPoints",
         "label": "Bullet Points",
         "valueType": "string",
-        "condition": {
-          "===": [
-            {
-              "var": "variation"
-            },
-            "cta"
-          ]
-        },
         "description": "Repeatable list for CTA Card"
+      },
+      {
+        "component": "richtext",
+        "name": "description",
+        "label": "Description",
+        "valueType": "string"
       },
       {
         "component": "text",
         "name": "ctaText",
         "label": "CTA Button Text",
-        "valueType": "string",
-        "condition": {
-          "some": [
-            {
-              "var": "variation"
-            },
-            {
-              "in": [
-                {
-                  "var": ""
-                },
-                [
-                  "cta",
-                  "simple-cta",
-                  "video"
-                ]
-              ]
-            }
-          ]
-        }
+        "valueType": "string"
       },
       {
         "component": "text",
         "name": "ctaLink",
         "label": "CTA Button Link",
         "valueType": "string",
-        "condition": {
-          "some": [
-            {
-              "var": "variation"
-            },
-            {
-              "in": [
-                {
-                  "var": ""
-                },
-                [
-                  "cta",
-                  "simple-cta",
-                  "video"
-                ]
-              ]
-            }
-          ]
-        },
         "description": "URL for CTA button"
+      }
+    ]
+  },
+  {
+    "id": "simple-linked-card-item",
+    "fields": [
+      {
+        "component": "reference",
+        "name": "image",
+        "label": "Image",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "imageAlt",
+        "label": "Image Alt Text",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "tagline",
+        "label": "Tagline",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "title",
+        "label": "Title",
+        "valueType": "string",
+        "required": true
+      },
+      {
+        "component": "richtext",
+        "name": "description",
+        "label": "Description",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "cardLink",
+        "label": "Card Link (URL)",
+        "valueType": "string",
+        "description": "Entire card is clickable"
+      }
+    ]
+  },
+  {
+    "id": "video-card-item",
+    "fields": [
+      {
+        "component": "reference",
+        "name": "image",
+        "label": "Image (Thumbnail)",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "imageAlt",
+        "label": "Image Alt Text",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "title",
+        "label": "Title",
+        "valueType": "string",
+        "required": true
+      },
+      {
+        "component": "richtext",
+        "name": "description",
+        "label": "Description",
+        "valueType": "string"
       },
       {
         "component": "text",
         "name": "videoUrl",
         "label": "Video Link (YouTube)",
         "valueType": "string",
-        "condition": {
-          "===": [
-            {
-              "var": "variation"
-            },
-            "video"
-          ]
-        },
         "description": "YouTube video URL for modal"
+      },
+      {
+        "component": "text",
+        "name": "ctaText",
+        "label": "CTA Button Text",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "ctaLink",
+        "label": "CTA Button Link",
+        "valueType": "string",
+        "description": "URL for CTA button"
+      }
+    ]
+  },
+  {
+    "id": "simple-cta-card-item",
+    "fields": [
+      {
+        "component": "reference",
+        "name": "image",
+        "label": "Image",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "imageAlt",
+        "label": "Image Alt Text",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "title",
+        "label": "Title",
+        "valueType": "string",
+        "required": true
+      },
+      {
+        "component": "richtext",
+        "name": "description",
+        "label": "Description",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "ctaText",
+        "label": "CTA Button Text",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "ctaLink",
+        "label": "CTA Button Link",
+        "valueType": "string",
+        "description": "URL for CTA button"
       }
     ]
   }

@@ -55,7 +55,11 @@
   {
     "id": "multi-purpose-cards",
     "components": [
-      "multi-purpose-card-item"
+      "linked-card-item",
+      "cta-card-item",
+      "simple-linked-card-item",
+      "video-card-item",
+      "simple-cta-card-item"
     ]
   }
 ]
