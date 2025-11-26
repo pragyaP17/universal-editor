@@ -19,11 +19,5 @@
   },
   {
     "...": "../blocks/*/_*.json#/models"
-  },
-  {
-    "...": "./_h-text.json#/models"
-  },
-  {
-    "...": "./_h-cards.json#/models"
   }
 ]
