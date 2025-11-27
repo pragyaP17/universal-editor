@@ -213,6 +213,10 @@
             "value": "align-centre-block-mobile"
           },
           {
+            "name": "Align Left Block Desktop",
+            "value": "align-left-block-desktop"
+          },
+          {
             "name": "Align List Items",
             "value": "align-list-items"
           },
