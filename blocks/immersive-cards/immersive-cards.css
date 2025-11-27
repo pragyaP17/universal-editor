@@ -407,3 +407,10 @@
     background-size: 16px 16px;
   }
 }
+
+@media (width >= 768px) {
+  .immersive-cards:has(.card-item.expanded) {
+    display: flex;
+    min-height: 500px;
+  }
+}
