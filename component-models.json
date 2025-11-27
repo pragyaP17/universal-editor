@@ -190,42 +190,6 @@
     ]
   },
   {
-    "id": "h-cards",
-    "fields": [
-      {
-        "component": "reference",
-        "valueType": "string",
-        "name": "cardImage",
-        "label": "Card Image",
-        "multi": false
-      },
-      {
-        "component": "aem-content",
-        "name": "cardCtaLink",
-        "label": "Card CTA Link"
-      },
-      {
-        "component": "richtext",
-        "value": "",
-        "name": "cardDescription",
-        "label": "Card Description",
-        "valueType": "string"
-      }
-    ]
-  },
-  {
-    "id": "h-text",
-    "fields": [
-      {
-        "component": "richtext",
-        "name": "textDesc",
-        "value": "",
-        "label": "Text Description",
-        "valueType": "string"
-      }
-    ]
-  },
-  {
     "id": "hero",
     "fields": [
       {

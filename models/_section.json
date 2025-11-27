@@ -51,7 +51,9 @@
         "cards",
         "columns",
         "fragment",
-        "horizontal-scroller"
+        "horizontal-scroller",
+        "h-cards",
+        "h-text"
       ]
     }
   ]

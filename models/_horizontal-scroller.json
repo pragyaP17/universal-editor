@@ -1,7 +1,7 @@
 {
   "definitions": [
     {
-      "title": "Horizontal Scroller",
+      "title": "Horizontal Scroller New",
       "id": "horizontal-scroller",
       "plugins": {
         "xwalk": {
