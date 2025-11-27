@@ -1,0 +1,64 @@
+{
+  "definitions": [
+    {
+      "title": "Banner",
+      "id": "banner",
+      "model": "banner"
+    }
+  ],
+  "models": [
+    {
+      "id": "banner",
+      "fields": [
+        {
+          "component": "richtext",
+          "name": "div:nth-child(1)>div:nth-child(1)",
+          "label": "Banner Content",
+          "valueType": "string",
+          "required": false
+        },
+        {
+          "component": "reference",
+          "valueType": "string",
+          "name": "div:nth-child(1)>div:nth-child(2)>picture:nth-child(1)>img:nth-child(3)[src]",
+          "label": "Image",
+          "multi": false
+        },
+        {
+          "component": "select",
+          "name": "classes",
+          "label": "Options",
+          "valueType": "string",
+          "options": [
+            {
+              "value": "align-left",
+              "name": "Align Left"
+            },
+            {
+              "value": "align-center",
+              "name": "Align Center"
+            },
+            {
+              "value": "align-right",
+              "name": "Align Right"
+            },
+            {
+              "value": "align-top",
+              "name": "Align Top"
+            },
+            {
+              "value": "align-mid",
+              "name": "Align Middle"
+            },
+            {
+              "value": "align-bottom",
+              "name": "Align Bottom"
+            }
+          ],
+          "value": "align-left"
+        }
+      ]
+    }
+  ],
+  "filters": []
+}

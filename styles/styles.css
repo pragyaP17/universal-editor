@@ -265,6 +265,13 @@ main > .section:first-of-type {
   text-align: center;
 }
 
+ .section.align-centre-block-mobile .columns > div > div {
+    text-align: center;
+  }
+
+  .section.align-centre-block-mobile .button-container {
+    justify-content: center;
+  }
 
 .bg-color-black {
   background: rgb(26 26 26) none no-repeat scroll 0% 0% / auto padding-box border-box;
@@ -315,10 +322,31 @@ margin: 0;
   font-size: var(--heading-font-size-s);
 }
 
+/* ============================================
+   TABLET VIEW (600px – 1024px)
+   ============================================ */
+@media (min-width: 600px) and (max-width: 1024px) {
+  .section.align-left-block-desktop .columns > div > div {
+    text-align: left;
+  }
+
+  .section.align-left-block-dekstop .button-container {
+    justify-content: left;
+  }
+}
+
 @media (width >= 900px) {
   main > .section > div {
     padding: 0 32px;
   }
+ .section.align-left-block-desktop .columns > div > div {
+    text-align: left;
+  }
+
+  .section.align-left-block-dekstop .button-container {
+    justify-content: left;
+  }
+
 }
 
 /* section metadata */
