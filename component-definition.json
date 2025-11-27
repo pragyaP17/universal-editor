@@ -85,6 +85,11 @@
       "id": "blocks",
       "components": [
         {
+          "title": "Banner",
+          "id": "banner",
+          "model": "banner"
+        },
+        {
           "title": "Cards",
           "id": "cards",
           "plugins": {
