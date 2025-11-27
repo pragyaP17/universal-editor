@@ -1,11 +1,44 @@
-/* Multi-Purpose Cards Block - NVIDIA Card Styles */
+.multi-purpose-cards .nv-teaser .nv-teaser-secondary-button:hover .chevron {
+  transform: translateX(4px);
+  color: #fff;
+}
+
+/*
+ * NVIDIA-style Bulleted List for CTA Cards
+ */
+.multi-purpose-cards .nv-teaser ul {
+  list-style-type: none;
+  padding-left: 1.5em;
+  line-height: 1.4em;
+  margin: 0;
+}
+
+.multi-purpose-cards .nv-teaser ul > li {
+  position: relative;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  padding-left: 0;
+}
+
+.multi-purpose-cards .nv-teaser ul > li::before {
+  content: ">";
+  display: block;
+  font-weight: 700;
+  left: -1.2em;
+  line-height: 1;
+  position: absolute;
+  text-align: center;
+  top: 0.18em;
+  width: 1em;
+}
 
 /* Flexbox Container for Cards */
 .multi-purpose-cards {
   display: flex;
   gap: 30px;
   align-items: stretch;
-  flex-direction: column;
+  flex-flow: row wrap;
+  justify-content: center;
 }
 
 /* Desktop - 3 cards per row */
@@ -16,23 +49,26 @@
 
   .multi-purpose-cards > * {
     flex: 1 1 calc(33.333% - 20px);
-    min-width: calc(33.333% - 20px);
+    min-width: 320px;
     max-width: calc(33.333% - 20px);
   }
 }
 
 /* Tablet and Mobile - 1 card per row */
 @media (width <= 767px) {
+  .multi-purpose-cards {
+    flex-direction: row;
+  }
+
   .multi-purpose-cards > * {
     flex: 1 1 100%;
-    min-width: 100%;
+    min-width: 280px;
     max-width: 100%;
   }
 }
 
 /* Base Card Styles - nv-teaser */
 .multi-purpose-cards .nv-teaser {
-  padding: 15px;
   position: relative;
 }
 
@@ -281,7 +317,6 @@
   height: 100%;
   background: #fff;
   transition: box-shadow 0.5s;
-  min-height: 600px;
 }
 
 .multi-purpose-cards .latest-news-item-key-visual {
@@ -319,6 +354,9 @@
   color: #000;
   margin-bottom: 15px;
   line-height: 1.4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .multi-purpose-cards .latest-news-item-body-description {
@@ -327,18 +365,27 @@
   line-height: 1.6;
   flex: 1;
   margin-bottom: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+  -webkit-box-orient: vertical;
+  white-space: normal;
 }
 
 /* Featured Badge */
 .multi-purpose-cards .featured-badge {
   display: inline-block;
-  background-color: #76b900;
+  background-color: #000;
   color: #fff;
+  border-radius: 25px;
+  font-size: 9pt;
+  font-weight: 700;
+  margin-bottom: 5px;
+  margin-top: 15px;
   padding: 5px 10px;
-  border-radius: 2px;
-  margin-bottom: 10px;
-  font-weight: 500;
-  margin-top: 12px;
+  width: fit-content;
 }
 
 /* Video Modal Styles */
@@ -353,6 +400,107 @@
   background-color: rgb(0 0 0 / 90%);
   align-items: center;
   justify-content: center;
+}
+
+/* NVIDIA-style CTA Buttons */
+.multi-purpose-cards .nv-teaser .nv-teaser-button {
+  background-color: #76b900;
+  border: none;
+  color: #000;
+  cursor: pointer;
+  line-height: 1.25em;
+  min-width: 50px;
+  padding: 13px 15px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.2s ease-out;
+  white-space: nowrap;
+  font-size: 18px;
+  font-weight: 700;
+  display: inline-block;
+}
+
+.multi-purpose-cards .nv-teaser .nv-teaser-button:hover {
+  background-color: #91c733;
+}
+
+.multi-purpose-cards .nv-teaser .nv-teaser-button:active {
+  background-color: #84c01a;
+}
+
+.multi-purpose-cards .nv-teaser .nv-teaser-button:not([href]) {
+  cursor: default;
+}
+
+.multi-purpose-cards .nv-teaser .nv-teaser-button::after {
+  content: none;
+}
+
+.multi-purpose-cards .nv-teaser .nv-teaser-secondary-button {
+  background-color: transparent;
+  color: #000;
+  display: inline-block;
+  font-size: 18px;
+  line-height: 1.25em;
+  min-width: 50px;
+  padding: 11px 13px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  font-weight: 700;
+  border: none;
+}
+
+.multi-purpose-cards .nv-teaser .nv-teaser-secondary-button::after {
+  content: none;
+}
+
+/* Order selectors to avoid no-descending-specificity */
+
+/* stylelint-disable no-descending-specificity */
+
+.multi-purpose-cards .nv-teaser .cmp-teaser-action-link .chevron {
+  color: #76b900;
+  font-size: 1.5em;
+  font-family: inherit;
+  font-weight: 900;
+  line-height: 1;
+  display: inline-block;
+  margin-left: 8px;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+  
+.multi-purpose-cards .nv-teaser .nv-teaser-button .chevron {
+  color: #76b900;
+  font-size: 1.5em;
+  font-family: inherit;
+  font-weight: 900;
+  line-height: 1;
+  display: inline-block;
+  margin-left: 8px;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+  
+.multi-purpose-cards .nv-teaser .nv-teaser-secondary-button .chevron {
+  color: #76b900;
+  font-size: 1.5em;
+  font-family: inherit;
+  font-weight: 900;
+  line-height: 1;
+  display: inline-block;
+  margin-left: 8px;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* stylelint-enable no-descending-specificity */
+
+.multi-purpose-cards .nv-teaser .cmp-teaser-action-link:hover .chevron,
+.multi-purpose-cards .nv-teaser .nv-teaser-button:hover .chevron,
+.multi-purpose-cards .nv-teaser .nv-teaser-secondary-button:hover .chevron {
+  transform: translateX(4px);
+  color: #000;
 }
 
 .video-modal.active {
@@ -388,22 +536,46 @@
 }
 
 .video-modal-close {
-  position: absolute;
-  top: -40px;
-  right: 0;
+  position: fixed;
+  top: 20px;
+  right: 30px;
   color: #fff;
-  font-size: 32px;
-  font-weight: bold;
+  font-size: 3pc;
+  font-weight: 300;
   cursor: pointer;
   background: none;
   border: none;
   padding: 0;
   line-height: 1;
+  z-index: 10001;
+  outline: none;
+  box-shadow: none;
+  transition: color 0.2s;
 }
 
-.video-modal-close:hover {
-  color: #76b900;
+.video-modal-close:focus {
+  outline: none;
+  box-shadow: none;
 }
+
+.video-modal-close:hover,
+.video-modal-close:active {
+  color: #76b900;
+  background: none;
+}
+
+
+
+.video-modal-close::before {
+  content: "\00d7";
+  font-size: 3pc;
+  font-weight: 300;
+  color: inherit;
+  font-family: inherit;
+  display: block;
+  line-height: 1;
+}
+
 
 /* Responsive Styles */
 @media (1024px <= width <= 1349px) {
@@ -428,7 +600,8 @@
   }
 
   .video-modal-close {
-    top: -35px;
+    top: 5px;
+    right: 8px;
     font-size: 30px;
   }
 }

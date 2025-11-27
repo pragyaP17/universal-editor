@@ -13,7 +13,7 @@ function createVideoModal(videoUrl) {
   modal.className = 'video-modal active';
   modal.innerHTML = `
     <div class="video-modal-content">
-      <button class="video-modal-close" aria-label="Close video">&times;</button>
+      <button class="video-modal-close" aria-label="Close video"></button>
       <div class="video-container">
               <iframe 
                 src='${videoUrl.replace('watch?v=', 'embed/')}?autoplay=1' 
@@ -219,13 +219,15 @@ function buildCtaCard(cells, card) {
     ctaContainer.className = 'cmp-teaser-action-container';
 
     const ctaLinkEl = document.createElement('a');
-    ctaLinkEl.className = 'cmp-teaser-action-link nv-teaser-text-link nv-teaser-cta-small';
+    ctaLinkEl.className = 'nv-teaser-secondary-button';
     ctaLinkEl.href = ctaLink;
     ctaLinkEl.textContent = ctaText;
 
-    const icon = document.createElement('span');
-    icon.className = 'cmp-teaser-action-link-icon fa-solid fa-angle-right';
-    ctaLinkEl.appendChild(icon);
+    // Add green chevron span after text
+    const chevron = document.createElement('span');
+    chevron.className = 'chevron';
+    chevron.textContent = '\u203A'; // Unicode for single right-pointing angle quotation mark
+    ctaLinkEl.appendChild(chevron);
 
     ctaContainer.appendChild(ctaLinkEl);
     textWrapper.appendChild(ctaContainer);
@@ -350,7 +352,7 @@ function buildVideoCard(cells, card) {
     ctaContainer.className = 'cmp-teaser-action-container';
 
     const ctaLinkEl = document.createElement('a');
-    ctaLinkEl.className = 'cmp-teaser-action-link nv-teaser-text-link';
+    ctaLinkEl.className = 'nv-teaser-secondary-button';
     ctaLinkEl.href = ctaLink || '#';
     ctaLinkEl.textContent = ctaText;
     ctaLinkEl.addEventListener('click', (e) => {
@@ -360,9 +362,10 @@ function buildVideoCard(cells, card) {
       }
     });
 
-    const icon = document.createElement('span');
-    icon.className = 'cmp-teaser-action-link-icon fa-solid fa-angle-right';
-    ctaLinkEl.appendChild(icon);
+    const chevron = document.createElement('span');
+    chevron.className = 'chevron';
+    chevron.textContent = '\u203A';
+    ctaLinkEl.appendChild(chevron);
 
     ctaContainer.appendChild(ctaLinkEl);
     textWrapper.appendChild(ctaContainer);
@@ -429,13 +432,14 @@ function buildSimpleCtaCard(cells, card) {
     ctaContainer.className = 'cmp-teaser-action-container';
 
     const ctaLinkEl = document.createElement('a');
-    ctaLinkEl.className = 'cmp-teaser-action-link nv-teaser-text-link';
+    ctaLinkEl.className = 'nv-teaser-secondary-button';
     ctaLinkEl.href = ctaLink;
     ctaLinkEl.textContent = ctaText;
 
-    const icon = document.createElement('span');
-    icon.className = 'cmp-teaser-action-link-icon fa-solid fa-angle-right';
-    ctaLinkEl.appendChild(icon);
+    const chevron = document.createElement('span');
+    chevron.className = 'chevron';
+    chevron.textContent = '\u203A';
+    ctaLinkEl.appendChild(chevron);
 
     ctaContainer.appendChild(ctaLinkEl);
     textWrapper.appendChild(ctaContainer);
