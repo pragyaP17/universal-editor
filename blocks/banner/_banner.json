@@ -22,7 +22,7 @@
       "fields": [
         {
           "component": "richtext",
-          "name": "div:nth-child(1)>div:nth-child(1)",
+          "name": "text",
           "label": "Banner Content",
           "valueType": "string",
           "required": false
@@ -30,14 +30,21 @@
         {
           "component": "reference",
           "valueType": "string",
-          "name": "div:nth-child(1)>div:nth-child(2)>picture:nth-child(1)>img:nth-child(3)[src]",
+          "name": "image",
           "label": "Image",
           "multi": false
         },
         {
+          "component": "text",
+          "valueType": "string",
+          "name": "imageAlt",
+          "label": "Alt Text",
+          "value": ""
+        },
+        {
           "component": "select",
           "name": "classes",
-          "label": "Options",
+          "label": "Alignment",
           "valueType": "string",
           "options": [
             {
