@@ -214,5 +214,22 @@
         "valueType": "string"
       }
     ]
+  },
+  {
+    "id": "hscroller",
+    "fields": [
+      {
+        "component": "aem-content",
+        "name": "reference",
+        "label": "Page Reference"
+      },
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Scroller Title",
+        "valueType": "string"
+      }
+    ]
   }
 ]
