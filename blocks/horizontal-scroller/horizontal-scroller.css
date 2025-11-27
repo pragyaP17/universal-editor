@@ -1,3 +1,4 @@
+/*
  stylelint-disable no-empty-source
 
 .horizontal-scroller {
@@ -10,29 +11,55 @@
 .horizontal-scroller.block.cards-container {
   display: flex;
 
-  overflow-x: auto;         /* Enables horizontal scrolling */
+  overflow-x: auto;         */
+/* Enables horizontal scrolling *//*
 
-  scroll-behavior: smooth;  /* Smooth scrolling */
-  gap: 20px;                /* Space between the wrappers */
-  padding-bottom: 10px;     /* A bit of space for scrollbar clearance */
+
+  scroll-behavior: smooth;  */
+/* Smooth scrolling *//*
+
+  gap: 20px;                */
+/* Space between the wrappers *//*
+
+  padding-bottom: 10px;     */
+/* A bit of space for scrollbar clearance *//*
+
 }
 
-/* Make first cards-wrapper bigger */
+*/
+/* Make first cards-wrapper bigger *//*
+
 .horizontal-scroller.block.cards-container .cards-wrapper:first-child {
-  flex: 0 0 500px; /* Adjust width — increase/decrease as needed */
+  flex: 0 0 500px; */
+/* Adjust width — increase/decrease as needed *//*
+
   max-width: 500px;
 }
 
-/* Keep the rest normal size */
+*/
+/* Keep the rest normal size *//*
+
 .horizontal-scroller.block.cards-container .cards-wrapper:not(:first-child) {
-  flex: 0 0 350px; /* Adjust if needed */
+  flex: 0 0 350px; */
+/* Adjust if needed *//*
+
 }
 
 
 .cards-wrapper {
- /* flex: 0 0 auto;    */       /* Prevent shrinking; keep width based on content */
- /* min-width: 400px;*/         /* Adjust width as desired */
-  scroll-snap-align: start; /* Optional: helps snap into place if you add scroll snapping */
+ */
+/* flex: 0 0 auto;    *//*
+       */
+/* Prevent shrinking; keep width based on content *//*
+
+ */
+/* min-width: 400px;*//*
+         */
+/* Adjust width as desired *//*
+
+  scroll-snap-align: start; */
+/* Optional: helps snap into place if you add scroll snapping *//*
+
 }
 .section.section-3.horizontal-scroller-container.horizontal-scroller-wrapper {
   margin-top: 0 !important;
@@ -63,7 +90,9 @@
   cursor: pointer;
 }
 
-/*==========Style for Cards with image =========*/
+*/
+/*==========Style for Cards with image =========*//*
+
 .cards.h-cards ul {
   display: flex;
   flex-flow: row nowrap;
@@ -86,11 +115,15 @@
   min-width: 260px;
   max-width: 320px;
   width: 100%;
-  /*height: 400px;*/
+  */
+/*height: 400px;*//*
+
   overflow: hidden;
   flex: 0 0 410px;
   margin: 0;
-  /*padding-bottom: 60px;*/
+  */
+/*padding-bottom: 60px;*//*
+
   border-radius: 2px;
       -webkit-box-shadow: 0 0 5px 0 rgba(0, 0, 0, .3);
       box-shadow: 0 0 5px 0 rgba(0, 0, 0, .3);
@@ -120,10 +153,14 @@
 
 .cards.h-cards .cards-card-body {
   background: #fff;
-  /*padding: 16px;*/
+  */
+/*padding: 16px;*//*
+
   display: flex;
   flex-direction: column;
-  /*flex: 1 1 auto;*/
+  */
+/*flex: 1 1 auto;*//*
+
   justify-content: flex-start;
   min-height: 120px;
   box-sizing: border-box;
@@ -166,13 +203,17 @@ cursor: pointer;
         padding-top: 0 !important;
 }
 
-/* Horizontal layout for "Quick Links" list */
+*/
+/* Horizontal layout for "Quick Links" list *//*
+
 .cards.h-text.block ul ul {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
   align-items: center;
-  gap: 10px 20px; /* spacing between list items */
+  gap: 10px 20px; */
+/* spacing between list items *//*
+
   list-style: none;
   padding: 0;
   margin: 20px 0 0 0;
@@ -191,19 +232,25 @@ cursor: pointer;
       position: relative;
       text-decoration: none;
 }
-/* Quick link anchor style */
+*/
+/* Quick link anchor style *//*
+
 .cards.h-text.block ul ul li a {
   text-decoration: none;
   color: #000000;
   font-weight: 700;
 }
 .cards.h-text.block ul ul li a:hover {
-  color: #000000; /* stays black even on hover */
+  color: #000000; */
+/* stays black even on hover *//*
+
 }
 
 .cards.h-text.block ul ul li .icon {
    display: inline-flex;
-   align-items: center; /* centers icon vertically */
+   align-items: center; */
+/* centers icon vertically *//*
+
    justify-content: center;
    height: auto;
    transform: translateY(3px);
@@ -220,39 +267,61 @@ filter: brightness(0) saturate(100%) invert(40%);
 
 }
 
-/* Target only this specific scroller */
+*/
+/* Target only this specific scroller *//*
+
 .horizontal-scroller.block.cards-container {
-  scrollbar-width: thin;             /* Firefox */
-  scrollbar-color: #76b900 transparent; /* thumb color | track color */
+  scrollbar-width: thin;             */
+/* Firefox *//*
+
+  scrollbar-color: #76b900 transparent; */
+/* thumb color | track color *//*
+
 }
 
-/* For Chrome, Edge, and Safari */
+*/
+/* For Chrome, Edge, and Safari *//*
+
 .horizontal-scroller.block.cards-container::-webkit-scrollbar {
-  height: 8px; /* since it's horizontal */
+  height: 8px; */
+/* since it's horizontal *//*
+
 }
 
 .horizontal-scroller.block.cards-container::-webkit-scrollbar-track {
-  background: transparent; /* or use #f0f0f0 if you want a visible track */
+  background: transparent; */
+/* or use #f0f0f0 if you want a visible track *//*
+
 }
 
 .horizontal-scroller.block.cards-container::-webkit-scrollbar-thumb {
-  background-color: #76b900; /* NVIDIA green */
+  background-color: #76b900; */
+/* NVIDIA green *//*
+
   border-radius: 10px;
 }
 
 .horizontal-scroller.block.cards-container::-webkit-scrollbar-thumb:hover {
-  background-color: #5a8a00; /* darker on hover */
+  background-color: #5a8a00; */
+/* darker on hover *//*
+
 }
 
-/* remove all default link styles inside your card */
+*/
+/* remove all default link styles inside your card *//*
+
 .cards.h-cards.block .card-link-wrapper:any-link {
   display: block;
   text-decoration: none !important;
-  color: inherit !important;      /* inherit text color from parent */
+  color: inherit !important;      */
+/* inherit text color from parent *//*
+
   cursor: pointer;
 }
 
-/* make sure inner <p> or headings keep their normal color */
+*/
+/* make sure inner <p> or headings keep their normal color *//*
+
 .cards.h-cards.block .card-link-wrapper p,
 .cards.h-cards.block .card-link-wrapper h1,
 .cards.h-cards.block .card-link-wrapper h2,
@@ -264,7 +333,9 @@ filter: brightness(0) saturate(100%) invert(40%);
   text-decoration: none !important;
 }
 
-/* optional hover feedback */
+*/
+/* optional hover feedback *//*
+
 .cards.h-cards.block .card-link-wrapper:hover {
   text-decoration: none;
   color: inherit;
@@ -272,8 +343,12 @@ filter: brightness(0) saturate(100%) invert(40%);
   transition: transform 0.2s ease;
 }
 
-/*======Quick Links=========*/
-/* Hide angle-up and ul by default */
+*/
+/*======Quick Links=========*//*
+
+*/
+/* Hide angle-up and ul by default *//*
+
 .cards.h-text.block .icon-angle-up{
   display: none;
 }
@@ -282,7 +357,9 @@ filter: brightness(0) saturate(100%) invert(40%);
   display: none;
 }
 
-/*==========Scroll button ============*/
+*/
+/*==========Scroll button ============*//*
+
 .default-content-wrapper .icon {
   background-color: #76b900;
   border: none;
@@ -293,9 +370,13 @@ filter: brightness(0) saturate(100%) invert(40%);
   font-weight: 700;
   height: 35px;
   width: 30px;
-  display: inline-flex;           /* Centers icon nicely */
+  display: inline-flex;           */
+/* Centers icon nicely *//*
+
   align-items: center;
-  justify-content: center;            /* Optional: smooth corners */
+  justify-content: center;            */
+/* Optional: smooth corners *//*
+
   transition: 0.4s ease-out;
   margin-right:10px;
 }
@@ -311,7 +392,9 @@ filter: brightness(0) saturate(100%) invert(40%);
   transform: scale(1.05);
 }
 
-/*===========Media Query for Mobile=============*/
+*/
+/*===========Media Query for Mobile=============*//*
+
 @media (max-width: 1023px) {
   .cards.h-text .cards-card-body p:first-child{
     font-size: 18px;
@@ -342,4 +425,4 @@ display : none !important;
 .cards.h-text .cards-card-body p:first-child{
     font-size: 18px;
   }
-}
+}*/
