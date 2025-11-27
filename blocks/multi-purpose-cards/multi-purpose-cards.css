@@ -410,7 +410,7 @@
   cursor: pointer;
   line-height: 1.25em;
   min-width: 50px;
-  padding: 13px 15px;
+  padding: 13px 0;
   position: relative;
   text-align: center;
   text-decoration: none;
@@ -444,7 +444,7 @@
   font-size: 18px;
   line-height: 1.25em;
   min-width: 50px;
-  padding: 11px 13px;
+  padding: 11px 0;
   position: relative;
   text-align: center;
   text-decoration: none;
