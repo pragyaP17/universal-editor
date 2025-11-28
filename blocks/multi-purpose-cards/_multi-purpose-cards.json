@@ -157,10 +157,6 @@
   ],
   "filters": [
     {
-      "id": "section",
-      "components": [ "multi-purpose-cards" ]
-    },
-    {
       "id": "multi-purpose-cards",
       "components": [
         "linked-card-item",

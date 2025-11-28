@@ -16,7 +16,8 @@
       "cards",
       "columns",
       "fragment",
-      "immersive-cards"
+      "immersive-cards",
+      "multi-purpose-cards"
     ]
   },
   {
@@ -44,12 +45,6 @@
     "id": "immersive-cards",
     "components": [
       "immersive-card-item"
-    ]
-  },
-  {
-    "id": "section",
-    "components": [
-      "multi-purpose-cards"
     ]
   },
   {

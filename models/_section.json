@@ -51,7 +51,8 @@
         "cards",
         "columns",
         "fragment",
-        "immersive-cards"
+        "immersive-cards",
+        "multi-purpose-cards"
       ]
     }
   ]
