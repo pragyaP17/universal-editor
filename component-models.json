@@ -259,6 +259,39 @@
     ]
   },
   {
+    "component": "select",
+    "name": "classes",
+    "label": "Options",
+    "valueType": "string",
+    "options": [
+      {
+        "value": "align-left",
+        "name": "Align Left"
+      },
+      {
+        "value": "align-center",
+        "name": "Align Center"
+      },
+      {
+        "value": "align-right",
+        "name": "Align Right"
+      },
+      {
+        "value": "align-top",
+        "name": "Align Top"
+      },
+      {
+        "value": "align-mid",
+        "name": "Align Middle"
+      },
+      {
+        "value": "align-bottom",
+        "name": "Align Bottom"
+      }
+    ],
+    "value": "align-left"
+  },
+  {
     "id": "card",
     "fields": [
       {
