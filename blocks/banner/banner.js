@@ -30,67 +30,132 @@ export default async function decorate(block) {
     textContent.appendChild(pTag);
   }
 
-  // Process text content to enhance styling
-  const textElements = textContent.querySelectorAll('h1, h2, h3, h4, h5, h6');
-  textElements.forEach(heading => {
-    heading.style.fontSize = '48px';
-    heading.style.fontWeight = '700';
-    heading.style.lineHeight = '1.1';
-    heading.style.color = 'white';
-    heading.style.marginBottom = '24px';
-  });
-
-  // Style paragraphs
-  const paragraphs = textContent.querySelectorAll('p');
-  paragraphs.forEach(p => {
-    // Skip if it's the wrapper paragraph we created
-    if (p.querySelector('div')) return;
-    
-    p.style.fontSize = '18px';
-    p.style.lineHeight = '1.5';
-    p.style.color = '#ccc';
-    p.style.marginBottom = '32px';
-  });
-
-  // Style links
-  const links = textContent.querySelectorAll('a');
-  links.forEach(link => {
-    link.style.color = '#76b900';
-    link.style.textDecoration = 'none';
-    link.style.fontWeight = '600';
-    link.style.fontSize = '16px';
-    
-    // Add hover effects
-    link.addEventListener('mouseenter', () => {
-      link.style.color = '#8fcc19';
-    });
-    
-    link.addEventListener('mouseleave', () => {
-      link.style.color = '#76b900';
-    });
-  });
-
-  // Ensure images are properly sized
+  // Add enhanced visual effects for images
   const images = assetContent.querySelectorAll('img');
   images.forEach(img => {
-    img.style.maxWidth = '100%';
-    img.style.height = 'auto';
-    img.style.objectFit = 'contain';
-    img.style.filter = 'brightness(1.1) contrast(1.1)';
+    img.addEventListener('load', () => {
+      // Add subtle animation on load
+      img.style.opacity = '0';
+      img.style.transform = 'translateY(20px)';
+      img.style.transition = 'all 0.6s ease-out';
+      
+      setTimeout(() => {
+        img.style.opacity = '1';
+        img.style.transform = 'translateY(0)';
+      }, 100);
+    });
+
+    // Add loading state handling
+    if (img.complete && img.naturalHeight !== 0) {
+      // Image is already loaded
+      img.style.opacity = '1';
+    }
   });
 
-  // Handle responsive behavior
-  if (isMobile()) {
-    textElements.forEach(heading => {
-      heading.style.fontSize = '28px';
+  // Add intersection observer for scroll animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('banner-visible');
+        
+        // Animate text elements
+        const headings = entry.target.querySelectorAll('h1, h2, h3, h4, h5, h6');
+        headings.forEach((heading, index) => {
+          setTimeout(() => {
+            heading.style.transform = 'translateY(0)';
+            heading.style.opacity = '1';
+          }, index * 200);
+        });
+
+        // Animate paragraphs
+        const paragraphs = entry.target.querySelectorAll('p:not(.wrapper)');
+        paragraphs.forEach((p, index) => {
+          setTimeout(() => {
+            p.style.transform = 'translateY(0)';
+            p.style.opacity = '1';
+          }, (headings.length + index) * 200);
+        });
+      }
     });
-    
-    paragraphs.forEach(p => {
-      if (p.querySelector('div')) return;
-      p.style.fontSize = '16px';
+  }, { threshold: 0.1 });
+
+  // Initialize animation styles
+  const headings = textContent.querySelectorAll('h1, h2, h3, h4, h5, h6');
+  const paragraphs = textContent.querySelectorAll('p:not(.wrapper)');
+  
+  [...headings, ...paragraphs].forEach(element => {
+    element.style.transform = 'translateY(30px)';
+    element.style.opacity = '0';
+    element.style.transition = 'all 0.6s ease-out';
+  });
+
+  observer.observe(block);
+
+  // Add enhanced link interactions
+  const links = textContent.querySelectorAll('a');
+  links.forEach(link => {
+    // Add ripple effect on click
+    link.addEventListener('click', (e) => {
+      const ripple = document.createElement('span');
+      const rect = link.getBoundingClientRect();
+      const size = Math.max(rect.width, rect.height);
+      const x = e.clientX - rect.left - size / 2;
+      const y = e.clientY - rect.top - size / 2;
+      
+      ripple.style.cssText = `
+        position: absolute;
+        width: ${size}px;
+        height: ${size}px;
+        left: ${x}px;
+        top: ${y}px;
+        background: rgba(118, 185, 0, 0.3);
+        border-radius: 50%;
+        transform: scale(0);
+        animation: ripple 0.6s linear;
+        pointer-events: none;
+      `;
+      
+      link.style.position = 'relative';
+      link.style.overflow = 'hidden';
+      link.appendChild(ripple);
+      
+      setTimeout(() => {
+        if (ripple.parentNode) {
+          ripple.parentNode.removeChild(ripple);
+        }
+      }, 600);
     });
+  });
+
+  // Add CSS for ripple animation
+  if (!document.querySelector('#banner-animations')) {
+    const style = document.createElement('style');
+    style.id = 'banner-animations';
+    style.textContent = `
+      @keyframes ripple {
+        to {
+          transform: scale(4);
+          opacity: 0;
+        }
+      }
+      
+      .banner-visible {
+        animation: fadeInUp 0.6s ease-out;
+      }
+      
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    `;
+    document.head.appendChild(style);
   }
 
-  // Add any dynamic functionality here if needed
-  console.log('Banner block decorated successfully');
+  console.log('Enhanced banner block decorated successfully');
 }
