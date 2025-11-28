@@ -309,6 +309,9 @@
 /* Holder */
 .multi-purpose-cards .nv-teaser .nv-teaser-holder {
   position: relative;
+  flex-direction: column;
+  display: flex;
+  height: 100%;
 }
 
 .multi-purpose-cards .latest-news-item {
