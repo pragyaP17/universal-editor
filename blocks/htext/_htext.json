@@ -1,0 +1,31 @@
+{
+  "definitions": [
+    {
+      "title": "Text",
+      "id": "htext",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/text/v1/text",
+            "template": {}
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "htext",
+      "fields": [
+        {
+          "component": "richtext",
+          "name": "text",
+          "value": "",
+          "label": "Title Text",
+          "valueType": "string"
+        }
+      ]
+    }
+  ],
+  "filters": []
+}

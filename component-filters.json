@@ -16,7 +16,9 @@
       "cards",
       "columns",
       "fragment",
-      "hscroller"
+      "hscroller",
+      "htext",
+      "hcard"
     ]
   },
   {
@@ -39,5 +41,6 @@
       "button",
       "title"
     ]
-  }
+  },
+  {}
 ]

@@ -190,6 +190,25 @@
     ]
   },
   {
+    "id": "hcard",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Card Image",
+        "multi": false
+      },
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Text",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
     "id": "hero",
     "fields": [
       {
@@ -228,6 +247,18 @@
         "name": "text",
         "value": "",
         "label": "Scroller Title",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "htext",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Title Text",
         "valueType": "string"
       }
     ]

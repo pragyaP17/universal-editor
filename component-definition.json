@@ -143,6 +143,21 @@
           }
         },
         {
+          "title": "H-Card",
+          "id": "hcard",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "H-Card",
+                  "filter": "hcard"
+                }
+              }
+            }
+          }
+        },
+        {
           "title": "Hero",
           "id": "hero",
           "plugins": {
@@ -168,6 +183,18 @@
                   "name": "Hscroller",
                   "model": "hscroller"
                 }
+              }
+            }
+          }
+        },
+        {
+          "title": "Text",
+          "id": "htext",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/text/v1/text",
+                "template": {}
               }
             }
           }
