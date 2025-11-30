@@ -145,6 +145,7 @@
         {
           "title": "H-Card",
           "id": "hcard",
+          "type": "block",
           "plugins": {
             "xwalk": {
               "page": {

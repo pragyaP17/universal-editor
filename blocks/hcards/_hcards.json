@@ -3,6 +3,7 @@
     {
       "title": "H-Card",
       "id": "hcard",
+      "type": "block",
       "plugins": {
         "xwalk": {
           "page": {
@@ -19,12 +20,14 @@
   "models": [
     {
       "id": "hcard",
+      "title": "H-Card Block",
       "fields": [
         {
           "component": "reference",
-          "valueType": "string",
           "name": "cardImage",
-          "label": "Card Image"
+          "label": "Card Image",
+          "valueType": "string",
+          "filter": "image"
         },
         {
           "component": "richtext",
@@ -36,7 +39,5 @@
       ]
     }
   ],
-  "filters": [
-    {}
-  ]
+  "filters": []
 }
