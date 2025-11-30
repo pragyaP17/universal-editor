@@ -1,14 +1,17 @@
 {
   "definitions": [
     {
-      "title": "H Text Content",
+      "title": "H Text",
       "id": "htext",
       "type": "block",
       "plugins": {
         "xwalk": {
           "page": {
             "resourceType": "core/franklin/components/text/v1/text",
-            "template": {}
+            "template": {
+              "name": "H Text",
+              "model": "htext"
+            }
           }
         }
       }
@@ -17,12 +20,12 @@
   "models": [
     {
       "id": "htext",
-      "title": "Text Block",
+      "title": "H Text",
       "description": "Custom text block",
       "fields": [
         {
           "component": "richtext",
-          "name": "text",
+          "name": "htext",
           "value": "",
           "label": "H-Text",
           "valueType": "string"
