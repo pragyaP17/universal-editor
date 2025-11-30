@@ -253,12 +253,14 @@
   },
   {
     "id": "htext",
+    "title": "Text Block",
+    "description": "Custom text block",
     "fields": [
       {
         "component": "richtext",
         "name": "text",
         "value": "",
-        "label": "Title Text",
+        "label": "Text",
         "valueType": "string"
       }
     ]

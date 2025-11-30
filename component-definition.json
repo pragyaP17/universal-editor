@@ -188,8 +188,9 @@
           }
         },
         {
-          "title": "Text",
+          "title": "Text Content",
           "id": "htext",
+          "type": "block",
           "plugins": {
             "xwalk": {
               "page": {

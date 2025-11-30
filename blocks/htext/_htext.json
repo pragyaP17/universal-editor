@@ -1,8 +1,9 @@
 {
   "definitions": [
     {
-      "title": "Text",
+      "title": "Text Content",
       "id": "htext",
+      "type": "block",
       "plugins": {
         "xwalk": {
           "page": {
@@ -16,12 +17,14 @@
   "models": [
     {
       "id": "htext",
+      "title": "Text Block",
+      "description": "Custom text block",
       "fields": [
         {
           "component": "richtext",
           "name": "text",
           "value": "",
-          "label": "Title Text",
+          "label": "Text",
           "valueType": "string"
         }
       ]
