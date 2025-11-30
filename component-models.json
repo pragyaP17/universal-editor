@@ -191,14 +191,13 @@
   },
   {
     "id": "hcard",
-    "title": "H-Card Block",
     "fields": [
       {
         "component": "reference",
+        "valueType": "string",
         "name": "cardImage",
         "label": "Card Image",
-        "valueType": "string",
-        "filter": "image"
+        "multi": false
       },
       {
         "component": "richtext",

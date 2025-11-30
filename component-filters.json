@@ -18,7 +18,7 @@
       "fragment",
       "hscroller",
       "htext",
-      "hcard"
+      "hcards"
     ]
   },
   {
@@ -40,6 +40,12 @@
       "image",
       "button",
       "title"
+    ]
+  },
+  {
+    "id": "hcards",
+    "components": [
+      "hcard"
     ]
   }
 ]
