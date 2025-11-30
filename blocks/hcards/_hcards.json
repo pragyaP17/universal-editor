@@ -44,6 +44,11 @@
           "multi": false
         },
         {
+          "component": "aem-content",
+          "name": "cardImageLink",
+          "label": "Card Image Link"
+        },
+        {
           "component": "richtext",
           "name": "cardText",
           "value": "",
