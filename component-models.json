@@ -260,7 +260,7 @@
         "component": "richtext",
         "name": "text",
         "value": "",
-        "label": "Text",
+        "label": "H-Text",
         "valueType": "string"
       }
     ]

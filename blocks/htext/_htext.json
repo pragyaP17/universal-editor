@@ -1,7 +1,7 @@
 {
   "definitions": [
     {
-      "title": "Text Content",
+      "title": "H Text Content",
       "id": "htext",
       "type": "block",
       "plugins": {
@@ -24,7 +24,7 @@
           "component": "richtext",
           "name": "text",
           "value": "",
-          "label": "Text",
+          "label": "H-Text",
           "valueType": "string"
         }
       ]

@@ -188,7 +188,7 @@
           }
         },
         {
-          "title": "Text Content",
+          "title": "H Text Content",
           "id": "htext",
           "type": "block",
           "plugins": {
