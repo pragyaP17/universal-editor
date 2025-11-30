@@ -195,15 +195,14 @@
       {
         "component": "reference",
         "valueType": "string",
-        "name": "image",
-        "label": "Card Image",
-        "multi": false
+        "name": "cardImage",
+        "label": "Card Image"
       },
       {
         "component": "richtext",
-        "name": "text",
+        "name": "cardText",
         "value": "",
-        "label": "Text",
+        "label": "Card Text",
         "valueType": "string"
       }
     ]
@@ -238,16 +237,16 @@
     "id": "hscroller",
     "fields": [
       {
-        "component": "aem-content",
-        "name": "reference",
-        "label": "Page Reference"
-      },
-      {
         "component": "richtext",
         "name": "text",
         "value": "",
         "label": "Scroller Title",
         "valueType": "string"
+      },
+      {
+        "component": "aem-content",
+        "name": "reference",
+        "label": "Page Reference"
       }
     ]
   },
