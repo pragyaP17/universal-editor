@@ -499,5 +499,36 @@
         "description": "URL for CTA button"
       }
     ]
+  },
+  {
+    "id": "video-banner",
+    "fields": [
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "breadcrumb",
+        "value": false,
+        "label": "Show Breadcrumb",
+        "description": "Enable to display breadcrumb navigation above the video banner."
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "value": "",
+        "label": "Title",
+        "description": "Sets the main title of the video banner.",
+        "required": true
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "youtubeVideoLink",
+        "value": "",
+        "label": "YouTube Video Link",
+        "description": "Enter the YouTube video URL (e.g., https://www.youtube.com/watch?v=VIDEO_ID or https://youtu.be/VIDEO_ID).",
+        "required": true
+      }
+    ]
   }
 ]
