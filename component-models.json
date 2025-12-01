@@ -80,7 +80,7 @@
       },
       {
         "component": "select",
-        "name": "classes",
+        "name": "fontsize",
         "label": "Font Size",
         "valueType": "string",
         "options": [

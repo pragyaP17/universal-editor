@@ -25,8 +25,8 @@
                 "resourceType": "core/franklin/components/title/v1/title",
                 "template": {
                   "model": "title",
-                  "type": "h3",
-                  "classes": "font-size-small"
+                  "titleType": "h3",
+                  "fontsize": "font-size-small"
                 }
               }
             }
