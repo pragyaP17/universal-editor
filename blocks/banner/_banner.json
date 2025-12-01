@@ -68,7 +68,6 @@
           "component": "select",
           "name": "gridClass",
           "label": "Grid Layout",
-          "description": "Select the grid alignment for the banner",
           "valueType": "string",
           "options": [
             { "value": "40-60", "name": "40-60" },

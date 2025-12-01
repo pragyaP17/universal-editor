@@ -1,51 +1,47 @@
 export default function decorate(block) {
+  /* ---------------------------------------
+     1. Add base structure classes
+  ---------------------------------------- */
   const [textCol, imageCol] = block.children;
 
-  textCol.classList.add("banner-text");
-  imageCol.classList.add("banner-image");
+  if (textCol) textCol.classList.add("banner-text");
+  if (imageCol) imageCol.classList.add("banner-image");
 
-  // Ensure nested picture wrapper becomes full flex element
-  const pic = imageCol.querySelector("picture");
-  if (pic) {
-    pic.closest("div").classList.add("banner-img-wrapper");
+  // Picture wrapper fix
+  const pic = imageCol?.querySelector("picture");
+  if (pic) pic.closest("div")?.classList.add("banner-img-wrapper");
+
+  /* ---------------------------------------
+     2. Normalize helper
+  ---------------------------------------- */
+  const normalize = (value) =>
+    value.trim().toLowerCase().replace(/\s+/g, "-");
+
+  /* ---------------------------------------
+     3. Read the block-level metadata attributes
+        created by the updated JSON model
+  ---------------------------------------- */
+  const alignment = block.dataset.alignment;
+  const gridClass = block.dataset.gridclass;
+
+  /* ---------------------------------------
+     4. Apply classes if present
+  ---------------------------------------- */
+  if (alignment) {
+    const normalized = normalize(alignment);
+    block.classList.add(`banner-${normalized}`);
   }
 
-  // Process alignment and gridClass properties
-  console.log('Banner block:', block);
-  console.log('Block dataset:', block.dataset);
-  console.log('Block innerHTML:', block.innerHTML);
-  
-  // First check for data attributes on the block itself
-  if (block.dataset.alignment) {
-    console.log('Found block.dataset.alignment:', block.dataset.alignment);
-    block.classList.add(block.dataset.alignment);
+  if (gridClass) {
+    const normalized = normalize(gridClass);
+    block.classList.add(`grid-${normalized}`);
   }
-  
-  if (block.dataset.gridClass) {
-    console.log('Found block.dataset.gridClass:', block.dataset.gridClass);
-    block.classList.add(`grid-${block.dataset.gridClass}`);
-  }
-  
-  // Define valid values from banner configuration
-  const validAlignments = ['align-left', 'align-center', 'align-right', 'align-top', 'align-mid', 'align-bottom'];
-  const validGridClasses = ['40-60', '50-50', '60-40'];
-  
-  // Check for alignment and grid values in child divs
-  const allDivs = [...block.querySelectorAll('div > div > p')];
-  console.log('All p elements found:', allDivs);
-  
-  allDivs.forEach(p => {
-    const text = p.textContent.trim();
-    console.log('Checking text content:', text);
-    
-    // Check if it's a valid alignment value
-    if (validAlignments.includes(text)) {
-      console.log('Found valid alignment:', text);
-      block.classList.add(text);
-    }
-    
-    // Check if it's a valid grid class value
-    if (validGridClasses.includes(text)) {
-      console.log('Found valid grid class:', text);
-      block.classList.add(`grid-${text}`);
-    }
+
+  /* ---------------------------------------
+     5. CLEANUP: Remove leftover UE metadata divs
+        (if they still appear due to caching)
+  ---------------------------------------- */
+  block
+    .querySelectorAll('[data-aue-prop="alignment"], [data-aue-prop="gridClass"]')
+    .forEach((el) => el.remove());
+}
