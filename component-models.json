@@ -523,10 +523,10 @@
       {
         "component": "text",
         "valueType": "string",
-        "name": "youtubeVideoLink",
+        "name": "videoSrc",
         "value": "",
-        "label": "YouTube Video Link",
-        "description": "Enter the YouTube video URL (e.g., https://www.youtube.com/watch?v=VIDEO_ID or https://youtu.be/VIDEO_ID).",
+        "label": "Video Source (MP4)",
+        "description": "Enter the MP4 video URL (e.g., https://example.com/video.mp4).",
         "required": true
       }
     ]
