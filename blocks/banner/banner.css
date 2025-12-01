@@ -1,317 +1,191 @@
-/* Banner Container */
-.banner-container .banner-wrapper {
-  padding: 0;
-  max-width: 100%;
-  width: 100%;
+/* =========================================
+   MOBILE-FIRST — NVIDIA Banner Block
+   ========================================= */
+.banner-container {
+    position: relative;
+    width: 100%;
+    background: #000;
+    overflow: hidden;
 }
 
-/* Banner Base Styles - Mobile First */
-.banner {
-  position: relative;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-  height: auto;
-  min-height: var(--spacing-578);
+.banner-wrapper {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0;
 }
 
-.banner.stacked {
-  min-height: unset;
-}
-
-.banner .fragment .block {
-  height: 100%;
-  width: 100%;
-}
-
-.banner .block.custom-image {
-  position: unset;
-}
-
-.banner img {
-  height: auto;
-  width: 100%;
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: -1;
-}
-
-.banner:not(.stacked) img {
-  height: 100%;
-  object-fit: cover;
-}
-
-.banner-text-content {
-  position: absolute;
-  z-index: 2;
-  padding: var(--spacing-35) var(--spacing-20);
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-  left: 0;
-  margin: 0;
-  top: 0;
-}
-
-.banner-text-content > p {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-}
-
-.banner.stacked .banner-text-content {
-  position: relative;
-  padding: var(--spacing-56) var(--spacing-19);
-  order: 1;
-}
-
-.banner h6 {
-  margin-bottom: var(--spacing-12);
-}
-
-.banner-text-content h1,
-.banner-text-content h2 {
-  margin-bottom: var(--spacing-12);
-}
-
-.banner-text-content .heading {
-  margin-bottom: var(--spacing-10);
-  font-weight: var(--font-weight-bold);
-  line-height: var(--line-height-h3);
-}
-
-.banner-text-content .heading h1,
-.banner-text-content .heading h2,
-.banner-text-content .heading h3,
-.banner-text-content .heading h4,
-.banner-text-content .heading h5 {
-  margin: 0;
-  font-weight: inherit;
-  line-height: inherit;
-}
-
-.banner.stacked .banner-text-content h1,
-.banner.stacked .banner-text-content h2 {
-  margin-bottom: var(--spacing-10);
-}
-
-/* Button styles */
-.banner-text-content .button-container {
-  margin-top: var(--spacing-32);
-  display: flex;
-  gap: var(--spacing-16);
-  flex-direction: column;
-}
-
-.banner.align-center .banner-text-content .button-container {
-  align-items: center;
-  justify-content: center;
-}
-
-/* Image container styling */
-.banner.stacked .fragment,
-.banner.stacked img {
-  position: relative;
-  height: auto;
-  width: 100%;
-  z-index: unset;
-}
-
-.banner:not(.stacked) .banner-text-content {
-  color: var(--color-white);
-}
-
-.banner:has(img).align-right .banner-text-content,
-.banner:has(img).align-left .banner-text-content {
-  text-align: left;
-}
-
-.banner.stacked > div {
-  display: inherit;
-  flex-direction: column;
-  width: 100%;
-}
-
-.banner.banner.stacked .asset-content {
-  order: 0;
-}
-
-.banner:has(video) {
-  display: block;
-}
-
-.banner.stacked:has(video) {
-  display: flex;
-}
-
-.banner video {
-  object-fit: fill;
-}
-
-.banner .video {
-  margin: unset;
-}
-
-.banner.align-middle .banner-text-content  > p{
-  justify-content: center;
-}
-
-.banner.align-top .banner-text-content > p {
-  justify-content: start;
-}
-
-.banner.align-bottom .banner-text-content > p  {
-  justify-content: end;
-}
-
-.banner.align-center .banner-text-content > p {
-  align-items: center;
-}
-
-.banner.align-left .banner-text-content > p{
-  align-items: flex-start;
-}
-
-.banner.align-right .banner-text-content > p{
-  align-items: flex-end;
-}
-
-.banner.stacked [class*="opacity-"] picture::after {
-  content: none;
-}
-
-.banner-text-content p a:hover{
-color: inherit;
-}
-
-/* Desktop styles */
-@media (width >= 1200px) {
-  .banner.stacked img {
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .banner{
-    color: var(--color-white);
-    padding-bottom: 40%;
-    min-height: unset;
-  }
-
-  .banner:has(.video-wrapper) {
-    padding-bottom: 0;
-  }
-
-  .banner-text-content,
-  .banner.stacked .banner-text-content {
-    padding: var(--spacing-72) var(--spacing-64);
-    position: absolute;
-  }
-
-  .banner-text-content > p {
-    width: calc(100% - var(--spacing-64)*2);
-    height: calc(100% - var(--spacing-72)*2);
-    max-width: var(--layout-max-width);
-    transform: translateX(-50%);
-    position: absolute;
-    left: 50%;
-  }
-
-  .align-center .banner-text-content  > p > div {
-    max-width: 64%;
-  }
-
-  .align-left .banner-text-content > p > div,
-  .align-right .banner-text-content > p > div {
-    max-width: 41.65%;
-  }
-
-  .banner.align-left:has(video)>div,
-  .banner.align-right:has(video)>div {
-    width: unset;
-  }
-
-  .banner.align-center.align-middle:has(video) > div,
-  .banner.align-center.align-bottom:has(video) > div {
-    width: unset;
-  }
-
-  .banner.stacked.align-center:has(video) > div {
-    width: unset;
-  }
-
-  .banner.align-center.align-top:has(video) > div {
-    width: unset;
-  }
-
-  .banner-text-content h1,
-  .banner-text-content h2,
-  .banner.stacked .banner-text-content h1,
-  .banner.stacked .banner-text-content h2 {
-    margin-bottom: var(--spacing-12);
-  }
-  
-  .banner-text-content .heading {
-    margin-bottom: var(--spacing-20);
-    line-height: var(--line-height-h1);
-  }
-  
-  .banner-text-content  div p:not(.button-container) {
-    font-size: var(--font-size-lg);
-    line-height: var(--line-height-lg);
-  }
-  
-  .banner-text-content .button-container {
-    flex-direction: row;
-  }
-  
-  /* Desktop overrides for stacked variation */
-  .banner.stacked {
+/* BASE (MOBILE DEFAULT) */
+.banner.block {
     display: flex;
-    flex-direction: row;
-  }
-  
-  .banner.stacked .fragment,
-  .banner.stacked img {
-    position: absolute;
-    height: 100%;
-    z-index: 1;
-  }
-
-  .banner.stacked:has(video) {
-    display: block;
-  }
-
-  .banner.stacked [class*="opacity-"] picture::after {
-    content: '';
-  }  
-
-/* Applying opacity only when we are in desktop mode. */
-
-.banner[class*="opacity-"] .asset-content::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  background: var(--color-black);
-  z-index: 1;
-  width: 100%;
-  height: 100%;
+    flex-direction: column;
+    /* mobile: stacked */
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
 }
 
-.banner.opacity-0 .asset-content::after { opacity: 0; }
-.banner.opacity-10 .asset-content::after { opacity: 0.1; }
-.banner.opacity-20 .asset-content::after { opacity: 0.2; }
-.banner.opacity-30 .asset-content::after { opacity: 0.3; }
-.banner.opacity-40 .asset-content::after { opacity: 0.4; }
-.banner.opacity-50 .asset-content::after { opacity: 0.5; }
-.banner.opacity-60 .asset-content::after { opacity: 0.6; }
-.banner.opacity-70 .asset-content::after { opacity: 0.7; }
-.banner.opacity-80 .asset-content::after { opacity: 0.8; }
-.banner.opacity-90 .asset-content::after { opacity: 0.9; }
-.banner.opacity-100 .asset-content::after { opacity: 1; }
+/* TEXT (mobile: at top) */
+.banner.block>div:first-child {
+    order: 1;
+    width: 100%;
+    position: relative;
+    margin-top: 20px;
+}
+
+.banner.block h2,
+.banner.block p {
+    color: #fff;
+}
+
+.banner.block h2 {
+    font-size: 24px;
+    padding: 0 15px;
+}
+
+.banner.block p {
+    font-size: 15px;
+    padding: 0 15px;
+}
+
+
+/* IMAGE (mobile: below text) */
+.banner.block>div:last-child {
+    order: 2;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+/* Image styling */
+.banner.block picture,
+.banner.block img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+/* BUTTON */
+.banner.block .button-container a.button.secondary {
+    border: none;
+    padding: unset;
+    display: inline-flex;
+    align-items: center;
+    color: inherit;
+}
+
+.banner.block .button.secondary::after {
+    content: "\f105";
+    color: #76b900;
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    line-height: 1;
+    font-size: 0.95em;
+    display: inline-block;
+    transition: transform 0.3s ease, color 0.3s ease;
+    margin-left: 8px;
+}
+
+.banner.block a.button.secondary:hover::after {
+    transform: translateX(4px);
+    color: white;
+}
+
+/* =========================================
+   DESKTOP (≥ 901px)
+   ========================================= */
+@media (min-width: 1025px) {
+
+    .banner.block {
+        flex-direction: row;
+        /* side by side */
+        align-items: center;
+        justify-content: space-between;
+        padding: 0;
+    }
+
+    /* LEFT TEXT OVERLAY (NVIDIA STYLE) */
+    .banner.block>div:first-child {
+        flex: 1;
+        max-width: 600px;
+        z-index: 2;
+        position: absolute;
+        left: 35px;
+        top: 50%;
+        transform: translateY(-50%);
+        margin-top: 0;
+        width: 50%;
+    }
+
+    /* RIGHT IMAGE */
+    .banner.block>div:last-child {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        order: unset;
+        width: auto;
+    }
+
+    /* Image should extend beyond container (NVIDIA style) */
+    .banner.block picture,
+    .banner.block img {
+        width: 115%;
+        max-width: inherit;
+        height: auto;
+        object-fit: contain;
+    }
+
+    .banner.block h2,
+.banner.block p {
+padding: unset;
+}
+
+
+}   
+
+/* =========================================
+   TABLET (600px–1024px) — NVIDIA STYLE
+   ========================================= */
+@media (min-width: 600px) and (max-width: 1024px) {
+
+    /* Side-by-side layout (no overlay) */
+    .banner.block {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        min-height: auto;
+        /* height adjusts naturally */
+    }
+
+    /* TEXT COLUMN */
+    .banner.block>div:first-child {
+        position: relative;
+        left: 0;
+        top: 0;
+        transform: none;
+        order: 1;
+        flex: 1;
+        width: 50%;
+        padding-right: 24px;
+    }
+
+    /* IMAGE COLUMN */
+    .banner.block>div:last-child {
+        order: 2;
+        flex: 1;
+        width: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+
+    /* IMAGE BEHAVIOR (NVIDIA Tablet Style) */
+    .banner.block picture,
+    .banner.block img {
+        width: 125%;
+        /* bigger image like NVIDIA */
+        height: auto;
+        object-fit: contain;
+        display: block;
+    }
 }

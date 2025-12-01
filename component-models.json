@@ -288,6 +288,28 @@
           }
         ],
         "value": "align-left"
+      },
+      {
+        "component": "select",
+        "name": "classes",
+        "label": "Grid",
+        "description": "Select the grid alignment for the banner",
+        "valueType": "string",
+        "options": [
+          {
+            "value": "40-60",
+            "name": "40-60"
+          },
+          {
+            "value": "50-50",
+            "name": "50-50"
+          },
+          {
+            "value": "60-40",
+            "name": "60-40"
+          }
+        ],
+        "value": "50-50"
       }
     ]
   },

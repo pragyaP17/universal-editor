@@ -1,12 +1,3 @@
-/* Base alignment */
-.section.general-container .default-content-wrapper,
-.section.general-container .columns-wrapper {
-  max-width: 984px;
-  margin: 0 auto;
-  width: 100%;
-  padding: 0;
-}
-
 /* ================================
    AEM-STYLE GRID: 6 / 2 / 4 (Desktop)
    ================================ */
@@ -112,16 +103,6 @@
    TABLET VIEW (600px – 1024px)
    ============================================ */
 @media (min-width: 600px) and (max-width: 1024px) {
-
-    /* Base alignment */
-.section.general-container .default-content-wrapper,
-.section.general-container .columns-wrapper {
-  max-width: 660px;
-  margin: 0 auto;
-  width: 100%;
-  padding: 0;
-}
-
   /* LEFT = 7 columns */
 .columns.aem-grid-6-4-tablet.block.columns-2-cols > div > div:nth-child(1) {
   grid-column: 1 / span 7;

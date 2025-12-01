@@ -288,6 +288,15 @@ padding-block: 75px;
 margin: 0;
 }
 
+.section.general-container .default-content-wrapper,
+.section.general-container .banner-wrapper,
+.section.general-container .columns-wrapper{
+  max-width: 984px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0;
+}
+
 
 /* Title type styles */
 .h3-small h1 {
@@ -333,6 +342,16 @@ margin: 0;
   .section.align-left-block-dekstop .button-container {
     justify-content: left;
   }
+
+  .section.general-container .default-content-wrapper,
+.section.general-container .banner-wrapper,
+.section.general-container .columns-wrapper
+ {
+  max-width: 660px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0;
+}
 }
 
 @media (width >= 900px) {
