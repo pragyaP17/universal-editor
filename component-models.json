@@ -239,8 +239,15 @@
       },
       {
         "component": "reference",
-        "name": "image",
-        "label": "Image",
+        "name": "imageDesktop",
+        "label": "Image for Desktop",
+        "valueType": "string",
+        "multi": false
+      },
+      {
+        "component": "reference",
+        "name": "imageMobile",
+        "label": "Image for Mobile",
         "valueType": "string",
         "multi": false
       },
