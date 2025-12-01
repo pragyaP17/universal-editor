@@ -1,4 +1,5 @@
 export default function decorate(block) {
+  console.log("Decorating banner block");
   /* ---------------------------------------
      1. Add base structure classes
   ---------------------------------------- */
@@ -24,17 +25,21 @@ export default function decorate(block) {
         (from JSON metadata config)
   ---------------------------------------- */
   const alignment = normalize(block.dataset.alignment);
+  console.log(`Raw banner alignment: ${block.dataset.alignment}`);
   const gridClass = normalize(block.dataset.gridclass);
+  console.log(`Raw banner grid class: ${block.dataset.gridclass}`);
 
   /* ---------------------------------------
      4. Apply CSS classes
   ---------------------------------------- */
   if (alignment) {
     block.classList.add(`banner-${alignment}`);
+    console.log(`banner alignment: ${alignment}`);
   }
 
   if (gridClass) {
     block.classList.add(`grid-${gridClass}`);
+    console.log(`banner grid class: ${gridClass}`);
   }
 
   /* ---------------------------------------
