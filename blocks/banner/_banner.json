@@ -76,7 +76,7 @@
           },
           {
             "component": "select",
-            "name": "classes",
+            "name": "gridClass",
             "label": "Grid",
             "description": "Select the grid alignment for the banner",
             "valueType": "string",
