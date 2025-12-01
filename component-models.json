@@ -258,7 +258,7 @@
       },
       {
         "component": "select",
-        "name": "classes",
+        "name": "alignment",
         "label": "Options",
         "valueType": "string",
         "options": [
