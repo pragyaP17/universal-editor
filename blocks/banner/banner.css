@@ -189,3 +189,59 @@ padding: unset;
         display: block;
     }
 }
+
+/* =========================================
+   ALIGNMENT CLASSES
+   ========================================= */
+.banner.block.align-left {
+    text-align: left;
+}
+
+.banner.block.align-center {
+    text-align: center;
+}
+
+.banner.block.align-right {
+    text-align: right;
+}
+
+.banner.block.align-top {
+    align-items: flex-start;
+}
+
+.banner.block.align-mid {
+    align-items: center;
+}
+
+.banner.block.align-bottom {
+    align-items: flex-end;
+}
+
+/* =========================================
+   GRID LAYOUT CLASSES
+   ========================================= */
+@media (min-width: 1025px) {
+    .banner.block.grid-40-60 > div:first-child {
+        width: 40%;
+    }
+    
+    .banner.block.grid-40-60 > div:last-child {
+        width: 60%;
+    }
+
+    .banner.block.grid-50-50 > div:first-child {
+        width: 50%;
+    }
+    
+    .banner.block.grid-50-50 > div:last-child {
+        width: 50%;
+    }
+
+    .banner.block.grid-60-40 > div:first-child {
+        width: 60%;
+    }
+    
+    .banner.block.grid-60-40 > div:last-child {
+        width: 40%;
+    }
+}

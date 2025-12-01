@@ -7,7 +7,6 @@ export default async function decorate(block) {
       .filter(Boolean)
       .forEach((cls) => block.classList.add(cls));
   }
-console.warn(layout);
   const cols = [...block.firstElementChild.children];
   block.classList.add(`columns-${cols.length}-cols`);
 

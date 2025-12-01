@@ -233,29 +233,28 @@
     "fields": [
       {
         "component": "richtext",
-        "name": "Banner content",
-        "value": "",
-        "label": "Banner content",
+        "name": "text",
+        "label": "Banner Content",
         "valueType": "string"
       },
       {
         "component": "reference",
-        "valueType": "string",
         "name": "image",
         "label": "Image",
+        "valueType": "string",
         "multi": false
       },
       {
         "component": "text",
-        "valueType": "string",
         "name": "imageAlt",
         "label": "Alt",
+        "valueType": "string",
         "value": ""
       },
       {
         "component": "select",
         "name": "alignment",
-        "label": "Options",
+        "label": "Alignment",
         "valueType": "string",
         "options": [
           {
@@ -287,7 +286,7 @@
       {
         "component": "select",
         "name": "gridClass",
-        "label": "Grid",
+        "label": "Grid Layout",
         "description": "Select the grid alignment for the banner",
         "valueType": "string",
         "options": [
