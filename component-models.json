@@ -287,6 +287,7 @@
         "component": "select",
         "name": "gridClass",
         "label": "Grid Layout",
+        "description": "Select the grid alignment for the banner",
         "valueType": "string",
         "options": [
           {
