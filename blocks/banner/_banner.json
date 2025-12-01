@@ -71,8 +71,7 @@
                 "value": "align-bottom",
                 "name": "Align Bottom"
               }
-            ],
-            "value": "align-left"
+            ]
           },
           {
             "component": "select",
@@ -93,8 +92,7 @@
                 "value": "60-40",
                 "name": "60-40"
               }
-            ],
-            "value": "50-50"
+            ]
           }
       ]
     }
