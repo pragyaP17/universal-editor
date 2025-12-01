@@ -33,7 +33,7 @@
           "valueType": "string",
           "multi": false
         },
-          {
+        {
           "component": "reference",
           "name": "imageMobile",
           "label": "Image for Mobile",
@@ -44,10 +44,8 @@
           "component": "text",
           "name": "imageAlt",
           "label": "Alt",
-          "valueType": "string",
-          "value": ""
+          "valueType": "string"
         }
-   
       ]
     }
   ],

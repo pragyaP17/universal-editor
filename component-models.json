@@ -255,8 +255,7 @@
         "component": "text",
         "name": "imageAlt",
         "label": "Alt",
-        "valueType": "string",
-        "value": ""
+        "valueType": "string"
       }
     ]
   },
