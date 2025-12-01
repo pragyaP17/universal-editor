@@ -26,7 +26,7 @@
                 "template": {
                   "model": "title",
                   "titleType": "h3",
-                  "fontsize": "font-size-small"
+                  "classes": "font-size-small"
                 }
               }
             }

@@ -10,7 +10,7 @@
             "template": {
               "model": "title",
               "titleType": "h3",
-              "fontsize": "font-size-small"
+              "classes": "font-size-small"
             }
           }
         }
@@ -21,6 +21,26 @@
     {
       "id": "title",
       "fields": [
+        {
+          "component": "select",
+          "name": "classes",
+          "label": "Font Size",
+          "valueType" : "string",
+          "options": [
+            {
+              "name": "Large",
+              "value": "font-size-large"
+            },
+            {
+              "name": "Medium",
+              "value": "font-size-medium"
+            },
+            {
+              "name": "Small",
+              "value": "font-size-small"
+            }
+          ]
+        },
         {
           "component": "text",
           "name": "title",
@@ -54,26 +74,6 @@
             {
               "name": "h6",
               "value": "h6"
-            }
-          ]
-        },
-        {
-          "component": "select",
-          "name": "fontsize",
-          "label": "Font Size",
-          "valueType" : "string",
-          "options": [
-            {
-              "name": "Large",
-              "value": "font-size-large"
-            },
-            {
-              "name": "Medium",
-              "value": "font-size-medium"
-            },
-            {
-              "name": "Small",
-              "value": "font-size-small"
             }
           ]
         }
