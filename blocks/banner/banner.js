@@ -2,46 +2,44 @@ export default function decorate(block) {
   /* ---------------------------------------
      1. Add base structure classes
   ---------------------------------------- */
-  const [textCol, imageCol] = block.children;
+  const [textCol, imageCol] = block.children || [];
 
   if (textCol) textCol.classList.add("banner-text");
   if (imageCol) imageCol.classList.add("banner-image");
 
-  // Picture wrapper fix
+  // Ensure picture wrapper gets appropriate class
   const pic = imageCol?.querySelector("picture");
-  if (pic) pic.closest("div")?.classList.add("banner-img-wrapper");
+  if (pic) {
+    pic.closest("div")?.classList.add("banner-img-wrapper");
+  }
 
   /* ---------------------------------------
-     2. Normalize helper
+     2. Normalization helper
   ---------------------------------------- */
   const normalize = (value) =>
-    value.trim().toLowerCase().replace(/\s+/g, "-");
+    value?.trim()?.toLowerCase()?.replace(/\s+/g, "-");
 
   /* ---------------------------------------
-     3. Read the block-level metadata attributes
-        created by the updated JSON model
+     3. Read block-level metadata
+        (from JSON metadata config)
   ---------------------------------------- */
-  const alignment = block.dataset.alignment;
-  const gridClass = block.dataset.gridclass;
+  const alignment = normalize(block.dataset.alignment);
+  const gridClass = normalize(block.dataset.gridclass);
 
   /* ---------------------------------------
-     4. Apply classes if present
+     4. Apply CSS classes
   ---------------------------------------- */
   if (alignment) {
-    const normalized = normalize(alignment);
-    block.classList.add(`banner-${normalized}`);
+    block.classList.add(`banner-${alignment}`);
   }
 
   if (gridClass) {
-    const normalized = normalize(gridClass);
-    block.classList.add(`grid-${normalized}`);
+    block.classList.add(`grid-${gridClass}`);
   }
 
   /* ---------------------------------------
-     5. CLEANUP: Remove leftover UE metadata divs
-        (if they still appear due to caching)
+     5. Remove any leftover UE metadata nodes
+        (may remain until cache resets)
   ---------------------------------------- */
-  block
-    .querySelectorAll('[data-aue-prop="alignment"], [data-aue-prop="gridClass"]')
-    .forEach((el) => el.remove());
+  block.querySelectorAll("[data-aue-prop]").forEach((el) => el.remove());
 }
