@@ -63,7 +63,7 @@
         },
         {
           "component": "select",
-          "name": "fontSize",
+          "name": "classes",
           "label": "Font Size",
           "valueType" : "string",
           "options": [
