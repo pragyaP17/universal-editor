@@ -250,59 +250,6 @@
         "label": "Alt",
         "valueType": "string",
         "value": ""
-      },
-      {
-        "component": "select",
-        "name": "alignment",
-        "label": "Alignment",
-        "valueType": "string",
-        "options": [
-          {
-            "value": "align-left",
-            "name": "Align Left"
-          },
-          {
-            "value": "align-center",
-            "name": "Align Center"
-          },
-          {
-            "value": "align-right",
-            "name": "Align Right"
-          },
-          {
-            "value": "align-top",
-            "name": "Align Top"
-          },
-          {
-            "value": "align-mid",
-            "name": "Align Middle"
-          },
-          {
-            "value": "align-bottom",
-            "name": "Align Bottom"
-          }
-        ]
-      },
-      {
-        "component": "select",
-        "name": "gridClass",
-        "label": "Grid Layout",
-        "description": "Select the grid alignment for the banner",
-        "valueType": "string",
-        "options": [
-          {
-            "value": "40-60",
-            "name": "40-60"
-          },
-          {
-            "value": "50-50",
-            "name": "50-50"
-          },
-          {
-            "value": "60-40",
-            "name": "60-40"
-          }
-        ]
       }
     ]
   },
