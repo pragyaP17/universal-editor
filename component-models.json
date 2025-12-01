@@ -523,10 +523,19 @@
       {
         "component": "text",
         "valueType": "string",
-        "name": "videoSrc",
+        "name": "videoSrcDesktop",
         "value": "",
-        "label": "Video Source (MP4)",
-        "description": "Enter the MP4 video URL (e.g., https://example.com/video.mp4).",
+        "label": "Video Source Desktop (MP4)",
+        "description": "Enter the MP4 video URL for desktop (e.g., https://example.com/video-desktop.mp4).",
+        "required": true
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "videoSrcMobile",
+        "value": "",
+        "label": "Video Source Mobile (MP4)",
+        "description": "Enter the MP4 video URL for mobile and tablet (e.g., https://example.com/video-mobile.mp4).",
         "required": true
       }
     ]
