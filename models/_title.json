@@ -9,8 +9,8 @@
             "resourceType": "core/franklin/components/title/v1/title",
             "template": {
               "model": "title",
-              "type": "{titleType}",
-              "classes": "{fontSize}"
+              "type": "h3",
+              "classes": "font-size-small"
             }
           }
         }
@@ -54,10 +54,6 @@
             {
               "name": "h6",
               "value": "h6"
-            },
-            {
-              "name":"h3-small",
-              "value":"h3-small"
             }
           ]
         },
