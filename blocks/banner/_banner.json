@@ -40,7 +40,62 @@
           "name": "imageAlt",
           "label": "Alt",
           "value": ""
-        }
+        },
+        {
+            "component": "select",
+            "name": "classes",
+            "label": "Options",
+            "valueType": "string",
+            "options": [
+              {
+                "value": "align-left",
+                "name": "Align Left"
+              },
+              {
+                "value": "align-center",
+                "name": "Align Center"
+              },
+              {
+                "value": "align-right",
+                "name": "Align Right"
+              },
+              {
+                "value": "align-top",
+                "name": "Align Top"
+              },
+              {
+                "value": "align-mid",
+                "name": "Align Middle"
+              },
+              {
+                "value": "align-bottom",
+                "name": "Align Bottom"
+              }
+            ],
+            "value": "align-left"
+          },
+          {
+            "component": "select",
+            "name": "gridClass",
+            "label": "Grid",
+            "description": "Select the grid alignment for the banner",
+            "valueType": "string",
+            "options": [
+              {
+                "value": "40-60",
+                "name": "40-60"
+              },
+              {
+                "value": "50-50",
+                "name": "50-50"
+              },
+              {
+                "value": "60-40",
+                "name": "60-40"
+              }
+            ],
+            "value": "50-50"
+          }
       ]
     }
   ],
