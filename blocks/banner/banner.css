@@ -1,6 +1,7 @@
 /* =========================================
    MOBILE-FIRST — NVIDIA Banner Block
    ========================================= */
+   
 .banner-container {
     position: relative;
     width: 100%;
@@ -9,7 +10,6 @@
 }
 
 .banner-wrapper {
-    max-width: 1600px;
     margin: 0 auto;
     padding: 0;
 }
@@ -18,42 +18,48 @@
 .banner.block {
     display: flex;
     flex-direction: column;
-    /* mobile: stacked */
     width: 100%;
     box-sizing: border-box;
     position: relative;
+    background: #000;
 }
 
 /* TEXT (mobile: at top) */
-.banner.block>div:first-child {
-    order: 1;
-    width: 100%;
+.banner.block > div:first-child {
+    width: fit-content;
     position: relative;
-    margin-top: 20px;
+    padding: 20px 15px;
 }
-
-.banner.block h2,
-.banner.block p {
-    color: #fff;
-}
-
-.banner.block h2 {
-    font-size: 24px;
-    padding: 0 15px;
-}
-
-.banner.block p {
-    font-size: 15px;
-    padding: 0 15px;
-}
-
 
 /* IMAGE (mobile: below text) */
-.banner.block>div:last-child {
+.banner.block > div:last-child {
     order: 2;
     width: 100%;
     display: flex;
     justify-content: center;
+}
+
+.banner.block h1,
+.banner.block h2,
+.banner.block h3,
+.banner.block p {
+    color: #fff;
+}
+
+.banner.block h1 {
+    font-size: 28px;
+    margin-bottom: 16px;
+    line-height: 1.2;
+}
+
+.banner.block h2 {
+    font-size: 24px;
+    margin-bottom: 16px;
+}
+
+.banner.block p {
+    font-size: 15px;
+    margin-bottom: 12px;
 }
 
 /* Image styling */
@@ -91,85 +97,25 @@
 }
 
 /* =========================================
-   DESKTOP (≥ 901px)
-   ========================================= */
-@media (min-width: 1025px) {
-
-    .banner.block {
-        flex-direction: row;
-        /* side by side */
-        align-items: center;
-        justify-content: space-between;
-        padding: 0;
-    }
-
-    /* LEFT TEXT OVERLAY (NVIDIA STYLE) */
-    .banner.block>div:first-child {
-        flex: 1;
-        max-width: 600px;
-        z-index: 2;
-        position: absolute;
-        left: 35px;
-        top: 50%;
-        transform: translateY(-50%);
-        margin-top: 0;
-        width: 50%;
-    }
-
-    /* RIGHT IMAGE */
-    .banner.block>div:last-child {
-        flex: 1;
-        display: flex;
-        justify-content: center;
-        order: unset;
-        width: auto;
-    }
-
-    /* Image should extend beyond container (NVIDIA style) */
-    .banner.block picture,
-    .banner.block img {
-        width: 115%;
-        max-width: inherit;
-        height: auto;
-        object-fit: contain;
-    }
-
-    .banner.block h2,
-.banner.block p {
-padding: unset;
-}
-
-
-}   
-
-/* =========================================
    TABLET (600px–1024px) — NVIDIA STYLE
    ========================================= */
 @media (min-width: 600px) and (max-width: 1024px) {
-
-    /* Side-by-side layout (no overlay) */
     .banner.block {
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
         min-height: auto;
-        /* height adjusts naturally */
     }
 
-    /* TEXT COLUMN */
-    .banner.block>div:first-child {
+    .banner.block > div:first-child {
         position: relative;
-        left: 0;
-        top: 0;
-        transform: none;
         order: 1;
         flex: 1;
         width: 50%;
         padding-right: 24px;
     }
 
-    /* IMAGE COLUMN */
-    .banner.block>div:last-child {
+    .banner.block > div:last-child {
         order: 2;
         flex: 1;
         width: 50%;
@@ -179,11 +125,9 @@ padding: unset;
         position: relative;
     }
 
-    /* IMAGE BEHAVIOR (NVIDIA Tablet Style) */
     .banner.block picture,
     .banner.block img {
         width: 125%;
-        /* bigger image like NVIDIA */
         height: auto;
         object-fit: contain;
         display: block;
@@ -191,57 +135,84 @@ padding: unset;
 }
 
 /* =========================================
-   ALIGNMENT CLASSES
+   DESKTOP (≥ 1025px)
    ========================================= */
-.banner.block.align-left {
-    text-align: left;
-}
+@media (min-width: 1025px) {
+    .banner.block {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0;
+    }
 
-.banner.block.align-center {
-    text-align: center;
-}
+    .banner.block > div:first-child {
+        flex: 1;
+                z-index: 2;
+        position: absolute;
+        left: 35px;
+        top: 50%;
+        transform: translateY(-50%);
+        margin-top: 0;
+        width: 50%;
+        padding: 0;
+    }
 
-.banner.block.align-right {
-    text-align: right;
-}
+    .banner.block > div:last-child {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        order: unset;
+        width: auto;
+    }
 
-.banner.block.align-top {
-    align-items: flex-start;
-}
+    .banner.block picture,
+    .banner.block img {
+        width: 115%;
+        height: auto;
+        object-fit: contain;
+    }
 
-.banner.block.align-mid {
-    align-items: center;
-}
-
-.banner.block.align-bottom {
-    align-items: flex-end;
+    .banner.block h1,
+    .banner.block h2,
+    .banner.block h3,
+    .banner.block p {
+        padding: 0;
+    }
 }
 
 /* =========================================
-   GRID LAYOUT CLASSES
+   RESPONSIVE IMAGE DISPLAY
    ========================================= */
+.banner-img-mobile {
+    display: block;
+}
+
+.banner-img-desktop {
+    display: none;
+}
+
+.banner-img-responsive {
+    display: block;
+}
+
 @media (min-width: 1025px) {
-    .banner.block.grid-40-60 > div:first-child {
+    .banner-img-mobile {
+        display: none;
+    }
+    
+    .banner-img-desktop {
+        display: block;
+    }
+    
+    .banner-img-responsive {
+        display: block;
+    }
+
+    .banner.block > div:first-child {
         width: 40%;
     }
     
-    .banner.block.grid-40-60 > div:last-child {
+    .banner.block > div:last-child {
         width: 60%;
-    }
-
-    .banner.block.grid-50-50 > div:first-child {
-        width: 50%;
-    }
-    
-    .banner.block.grid-50-50 > div:last-child {
-        width: 50%;
-    }
-
-    .banner.block.grid-60-40 > div:first-child {
-        width: 60%;
-    }
-    
-    .banner.block.grid-60-40 > div:last-child {
-        width: 40%;
     }
 }
