@@ -23,7 +23,7 @@
   {
     "id": "agreement-header",
     "components": [
-      "secondary-button"
+      "button-item"
     ]
   },
   {

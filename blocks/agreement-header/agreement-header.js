@@ -4,40 +4,38 @@ export default function decorate(block) {
   // Get all the data from the block - Universal Editor provides data as DOM elements
   const rows = [...block.children];
   
-  // Parse secondary buttons from the first row if it exists
+  // Parse secondary buttons - each row with secondary-button model
   const secondaryButtons = [];
-  const secondaryButtonsRow = rows.find(row => row.querySelector('div[data-aue-prop="secondaryButtons"]'));
-  if (secondaryButtonsRow) {
-    const buttons = secondaryButtonsRow.querySelectorAll('a');
-    buttons.forEach(button => {
-      secondaryButtons.push({
-        text: button.textContent.trim(),
-        link: button.href
-      });
-    });
-  }
-
-  // Parse primary button data
-  const primaryButton = {};
-  const primaryButtonRow = rows.find(row => row.querySelector('div[data-aue-prop="primaryButtonText"]') || row.querySelector('div[data-aue-prop="primaryButton"]'));
-  if (primaryButtonRow) {
-    const textEl = primaryButtonRow.querySelector('div[data-aue-prop="primaryButtonText"]');
-    const linkEl = primaryButtonRow.querySelector('div[data-aue-prop="primaryButtonLink"]');
-    const styleEl = primaryButtonRow.querySelector('div[data-aue-prop="primaryButtonStyle"]');
+  rows.forEach(row => {
+    const textEl = row.querySelector('div[data-aue-prop="text"]');
+    const linkEl = row.querySelector('div[data-aue-prop="link"]');
     
-    primaryButton.primaryButtonText = textEl?.textContent?.trim() || 'Stay Informed';
-    primaryButton.primaryButtonLink = linkEl?.textContent?.trim() || '#';
-    primaryButton.primaryButtonStyle = styleEl?.textContent?.trim() || 'primary';
-  }
+    if (textEl) {
+      secondaryButtons.push({
+        text: textEl.textContent?.trim() || '',
+        link: linkEl?.textContent?.trim() || '#'
+      });
+    }
+  });
 
-  // Parse mobile dropdown settings
-  const enableMobileDropdownRow = rows.find(row => row.querySelector('div[data-aue-prop="enableMobileDropdown"]'));
-  const enableMobileDropdown = enableMobileDropdownRow?.querySelector('div[data-aue-prop="enableMobileDropdown"]')?.textContent?.trim() !== 'false';
+  // Parse primary button data from block-level properties
+  const primaryButton = {};
+  const primaryButtonTextEl = block.querySelector('div[data-aue-prop="primaryButtonText"]');
+  const primaryButtonLinkEl = block.querySelector('div[data-aue-prop="primaryButtonLink"]');
+  const primaryButtonStyleEl = block.querySelector('div[data-aue-prop="primaryButtonStyle"]');
   
-  const mobileDropdownTitleRow = rows.find(row => row.querySelector('div[data-aue-prop="mobileDropdownTitle"]'));
-  const mobileDropdownTitle = mobileDropdownTitleRow?.querySelector('div[data-aue-prop="mobileDropdownTitle"]')?.textContent?.trim() || 'Navigation';
+  primaryButton.primaryButtonText = primaryButtonTextEl?.textContent?.trim() || 'Stay Informed';
+  primaryButton.primaryButtonLink = primaryButtonLinkEl?.textContent?.trim() || '#';
+  primaryButton.primaryButtonStyle = primaryButtonStyleEl?.textContent?.trim() || 'primary';
 
-  // If no secondary buttons, check if there are any buttons in the block at all
+  // Parse mobile dropdown settings from block-level properties
+  const enableMobileDropdownEl = block.querySelector('div[data-aue-prop="enableMobileDropdown"]');
+  const enableMobileDropdown = enableMobileDropdownEl?.textContent?.trim() !== 'false';
+  
+  const mobileDropdownTitleEl = block.querySelector('div[data-aue-prop="mobileDropdownTitle"]');
+  const mobileDropdownTitle = mobileDropdownTitleEl?.textContent?.trim() || 'Navigation';
+
+  // If no secondary buttons found via data attributes, try to parse any anchor tags
   if (secondaryButtons.length === 0) {
     const allButtons = block.querySelectorAll('a');
     allButtons.forEach(button => {
@@ -50,8 +48,7 @@ export default function decorate(block) {
     });
   }
 
-  // If still no buttons, return
-  if (secondaryButtons.length === 0 && !primaryButton.primaryButtonText) return;
+  // Always create the header layout even if no buttons configured
 
   // --- MAIN WRAPPER ---
   const wrapper = document.createElement('div');

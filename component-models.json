@@ -237,21 +237,40 @@
     "fields": [
       {
         "component": "text",
-        "name": "primaryButtonText",
-        "label": "Primary Button Text",
+        "name": "title",
+        "label": "Header Title",
         "valueType": "string",
-        "value": "Stay Informed"
+        "value": "Agreement Header"
       },
       {
         "component": "text",
-        "name": "primaryButtonLink",
-        "label": "Primary Button Link",
+        "name": "description",
+        "label": "Header Description",
         "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "button-item",
+    "fields": [
+      {
+        "component": "text",
+        "name": "buttonText",
+        "label": "Button Text",
+        "valueType": "string",
+        "required": true
+      },
+      {
+        "component": "text",
+        "name": "buttonLink",
+        "label": "Button Link",
+        "valueType": "string",
+        "required": true
       },
       {
         "component": "select",
-        "name": "primaryButtonStyle",
-        "label": "Primary Button Style",
+        "name": "buttonStyle",
+        "label": "Button Style",
         "valueType": "string",
         "value": "primary",
         "options": [
@@ -267,34 +286,24 @@
       },
       {
         "component": "boolean",
-        "name": "enableMobileDropdown",
+        "name": "enableDropdown",
         "label": "Enable Mobile Dropdown",
         "valueType": "boolean",
-        "value": true
+        "value": false
       },
       {
         "component": "text",
-        "name": "mobileDropdownTitle",
+        "name": "dropdownTitle",
         "label": "Mobile Dropdown Title",
         "valueType": "string",
-        "value": "Navigation"
-      }
-    ]
-  },
-  {
-    "id": "secondary-button",
-    "fields": [
-      {
-        "component": "text",
-        "name": "text",
-        "label": "Button Text",
-        "valueType": "string"
-      },
-      {
-        "component": "text",
-        "name": "link",
-        "label": "Button Link",
-        "valueType": "string"
+        "condition": {
+          "===": [
+            {
+              "var": "enableDropdown"
+            },
+            true
+          ]
+        }
       }
     ]
   },
