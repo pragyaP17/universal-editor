@@ -24,100 +24,53 @@
           "component": "container",
           "name": "secondaryButtons",
           "label": "Secondary Navigation Buttons",
+          "allowMultiple": true,
           "fields": [
             {
               "component": "text",
-              "name": "button1Text",
-              "label": "Button 1 Text",
-              "valueType": "string",
-              "value": "Introduction"
-            },
-            {
-              "component": "text",
-              "name": "button1Link",
-              "label": "Button 1 Link",
+              "name": "text",
+              "label": "Button Text",
               "valueType": "string"
             },
             {
               "component": "text",
-              "name": "button2Text",
-              "label": "Button 2 Text",
-              "valueType": "string",
-              "value": "Use Cases"
-            },
-            {
-              "component": "text",
-              "name": "button2Link",
-              "label": "Button 2 Link",
+              "name": "link",
+              "label": "Button Link",
               "valueType": "string"
+            }
+          ],
+          "value": [
+            {
+              "text": "Introduction",
+              "link": "#intro-section"
             },
             {
-              "component": "text",
-              "name": "button3Text",
-              "label": "Button 3 Text",
-              "valueType": "string",
-              "value": "Success Stories"
+              "text": "Use Cases",
+              "link": "#use-cases-section"
             },
             {
-              "component": "text",
-              "name": "button3Link",
-              "label": "Button 3 Link",
-              "valueType": "string"
+              "text": "Success Stories",
+              "link": "#success-stories-section"
             },
             {
-              "component": "text",
-              "name": "button4Text",
-              "label": "Button 4 Text",
-              "valueType": "string",
-              "value": "Technology"
+              "text": "Technology",
+              "link": "#technology-section"
             },
             {
-              "component": "text",
-              "name": "button4Link",
-              "label": "Button 4 Link",
-              "valueType": "string"
+              "text": "Partners",
+              "link": "#partners-section"
             },
             {
-              "component": "text",
-              "name": "button5Text",
-              "label": "Button 5 Text",
-              "valueType": "string",
-              "value": "Partners"
+              "text": "Resources",
+              "link": "#resources-section"
             },
             {
-              "component": "text",
-              "name": "button5Link",
-              "label": "Button 5 Link",
-              "valueType": "string"
-            },
-            {
-              "component": "text",
-              "name": "button6Text",
-              "label": "Button 6 Text",
-              "valueType": "string",
-              "value": "Resources"
-            },
-            {
-              "component": "text",
-              "name": "button6Link",
-              "label": "Button 6 Link",
-              "valueType": "string"
-            },
-            {
-              "component": "text",
-              "name": "button7Text",
-              "label": "Button 7 Text",
-              "valueType": "string",
-              "value": "Next Steps"
-            },
-            {
-              "component": "text",
-              "name": "button7Link",
-              "label": "Button 7 Link",
-              "valueType": "string"
+              "text": "Next Steps",
+              "link": "#next-steps-section"
             }
           ]
         },
+
         {
           "component": "container",
           "name": "primaryButton",
@@ -155,6 +108,7 @@
             }
           ]
         },
+
         {
           "component": "boolean",
           "name": "enableMobileDropdown",
