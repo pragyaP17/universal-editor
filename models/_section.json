@@ -46,6 +46,10 @@
               "value": "bg-color-black"
             },
             {
+              "name": "Background Light",
+              "value": "bg-color-light"
+            },
+            {
               "name": "Align Center",
               "value": "align-center"
             },

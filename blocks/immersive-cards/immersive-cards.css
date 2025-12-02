@@ -1,0 +1,416 @@
+/* Immersive Cards Container */
+.immersive-cards {
+  position: relative;
+  width: 100%;
+  min-height: 600px;
+  padding: 40px 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: minmax(300px, auto);
+  gap: 20px;
+}
+
+.immersive-cards:has(.card-item.expanded) {
+  min-height: 1200px;
+}
+
+/* Individual Card Item */
+.immersive-cards .card-item {
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 8px;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1;
+}
+
+/* First card spans 2 rows in first column */
+.immersive-cards .card-item:nth-child(1) {
+  grid-column: 1;
+  grid-row: 1 / 3;
+}
+
+/* Second card - column 2, row 1 */
+.immersive-cards .card-item:nth-child(2) {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+/* Third card - column 3, row 1 */
+.immersive-cards .card-item:nth-child(3) {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+/* Fourth card - column 2, row 2 */
+.immersive-cards .card-item:nth-child(4) {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+/* Fifth card - column 3, row 2 */
+.immersive-cards .card-item:nth-child(5) {
+  grid-column: 3;
+  grid-row: 2;
+}
+
+/* Expanded Card State */
+.immersive-cards .card-item.expanded {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+  border-radius: 0;
+  z-index: 9999;
+  margin: 0;
+  overflow: visible;
+}
+
+/* Hidden Card State */
+.immersive-cards .card-item.hidden {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+/* Card Image Container */
+.immersive-cards .card-item picture {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  transition: height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.immersive-cards .card-item picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.immersive-cards .card-item:hover picture img {
+  transform: scale(1.05);
+}
+
+/* Expanded Card Image */
+.immersive-cards .card-item.expanded picture {
+  height: 100%;
+}
+
+.immersive-cards .card-item.expanded picture img {
+  height: 100%;
+}
+
+/* Card Content Overlay */
+.immersive-cards .card-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 30px;
+  background: linear-gradient(to top, rgb(0 0 0 / 80%) 0%, rgb(0 0 0 / 40%) 70%, transparent 100%);
+  color: white;
+  z-index: 2;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.immersive-cards .card-item:hover .card-overlay {
+  background: linear-gradient(to top, rgb(0 0 0 / 90%) 0%, rgb(0 0 0 / 60%) 70%, transparent 100%);
+}
+
+/* Expanded Card Overlay */
+.immersive-cards .card-item.expanded .card-overlay {
+  padding: 60px 80px;
+  background: linear-gradient(to top, rgb(0 0 0 / 95%) 0%, rgb(0 0 0 / 70%) 60%, transparent 100%);
+}
+
+/* Card Title */
+.immersive-cards h3 {
+  font-family: var(--heading-font-family);
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0 0 10px;
+  color: white;
+  line-height: 1.2;
+  transition: font-size 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.immersive-cards .card-item.expanded h3 {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+/* Card Tagline/Subtitle */
+.immersive-cards .card-tagline {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  color: rgb(255 255 255 / 90%);
+  margin: 0 0 15px;
+  transition: font-size 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.immersive-cards .card-item.expanded .card-tagline {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+/* Card Description */
+.immersive-cards .card-description {
+  font-size: 16px;
+  line-height: 1.6;
+  color: rgb(255 255 255 / 95%);
+  margin: 0 0 20px;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Show description only when expanded, not on hover */
+.immersive-cards .card-item.expanded .card-description {
+  max-height: 400px;
+  opacity: 1;
+  margin-bottom: 30px;
+  font-size: 18px;
+}
+
+/* CTA Button */
+.immersive-cards .card-cta {
+  margin-top: 15px;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.immersive-cards .card-cta a {
+  background: transparent;
+  color: inherit;
+  padding: 0 20px 0 0;
+  font-weight: 700;
+  font-size: 16px;
+  text-decoration: none;
+  border: none;
+  margin: 0;
+  display: inline-block;
+  overflow: visible;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+}
+
+/* Arrow */
+.immersive-cards .card-cta a::after {
+  content: "\203A";
+  color: #76b900;
+  font-family: "Font Awesome 6 Free", sans-serif;
+  font-weight: 900;
+  line-height: 1;
+  font-size: 1.5em;
+  display: inline-block;
+  transition: transform 0.3s ease, color 0.3s ease;
+  margin-left: 8px;
+}
+
+.immersive-cards .card-cta a:hover::after {
+  transform: translateX(4px);
+  color: white;
+}
+
+.immersive-cards .card-item.expanded .card-cta {
+  opacity: 1;
+  max-height: 100px;
+}
+
+.immersive-cards .card-item.expanded .card-cta a {
+  padding: 0 20px 0 0;
+  font-size: 16px;
+}
+
+/* Close Button */
+.immersive-cards .close-button {
+  position: absolute;
+  top: -20px;
+  right: -10px;
+  width: 20px;
+  height: 20px;
+  background: #666;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="%23FFFFFF" d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"/></svg>');
+  background-size: 18px 18px;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: none;
+  z-index: 10;
+  opacity: 1;
+  padding: 0;
+  transition: transform 0.3s ease;
+}
+
+.immersive-cards .close-button:hover {
+  transform: scale(1.1);
+}
+
+.immersive-cards .card-item.expanded .close-button {
+  display: block;
+}
+
+/* Responsive Design */
+@media (width <= 900px) {
+  .immersive-cards {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+  }
+
+  /* First card spans 2 columns in first row for tablet */
+  .immersive-cards .card-item:nth-child(1) {
+    grid-column: 1 / 3;
+    grid-row: 1;
+  }
+
+  /* Cards 2-3 in second row */
+  .immersive-cards .card-item:nth-child(2) {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .immersive-cards .card-item:nth-child(3) {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  /* Cards 4-5 in third row */
+  .immersive-cards .card-item:nth-child(4) {
+    grid-column: 1;
+    grid-row: 3;
+  }
+
+  .immersive-cards .card-item:nth-child(5) {
+    grid-column: 2;
+    grid-row: 3;
+  }
+
+  /* Tablet: expanded card spans entire grid */
+  .immersive-cards .card-item.expanded {
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+    height: 600px;
+  }
+
+  .immersive-cards h3 {
+    font-size: 24px;
+  }
+
+  .immersive-cards .card-item.expanded .card-overlay {
+    padding: 40px 50px;
+  }
+
+  .immersive-cards .card-item.expanded h3 {
+    font-size: 36px;
+  }
+}
+
+@media (width <= 600px) {
+  .immersive-cards {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    min-height: auto;
+    padding: 20px 0;
+    gap: 15px;
+  }
+
+  /* Reset all cards to single column for mobile */
+  .immersive-cards .card-item:nth-child(1),
+  .immersive-cards .card-item:nth-child(2),
+  .immersive-cards .card-item:nth-child(3),
+  .immersive-cards .card-item:nth-child(4),
+  .immersive-cards .card-item:nth-child(5) {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  /* Mobile: expanded card is NOT position absolute, stays in flow */
+  .immersive-cards .card-item.expanded {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    height: auto;
+    min-height: auto;
+    grid-column: 1;
+    grid-row: auto;
+    border-radius: 8px;
+    z-index: 10;
+    margin: 0;
+  }
+
+  /* Mobile: other cards remain visible */
+  .immersive-cards .card-item.hidden {
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
+  }
+
+  .immersive-cards .card-item picture {
+    height: 300px;
+  }
+
+  .immersive-cards .card-item picture img {
+    height: 300px;
+    object-fit: cover;
+  }
+
+  /* Mobile: expanded card doubles in height */
+  .immersive-cards .card-item.expanded picture {
+    height: 600px;
+  }
+
+  .immersive-cards .card-item.expanded picture img {
+    height: 600px;
+    object-fit: cover;
+  }
+
+  .immersive-cards .card-overlay {
+    padding: 20px;
+  }
+
+  .immersive-cards h3 {
+    font-size: 20px;
+  }
+
+  .immersive-cards .card-description {
+    font-size: 14px;
+  }
+
+  .immersive-cards .card-item.expanded .card-overlay {
+    padding: 30px;
+  }
+
+  .immersive-cards .card-item.expanded h3 {
+    font-size: 28px;
+  }
+
+  .immersive-cards .card-item.expanded .card-description {
+    font-size: 16px;
+  }
+
+  .immersive-cards .close-button {
+    top: -20px;
+    right: -10px;
+    width: 20px;
+    height: 20px;
+    background-size: 16px 16px;
+  }
+}
+
+@media (width >= 768px) {
+  .immersive-cards:has(.card-item.expanded) {
+    display: flex;
+    min-height: 500px;
+  }
+}

@@ -278,6 +278,10 @@ main > .section:first-of-type {
   color: white;
 }
 
+.bg-color-light{
+  background-color : #f7f7f7
+}
+
 .section.p-y-60 {
 padding-block: 60px;
 margin: 0;

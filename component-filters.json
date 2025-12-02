@@ -39,5 +39,27 @@
       "button",
       "title"
     ]
+  },
+  {
+    "id": "immersive-cards",
+    "components": [
+      "immersive-card-item"
+    ]
+  },
+  {
+    "id": "multi-purpose-cards",
+    "components": [
+      "linked-card-item",
+      "cta-card-item",
+      "simple-linked-card-item",
+      "video-card-item",
+      "simple-cta-card-item"
+    ]
+  },
+  {
+    "id": "tabs",
+    "components": [
+      "tab"
+    ]
   }
 ]
