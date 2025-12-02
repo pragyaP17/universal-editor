@@ -22,66 +22,61 @@
       "id": "agreement-header",
       "fields": [
         {
-          "component": "list",
+          "component": "multifield",
           "name": "secondaryButtons",
           "label": "Secondary Navigation Buttons",
-          "multi": true,
-          "allowMultiple": true,
-          "itemLabel": "Button",
+          "valueType": "string",
           "fields": [
             {
               "component": "text",
               "name": "text",
-              "label": "Button Text"
+              "label": "Button Text",
+              "valueType": "string"
             },
             {
               "component": "text",
-              "name": "link",
-              "label": "Button Link"
+              "name": "link", 
+              "label": "Button Link",
+              "valueType": "string"
             }
           ]
         },
-
         {
-          "component": "container",
-          "name": "primaryButton",
-          "label": "Primary Action Button",
-          "fields": [
-            {
-              "component": "text",
-              "name": "primaryButtonText",
-              "label": "Primary Button Text",
-              "value": "Stay Informed"
-            },
-            {
-              "component": "text",
-              "name": "primaryButtonLink",
-              "label": "Primary Button Link"
-            },
-            {
-              "component": "select",
-              "name": "primaryButtonStyle",
-              "label": "Primary Button Style",
-              "value": "primary",
-              "options": [
-                { "name": "primary", "value": "primary" },
-                { "name": "secondary", "value": "secondary" }
-              ]
-            }
+          "component": "text",
+          "name": "primaryButtonText",
+          "label": "Primary Button Text",
+          "valueType": "string",
+          "value": "Stay Informed"
+        },
+        {
+          "component": "text",
+          "name": "primaryButtonLink",
+          "label": "Primary Button Link",
+          "valueType": "string"
+        },
+        {
+          "component": "select",
+          "name": "primaryButtonStyle",
+          "label": "Primary Button Style",
+          "valueType": "string",
+          "value": "primary",
+          "options": [
+            { "name": "Primary", "value": "primary" },
+            { "name": "Secondary", "value": "secondary" }
           ]
         },
-
         {
           "component": "boolean",
           "name": "enableMobileDropdown",
           "label": "Enable Mobile Dropdown",
+          "valueType": "boolean",
           "value": true
         },
-
         {
           "component": "text",
           "name": "mobileDropdownTitle",
           "label": "Mobile Dropdown Title",
+          "valueType": "string",
           "value": "Navigation"
         }
       ]

@@ -1,12 +1,57 @@
 import { decorateIcons } from '../../scripts/aem.js';
 
 export default function decorate(block) {
-  // Extract the two anchor buttons from authoring
-  const links = block.querySelectorAll('a.button');
-  if (links.length < 2) return;
+  // Get all the data from the block - Universal Editor provides data as DOM elements
+  const rows = [...block.children];
+  
+  // Parse secondary buttons from the first row if it exists
+  const secondaryButtons = [];
+  const secondaryButtonsRow = rows.find(row => row.querySelector('div[data-aue-prop="secondaryButtons"]'));
+  if (secondaryButtonsRow) {
+    const buttons = secondaryButtonsRow.querySelectorAll('a');
+    buttons.forEach(button => {
+      secondaryButtons.push({
+        text: button.textContent.trim(),
+        link: button.href
+      });
+    });
+  }
 
-  const agreementsBtn = links[0];
-  const pdfBtn = links[1];
+  // Parse primary button data
+  const primaryButton = {};
+  const primaryButtonRow = rows.find(row => row.querySelector('div[data-aue-prop="primaryButtonText"]') || row.querySelector('div[data-aue-prop="primaryButton"]'));
+  if (primaryButtonRow) {
+    const textEl = primaryButtonRow.querySelector('div[data-aue-prop="primaryButtonText"]');
+    const linkEl = primaryButtonRow.querySelector('div[data-aue-prop="primaryButtonLink"]');
+    const styleEl = primaryButtonRow.querySelector('div[data-aue-prop="primaryButtonStyle"]');
+    
+    primaryButton.primaryButtonText = textEl?.textContent?.trim() || 'Stay Informed';
+    primaryButton.primaryButtonLink = linkEl?.textContent?.trim() || '#';
+    primaryButton.primaryButtonStyle = styleEl?.textContent?.trim() || 'primary';
+  }
+
+  // Parse mobile dropdown settings
+  const enableMobileDropdownRow = rows.find(row => row.querySelector('div[data-aue-prop="enableMobileDropdown"]'));
+  const enableMobileDropdown = enableMobileDropdownRow?.querySelector('div[data-aue-prop="enableMobileDropdown"]')?.textContent?.trim() !== 'false';
+  
+  const mobileDropdownTitleRow = rows.find(row => row.querySelector('div[data-aue-prop="mobileDropdownTitle"]'));
+  const mobileDropdownTitle = mobileDropdownTitleRow?.querySelector('div[data-aue-prop="mobileDropdownTitle"]')?.textContent?.trim() || 'Navigation';
+
+  // If no secondary buttons, check if there are any buttons in the block at all
+  if (secondaryButtons.length === 0) {
+    const allButtons = block.querySelectorAll('a');
+    allButtons.forEach(button => {
+      if (button.textContent.trim()) {
+        secondaryButtons.push({
+          text: button.textContent.trim(),
+          link: button.href || '#'
+        });
+      }
+    });
+  }
+
+  // If still no buttons, return
+  if (secondaryButtons.length === 0 && !primaryButton.primaryButtonText) return;
 
   // --- MAIN WRAPPER ---
   const wrapper = document.createElement('div');
@@ -16,54 +61,63 @@ export default function decorate(block) {
   const left = document.createElement('div');
   left.className = 'agreement-left';
 
-  // DESKTOP fixed title
+  // DESKTOP - show all secondary buttons
   const desktopRow = document.createElement('div');
   desktopRow.className = 'agreement-desktop';
 
-  const desktopLink = document.createElement('a');
-  desktopLink.className = 'button secondary';
-  desktopLink.href = agreementsBtn.href;
-  desktopLink.title = agreementsBtn.title;
-  desktopLink.textContent = agreementsBtn.textContent;
+  secondaryButtons.forEach(button => {
+    const desktopLink = document.createElement('a');
+    desktopLink.className = 'button secondary';
+    desktopLink.href = button.link || '#';
+    desktopLink.textContent = button.text || '';
+    desktopRow.appendChild(desktopLink);
+  });
 
-  desktopRow.appendChild(desktopLink);
+  // MOBILE toggle row (only if mobile dropdown is enabled)
+  let mobileRow, mobileToggle, dropdown;
+  if (enableMobileDropdown && secondaryButtons.length > 0) {
+    mobileRow = document.createElement('div');
+    mobileRow.className = 'agreement-mobile';
 
-  // MOBILE toggle row
-  const mobileRow = document.createElement('div');
-  mobileRow.className = 'agreement-mobile';
+    mobileToggle = document.createElement('button');
+    mobileToggle.className = 'agreement-mobile-toggle';
+    mobileToggle.innerHTML = `
+      <span class="text">${mobileDropdownTitle}</span>
+      <span class="icon icon-arrow-down"></span>
+    `;
+    mobileRow.appendChild(mobileToggle);
 
-  const mobileToggle = document.createElement('button');
-  mobileToggle.className = 'agreement-mobile-toggle';
-  mobileToggle.innerHTML = `
-    <span class="text">${agreementsBtn.textContent}</span>
-    <span class="icon icon-arrow-down"></span>
-  `;
-  mobileRow.appendChild(mobileToggle);
-
-  // DROPDOWN panel
-  const dropdown = document.createElement('div');
-  dropdown.className = 'agreement-dropdown';
-  dropdown.innerHTML = `
-    <a href="${agreementsBtn.href}" class="dropdown-item">${agreementsBtn.textContent}</a>
-  `;
+    // DROPDOWN panel with all secondary buttons
+    dropdown = document.createElement('div');
+    dropdown.className = 'agreement-dropdown';
+    
+    secondaryButtons.forEach(button => {
+      const dropdownItem = document.createElement('a');
+      dropdownItem.className = 'dropdown-item';
+      dropdownItem.href = button.link || '#';
+      dropdownItem.textContent = button.text || '';
+      dropdown.appendChild(dropdownItem);
+    });
+  }
 
   // Add rows to left side
   left.appendChild(desktopRow);
-  left.appendChild(mobileRow);
-  left.appendChild(dropdown);
+  if (mobileRow) left.appendChild(mobileRow);
+  if (dropdown) left.appendChild(dropdown);
 
   // --- RIGHT SIDE ---
   const right = document.createElement('div');
   right.className = 'agreement-right';
 
-  const pdfLink = document.createElement('a');
-  pdfLink.className = 'button primary';
-  pdfLink.href = pdfBtn.href;
-  pdfLink.title = pdfBtn.title;
-  pdfLink.textContent = pdfBtn.textContent;
-  pdfLink.setAttribute('role', 'button');
-
-  right.appendChild(pdfLink);
+  // Create primary button if configured
+  if (primaryButton.primaryButtonText) {
+    const primaryLink = document.createElement('a');
+    primaryLink.className = `button ${primaryButton.primaryButtonStyle || 'primary'}`;
+    primaryLink.href = primaryButton.primaryButtonLink || '#';
+    primaryLink.textContent = primaryButton.primaryButtonText;
+    primaryLink.setAttribute('role', 'button');
+    right.appendChild(primaryLink);
+  }
 
   // Build final layout
   wrapper.appendChild(left);
@@ -77,18 +131,20 @@ export default function decorate(block) {
   decorateIcons(block);
 
   // --- MOBILE DROPDOWN LOGIC ---
-  mobileToggle.addEventListener('click', () => {
-    dropdown.classList.toggle('open');
-    mobileToggle.classList.toggle('expanded');
-  });
+  if (mobileToggle && dropdown) {
+    mobileToggle.addEventListener('click', () => {
+      dropdown.classList.toggle('open');
+      mobileToggle.classList.toggle('expanded');
+    });
 
-  // --- NEW: Close dropdown when clicking dropdown item ---
-  const dropdownItem = dropdown.querySelector('.dropdown-item');
-  if (dropdownItem) {
-    dropdownItem.addEventListener('click', () => {
-      dropdown.classList.remove('open');
-      mobileToggle.classList.remove('expanded');
-      // link will open normally, no preventDefault()
+    // Close dropdown when clicking any dropdown item
+    const dropdownItems = dropdown.querySelectorAll('.dropdown-item');
+    dropdownItems.forEach(item => {
+      item.addEventListener('click', () => {
+        dropdown.classList.remove('open');
+        mobileToggle.classList.remove('expanded');
+        // link will open normally, no preventDefault()
+      });
     });
   }
 }
