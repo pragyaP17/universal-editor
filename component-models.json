@@ -246,14 +246,12 @@
           {
             "component": "text",
             "name": "text",
-            "label": "Button Text",
-            "valueType": "string"
+            "label": "Button Text"
           },
           {
             "component": "text",
             "name": "link",
-            "label": "Button Link",
-            "valueType": "string"
+            "label": "Button Link"
           }
         ]
       },
@@ -266,20 +264,18 @@
             "component": "text",
             "name": "primaryButtonText",
             "label": "Primary Button Text",
-            "valueType": "string",
             "value": "Stay Informed"
           },
           {
             "component": "text",
             "name": "primaryButtonLink",
-            "label": "Primary Button Link",
-            "valueType": "string"
+            "label": "Primary Button Link"
           },
           {
             "component": "select",
             "name": "primaryButtonStyle",
             "label": "Primary Button Style",
-            "valueType": "string",
+            "value": "primary",
             "options": [
               {
                 "name": "primary",
@@ -289,8 +285,7 @@
                 "name": "secondary",
                 "value": "secondary"
               }
-            ],
-            "value": "primary"
+            ]
           }
         ]
       },
@@ -298,14 +293,12 @@
         "component": "boolean",
         "name": "enableMobileDropdown",
         "label": "Enable Mobile Dropdown",
-        "valueType": "boolean",
         "value": true
       },
       {
         "component": "text",
         "name": "mobileDropdownTitle",
         "label": "Mobile Dropdown Title",
-        "valueType": "string",
         "value": "Navigation"
       }
     ]
