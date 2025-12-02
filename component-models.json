@@ -233,6 +233,160 @@
     ]
   },
   {
+    "id": "agreement-header",
+    "fields": [
+      {
+        "component": "container",
+        "name": "secondaryButtons",
+        "label": "Secondary Navigation Buttons",
+        "fields": [
+          {
+            "component": "text",
+            "name": "button1Text",
+            "label": "Button 1 Text",
+            "valueType": "string",
+            "value": "Introduction"
+          },
+          {
+            "component": "text",
+            "name": "button1Link",
+            "label": "Button 1 Link",
+            "valueType": "string"
+          },
+          {
+            "component": "text",
+            "name": "button2Text",
+            "label": "Button 2 Text",
+            "valueType": "string",
+            "value": "Use Cases"
+          },
+          {
+            "component": "text",
+            "name": "button2Link",
+            "label": "Button 2 Link",
+            "valueType": "string"
+          },
+          {
+            "component": "text",
+            "name": "button3Text",
+            "label": "Button 3 Text",
+            "valueType": "string",
+            "value": "Success Stories"
+          },
+          {
+            "component": "text",
+            "name": "button3Link",
+            "label": "Button 3 Link",
+            "valueType": "string"
+          },
+          {
+            "component": "text",
+            "name": "button4Text",
+            "label": "Button 4 Text",
+            "valueType": "string",
+            "value": "Technology"
+          },
+          {
+            "component": "text",
+            "name": "button4Link",
+            "label": "Button 4 Link",
+            "valueType": "string"
+          },
+          {
+            "component": "text",
+            "name": "button5Text",
+            "label": "Button 5 Text",
+            "valueType": "string",
+            "value": "Partners"
+          },
+          {
+            "component": "text",
+            "name": "button5Link",
+            "label": "Button 5 Link",
+            "valueType": "string"
+          },
+          {
+            "component": "text",
+            "name": "button6Text",
+            "label": "Button 6 Text",
+            "valueType": "string",
+            "value": "Resources"
+          },
+          {
+            "component": "text",
+            "name": "button6Link",
+            "label": "Button 6 Link",
+            "valueType": "string"
+          },
+          {
+            "component": "text",
+            "name": "button7Text",
+            "label": "Button 7 Text",
+            "valueType": "string",
+            "value": "Next Steps"
+          },
+          {
+            "component": "text",
+            "name": "button7Link",
+            "label": "Button 7 Link",
+            "valueType": "string"
+          }
+        ]
+      },
+      {
+        "component": "container",
+        "name": "primaryButton",
+        "label": "Primary Action Button",
+        "fields": [
+          {
+            "component": "text",
+            "name": "primaryButtonText",
+            "label": "Primary Button Text",
+            "valueType": "string",
+            "value": "Stay Informed"
+          },
+          {
+            "component": "text",
+            "name": "primaryButtonLink",
+            "label": "Primary Button Link",
+            "valueType": "string"
+          },
+          {
+            "component": "select",
+            "name": "primaryButtonStyle",
+            "label": "Primary Button Style",
+            "valueType": "string",
+            "options": [
+              {
+                "name": "primary",
+                "value": "primary"
+              },
+              {
+                "name": "secondary",
+                "value": "secondary"
+              }
+            ],
+            "value": "primary"
+          }
+        ]
+      },
+      {
+        "component": "boolean",
+        "name": "enableMobileDropdown",
+        "label": "Enable Mobile Dropdown",
+        "valueType": "boolean",
+        "value": true
+      },
+      {
+        "component": "text",
+        "name": "mobileDropdownTitle",
+        "label": "Mobile Dropdown Title",
+        "valueType": "string",
+        "value": "Navigation"
+      }
+    ]
+  },
+  {
     "id": "banner",
     "fields": [
       {

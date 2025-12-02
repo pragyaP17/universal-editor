@@ -13,14 +13,19 @@
   margin: 0;
 }
 
-.multi-purpose-cards .nv-teaser ul > li {
+.multi-purpose-cards h3 {
+  font-size: 18px;
+}
+
+
+.multi-purpose-cards .nv-teaser ul>li {
   position: relative;
   margin-top: 0.5em;
   margin-bottom: 0.5em;
   padding-left: 0;
 }
 
-.multi-purpose-cards .nv-teaser ul > li::before {
+.multi-purpose-cards .nv-teaser ul>li::before {
   content: ">";
   display: block;
   font-weight: 700;
@@ -38,29 +43,68 @@
   gap: 30px;
   align-items: stretch;
   flex-flow: row wrap;
-  justify-content: center;
+  justify-content: flex-start;
+}
+
+/* Secondary button */
+.multi-purpose-cards-container a.button.secondary {
+  background: transparent;
+  color: inherit;
+  padding: 0 20px 0 0;
+  /* Extra right padding */
+  font-weight: 700;
+  font-size: 16px;
+  text-decoration: none;
+  border: none;
+  margin: 0;
+  display: inline-block;
+  /* Instead of inline-flex */
+  overflow: visible;
+  /* Prevent clipping */
+  white-space: nowrap;
+  /* Prevent wrapping */
+}
+
+/* Arrow */
+.multi-purpose-cards-container a.button.secondary::after {
+  content: "\f105";
+  color: #76b900;
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  line-height: 1;
+  font-size: 0.95em;
+  display: inline-block;
+  /* Enables transform */
+  transition: transform 0.3s ease, color 0.3s ease;
+  margin-left: 8px;
+  /* adjust to your desired gap */
+}
+
+.multi-purpose-cards-container a.button.secondary:hover::after {
+  transform: translateX(4px);
+  color: black;
 }
 
 /* Desktop - 3 cards per row */
-@media (width >= 768px) {
+@media (width >=768px) {
   .multi-purpose-cards {
     flex-direction: row;
   }
 
-  .multi-purpose-cards > * {
-    flex: 1 1 calc(33.333% - 20px);
-    min-width: 320px;
-    max-width: calc(33.333% - 20px);
+  .multi-purpose-cards>* {
+    flex: 1 1 calc((100% - 60px) / 3);
+    max-width: calc((100% - 60px) / 3);
+    min-width: 0;
   }
 }
 
 /* Tablet and Mobile - 1 card per row */
-@media (width <= 767px) {
+@media (width <=767px) {
   .multi-purpose-cards {
     flex-direction: row;
   }
 
-  .multi-purpose-cards > * {
+  .multi-purpose-cards>* {
     flex: 1 1 100%;
     min-width: 280px;
     max-width: 100%;
@@ -111,8 +155,9 @@
   padding-top: 0;
 }
 
-.multi-purpose-cards .nv-teaser .cmp-teaser-pretitle + .cmp-teaser-title {
-  margin: 30px 0;
+.multi-purpose-cards .nv-teaser .cmp-teaser-pretitle+.cmp-teaser-title {
+  margin-top: 15px;
+  margin-bottom: 25px;
 }
 
 /* General Container Text */
@@ -121,7 +166,7 @@
   height: inherit;
 }
 
-.multi-purpose-cards .nv-teaser .general-container-text > div {
+.multi-purpose-cards .nv-teaser .general-container-text>div {
   display: table;
   height: inherit;
   width: 100%;
@@ -141,13 +186,10 @@
   padding-bottom: 0;
 }
 
-.multi-purpose-cards .nv-teaser .cmp-teaser-description:first-child > :first-child {
+.multi-purpose-cards .nv-teaser .cmp-teaser-description:first-child> :first-child {
   padding-top: 30px;
 }
 
-.multi-purpose-cards .nv-teaser .cmp-teaser-description:last-child > :last-child {
-  padding-bottom: 30px;
-}
 
 /* Card Shadow and Hover Effects */
 .multi-purpose-cards .nv-teaser.nv-teaser-card .cmp-teaser {
@@ -167,19 +209,19 @@
 }
 
 /* Card Content Padding */
-.multi-purpose-cards .nv-teaser.nv-teaser-card .cmp-teaser .general-container-text > div {
+.multi-purpose-cards .nv-teaser.nv-teaser-card .cmp-teaser .general-container-text>div {
   padding-left: 28px;
   padding-right: 28px;
   width: calc(100% - 56px);
 }
 
-.multi-purpose-cards .nv-teaser.nv-teaser-card .cmp-teaser .general-container-text.h-smaller > div {
+.multi-purpose-cards .nv-teaser.nv-teaser-card .cmp-teaser .general-container-text.h-smaller>div {
   padding-left: 24px;
   padding-right: 24px;
   width: calc(100% - 48px);
 }
 
-.multi-purpose-cards .nv-teaser.nv-teaser-card .cmp-teaser .general-container-text.h-smallest > div {
+.multi-purpose-cards .nv-teaser.nv-teaser-card .cmp-teaser .general-container-text.h-smallest>div {
   padding-left: 20px;
   padding-right: 20px;
   width: calc(100% - 40px);
@@ -474,27 +516,33 @@
   margin-left: 8px;
   transition: transform 0.3s ease, color 0.3s ease;
 }
-  
+
 .multi-purpose-cards .nv-teaser .nv-teaser-button .chevron {
+  content: "\f105";
   color: #76b900;
-  font-size: 1.5em;
-  font-family: inherit;
+  font-family: "Font Awesome 6 Free";
   font-weight: 900;
   line-height: 1;
+  font-size: 0.95em;
   display: inline-block;
-  margin-left: 8px;
+  /* Enables transform */
   transition: transform 0.3s ease, color 0.3s ease;
+  margin-left: 8px;
+  /* adjust to your desired gap */
 }
-  
+
 .multi-purpose-cards .nv-teaser .nv-teaser-secondary-button .chevron {
+  content: "\f105";
   color: #76b900;
-  font-size: 1.5em;
-  font-family: inherit;
+  font-family: "Font Awesome 6 Free";
   font-weight: 900;
   line-height: 1;
+  font-size: 0.95em;
   display: inline-block;
-  margin-left: 8px;
+  /* Enables transform */
   transition: transform 0.3s ease, color 0.3s ease;
+  margin-left: 8px;
+  /* adjust to your desired gap */
 }
 
 /* stylelint-enable no-descending-specificity */
@@ -519,7 +567,8 @@
 .video-modal-content .video-container {
   position: relative;
   width: 100%;
-  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  padding-bottom: 56.25%;
+  /* 16:9 aspect ratio */
   height: 0;
 }
 
@@ -581,19 +630,19 @@
 
 
 /* Responsive Styles */
-@media (1024px <= width <= 1349px) {
+@media (1024px <=width <=1349px) {
   .multi-purpose-cards .nv-teaser .cmp-teaser-action-link {
     font-size: 16px;
   }
 }
 
-@media (640px <= width <= 1023px) {
+@media (640px <=width <=1023px) {
   .multi-purpose-cards .nv-teaser .cmp-teaser-action-link {
     font-size: 16px;
   }
 }
 
-@media (width <= 639px) {
+@media (width <=639px) {
   .multi-purpose-cards .nv-teaser .cmp-teaser-action-link {
     font-size: 16px;
   }
