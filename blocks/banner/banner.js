@@ -36,7 +36,7 @@ export default function decorate(block) {
     const wrapper = pictures[0].closest('div');
     const img = pictures[0].querySelector('img');
     const prop = img?.dataset?.aueProp;
-    
+
     if (!prop) {
       // Remove any existing classes and make it show on all devices
       wrapper?.classList.remove('banner-img-desktop', 'banner-img-mobile');
