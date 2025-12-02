@@ -21,10 +21,11 @@
       "id": "agreement-header",
       "fields": [
         {
-          "component": "container",
+          "component": "list",
           "name": "secondaryButtons",
           "label": "Secondary Navigation Buttons",
           "allowMultiple": true,
+          "itemLabel": "Button",
           "fields": [
             {
               "component": "text",
@@ -40,34 +41,13 @@
             }
           ],
           "value": [
-            {
-              "text": "Introduction",
-              "link": "#intro-section"
-            },
-            {
-              "text": "Use Cases",
-              "link": "#use-cases-section"
-            },
-            {
-              "text": "Success Stories",
-              "link": "#success-stories-section"
-            },
-            {
-              "text": "Technology",
-              "link": "#technology-section"
-            },
-            {
-              "text": "Partners",
-              "link": "#partners-section"
-            },
-            {
-              "text": "Resources",
-              "link": "#resources-section"
-            },
-            {
-              "text": "Next Steps",
-              "link": "#next-steps-section"
-            }
+            { "text": "Introduction", "link": "#intro-section" },
+            { "text": "Use Cases", "link": "#use-cases-section" },
+            { "text": "Success Stories", "link": "#success-stories-section" },
+            { "text": "Technology", "link": "#technology-section" },
+            { "text": "Partners", "link": "#partners-section" },
+            { "text": "Resources", "link": "#resources-section" },
+            { "text": "Next Steps", "link": "#next-steps-section" }
           ]
         },
 
@@ -95,14 +75,8 @@
               "label": "Primary Button Style",
               "valueType": "string",
               "options": [
-                {
-                  "name": "primary",
-                  "value": "primary"
-                },
-                {
-                  "name": "secondary",
-                  "value": "secondary"
-                }
+                { "name": "primary", "value": "primary" },
+                { "name": "secondary", "value": "secondary" }
               ],
               "value": "primary"
             }

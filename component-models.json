@@ -236,10 +236,11 @@
     "id": "agreement-header",
     "fields": [
       {
-        "component": "container",
+        "component": "list",
         "name": "secondaryButtons",
         "label": "Secondary Navigation Buttons",
         "allowMultiple": true,
+        "itemLabel": "Button",
         "fields": [
           {
             "component": "text",
