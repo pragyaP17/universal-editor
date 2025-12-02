@@ -121,23 +121,125 @@
   },
   {
     "id": "section",
+    "displayName": "name",
     "fields": [
       {
         "component": "text",
         "name": "name",
         "label": "Section Name",
-        "description": "The label shown for this section in the Content Tree"
+        "description": "The label shown for this section in the Content Tree",
+        "valueType": "string"
       },
       {
         "component": "multiselect",
         "name": "style",
         "label": "Style",
+        "valueType": "string",
         "options": [
           {
-            "name": "Highlight",
-            "value": "highlight"
+            "name": "General Container",
+            "value": "general-container"
+          },
+          {
+            "name": "Background Transparent",
+            "value": "background-transparent"
+          },
+          {
+            "name": "Background Black",
+            "value": "bg-color-black"
+          },
+          {
+            "name": "Background Light",
+            "value": "bg-color-light"
+          },
+          {
+            "name": "Align Center",
+            "value": "align-center"
+          },
+          {
+            "name": "Align Left",
+            "value": "align-left"
+          },
+          {
+            "name": "Align Right",
+            "value": "align-right"
+          },
+          {
+            "name": "Align Center CTA",
+            "value": "align-center-cta"
+          },
+          {
+            "name": "Align Left CTA",
+            "value": "align-left-cta"
+          },
+          {
+            "name": "Align Right CTA",
+            "value": "align-right-cta"
+          },
+          {
+            "name": "Align Center Heading",
+            "value": "align-center-heading"
+          },
+          {
+            "name": "Align Left Heading",
+            "value": "align-left-heading"
+          },
+          {
+            "name": "Align Right Heading",
+            "value": "align-right-heading"
+          },
+          {
+            "name": "Align Centre Block Mobile",
+            "value": "align-centre-block-mobile"
+          },
+          {
+            "name": "Align Left Block Desktop",
+            "value": "align-left-block-desktop"
+          },
+          {
+            "name": "Align List Items",
+            "value": "align-list-items"
+          },
+          {
+            "name": "Padding Y 60",
+            "value": "p-y-60"
+          },
+          {
+            "name": "Padding Y 75",
+            "value": "p-y-75"
           }
         ]
+      }
+    ]
+  },
+  {
+    "id": "banner",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "text",
+        "label": "Banner Content",
+        "valueType": "string"
+      },
+      {
+        "component": "reference",
+        "name": "imageDesktop",
+        "label": "Image for Desktop",
+        "valueType": "string",
+        "multi": false
+      },
+      {
+        "component": "reference",
+        "name": "imageMobile",
+        "label": "Image for Mobile",
+        "valueType": "string",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "name": "imageAlt",
+        "label": "Alt",
+        "valueType": "string"
       }
     ]
   },
@@ -168,14 +270,42 @@
         "valueType": "number",
         "name": "columns",
         "value": "",
-        "label": "Columns"
+        "label": "No of Columns"
       },
       {
         "component": "text",
         "valueType": "number",
         "name": "rows",
         "value": "",
-        "label": "Rows"
+        "label": "No of Rows"
+      },
+      {
+        "component": "multiselect",
+        "name": "classes",
+        "label": "Layout style",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "aem-grid-6-4-desktop",
+            "value": "aem-grid-6-4-desktop"
+          },
+          {
+            "name": "aem-grid-12-mobile",
+            "value": "aem-grid-12-mobile"
+          },
+          {
+            "name": "aem-grid-6-4-tablet",
+            "value": "aem-grid-6-4-tablet"
+          },
+          {
+            "name": "aem-grid-5-6-desktop",
+            "value": "aem-grid-5-6-desktop"
+          },
+          {
+            "name": "aem-grid-6-tablet",
+            "value": "aem-grid-6-tablet"
+          }
+        ]
       }
     ]
   },
@@ -212,6 +342,350 @@
         "value": "",
         "label": "Text",
         "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "immersive-card-item",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "cardImage",
+        "label": "Card Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "cardImageAlt",
+        "label": "Card Image Alt Text"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "cardTitle",
+        "label": "Card Title"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "cardTagline",
+        "label": "Card Tagline"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "cardDescription",
+        "label": "Card Description"
+      },
+      {
+        "component": "aem-content",
+        "name": "cardCtaLink",
+        "label": "Card CTA Link"
+      },
+      {
+        "component": "text",
+        "name": "cardCtaText",
+        "label": "Card CTA Text"
+      }
+    ]
+  },
+  {
+    "id": "multi-purpose-cards",
+    "fields": []
+  },
+  {
+    "id": "linked-card-item",
+    "fields": [
+      {
+        "component": "reference",
+        "name": "image",
+        "label": "Image",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "imageAlt",
+        "label": "Image Alt Text",
+        "valueType": "string"
+      },
+      {
+        "component": "boolean",
+        "name": "isFeatured",
+        "label": "Featured Badge",
+        "valueType": "boolean"
+      },
+      {
+        "component": "text",
+        "name": "tagline",
+        "label": "Tagline",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "title",
+        "label": "Title",
+        "valueType": "string",
+        "required": true
+      },
+      {
+        "component": "richtext",
+        "name": "description",
+        "label": "Description",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "cardLink",
+        "label": "Card Link (URL)",
+        "valueType": "string",
+        "description": "Entire card is clickable"
+      }
+    ]
+  },
+  {
+    "id": "cta-card-item",
+    "fields": [
+      {
+        "component": "reference",
+        "name": "image",
+        "label": "Image",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "imageAlt",
+        "label": "Image Alt Text",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "title",
+        "label": "Title",
+        "valueType": "string",
+        "required": true
+      },
+      {
+        "component": "list",
+        "name": "bulletPoints",
+        "label": "Bullet Points",
+        "valueType": "string",
+        "description": "Repeatable list for CTA Card"
+      },
+      {
+        "component": "richtext",
+        "name": "description",
+        "label": "Description",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "ctaText",
+        "label": "CTA Button Text",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "ctaLink",
+        "label": "CTA Button Link",
+        "valueType": "string",
+        "description": "URL for CTA button"
+      }
+    ]
+  },
+  {
+    "id": "simple-linked-card-item",
+    "fields": [
+      {
+        "component": "reference",
+        "name": "image",
+        "label": "Image",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "imageAlt",
+        "label": "Image Alt Text",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "tagline",
+        "label": "Tagline",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "title",
+        "label": "Title",
+        "valueType": "string",
+        "required": true
+      },
+      {
+        "component": "richtext",
+        "name": "description",
+        "label": "Description",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "cardLink",
+        "label": "Card Link (URL)",
+        "valueType": "string",
+        "description": "Entire card is clickable"
+      }
+    ]
+  },
+  {
+    "id": "video-card-item",
+    "fields": [
+      {
+        "component": "reference",
+        "name": "image",
+        "label": "Image (Thumbnail)",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "imageAlt",
+        "label": "Image Alt Text",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "title",
+        "label": "Title",
+        "valueType": "string",
+        "required": true
+      },
+      {
+        "component": "richtext",
+        "name": "description",
+        "label": "Description",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "videoUrl",
+        "label": "Video Link (YouTube)",
+        "valueType": "string",
+        "description": "YouTube video URL for modal"
+      },
+      {
+        "component": "text",
+        "name": "ctaText",
+        "label": "CTA Button Text",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "ctaLink",
+        "label": "CTA Button Link",
+        "valueType": "string",
+        "description": "URL for CTA button"
+      }
+    ]
+  },
+  {
+    "id": "simple-cta-card-item",
+    "fields": [
+      {
+        "component": "reference",
+        "name": "image",
+        "label": "Image",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "imageAlt",
+        "label": "Image Alt Text",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "title",
+        "label": "Title",
+        "valueType": "string",
+        "required": true
+      },
+      {
+        "component": "richtext",
+        "name": "description",
+        "label": "Description",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "ctaText",
+        "label": "CTA Button Text",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "ctaLink",
+        "label": "CTA Button Link",
+        "valueType": "string",
+        "description": "URL for CTA button"
+      }
+    ]
+  },
+  {
+    "id": "tab",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "value": "",
+        "label": "Tab Title",
+        "description": "The title displayed on the tab.",
+        "required": true
+      },
+      {
+        "component": "aem-content",
+        "name": "reference",
+        "label": "Tab Content Reference"
+      }
+    ]
+  },
+  {
+    "id": "video-banner",
+    "fields": [
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "breadcrumb",
+        "value": false,
+        "label": "Show Breadcrumb",
+        "description": "Enable to display breadcrumb navigation above the video banner."
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "value": "",
+        "label": "Title",
+        "description": "Sets the main title of the video banner.",
+        "required": true
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "videoSrcDesktop",
+        "value": "",
+        "label": "Video Source Desktop (MP4)",
+        "description": "Enter the MP4 video URL for desktop (e.g., https://example.com/video-desktop.mp4).",
+        "required": true
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "videoSrcMobile",
+        "value": "",
+        "label": "Video Source Mobile (MP4)",
+        "description": "Enter the MP4 video URL for mobile and tablet (e.g., https://example.com/video-mobile.mp4).",
+        "required": true
       }
     ]
   }

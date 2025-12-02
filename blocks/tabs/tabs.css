@@ -1,0 +1,200 @@
+/* stylelint-disable selector-class-pattern */
+
+/* Tabs Container */
+.tabs {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Tab Content Container - Appears First */
+.nv-tabs__content {
+  width: 100%;
+  margin: 0 auto 30px;
+}
+
+/* Tabs Navigation Container - Appears After Content */
+.nv-tabs__container {
+  position: relative;
+  width: 100%;
+  margin: 0 auto 30px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+}
+
+/* Tab List */
+.nv-tabs__tablist {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nv-tabs__tablist.align-center {
+  justify-content: center;
+}
+
+/* Individual Tab */
+.cmp-tabs__tab {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 14px;
+  cursor: pointer;
+  font-family: 'NVIDIA Sans', NVIDIA, sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.25;
+  color: rgb(0 0 0 / 60%);
+  transition: color 0.3s ease;
+  user-select: none;
+  white-space: nowrap;
+  box-sizing: border-box;
+  margin: 0;
+  outline-style: none;
+  border-bottom: 1px solid rgb(204 204 204);
+}
+
+.cmp-tabs__tab:hover {
+  color: rgb(0 0 0 / 80%);
+}
+
+.cmp-tabs__tab.nv-tabs__tab--active {
+  color: rgb(0 0 0 / 100%);
+}
+
+.cmp-tabs__tab div,
+.cmp-tabs__tab h2,
+.cmp-tabs__tab h3,
+.cmp-tabs__tab h4,
+.cmp-tabs__tab h5,
+.cmp-tabs__tab h6 {
+  color: inherit;
+  font-weight: 700;
+  line-height: 1.25;
+  pointer-events: none;
+}
+
+/* Slider Line */
+.nv-tabs__line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  background: rgb(118 185 0);
+  cursor: grab;
+  z-index: 2;
+}
+
+.nv-tabs__line:active {
+  cursor: grabbing;
+}
+
+.nv-tabs__line.nv-tabs__trans--enabled {
+  transition: 0.5s;
+}
+
+/* Tab Panels */
+.cmp-tabs__tabpanel {
+  display: block;
+  width: 100%;
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: opacity 0.8s ease-in-out;
+}
+
+.cmp-tabs__tabpanel.cmp-tabs__tabpanel--active {
+  height: auto;
+  opacity: 1;
+  overflow: visible;
+}
+
+/* Container Max Widths */
+@media (width <= 639px) {
+  .cmp-tabs__tab div,
+  .cmp-tabs__tab h2,
+  .cmp-tabs__tab h3,
+  .cmp-tabs__tab h4,
+  .cmp-tabs__tab h5,
+  .cmp-tabs__tab h6 {
+    font-size: 14px;
+  }
+
+  .nv-tabs__container,
+  .nv-tabs__content {
+    max-width: calc(100vw - 45px);
+  }
+}
+
+@media (640px <= width <= 1023px) {
+  .cmp-tabs__tab div,
+  .cmp-tabs__tab h2,
+  .cmp-tabs__tab h3,
+  .cmp-tabs__tab h4,
+  .cmp-tabs__tab h5,
+  .cmp-tabs__tab h6 {
+    font-size: 14px;
+  }
+
+  .nv-tabs__container,
+  .nv-tabs__content {
+    max-width: 630px;
+  }
+}
+
+@media (1024px <= width <= 1349px) {
+  .cmp-tabs__tab div,
+  .cmp-tabs__tab h2,
+  .cmp-tabs__tab h3,
+  .cmp-tabs__tab h4,
+  .cmp-tabs__tab h5,
+  .cmp-tabs__tab h6 {
+    font-size: 16px;
+  }
+
+  .nv-tabs__container,
+  .nv-tabs__content {
+    max-width: 954px;
+  }
+}
+
+@media (width >= 1350px) {
+  .cmp-tabs__tab div,
+  .cmp-tabs__tab h2,
+  .cmp-tabs__tab h3,
+  .cmp-tabs__tab h4,
+  .cmp-tabs__tab h5,
+  .cmp-tabs__tab h6 {
+    font-size: 18px;
+  }
+
+  .nv-tabs__container,
+  .nv-tabs__content {
+    max-width: 1290px;
+  }
+}
+
+/* Ensure fragment content displays properly */
+.cmp-tabs__tabpanel > div {
+  width: 100%;
+}
+
+/* Loading state */
+.cmp-tabs__tabpanel.loading {
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cmp-tabs__tabpanel.loading::after {
+  content: 'Loading...';
+  font-family: 'NVIDIA Sans', sans-serif;
+  font-size: 16px;
+  color: rgb(0 0 0 / 60%);
+}

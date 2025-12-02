@@ -24,7 +24,9 @@
               "page": {
                 "resourceType": "core/franklin/components/title/v1/title",
                 "template": {
-                  "model": "title"
+                  "model": "title",
+                  "titleType": "h3",
+                  "classes": "font-size-small"
                 }
               }
             }
@@ -82,6 +84,21 @@
       "title": "Blocks",
       "id": "blocks",
       "components": [
+        {
+          "title": "Banner",
+          "id": "banner",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Banner",
+                  "model": "banner"
+                }
+              }
+            }
+          }
+        },
         {
           "title": "Cards",
           "id": "cards",
@@ -152,6 +169,171 @@
                 "template": {
                   "name": "Hero",
                   "model": "hero"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Immersive Cards",
+          "id": "immersive-cards",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Immersive Cards",
+                  "filter": "immersive-cards"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Immersive Card Item",
+          "id": "immersive-card-item",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Immersive Card Item",
+                  "model": "immersive-card-item"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Multi-Purpose Cards",
+          "id": "multi-purpose-cards",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Multi-Purpose Cards",
+                  "filter": "multi-purpose-cards"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Linked Card Item",
+          "id": "linked-card-item",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Linked Card Item",
+                  "model": "linked-card-item"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "CTA Card Item",
+          "id": "cta-card-item",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "CTA Card Item",
+                  "model": "cta-card-item"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Simple Linked Card Item",
+          "id": "simple-linked-card-item",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Simple Linked Card Item",
+                  "model": "simple-linked-card-item"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Video Card Item",
+          "id": "video-card-item",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Video Card Item",
+                  "model": "video-card-item"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Simple CTA Card Item",
+          "id": "simple-cta-card-item",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Simple CTA Card Item",
+                  "model": "simple-cta-card-item"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Tabs",
+          "id": "tabs",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Tabs",
+                  "filter": "tabs"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Tab",
+          "id": "tab",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Tab",
+                  "model": "tab"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Video Banner",
+          "id": "video-banner",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Video Banner",
+                  "model": "video-banner"
                 }
               }
             }

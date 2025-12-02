@@ -1,0 +1,62 @@
+{
+  "definitions": [
+    {
+      "title": "Video Banner",
+      "id": "video-banner",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Video Banner",
+              "model": "video-banner"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "video-banner",
+      "fields": [
+        {
+          "component": "boolean",
+          "valueType": "boolean",
+          "name": "breadcrumb",
+          "value": false,
+          "label": "Show Breadcrumb",
+          "description": "Enable to display breadcrumb navigation above the video banner."
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "title",
+          "value": "",
+          "label": "Title",
+          "description": "Sets the main title of the video banner.",
+          "required": true
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "videoSrcDesktop",
+          "value": "",
+          "label": "Video Source Desktop (MP4)",
+          "description": "Enter the MP4 video URL for desktop (e.g., https://example.com/video-desktop.mp4).",
+          "required": true
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "videoSrcMobile",
+          "value": "",
+          "label": "Video Source Mobile (MP4)",
+          "description": "Enter the MP4 video URL for mobile and tablet (e.g., https://example.com/video-mobile.mp4).",
+          "required": true
+        }
+      ]
+    }
+  ],
+  "filters": []
+}

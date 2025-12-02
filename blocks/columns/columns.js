@@ -1,4 +1,11 @@
-export default function decorate(block) {
+export default async function decorate(block) {
+  const layout = block.dataset.layoutStyle;
+  if (layout) {
+    layout
+      .split(/\s+/)
+      .filter(Boolean)
+      .forEach((cls) => block.classList.add(cls));
+  }
   const cols = [...block.firstElementChild.children];
   block.classList.add(`columns-${cols.length}-cols`);
 
