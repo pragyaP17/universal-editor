@@ -24,8 +24,8 @@
           "component": "list",
           "name": "secondaryButtons",
           "label": "Secondary Navigation Buttons",
-          "allowMultiple": true,
           "multi": true,
+          "allowMultiple": true,
           "itemLabel": "Button",
           "fields": [
             {
@@ -40,15 +40,6 @@
               "label": "Button Link",
               "valueType": "string"
             }
-          ],
-          "value": [
-            { "text": "Introduction", "link": "#intro-section" },
-            { "text": "Use Cases", "link": "#use-cases-section" },
-            { "text": "Success Stories", "link": "#success-stories-section" },
-            { "text": "Technology", "link": "#technology-section" },
-            { "text": "Partners", "link": "#partners-section" },
-            { "text": "Resources", "link": "#resources-section" },
-            { "text": "Next Steps", "link": "#next-steps-section" }
           ]
         },
 
