@@ -35,21 +35,7 @@
   "models": [
     {
       "id": "agreement-header",
-      "fields": [
-        {
-          "component": "text",
-          "name": "title",
-          "label": "Header Title",
-          "valueType": "string",
-          "value": "Agreement Header"
-        },
-        {
-          "component": "text",
-          "name": "description",
-          "label": "Header Description",
-          "valueType": "string"
-        }
-      ]
+      "fields": []
     },
     {
       "id": "button-item",
