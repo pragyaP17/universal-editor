@@ -100,14 +100,14 @@
           }
         },
         {
-          "title": "Button",
+          "title": "Button Item",
           "id": "button-item",
           "plugins": {
             "xwalk": {
               "page": {
                 "resourceType": "core/franklin/components/block/v1/block/item",
                 "template": {
-                  "name": "Button",
+                  "name": "Button Item",
                   "model": "button-item"
                 }
               }
