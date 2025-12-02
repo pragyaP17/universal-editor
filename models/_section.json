@@ -31,7 +31,7 @@
           "component": "multiselect",
           "name": "style",
           "label": "Style",
-          "valueType": "string",          
+          "valueType": "string",
           "options": [
             {
               "name": "General Container",

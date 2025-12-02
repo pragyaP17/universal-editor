@@ -43,26 +43,6 @@
     "id": "title",
     "fields": [
       {
-        "component": "select",
-        "name": "classes",
-        "label": "Font Size",
-        "valueType": "string",
-        "options": [
-          {
-            "name": "Large",
-            "value": "font-size-large"
-          },
-          {
-            "name": "Medium",
-            "value": "font-size-medium"
-          },
-          {
-            "name": "Small",
-            "value": "font-size-small"
-          }
-        ]
-      },
-      {
         "component": "text",
         "name": "title",
         "label": "Title"
