@@ -111,6 +111,7 @@
 .cmp-tabs__tabpanel.cmp-tabs__tabpanel--active {
   height: auto;
   opacity: 1;
+  overflow: visible;
 }
 
 /* Container Max Widths */
