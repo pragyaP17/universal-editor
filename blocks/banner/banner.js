@@ -20,14 +20,12 @@ export default function decorate(block) {
       wrapper?.classList.add('banner-img-desktop');
     } else if (prop === 'imageMobile') {
       wrapper?.classList.add('banner-img-mobile');
-    } else {
+    } else if (index === 0) {
       // If no data-aue-prop, assign based on order
       // First image = desktop, second image = mobile
-      if (index === 0) {
-        wrapper?.classList.add('banner-img-desktop');
-      } else if (index === 1) {
-        wrapper?.classList.add('banner-img-mobile');
-      }
+      wrapper?.classList.add('banner-img-desktop');
+    } else if (index === 1) {
+      wrapper?.classList.add('banner-img-mobile');
     }
   });
 
