@@ -25,6 +25,7 @@
           "name": "secondaryButtons",
           "label": "Secondary Navigation Buttons",
           "allowMultiple": true,
+          "multi": true,
           "itemLabel": "Button",
           "fields": [
             {
@@ -90,6 +91,7 @@
           "valueType": "boolean",
           "value": true
         },
+
         {
           "component": "text",
           "name": "mobileDropdownTitle",

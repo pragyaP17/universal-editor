@@ -240,6 +240,7 @@
         "name": "secondaryButtons",
         "label": "Secondary Navigation Buttons",
         "allowMultiple": true,
+        "multi": true,
         "itemLabel": "Button",
         "fields": [
           {
