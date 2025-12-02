@@ -7,6 +7,10 @@
   margin: 0 auto;
 }
 
+.tabs .multi-purpose-cards {
+  justify-content: center;
+}
+
 /* Tab Content Container - Appears First */
 .nv-tabs__content {
   width: 100%;
