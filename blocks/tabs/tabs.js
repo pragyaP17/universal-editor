@@ -209,10 +209,13 @@ export default async function decorate(block) {
   block.appendChild(tabsContainer);
   block.appendChild(tabPanelsContainer);
 
-  // Position slider line on the active tab
+  // Position slider line on the active tab after DOM is rendered
   const activeTab = tabList.querySelector('.nv-tabs__tab--active');
   if (activeTab) {
-    updateSliderPosition(sliderLine, activeTab);
+    // Use requestAnimationFrame to ensure DOM is fully rendered
+    requestAnimationFrame(() => {
+      updateSliderPosition(sliderLine, activeTab);
+    });
   }
 
   // Add click event listeners to tabs
