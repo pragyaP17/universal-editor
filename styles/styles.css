@@ -298,7 +298,7 @@ main>.section:first-of-type {
 }
 
 .section.p-y-75 {
-  padding-bottom: 75px;
+  padding-block: 75px;
   margin: 0;
 }
 
