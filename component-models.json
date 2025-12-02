@@ -233,67 +233,6 @@
     ]
   },
   {
-    "id": "agreement-header",
-    "fields": []
-  },
-  {
-    "id": "button-item",
-    "fields": [
-      {
-        "component": "text",
-        "name": "buttonText",
-        "label": "Button Text",
-        "valueType": "string",
-        "required": true
-      },
-      {
-        "component": "text",
-        "name": "buttonLink",
-        "label": "Button Link",
-        "valueType": "string",
-        "required": true
-      },
-      {
-        "component": "select",
-        "name": "buttonStyle",
-        "label": "Button Style",
-        "valueType": "string",
-        "value": "primary",
-        "options": [
-          {
-            "name": "Primary",
-            "value": "primary"
-          },
-          {
-            "name": "Secondary",
-            "value": "secondary"
-          }
-        ]
-      },
-      {
-        "component": "boolean",
-        "name": "enableDropdown",
-        "label": "Enable Mobile Dropdown",
-        "valueType": "boolean",
-        "value": false
-      },
-      {
-        "component": "text",
-        "name": "dropdownTitle",
-        "label": "Mobile Dropdown Title",
-        "valueType": "string",
-        "condition": {
-          "===": [
-            {
-              "var": "enableDropdown"
-            },
-            true
-          ]
-        }
-      }
-    ]
-  },
-  {
     "id": "banner",
     "fields": [
       {

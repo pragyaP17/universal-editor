@@ -17,13 +17,11 @@
       "columns",
       "fragment",
       "banner",
-      "agreement-header"
-    ]
-  },
-  {
-    "id": "agreement-header",
-    "components": [
-      "button-item"
+      "agreement-header",
+      "video-banner",
+      "multi-purpose-cards",
+      "immersive-cards",
+      "tabs"
     ]
   },
   {
