@@ -501,30 +501,21 @@
     ]
   },
   {
-    "id": "tabs",
+    "id": "tab",
     "fields": [
       {
-        "component": "container",
-        "name": "tabs",
-        "label": "Tab Items",
+        "component": "text",
         "valueType": "string",
-        "multi": true,
-        "fields": [
-          {
-            "component": "text",
-            "valueType": "string",
-            "name": "title",
-            "value": "",
-            "label": "Tab Title",
-            "description": "The title displayed on the tab.",
-            "required": true
-          },
-          {
-            "component": "aem-content",
-            "name": "reference",
-            "label": "Tab Content Reference"
-          }
-        ]
+        "name": "title",
+        "value": "",
+        "label": "Tab Title",
+        "description": "The title displayed on the tab.",
+        "required": true
+      },
+      {
+        "component": "aem-content",
+        "name": "reference",
+        "label": "Tab Content Reference"
       }
     ]
   },

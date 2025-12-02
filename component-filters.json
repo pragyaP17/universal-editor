@@ -58,5 +58,11 @@
       "video-card-item",
       "simple-cta-card-item"
     ]
+  },
+  {
+    "id": "tabs",
+    "components": [
+      "tab"
+    ]
   }
 ]
