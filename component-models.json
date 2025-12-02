@@ -501,6 +501,38 @@
     ]
   },
   {
+    "id": "tabs",
+    "fields": [
+      {
+        "component": "container",
+        "name": "tabs",
+        "label": "Tab Items",
+        "valueType": "string",
+        "multi": true,
+        "fields": [
+          {
+            "component": "text",
+            "valueType": "string",
+            "name": "title",
+            "value": "",
+            "label": "Tab Title",
+            "description": "The title displayed on the tab.",
+            "required": true
+          },
+          {
+            "component": "reference",
+            "valueType": "string",
+            "name": "reference",
+            "value": "",
+            "label": "Tab Content Reference",
+            "description": "Reference to the content fragment for this tab.",
+            "required": true
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "video-banner",
     "fields": [
       {
