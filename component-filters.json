@@ -21,6 +21,12 @@
     ]
   },
   {
+    "id": "agreement-header",
+    "components": [
+      "secondary-button"
+    ]
+  },
+  {
     "id": "cards",
     "components": [
       "card"

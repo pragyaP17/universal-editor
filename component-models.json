@@ -236,26 +236,6 @@
     "id": "agreement-header",
     "fields": [
       {
-        "component": "multifield",
-        "name": "secondaryButtons",
-        "label": "Secondary Navigation Buttons",
-        "valueType": "string",
-        "fields": [
-          {
-            "component": "text",
-            "name": "text",
-            "label": "Button Text",
-            "valueType": "string"
-          },
-          {
-            "component": "text",
-            "name": "link",
-            "label": "Button Link",
-            "valueType": "string"
-          }
-        ]
-      },
-      {
         "component": "text",
         "name": "primaryButtonText",
         "label": "Primary Button Text",
@@ -298,6 +278,23 @@
         "label": "Mobile Dropdown Title",
         "valueType": "string",
         "value": "Navigation"
+      }
+    ]
+  },
+  {
+    "id": "secondary-button",
+    "fields": [
+      {
+        "component": "text",
+        "name": "text",
+        "label": "Button Text",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "link",
+        "label": "Button Link",
+        "valueType": "string"
       }
     ]
   },
