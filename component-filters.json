@@ -32,6 +32,12 @@
     ]
   },
   {
+    "id": "carousel-banner",
+    "components": [
+      "carousel-banner-slide"
+    ]
+  },
+  {
     "id": "carousel",
     "components": [
       "carousel-info",
