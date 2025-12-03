@@ -1,3 +1,4 @@
+/*
 footer {
   background-color: var(--light-color);
   font-size: var(--body-font-size-xs);
@@ -17,4 +18,495 @@ footer .footer p {
   footer .footer > div {
     padding: 40px 32px 24px;
   }
+}
+*/
+/*New footer changes*/
+footer {
+  font-size: var(--body-font-size-xs);*/
+  font-family:var(--body-font-family);
+}
+/*
+footer .footer > div {
+  margin: auto;
+  max-width: 1200px;
+  padding: 40px 24px 24px;
+}
+
+footer .footer p {
+  margin: 0;
+}*/
+/*====================New Footer Changes ========================*/
+/*
+page-footer-wrapper = footer-wrapper
+page-footer = footer block
+*/
+.footer-wrapper {
+background-color: var(--footer-background-color);
+}
+footer.footer-wrapper > div.footer.block > div > div.section.columns-container:nth-child(1) {
+   padding: 60px 30px;
+    font-size: 0;
+    line-height: 0;
+    width: 100%;
+}
+/*
+footer.footer-wrapper > div.footer.block > div > div.section.columns-container {
+   padding: 60px 30px;
+    font-size: 0;
+    line-height: 0;
+    width: 100%;
+}
+*/
+
+footer.footer-wrapper > div.footer.block > div > div.section.columns-container:nth-child(1) > div
+.columns-wrapper > div.columns.block.columns-3-cols > div > div:nth-child(1) {
+  padding-right: 20px;
+}
+footer.footer-wrapper > div.footer.block > div > div.section.columns-container:nth-child(1) > div
+.columns-wrapper > div.columns.block.columns-3-cols > div > div:nth-child(2) {
+  padding-left: 10px;
+     padding-right: 10px;
+}
+footer.footer-wrapper > div.footer.block > div > div.section.columns-container:nth-child(1) > div
+.columns-wrapper > div.columns.block.columns-3-cols > div > div:nth-child(3) {
+   padding-left: 20px;
+}
+
+.footer ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.footer h3 {
+    border-bottom: 1px solid #747474;
+    color: #eee;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 26px;
+    padding-bottom: 9pt;
+    text-align: left;
+    text-transform: none;
+    font-family: var(--heading-font-family);
+}
+
+/*footer list items a */
+.footer ul li a {
+ font-size: 1pc;
+ line-height: 30px;
+  color: #76b900;
+  text-decoration: none;
+}
+footer.footer-wrapper > div.footer.block > div > div.section.columns-container:nth-child(1) >
+div.columns-wrapper > div.columns.block.columns-3-cols > li > a{
+    color: #76b900;
+    font-size: 1pc;
+    line-height: 30px;
+    text-decoration: none;
+}
+footer.footer-wrapper > div.footer.block > div > div.section.columns-container:nth-child(1) >
+div.columns-wrapper > div.columns.block.columns-3-cols > li{
+    display: block;
+    margin-bottom: 5px;
+    margin-right: 25px;
+}
+
+
+
+/*=========Footer Subscribe ===============*/
+footer.footer-wrapper
+  .section.columns-container:nth-of-type(2)
+  .columns-wrapper:nth-of-type(1) {
+
+        width: 100%;
+        height: 50px;
+        margin: 0 auto;
+        display: inline-block;
+        text-align: center;
+}
+
+
+/* Use flex to align text + button side by side and center them */
+footer .section.columns-container:nth-of-type(2) .columns.block.columns-1-cols > div > div > p:first-child:contains('Sign Up for NVIDIA News'),
+ footer .section.columns-container:nth-of-type(2) .columns.block.columns-1-cols > div > div > p:first {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px; /* space between text and button */
+}
+
+/* Style for text section */
+footer .section.columns-container:nth-of-type(2) .columns-wrapper:nth-of-type(1) .columns.block.columns-1-cols p {
+  display: inline-flex;
+  align-items: center;
+  font-size: 18px;
+  color: white;
+  margin: 0;
+}
+
+/* Adjust logo spacing */
+footer .section.columns-container:nth-of-type(2) .columns-wrapper:nth-of-type(1) .columns.block.columns-1-cols p span.icon {
+  float: left;
+      display: inline-block;
+      width: 50px;
+      position: relative;
+      top: 7px;
+}
+
+footer .section.columns-container:nth-of-type(2) .columns-wrapper:nth-of-type(1) .columns.block.columns-1-cols p img {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+}
+
+/* Subscribe button styles */
+footer .section.columns-container:nth-of-type(2) .columns.block.columns-1-cols .button-container .button {
+  display: inline-block;
+  font-size: 16px;
+  background-color: #91c733;
+  border: none;
+  color: #000;
+  cursor: pointer;
+  font-weight: 700;
+  line-height: 1.50em;
+  padding: 10px 12px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 0px;
+  transition: background-color 0.2s ease-out;
+  white-space: nowrap;
+  margin-left: 30px;
+}
+
+/* Hover effect */
+footer .section.columns-container:nth-of-type(2) .columns.block.columns-1-cols .button-container .button:hover {
+  background-color: #76b900;
+}
+
+/*=============Footer Social =================== */
+
+footer.footer-wrapper
+  .section.columns-container:nth-of-type(2)
+  .columns-wrapper:nth-of-type(2) {
+   color: #747474;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      justify-content: end;
+      text-align: right;
+      width: 100%;
+      padding-bottom:20px;
+}
+
+
+footer.footer-wrapper
+  .section.columns-container:nth-of-type(2)
+  .columns-wrapper:nth-of-type(2)
+  .columns.block.columns-1-cols > div > div {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* center everything horizontally */
+  gap: 10px; /* space between text and icons */
+}
+
+footer.footer-wrapper
+  .section.columns-container:nth-of-type(2)
+  .columns-wrapper:nth-of-type(2)
+  p:first-child {
+  margin-right: 30px;
+  padding-top: 2px;
+  color: #747474; /* keep existing gray tone */
+      display: inline-block;
+      font-size: 1pc;
+      vertical-align: top;
+
+}
+
+footer.footer-wrapper
+  .section.columns-container:nth-of-type(2)
+  .columns-wrapper:nth-of-type(2)
+  p a {
+  display: inline-block;
+  height: 24px;
+      margin-right: 15px;
+      text-decoration: none;
+      width: auto;
+}
+
+/*===========Footer Global=================*/
+footer .section:nth-of-type(3){
+    background-color: #fff;
+    width: 100%;
+}
+
+
+footer .section > .default-content-wrapper {
+        background: #fff;
+       width: 100%;
+        padding: 30px;
+            margin: 0 auto;
+            max-width: 1290px;
+}
+
+footer .default-content-wrapper> h1 > span {
+    display: block;
+    float: left;
+    height: 20px;
+    margin: 0 auto 15px;
+    width: 110px;
+}
+
+
+footer .section > .default-content-wrapper > p{
+    clear: both;
+    list-style-type: none;
+    margin: 0 0 4px;
+    padding: 0;
+}
+
+
+
+footer .section > .default-content-wrapper > p > a{
+    color: #666;
+    display: inline-block;
+    font-size: 1pc;
+    line-height: 24px;
+    text-decoration: none;
+    font-family: var(--body-font-family);
+
+        margin-right: 5px;
+        padding-right: 10px;
+        position: relative;
+}
+/*Copyright text */
+footer .section .default-content-wrapper p:last-of-type {
+    clear: both;
+    color: #666;
+    font-size: 9pt;
+    line-height: 1pc;
+}
+
+
+/************ === Mobile view (less than 600px) === ****************/
+@media screen and (max-width: 599px) {
+  /* === Footer Columns (Company Info, News, Popular Links) === */
+footer.footer-wrapper > div.footer.block > div > div.section.columns-container:nth-child(1) {
+    text-align: center;
+    padding: 0 15px;
+    margin-top: 10px;
+  }
+
+  /* Center all headers (h3) */
+  footer.footer-wrapper
+    .section.columns-container:nth-of-type(1)
+    .columns.block.columns-3-cols
+    > div > div h3 {
+    text-align: center;
+    font-size: 1pc;
+    line-height: 30px;
+  }
+
+  /* Display all <ul> list items in a row */
+  footer.footer-wrapper
+    .section.columns-container:nth-of-type(1)
+    .columns.block.columns-3-cols
+    > div > div ul {
+            margin-bottom: 30px;
+            padding: 0 15px;
+            text-align: left;
+  }
+
+  footer.footer-wrapper
+    .section.columns-container:nth-of-type(1)
+    .columns.block.columns-3-cols
+    > div > div ul li {
+     display: inline-block;
+     margin-bottom: 15px;
+     margin-right: 25px;
+        }
+
+
+ /* === Sign Up Section === */
+  footer.footer-wrapper
+    .section.columns-container:nth-of-type(2)
+    .columns-wrapper:nth-of-type(1)
+    .columns.block.columns-1-cols > div > div {
+    display: flex;
+    flex-direction: column; /* stack items vertically */
+    align-items: center;    /* center horizontally */
+    text-align: center;
+    gap: 10px;              /* spacing between logo, text, button */
+  }
+
+  /* Logo */
+  footer.footer-wrapper
+    .section.columns-container:nth-of-type(2)
+    .columns-wrapper:nth-of-type(1)
+    .columns.block.columns-1-cols p span.icon img {
+    margin: 0 auto;
+    display: block;
+    width: 40px;  /* adjust size as needed */
+    height: 40px;
+  }
+
+  /* Text below logo */
+  footer.footer-wrapper
+    .section.columns-container:nth-of-type(2)
+    .columns-wrapper:nth-of-type(1)
+    .columns.block.columns-1-cols p:first-of-type {
+    margin: 0;
+    font-size: 16px;
+    color: #fff; /* or keep your original color */
+  }
+
+  /* Subscribe button below text */
+  footer.footer-wrapper
+    .section.columns-container:nth-of-type(2)
+    .columns-wrapper:nth-of-type(1)
+    .columns.block.columns-1-cols .button-container .button {
+    margin: 0 auto;
+    display: block;
+  }
+
+
+  /* === Follow NVIDIA Section → Center aligned === */
+footer.footer-wrapper .section.columns-container:nth-of-type(2) .columns-wrapper:nth-of-type(2){
+display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 8px;
+  }
+
+ /* footer.footer-wrapper
+    .section.columns-container:nth-of-type(2)
+    .columns-wrapper:nth-of-type(2)
+    .columns.block.columns-1-cols p:first-child {
+            display: block;
+            float: none;
+            height: auto;
+            margin-bottom: 15px;
+            margin-right: 0;
+            text-align: center;
+            width: 100%;
+            color: #747474;
+  }*/
+
+ footer.footer-wrapper
+    .section.columns-container:nth-of-type(2)
+    .columns-wrapper:nth-of-type(2)
+    .columns.block.columns-1-cols > div > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  margin-top: 50px;
+  }
+
+  footer.footer-wrapper
+    .section.columns-container:nth-of-type(2)
+    .columns-wrapper:nth-of-type(2)
+    p:first-child {
+            display: block;
+            float: none;
+            height: auto;
+            /*margin-bottom: 15px;*/
+            margin-right: 0px;
+            text-align: center;
+            width: 100%;
+  }
+
+  /* === Global footer (logo + links + copyright) === */
+  footer.footer-wrapper
+    .section:last-of-type .default-content-wrapper {
+    text-align: center;
+    padding: 15px;
+  }
+
+  footer.footer-wrapper
+    .default-content-wrapper .icon.icon-logo img {
+    margin: 0 auto 10px;
+    display: block;
+    float: none;
+  }
+
+  /* Links (Privacy Policy etc.) → in a row, centered */
+  footer.footer-wrapper
+    .default-content-wrapper p:first-of-type {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Copyright line centered below */
+  footer.footer-wrapper
+    .default-content-wrapper p:last-of-type {
+    text-align: center;
+    margin-top: 10px;
+  }
+}
+
+/************ === Tablet view (greater than 599px and less than 900) === ****************/
+/*@media screen and (min-width: 600px) and (max-width: 899px)*/
+@media screen and (min-width: 600px) and (max-width: 1000px){
+
+.section.columns-container{
+max-width: 80%;
+margin: 0 auto;
+}
+
+  .columns.block.columns-3-cols > div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* space between columns */
+  }
+
+  /* First two columns: 50% width (side by side) */
+  .columns.block.columns-3-cols > div > div:nth-child(1),
+  .columns.block.columns-3-cols > div > div:nth-child(2) {
+    flex: 1 1 calc(50% - 10px);
+    box-sizing: border-box;
+  }
+
+  /* Third column: full width on next row */
+  .columns.block.columns-3-cols > div > div:nth-child(3) {
+    flex: 1 1 100%;
+    box-sizing: border-box;
+  }
+
+  /* Optional cleanup */
+  .columns.block.columns-3-cols > div > div h3 {
+    margin-bottom: 10px;
+  }
+
+  .columns.block.columns-3-cols > div > div ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  /*Subscribe button and Text*/
+footer.footer-wrapper
+    .section.columns-container:nth-of-type(2)
+    .columns-wrapper:nth-of-type(1)
+    .columns.block.columns-1-cols > div > div {
+  margin: 0 auto;
+          width: fit-content;
+  }
+
+    /* === Follow NVIDIA Section → Center aligned === */
+  footer.footer-wrapper .section.columns-container:nth-of-type(2) .columns-wrapper:nth-of-type(2){
+ -webkit-box-pack: center;
+         -ms-flex-pack: center;
+         float: none;
+         justify-content: center;
+         text-align: center;
+         width: 100%;
+         padding-top: 30px;
+    }
 }

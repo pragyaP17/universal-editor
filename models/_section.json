@@ -37,6 +37,18 @@
             {
               "name": "GTC Text",
               "value": "gtcText"
+            },
+            {
+              "name": "Page Footer Links",
+              "value": "page-footer-links"
+            },
+            {
+              "name": "Global Footer Container",
+              "value": "global-footer-container"
+            },
+            {
+              "name": "Page Footer Subscribe",
+              "value": "page-footer-subscribe"
             }
           ]
         }
