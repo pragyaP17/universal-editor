@@ -1,0 +1,263 @@
+/* Video Banner Block */
+.video-banner {
+  width: 100%;
+  position: relative;
+}
+
+main > .section:has(.video-banner) > div { 
+    padding: 0;
+    margin: 0;
+    max-width: unset;
+}
+
+.video-banner-container {
+  width: 100%;
+  position: relative;
+}
+
+/* Breadcrumb Styles */
+.video-banner-breadcrumb {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 3;
+  padding: 0;
+}
+
+.breadcrumb-nav {
+  margin: 0 auto;
+  padding: 0;
+  width: 100%;
+}
+
+.breadcrumb-list {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 30px 0 0;
+  padding: 0 15px;
+  gap: 0;
+}
+
+.breadcrumb-item {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 500;
+  margin-right: 0.4em;
+  color: #000;
+}
+
+.breadcrumb-item span {
+  opacity: 0.6;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.breadcrumb-item:not(:last-child)::after {
+  content: '/';
+  margin-left: 0.3em;
+  opacity: 0.6;
+}
+
+.breadcrumb-item:last-child::after {
+  display: none;
+}
+
+.breadcrumb-item a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.breadcrumb-item:hover span {
+  opacity: 1;
+}
+
+.breadcrumb-item.active span {
+  opacity: 0.6;
+}
+
+/* Video Banner Wrapper */
+.video-banner-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 460px;
+  max-height: 460px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Video Background */
+.video-banner-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.video-banner-video {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.video-banner-video-mobile {
+  display: none;
+}
+
+.video-banner-video-desktop {
+  display: block;
+}
+
+@media (width <= 1023px) {
+  .video-banner-video-desktop {
+    display: none;
+  }
+
+  .video-banner-video-mobile {
+    display: block;
+  }
+}
+
+/* Content Overlay */
+.video-banner-content {
+  position: relative;
+  z-index: 2;
+  color: #fff;
+  text-align: left;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0;
+}
+
+.video-banner-title {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.25em;
+  margin: 0;
+  padding: 8px 15px;
+  max-width: 600px;
+  font-family: "NVIDIA Sans", sans-serif;
+  color: #000;
+}
+
+/* Large Desktop */
+@media (width >= 1350px) {
+  .video-banner-wrapper {
+    min-height: 460px;
+    max-height: 460px;
+  }
+
+  .video-banner-content {
+    max-width: 1320px;
+  }
+
+  .video-banner-title {
+    font-size: 48px;
+    max-width: 500px;
+  }
+
+  .breadcrumb-nav {
+    max-width: 1320px;
+  }
+}
+
+/* Medium Desktop */
+@media (1024px <= width <= 1349px) {
+  .video-banner-wrapper {
+    min-height: 460px;
+    max-height: 460px;
+  }
+
+  .video-banner-content {
+    max-width: 984px;
+    margin-right: 200px;
+  }
+
+  .video-banner-title {
+    font-size: 48px;
+    max-width: 300px;
+  }
+
+  .breadcrumb-nav {
+    max-width: 984px;
+  }
+
+  .breadcrumb-list {
+    margin-left: -20px;
+  }
+}
+
+/* Tablet Styles */
+@media (640px <= width <= 1023px) {
+  .video-banner-wrapper {
+    min-height: 420px;
+    max-height: 420px;
+  }
+
+  .video-banner-content {
+    max-width: 660px;
+  }
+
+  .video-banner-title {
+    font-size: 32px;
+    max-width: 500px;
+    padding-top: 0;
+    margin-top: -150px;
+  }
+
+  .breadcrumb-nav {
+    max-width: 660px;
+  }
+
+  .breadcrumb-list {
+    margin-top: 15px;
+    margin-bottom: 0;
+  }
+
+  .video-banner-video-mobile {
+    object-position: center 75%;
+  }
+}
+
+/* Mobile Styles */
+@media (width <= 639px) {
+  .video-banner-wrapper {
+    min-height: 320px;
+    max-height: 320px;
+  }
+
+  .video-banner-content {
+    max-width: 650px;
+  }
+
+  .video-banner-title {
+    font-size: 24px;
+    max-width: 100%;
+    padding-top: 0;
+    margin-top: -100px;
+  }
+
+  .breadcrumb-nav {
+    max-width: 650px;
+  }
+
+  .breadcrumb-list {
+    margin-top: 15px;
+    margin-bottom: 0;
+  }
+
+  .video-banner-video-mobile {
+    object-position: center 80%;
+  }
+}

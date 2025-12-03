@@ -25,14 +25,42 @@
           "valueType": "number",
           "name": "columns",
           "value": "",
-          "label": "Columns"
+          "label": "No of Columns"
         },
         {
           "component": "text",
           "valueType": "number",
           "name": "rows",
           "value": "",
-          "label": "Rows"
+          "label": "No of Rows"
+        },
+        {
+          "component": "multiselect",
+          "name": "classes",
+          "label": "Layout style",
+          "valueType": "string",
+          "options": [
+            {
+              "name": "aem-grid-6-4-desktop",
+              "value": "aem-grid-6-4-desktop"
+            },
+            {
+              "name": "aem-grid-12-mobile",
+              "value": "aem-grid-12-mobile"
+            },
+            {
+              "name": "aem-grid-6-4-tablet",
+              "value": "aem-grid-6-4-tablet"
+            },
+            {
+              "name": "aem-grid-5-6-desktop",
+              "value": "aem-grid-5-6-desktop"
+            },
+            {
+              "name": "aem-grid-6-tablet",
+              "value": "aem-grid-6-tablet"
+            }
+          ]
         }
       ]
     }

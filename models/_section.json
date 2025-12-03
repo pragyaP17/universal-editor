@@ -18,21 +18,92 @@
   "models": [
     {
       "id": "section",
+      "displayName": "name",
       "fields": [
         {
           "component": "text",
           "name": "name",
           "label": "Section Name",
-          "description": "The label shown for this section in the Content Tree"
+          "description": "The label shown for this section in the Content Tree",
+          "valueType": "string"
         },
         {
           "component": "multiselect",
           "name": "style",
           "label": "Style",
+          "valueType": "string",
           "options": [
             {
-              "name": "Highlight",
-              "value": "highlight"
+              "name": "General Container",
+              "value": "general-container"
+            },
+            {
+              "name": "Background Transparent",
+              "value": "background-transparent"
+            },
+            {
+              "name": "Background Black",
+              "value": "bg-color-black"
+            },
+            {
+              "name": "Background Light",
+              "value": "bg-color-light"
+            },
+            {
+              "name": "Align Center",
+              "value": "align-center"
+            },
+            {
+              "name": "Align Left",
+              "value": "align-left"
+            },
+            {
+              "name": "Align Right",
+              "value": "align-right"
+            },
+            {
+              "name": "Align Center CTA",
+              "value": "align-center-cta"
+            },
+            {
+              "name": "Align Left CTA",
+              "value": "align-left-cta"
+            },
+            {
+              "name": "Align Right CTA",
+              "value": "align-right-cta"
+            },
+            {
+              "name": "Align Center Heading",
+              "value": "align-center-heading"
+            },
+            {
+              "name": "Align Left Heading",
+              "value": "align-left-heading"
+            },
+            {
+              "name": "Align Right Heading",
+              "value": "align-right-heading"
+            },
+            {
+              "name": "Align Centre Block Mobile",
+              "value": "align-centre-block-mobile"
+            },
+            {
+              "name": "Align Left Block Desktop",
+              "value": "align-left-block-desktop"
+            },
+            {
+              "name": "Align List Items",
+              "value": "align-list-items"
+            },
+            {
+              "name": "Padding Y 60",
+              "value": "p-y-60"
+            },
+            {
+              "name": "Padding Y 75",
+              "value": "p-y-75"
             }
           ]
         }
@@ -52,6 +123,12 @@
         "columns",
         "fragment",
         "carousel"
+        "banner",
+        "agreement-header",
+        "video-banner",
+        "multi-purpose-cards",
+        "immersive-cards",
+        "tabs"
       ]
     }
   ]

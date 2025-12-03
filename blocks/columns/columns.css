@@ -1,33 +1,149 @@
-.columns > div {
-  display: flex;
-  flex-direction: column;
+/* ==========================================
+   AEM-STYLE GRID: 6 / 2 / 4 (Desktop)
+   ========================================== */
+.columns.block.columns-2-cols > div {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 20px;
+  max-width: 984px;
+  margin: 0 auto;
+  padding-top: 45px;
 }
 
-.columns img {
-  width: 100%;
+/* LEFT = full width */
+.columns.aem-grid-12-mobile.block.columns-2-cols > div > div:nth-child(1) {
+  grid-column: 1 / span 12;
 }
 
-.columns > div > div {
-  order: 1;
+/* RIGHT = full width */
+.columns.aem-grid-12-mobile.block.columns-2-cols > div > div:nth-child(2) {
+  grid-column: 1 / span 12;
 }
 
-.columns > div > .columns-img-col {
-  order: 0;
+/* ==========================================
+   Typography styling (optional)
+   ========================================== */
+.columns h2,
+.columns h3 {
+  padding: 8px 15px;
+  margin: 0;
 }
 
-.columns > div > .columns-img-col img {
-  display: block;
+.columns p {
+  padding: 10px 15px;
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.6;
 }
 
-@media (width >= 900px) {
-  .columns > div {
-    align-items: center;
-    flex-direction: unset;
-    gap: 24px;
+.columns h2 {
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 45px;
+}
+
+.columns h3 {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+/* Buttons */
+.columns a.button.primary {
+  background-color: #76b900;
+  color: #000;
+  padding: 13px 15px;
+  font-weight: 700;
+  font-size: 16px;
+  border-radius: 4px;
+  margin: 0;
+  border: none;
+}
+
+/* Secondary button */
+.columns a.button.secondary {
+  background: transparent;
+  color: inherit;
+  padding: 0 20px 0 0; /* Extra right padding */
+  font-weight: 700;
+  font-size: 16px;
+  text-decoration: none;
+  border: none;
+  margin: 0;
+  display: inline-block;
+  overflow: visible;      /* Prevent clipping */
+  white-space: nowrap;    /* Prevent wrapping */
+}
+
+/* Arrow */
+.columns a.button.secondary::after {
+  content: "\f105";
+  color: #76b900;
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  line-height: 1;
+  font-size: 0.95em;
+  display: inline-block;
+  transition: transform 0.3s ease, color 0.3s ease;
+  margin-left: 8px; /* Adjust to your desired gap */
+}
+
+/* Hover states */
+.section.bg-color-black a.button.secondary:hover::after {
+  transform: translateX(4px);
+  color: white;
+}
+.section.background-transparent a.button.secondary:hover::after {
+  transform: translateX(4px);
+  color: black;
+}
+
+/* ==========================================
+   TABLET VIEW (600px – 1024px)
+   ========================================== */
+@media (min-width: 600px) and (max-width: 1024px) {
+  /* LEFT = 7 columns */
+  .columns.aem-grid-6-4-tablet.block.columns-2-cols > div > div:nth-child(1) {
+    grid-column: 1 / span 7;
   }
 
-  .columns > div > div {
-    flex: 1;
-    order: unset;
+  /* RIGHT = offset 2, then span 4 */
+  .columns.aem-grid-6-4-tablet.block.columns-2-cols > div > div:nth-child(2) {
+    grid-column: 9 / span 4;
+  }
+
+  /* LEFT = span 6 */
+  .columns.aem-grid-6-tablet.block.columns-2-cols > div > div:nth-child(1) {
+    grid-column: 1 / span 6;
+  }
+
+  /* RIGHT = span 6 */
+  .columns.aem-grid-6-tablet.block.columns-2-cols > div > div:nth-child(2) {
+    grid-column: 7 / span 6;
+  }
+}
+
+/* ==========================================
+   DESKTOP (1025px and above)
+   Use your desktop 6/4 layout
+   ========================================== */
+@media (min-width: 1025px) {
+  /* LEFT = 7 columns */
+  .columns.aem-grid-6-4-desktop.block.columns-2-cols > div > div:nth-child(1) {
+    grid-column: 1 / span 7;
+  }
+
+  /* RIGHT = offset 2, then span 4 */
+  .columns.aem-grid-6-4-desktop.block.columns-2-cols > div > div:nth-child(2) {
+    grid-column: 9 / span 4;
+  }
+
+  /* LEFT = 5 columns */
+  .columns.aem-grid-5-6-desktop.block.columns-2-cols > div > div:nth-child(1) {
+    grid-column: 1 / span 5;
+  }
+
+  /* RIGHT = offset 1, then span 6 */
+  .columns.aem-grid-5-6-desktop.block.columns-2-cols > div > div:nth-child(2) {
+    grid-column: 7 / span 6;
   }
 }

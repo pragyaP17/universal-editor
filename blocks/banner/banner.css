@@ -1,0 +1,218 @@
+/* =========================================
+   MOBILE-FIRST — NVIDIA Banner Block
+   ========================================= */
+   
+.banner-container {
+    position: relative;
+    width: 100%;
+    background: #000;
+    overflow: hidden;
+}
+
+.banner-wrapper {
+    margin: 0 auto;
+    padding: 0;
+}
+
+/* BASE (MOBILE DEFAULT) */
+.banner.block {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    background: #000;
+}
+
+/* TEXT (mobile: at top) */
+.banner.block > div:first-child {
+    width: fit-content;
+    position: relative;
+    padding: 20px 15px;
+}
+
+/* IMAGE (mobile: below text) */
+.banner.block > div:last-child {
+    order: 2;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.banner.block h1,
+.banner.block h2,
+.banner.block h3,
+.banner.block p {
+    color: #fff;
+}
+
+.banner.block h1 {
+    font-size: 28px;
+    margin-bottom: 16px;
+    line-height: 1.2;
+}
+
+.banner.block h2 {
+    font-size: 24px;
+    margin-bottom: 16px;
+}
+
+.banner.block p {
+    font-size: 15px;
+    margin-bottom: 12px;
+}
+
+/* Image styling */
+.banner.block picture,
+.banner.block img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+/* BUTTON */
+.banner.block .button-container a.button.secondary {
+    border: none;
+    padding: unset;
+    display: inline-flex;
+    align-items: center;
+    color: inherit;
+}
+
+.banner.block .button.secondary::after {
+    content: "\f105";
+    color: #76b900;
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    line-height: 1;
+    font-size: 0.95em;
+    display: inline-block;
+    transition: transform 0.3s ease, color 0.3s ease;
+    margin-left: 8px;
+}
+
+.banner.block a.button.secondary:hover::after {
+    transform: translateX(4px);
+    color: white;
+}
+
+/* =========================================
+   TABLET (600px–1024px) — NVIDIA STYLE
+   ========================================= */
+@media (min-width: 600px) and (max-width: 1024px) {
+    .banner.block {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        min-height: auto;
+    }
+
+    .banner.block > div:first-child {
+        position: relative;
+        order: 1;
+        flex: 1;
+        width: 50%;
+        padding-right: 24px;
+    }
+
+    .banner.block > div:last-child {
+        order: 2;
+        flex: 1;
+        width: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+
+    .banner.block picture,
+    .banner.block img {
+        width: 125%;
+        height: auto;
+        object-fit: contain;
+        display: block;
+    }
+}
+
+/* =========================================
+   DESKTOP (≥ 1025px)
+   ========================================= */
+@media (min-width: 1025px) {
+    .banner.block {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0;
+    }
+
+    .banner.block > div:first-child {
+        flex: 1;
+                z-index: 2;
+        position: absolute;
+        left: 35px;
+        top: 50%;
+        transform: translateY(-50%);
+        margin-top: 0;
+        width: 50%;
+        padding: 0;
+    }
+
+    .banner.block > div:last-child {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        order: unset;
+        width: auto;
+    }
+
+    .banner.block picture,
+    .banner.block img {
+        width: 115%;
+        height: auto;
+        object-fit: contain;
+    }
+
+    .banner.block h1,
+    .banner.block h2,
+    .banner.block h3,
+    .banner.block p {
+        padding: 0;
+    }
+}
+
+/* =========================================
+   RESPONSIVE IMAGE DISPLAY
+   ========================================= */
+.banner-img-mobile {
+    display: block;
+}
+
+.banner-img-desktop {
+    display: none;
+}
+
+.banner-img-responsive {
+    display: block;
+}
+
+@media (min-width: 1025px) {
+    .banner-img-mobile {
+        display: none;
+    }
+    
+    .banner-img-desktop {
+        display: block;
+    }
+    
+    .banner-img-responsive {
+        display: block;
+    }
+
+    .banner.block > div:first-child {
+        width: 40%;
+    }
+    
+    .banner.block > div:last-child {
+        width: 60%;
+    }
+}
