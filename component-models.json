@@ -317,14 +317,17 @@
         "label": "Pagination Short Description"
       },
       {
-        "component": "aem-content",
-        "name": "ctaLink",
-        "label": "CTA Link"
+        "component": "text",
+        "name": "ctaText",
+        "label": "CTA Button Text",
+        "valueType": "string"
       },
       {
         "component": "text",
-        "name": "ctaText",
-        "label": "CTA Text"
+        "name": "ctaLink",
+        "label": "CTA Button Link",
+        "valueType": "string",
+        "description": "URL for CTA button"
       }
     ]
   },
