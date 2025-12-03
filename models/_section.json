@@ -128,7 +128,8 @@
         "video-banner",
         "multi-purpose-cards",
         "immersive-cards",
-        "tabs"
+        "tabs",
+        "carousel-banner"
       ]
     }
   ]
