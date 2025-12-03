@@ -1,512 +1,421 @@
-/*
+/* --- FOOTER GENERAL STYLES --- */
 footer {
-  background-color: var(--light-color);
-  font-size: var(--body-font-size-xs);
+  color: #fff;
+  font-family: var(--body-font-family);
+  padding: 60px 30px;
 }
 
-footer .footer > div {
-  margin: auto;
-  max-width: 1200px;
-  padding: 40px 24px 24px;
+.footer .footer-container {
+  max-width: 1290px;
+  margin: 0 auto;
 }
 
-footer .footer p {
-  margin: 0;
+.footer .columns > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
 }
 
-@media (width >= 900px) {
-  footer .footer > div {
-    padding: 40px 32px 24px;
-  }
-}
-*/
-/*New footer changes*/
-footer {
-  font-size: var(--body-font-size-xs);*/
-  font-family:var(--body-font-family);
-}
-/*
-footer .footer > div {
-  margin: auto;
-  max-width: 1200px;
-  padding: 40px 24px 24px;
+.footer .columns > div > div {
+  flex: 1;
+  min-width: 280px;
 }
 
-footer .footer p {
-  margin: 0;
-}*/
-/*====================New Footer Changes ========================*/
-/*
-page-footer-wrapper = footer-wrapper
-page-footer = footer block
-*/
-.footer-wrapper {
-background-color: var(--footer-background-color);
-}
-footer.footer-wrapper > div.footer.block > div > div.section.columns-container:nth-child(1) {
-   padding: 60px 30px;
-    font-size: 0;
-    line-height: 0;
-    width: 100%;
-}
-/*
-footer.footer-wrapper > div.footer.block > div > div.section.columns-container {
-   padding: 60px 30px;
-    font-size: 0;
-    line-height: 0;
-    width: 100%;
-}
-*/
-
-footer.footer-wrapper > div.footer.block > div > div.section.columns-container:nth-child(1) > div
-.columns-wrapper > div.columns.block.columns-3-cols > div > div:nth-child(1) {
-  padding-right: 20px;
-}
-footer.footer-wrapper > div.footer.block > div > div.section.columns-container:nth-child(1) > div
-.columns-wrapper > div.columns.block.columns-3-cols > div > div:nth-child(2) {
-  padding-left: 10px;
-     padding-right: 10px;
-}
-footer.footer-wrapper > div.footer.block > div > div.section.columns-container:nth-child(1) > div
-.columns-wrapper > div.columns.block.columns-3-cols > div > div:nth-child(3) {
-   padding-left: 20px;
+/* Styles for H1 in the main footer columns AND footer links section */
+.footer h1,
+.section.page-footer-links h1 {
+  border-bottom: 1px solid #747474;
+  color: #eee;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 26px;
+  padding-bottom: 9pt; /* 12px */
+  text-align: left;
+  text-transform: none;
 }
 
 .footer ul {
-  margin: 0;
-  padding: 0;
   list-style: none;
-}
-.footer h3 {
-    border-bottom: 1px solid #747474;
-    color: #eee;
-    font-size: 24px;
-    font-weight: 700;
-    line-height: 26px;
-    padding-bottom: 9pt;
-    text-align: left;
-    text-transform: none;
-    font-family: var(--heading-font-family);
+  padding: 0;
+  margin-top: 10px;
 }
 
-/*footer list items a */
-.footer ul li a {
- font-size: 1pc;
- line-height: 30px;
+.footer li {
+  margin-bottom: 5px;
+}
+
+/* Styles for all links in the main footer columns AND footer links section */
+.footer a,
+.section.page-footer-links ul li a {
   color: #76b900;
+  font-size: 1pc; /* 16px */
+  line-height: 30px;
   text-decoration: none;
 }
-footer.footer-wrapper > div.footer.block > div > div.section.columns-container:nth-child(1) >
-div.columns-wrapper > div.columns.block.columns-3-cols > li > a{
-    color: #76b900;
-    font-size: 1pc;
-    line-height: 30px;
-    text-decoration: none;
-}
-footer.footer-wrapper > div.footer.block > div > div.section.columns-container:nth-child(1) >
-div.columns-wrapper > div.columns.block.columns-3-cols > li{
-    display: block;
-    margin-bottom: 5px;
-    margin-right: 25px;
+
+.footer a:hover,
+.section.page-footer-links ul li a:hover {
+  text-decoration: underline;
 }
 
-
-
-/*=========Footer Subscribe ===============*/
-footer.footer-wrapper
-  .section.columns-container:nth-of-type(2)
-  .columns-wrapper:nth-of-type(1) {
-
-        width: 100%;
-        height: 50px;
-        margin: 0 auto;
-        display: inline-block;
-        text-align: center;
+/* Specific rule for the footer links/subscribe sections */
+.section.page-footer-links,
+.section.page-footer-subscribe {
+  background-color: #000;
+      margin: 0 auto;
+  /* margin: 0 auto; - Removed, as containing element should handle width/center if needed. */
 }
 
+/* --- FOOTER SUBSCRIBE AND SOCIAL STYLES --- */
 
-/* Use flex to align text + button side by side and center them */
-footer .section.columns-container:nth-of-type(2) .columns.block.columns-1-cols > div > div > p:first-child:contains('Sign Up for NVIDIA News'),
- footer .section.columns-container:nth-of-type(2) .columns.block.columns-1-cols > div > div > p:first {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 20px; /* space between text and button */
-}
-
-/* Style for text section */
-footer .section.columns-container:nth-of-type(2) .columns-wrapper:nth-of-type(1) .columns.block.columns-1-cols p {
-  display: inline-flex;
-  align-items: center;
-  font-size: 18px;
+/* Main container for subscription and social sections */
+.page-footer-subscribe {
+  background-color: #1a1a1a;
   color: white;
-  margin: 0;
+  padding: 20px 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
-/* Adjust logo spacing */
-footer .section.columns-container:nth-of-type(2) .columns-wrapper:nth-of-type(1) .columns.block.columns-1-cols p span.icon {
-  float: left;
-      display: inline-block;
-      width: 50px;
-      position: relative;
-      top: 7px;
+/* Base style for columns in the subscribe section (subscription block) */
+.page-footer-subscribe > .columns-wrapper:first-child {
+  flex-basis: 675px;
+  max-width: 675px;
 }
 
-footer .section.columns-container:nth-of-type(2) .columns-wrapper:nth-of-type(1) .columns.block.columns-1-cols p img {
-  width: 20px;
-  height: 20px;
-  vertical-align: middle;
-}
-
-/* Subscribe button styles */
-footer .section.columns-container:nth-of-type(2) .columns.block.columns-1-cols .button-container .button {
-  display: inline-block;
-  font-size: 16px;
-  background-color: #91c733;
-  border: none;
-  color: #000;
-  cursor: pointer;
-  font-weight: 700;
-  line-height: 1.50em;
-  padding: 10px 12px;
-  text-align: center;
-  text-decoration: none;
-  border-radius: 0px;
-  transition: background-color 0.2s ease-out;
-  white-space: nowrap;
-  margin-left: 30px;
-}
-
-/* Hover effect */
-footer .section.columns-container:nth-of-type(2) .columns.block.columns-1-cols .button-container .button:hover {
-  background-color: #76b900;
-}
-
-/*=============Footer Social =================== */
-
-footer.footer-wrapper
-  .section.columns-container:nth-of-type(2)
-  .columns-wrapper:nth-of-type(2) {
-   color: #747474;
-      -webkit-box-align: center;
-      -ms-flex-align: center;
-      align-items: center;
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: flex;
-      justify-content: end;
-      text-align: right;
-      width: 100%;
-      padding-bottom:20px;
-}
-
-
-footer.footer-wrapper
-  .section.columns-container:nth-of-type(2)
-  .columns-wrapper:nth-of-type(2)
-  .columns.block.columns-1-cols > div > div {
+.page-footer-subscribe > .columns-wrapper:first-child .columns-1-cols > div > div {
+  max-width: 675px;
+  margin: 0 auto;
   display: flex;
   align-items: center;
-  justify-content: center; /* center everything horizontally */
-  gap: 10px; /* space between text and icons */
+  justify-content: flex-start;
 }
 
-footer.footer-wrapper
-  .section.columns-container:nth-of-type(2)
-  .columns-wrapper:nth-of-type(2)
-  p:first-child {
-  margin-right: 30px;
-  padding-top: 2px;
-  color: #747474; /* keep existing gray tone */
-      display: inline-block;
-      font-size: 1pc;
-      vertical-align: top;
-
+/* Logo and Text Styling (Combined Paragraph) */
+.page-footer-subscribe > .columns-wrapper:first-child p:first-child {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  font-size: 18px;
+  line-height: 1;
+  color: white;
 }
 
-footer.footer-wrapper
-  .section.columns-container:nth-of-type(2)
-  .columns-wrapper:nth-of-type(2)
-  p a {
+/* Logo Styling */
+.page-footer-subscribe .icon-logo {
   display: inline-block;
-  height: 24px;
-      margin-right: 15px;
-      text-decoration: none;
-      width: auto;
+  width: 50px;
+  height: 36px;
+  position: relative;
 }
 
-/*===========Footer Global=================*/
-footer .section:nth-of-type(3){
-    background-color: #fff;
-    width: 100%;
+.page-footer-subscribe .icon-logo img {
+  width: 100%;
+  height: 100%;
+  filter: invert(1);
 }
 
-
-footer .section > .default-content-wrapper {
-        background: #fff;
-       width: 100%;
-        padding: 30px;
-            margin: 0 auto;
-            max-width: 1290px;
+.page-footer-subscribe > .columns-wrapper:first-child p:first-child::after {
+  content: "";
+  display: inline-block;
+  width: 30px;
 }
 
-footer .default-content-wrapper> h1 > span {
-    display: block;
-    float: left;
-    height: 20px;
-    margin: 0 auto 15px;
-    width: 110px;
+/* Subscribe Button Styling */
+.page-footer-subscribe .button-container {
+  margin: 0;
+  margin-left: 30px;
+  position: relative;
+  top: -3px;
 }
 
-
-footer .section > .default-content-wrapper > p{
-    clear: both;
-    list-style-type: none;
-    margin: 0 0 4px;
-    padding: 0;
+.page-footer-subscribe .button-container a.button {
+  display: inline-block;
+  text-decoration: none;
+  background-color: #76b900;
+  color: #1a1a1a;
+  border: none;
+  padding: 5px 15px;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 1.5;
+  text-align: center;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.2s;
 }
 
-
-
-footer .section > .default-content-wrapper > p > a{
-    color: #666;
-    display: inline-block;
-    font-size: 1pc;
-    line-height: 24px;
-    text-decoration: none;
-    font-family: var(--body-font-family);
-
-        margin-right: 5px;
-        padding-right: 10px;
-        position: relative;
-}
-/*Copyright text */
-footer .section .default-content-wrapper p:last-of-type {
-    clear: both;
-    color: #666;
-    font-size: 9pt;
-    line-height: 1pc;
+.page-footer-subscribe .button-container a.button:hover {
+  background-color: #8acc00;
 }
 
+/* Social Media Container Styling (Second column in the subscribe section) */
+.page-footer-subscribe > .columns-wrapper:nth-child(2) {
+  flex-basis: auto;
+  max-width: 100%;
+  padding-left: 50px;
+}
 
-/************ === Mobile view (less than 600px) === ****************/
-@media screen and (max-width: 599px) {
-  /* === Footer Columns (Company Info, News, Popular Links) === */
-footer.footer-wrapper > div.footer.block > div > div.section.columns-container:nth-child(1) {
-    text-align: center;
-    padding: 0 15px;
-    margin-top: 10px;
+.page-footer-subscribe > .columns-wrapper:nth-child(2) .columns-1-cols > div > div {
+  display: flex;
+  align-items: center;
+  padding-top: 0;
+  margin: 0;
+  width: auto;
+}
+
+/* "Follow NVIDIA" Text Styling */
+.page-footer-subscribe > .columns-wrapper:nth-child(2) p:first-child {
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  margin: 0;
+  margin-right: 15px;
+  white-space: nowrap;
+}
+
+/* Social Icon Links Container Styling */
+.page-footer-subscribe > .columns-wrapper:nth-child(2) p:last-child {
+  margin: 0;
+  display: flex;
+  gap: 10px;
+}
+
+/* Individual Social Icon Link */
+.page-footer-subscribe > .columns-wrapper:nth-child(2) p:last-child a {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.page-footer-subscribe > .columns-wrapper:nth-child(2) p:last-child a:hover {
+  opacity: 0.8;
+}
+
+/* Social Icon Image Styling (SVG) */
+.page-footer-subscribe .icon img {
+  width: 100%;
+  height: 100%;
+  filter: invert(1);
+}
+
+/* --- MEDIA QUERIES --- */
+
+/* Tablet layout: 2x2 grid (640px to 1023px) */
+@media (min-width: 640px) and (max-width: 1023px) {
+  .footer .columns > div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
   }
+}
 
-  /* Center all headers (h3) */
-  footer.footer-wrapper
-    .section.columns-container:nth-of-type(1)
-    .columns.block.columns-3-cols
-    > div > div h3 {
-    text-align: center;
-    font-size: 1pc;
-    line-height: 30px;
-  }
-
-  /* Display all <ul> list items in a row */
-  footer.footer-wrapper
-    .section.columns-container:nth-of-type(1)
-    .columns.block.columns-3-cols
-    > div > div ul {
-            margin-bottom: 30px;
-            padding: 0 15px;
-            text-align: left;
-  }
-
-  footer.footer-wrapper
-    .section.columns-container:nth-of-type(1)
-    .columns.block.columns-3-cols
-    > div > div ul li {
-     display: inline-block;
-     margin-bottom: 15px;
-     margin-right: 25px;
-        }
-
-
- /* === Sign Up Section === */
-  footer.footer-wrapper
-    .section.columns-container:nth-of-type(2)
-    .columns-wrapper:nth-of-type(1)
-    .columns.block.columns-1-cols > div > div {
-    display: flex;
-    flex-direction: column; /* stack items vertically */
-    align-items: center;    /* center horizontally */
-    text-align: center;
-    gap: 10px;              /* spacing between logo, text, button */
-  }
-
-  /* Logo */
-  footer.footer-wrapper
-    .section.columns-container:nth-of-type(2)
-    .columns-wrapper:nth-of-type(1)
-    .columns.block.columns-1-cols p span.icon img {
-    margin: 0 auto;
-    display: block;
-    width: 40px;  /* adjust size as needed */
-    height: 40px;
-  }
-
-  /* Text below logo */
-  footer.footer-wrapper
-    .section.columns-container:nth-of-type(2)
-    .columns-wrapper:nth-of-type(1)
-    .columns.block.columns-1-cols p:first-of-type {
-    margin: 0;
-    font-size: 16px;
-    color: #fff; /* or keep your original color */
-  }
-
-  /* Subscribe button below text */
-  footer.footer-wrapper
-    .section.columns-container:nth-of-type(2)
-    .columns-wrapper:nth-of-type(1)
-    .columns.block.columns-1-cols .button-container .button {
-    margin: 0 auto;
-    display: block;
-  }
-
-
-  /* === Follow NVIDIA Section → Center aligned === */
-footer.footer-wrapper .section.columns-container:nth-of-type(2) .columns-wrapper:nth-of-type(2){
-display: flex;
+/* Mobile Accordion Styles (max-width: 1023px) */
+@media (max-width: 1023px) {
+  .footer .columns > div {
     flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 8px;
   }
 
- /* footer.footer-wrapper
-    .section.columns-container:nth-of-type(2)
-    .columns-wrapper:nth-of-type(2)
-    .columns.block.columns-1-cols p:first-child {
-            display: block;
-            float: none;
-            height: auto;
-            margin-bottom: 15px;
-            margin-right: 0;
-            text-align: center;
-            width: 100%;
-            color: #747474;
-  }*/
-
- footer.footer-wrapper
-    .section.columns-container:nth-of-type(2)
-    .columns-wrapper:nth-of-type(2)
-    .columns.block.columns-1-cols > div > div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  margin-top: 50px;
+  .footer h1 {
+    cursor: pointer;
+    position: relative;
   }
 
-  footer.footer-wrapper
-    .section.columns-container:nth-of-type(2)
-    .columns-wrapper:nth-of-type(2)
-    p:first-child {
-            display: block;
-            float: none;
-            height: auto;
-            /*margin-bottom: 15px;*/
-            margin-right: 0px;
-            text-align: center;
-            width: 100%;
+  .footer h1::after {
+    content: '▼';
+    position: absolute;
+    right: 0;
+    font-size: 14px;
+    transition: transform 0.3s;
   }
 
-  /* === Global footer (logo + links + copyright) === */
-  footer.footer-wrapper
-    .section:last-of-type .default-content-wrapper {
-    text-align: center;
-    padding: 15px;
+  .footer h1.active::after {
+    transform: rotate(180deg);
   }
 
-  footer.footer-wrapper
-    .default-content-wrapper .icon.icon-logo img {
-    margin: 0 auto 10px;
+  .footer ul {
+    display: none;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+  }
+
+  .footer ul.active {
     display: block;
-    float: none;
+    max-height: 500px; /* Adjust as needed */
   }
+}
 
-  /* Links (Privacy Policy etc.) → in a row, centered */
-  footer.footer-wrapper
-    .default-content-wrapper p:first-of-type {
-    display: flex;
-    flex-wrap: wrap;
+/* 💻 DESKTOP ALIGNMENT (Right-Most - min-width: 1350px) */
+@media screen and (min-width: 1350px) {
+  .page-footer-subscribe {
+    justify-content: flex-end;
+    padding-right: 20px;
+  }
+}
+
+/* 📱 TABLET & MOBILE ALIGNMENT (Centered - max-width: 1349px) */
+@media screen and (max-width: 1349px) {
+  .page-footer-subscribe {
     justify-content: center;
-    gap: 10px;
-    margin: 0;
-    padding: 0;
+    padding: 20px 0;
   }
 
-  /* Copyright line centered below */
-  footer.footer-wrapper
-    .default-content-wrapper p:last-of-type {
-    text-align: center;
+  .page-footer-subscribe > .columns-wrapper:first-child,
+  .page-footer-subscribe > .columns-wrapper:nth-child(2) {
+    flex-basis: 100%;
+    max-width: 675px;
+    padding-left: 0;
     margin-top: 10px;
   }
+
+  .page-footer-subscribe > .columns-wrapper:nth-child(2) .columns-1-cols > div > div {
+    justify-content: center;
+  }
 }
 
-/************ === Tablet view (greater than 599px and less than 900) === ****************/
-/*@media screen and (min-width: 600px) and (max-width: 899px)*/
-@media screen and (min-width: 600px) and (max-width: 1000px){
-
-.section.columns-container{
-max-width: 80%;
-margin: 0 auto;
-}
-
-  .columns.block.columns-3-cols > div {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px; /* space between columns */
+/* Small Screens (320px to 639px) - Stacking Elements */
+@media screen and (max-width: 639px) {
+  .page-footer-subscribe > .columns-wrapper:first-child .columns-1-cols > div > div {
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+    max-width: none;
+    padding: 0 15px;
+    align-items: center; /* Ensures content is centered */
   }
 
-  /* First two columns: 50% width (side by side) */
-  .columns.block.columns-3-cols > div > div:nth-child(1),
-  .columns.block.columns-3-cols > div > div:nth-child(2) {
-    flex: 1 1 calc(50% - 10px);
-    box-sizing: border-box;
+  .page-footer-subscribe > .columns-wrapper:first-child p:first-child {
+    flex-direction: column;
+    margin-bottom: 20px;
   }
 
-  /* Third column: full width on next row */
-  .columns.block.columns-3-cols > div > div:nth-child(3) {
-    flex: 1 1 100%;
-    box-sizing: border-box;
+  .page-footer-subscribe > .columns-wrapper:first-child p:first-child::after {
+    display: none;
   }
 
-  /* Optional cleanup */
-  .columns.block.columns-3-cols > div > div h3 {
+  .page-footer-subscribe .icon-logo {
+    top: 0;
     margin-bottom: 10px;
   }
 
-  .columns.block.columns-3-cols > div > div ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+  .page-footer-subscribe .button-container {
+    margin-left: 0;
+    margin-top: 10px;
+    top: 0;
   }
 
-  /*Subscribe button and Text*/
-footer.footer-wrapper
-    .section.columns-container:nth-of-type(2)
-    .columns-wrapper:nth-of-type(1)
-    .columns.block.columns-1-cols > div > div {
-  margin: 0 auto;
-          width: fit-content;
+  .page-footer-subscribe > .columns-wrapper:nth-child(2) .columns-1-cols > div > div {
+    text-align: center;
+    padding: 20px 15px;
   }
 
-    /* === Follow NVIDIA Section → Center aligned === */
-  footer.footer-wrapper .section.columns-container:nth-of-type(2) .columns-wrapper:nth-of-type(2){
- -webkit-box-pack: center;
-         -ms-flex-pack: center;
-         float: none;
-         justify-content: center;
-         text-align: center;
-         width: 100%;
-         padding-top: 30px;
+  .page-footer-subscribe > .columns-wrapper:nth-child(2) p:last-child {
+    justify-content: center;
+  }
+
+
+  .page-footer-subscribe > .columns-wrapper:nth-child(2) p:first-child {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+}
+
+/*Global footer styles*/
+/*
+ * Styles to emulate the NVIDIA Global Footer look for your AEM structure.
+ * Background, color, and font sizes are based on the reference site.
+ */
+
+/* --- Main Container & Layout --- */
+.section.global-footer-container {
+    color: #a7a7a7; /* Default text color for the copyright and link separators */
+    padding: 30px;
+    border-top: 1px solid #313131; /* Subtle divider line */
+}
+
+.section.global-footer-container .default-content-wrapper {
+    max-width: 1290px;
+    margin: 0 auto;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* --- Logo Styling --- */
+
+/* Targets the paragraph containing the logo */
+.section.global-footer-container .default-content-wrapper p:first-child {
+    text-align: left;
+    margin-bottom: 25px; /* Space below the logo */
+    margin-top: 0;
+}
+
+/* Centers and styles the logo image */
+.section.global-footer-container .icon-logo {
+    display: inline-block;
+}
+
+.section.global-footer-container .icon-logo img {
+    width: 100px; /* Standard logo width */
+    height: auto;
+    /* Invert filter is used to turn a black/dark SVG/image to white/light */
+    filter: invert(1);
+}
+
+/* --- Links Styling --- */
+
+/* Targets the paragraph containing all the links and separators */
+.section.global-footer-container .default-content-wrapper p:nth-child(2) {
+    text-align: left;
+    margin-bottom: 15px; /* Space above copyright */
+    color: #a7a7a7; /* Color for the pipe separators (|) */
+    line-height: 20px;
+}
+
+/* Styles the individual links */
+.section.global-footer-container .default-content-wrapper p:nth-child(2) a {
+    color: #a7a7a7; /* Link color */
+    text-decoration: none;
+    font-weight: 500;
+    white-space: nowrap; /* Keep link text from wrapping onto a new line */
+}
+
+.section.global-footer-container .default-content-wrapper p:nth-child(2) a:hover {
+    color: #000; /* NVIDIA Green on hover */
+    text-decoration: none;
+}
+
+/* --- Copyright Styling --- */
+
+/* Targets the paragraph containing the copyright notice */
+.section.global-footer-container .default-content-wrapper p:last-child {
+    text-align: left;
+    color: #a7a7a7;
+    margin-top: 0;
+    font-size: 13px; /* Slightly smaller than links */
+}
+
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 768px) {
+    /* Stack links vertically or allow wrapping on small screens */
+    .section.global-footer-container .default-content-wrapper p:nth-child(2) {
+        /* Use flex to allow controlled wrapping of the inline elements */
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 5px 10px; /* Space between wrapped items */
+        line-height: 1.3;
+        padding: 0 10px;
+    }
+
+    /* Reduce logo size on small screens */
+    .section.global-footer-container .icon-logo img {
+        width: 70px;
     }
 }
