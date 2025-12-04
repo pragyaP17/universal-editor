@@ -30,7 +30,7 @@ const getConfig = async () => {
   if (!configJSON) {
     try {
       const response = await fetch(buildConfigURL());
-      
+
       // Check if response is ok (status 200-299)
       if (!response.ok) {
         console.warn(`Config file not found: ${CONFIG_FILE_NAME}`);
@@ -50,7 +50,7 @@ const getConfig = async () => {
   if (!configJSON) {
     return { data: [] };
   }
-  
+
   try {
     const config = JSON.parse(configJSON);
     // Ensure config has data array
@@ -79,12 +79,12 @@ export const getConfigValue = async (configParam) => {
   try {
     const configJSON = await window.configsPromise;
     const configElements = configJSON?.data;
-    
+
     // Return null if config data doesn't exist or is not an array
     if (!configElements || !Array.isArray(configElements)) {
       return null;
     }
-    
+
     return configElements.find((c) => c.key === configParam)?.value || null;
   } catch (e) {
     console.error('Error fetching config value:', e.message);

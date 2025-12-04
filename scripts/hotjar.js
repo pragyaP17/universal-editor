@@ -32,9 +32,11 @@ export async function loadHotjar() {
       document.head.appendChild(hjScript);
       document.head.appendChild(script);
     } else {
+      // eslint-disable-next-line no-console
       console.info('Hotjar not loaded: configuration missing');
     }
   } catch (e) {
+    // eslint-disable-next-line no-console
     console.error('Error loading Hotjar:', e.message);
   }
 }

@@ -10,7 +10,7 @@ export async function getOneTrustToken() {
 export async function loadOneTrust() {
   try {
     const oneTrustToken = await getOneTrustToken();
-    
+
     // Only load OneTrust if token is present
     if (oneTrustToken) {
       const otScriptSrc = 'https://cdn.cookielaw.org/scripttemplates/otSDKStub.js';
@@ -27,9 +27,11 @@ export async function loadOneTrust() {
       wrapperScript.textContent = 'function OptanonWrapper() { }';
       document.head.appendChild(wrapperScript);
     } else {
+      // eslint-disable-next-line no-console
       console.info('OneTrust not loaded: configuration missing');
     }
   } catch (e) {
+    // eslint-disable-next-line no-console
     console.error('Error loading OneTrust:', e.message);
   }
 }
