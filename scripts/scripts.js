@@ -11,6 +11,7 @@ import {
   loadSections,
   loadCSS,
 } from './aem.js';
+import { loadOneTrust } from './onetrust.js';
 
 /**
  * Moves all the attributes from a given elmenet to another given element.
@@ -139,6 +140,7 @@ function loadDelayed() {
 }
 
 async function loadPage() {
+  await loadOneTrust();
   await loadEager(document);
   await loadLazy(document);
   loadDelayed();
