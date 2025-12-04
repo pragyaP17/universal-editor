@@ -1,57 +1,20 @@
+import { getMetadata } from '../../scripts/aem.js';
+import { loadFragment } from '../fragment/fragment.js';
+
 /**
- * Wraps the footer sections in a new div.
+ * loads and decorates the footer
+ * @param {Element} block The footer block element
  */
-function wrapFooterSections() {
-  const footer = document.querySelector('.footer');
-  if (!footer) return;
+export default async function decorate(block) {
+  // load footer as fragment
+  const footerMeta = getMetadata('footer');
+  const footerPath = footerMeta ? new URL(footerMeta, window.location).pathname : '/footer';
+  const fragment = await loadFragment(footerPath);
 
-  const sections = footer.querySelectorAll('.section.page-footer-links, .section.page-footer-subscribe');
-  if (sections.length > 0) {
-    const wrapper = document.createElement('div');
-    wrapper.className = 'page-footer-wrapper';
-    
-    // Move the sections into the new wrapper
-    sections.forEach(section => {
-      wrapper.appendChild(section);
-    });
+  // decorate footer DOM
+  block.textContent = '';
+  const footer = document.createElement('div');
+  while (fragment.firstElementChild) footer.append(fragment.firstElementChild);
 
-    // Add the new wrapper to the footer
-    footer.querySelector(':scope > div').prepend(wrapper);
-  }
+  block.append(footer);
 }
-
-
-function handleAccordion() {
-  if (window.innerWidth < 1024) {
-    const titles = document.querySelectorAll('.footer h1');
-    titles.forEach((title) => {
-      const list = title.nextElementSibling;
-      if (list && list.tagName === 'DIV' && list.querySelector('ul')) {
-        const ul = list.querySelector('ul');
-        
-        // Initially hide the list
-        ul.classList.remove('active');
-        title.classList.remove('active');
-
-        title.addEventListener('click', () => {
-          title.classList.toggle('active');
-          ul.classList.toggle('active');
-        });
-      }
-    });
-  } else {
-    // On desktop, ensure all lists are visible
-    const lists = document.querySelectorAll('.footer ul');
-    lists.forEach(list => {
-      list.classList.add('active');
-      list.style.maxHeight = 'none'; // Remove max-height for desktop
-    });
-  }
-}
-
-// Run on initial load
-wrapFooterSections();
-handleAccordion();
-
-// Re-run on window resize
-window.addEventListener('resize', handleAccordion);

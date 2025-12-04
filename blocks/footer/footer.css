@@ -96,23 +96,31 @@ footer {
 
 /* Logo and Text Styling (Combined Paragraph) */
 .page-footer-subscribe > .columns-wrapper:first-child p:first-child {
-  display: flex;
-  align-items: center;
-  margin: 0;
+  /*display: flex;
+  align-items: center;*/
+  /*margin: 0;*/
   font-size: 18px;
   line-height: 1;
   color: white;
+      float: left;
+      display: inline-block;
+      position: relative;
+      top: 16px;
+      margin-left: 30px;
+    align-items: flex-start;
+    margin-top: -25px;
 }
 
 /* Logo Styling */
-.page-footer-subscribe .icon-logo {
+.page-footer-subscribe .icon-envelope {
   display: inline-block;
   width: 50px;
   height: 36px;
   position: relative;
+  margin-right: 30px;
 }
 
-.page-footer-subscribe .icon-logo img {
+.page-footer-subscribe .icon-envelope img {
   width: 100%;
   height: 100%;
   filter: invert(1);
@@ -138,14 +146,20 @@ footer {
   background-color: #76b900;
   color: #1a1a1a;
   border: none;
-  padding: 5px 15px;
   font-size: 16px;
-  font-weight: bold;
-  line-height: 1.5;
+  font-weight: 700;
+  line-height: 1.25;
   text-align: center;
   cursor: pointer;
   white-space: nowrap;
   transition: background-color 0.2s;
+  border-radius: 0px;
+
+      min-width: 50px;
+      padding: 13px 15px;
+      position: relative;
+      -webkit-transition: background-color .2s
+  ease-out;
 }
 
 .page-footer-subscribe .button-container a.button:hover {
@@ -157,6 +171,17 @@ footer {
   flex-basis: auto;
   max-width: 100%;
   padding-left: 50px;
+      -webkit-box-pack: end;
+      -ms-flex-pack: end;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      justify-content: end;
+      text-align: right;
+      width: 33%;
 }
 
 .page-footer-subscribe > .columns-wrapper:nth-child(2) .columns-1-cols > div > div {
@@ -169,12 +194,18 @@ footer {
 
 /* "Follow NVIDIA" Text Styling */
 .page-footer-subscribe > .columns-wrapper:nth-child(2) p:first-child {
-  font-size: 16px;
+/*  font-size: 16px;
   font-weight: bold;
   color: white;
   margin: 0;
   margin-right: 15px;
-  white-space: nowrap;
+  white-space: nowrap;*/
+      color: #747474;
+      display: inline-block;
+      font-size: 1pc;
+      margin-right: 30px;
+      padding-top: 2px;
+      vertical-align: top;
 }
 
 /* Social Icon Links Container Styling */
@@ -269,7 +300,7 @@ footer {
   .page-footer-subscribe > .columns-wrapper:first-child,
   .page-footer-subscribe > .columns-wrapper:nth-child(2) {
     flex-basis: 100%;
-    max-width: 675px;
+    /*max-width: 675px;*/
     padding-left: 0;
     margin-top: 10px;
   }
@@ -299,7 +330,7 @@ footer {
     display: none;
   }
 
-  .page-footer-subscribe .icon-logo {
+  .page-footer-subscribe .icon-envelope {
     top: 0;
     margin-bottom: 10px;
   }
@@ -334,75 +365,108 @@ footer {
 
 /* --- Main Container & Layout --- */
 .section.global-footer-container {
-    color: #a7a7a7; /* Default text color for the copyright and link separators */
+background-color: #fff;
+    margin: 0 auto;
+    width: 100%;
+
+/*background-color: #fff;
+    color: #666;
     padding: 30px;
-    border-top: 1px solid #313131; /* Subtle divider line */
+    margin: 0 auto;*/
 }
 
 .section.global-footer-container .default-content-wrapper {
-    max-width: 1290px;
+background: #fff;
     margin: 0 auto;
-    font-size: 14px;
-    line-height: 1.5;
+    max-width: 1290px;
+    padding: 30px;
+
+    /*font-size: 14px;
+    line-height: 1.5;*/
 }
 
 /* --- Logo Styling --- */
 
-/* Targets the paragraph containing the logo */
-.section.global-footer-container .default-content-wrapper p:first-child {
-    text-align: left;
-    margin-bottom: 25px; /* Space below the logo */
-    margin-top: 0;
+/*
+.global-footer__logo {
+    display: block;
+    float: left;
+    height: 20px;
+    margin: 0 auto 15px;
+    width: 110px;
 }
+
+*/
+
+/* Targets the paragraph containing the logo */
+/*.section.global-footer-container .default-content-wrapper p:first-child {
+    text-align: left;
+    margin-bottom: 25px; *//* Space below the logo *//*
+    margin-top: 0;
+}*/
 
 /* Centers and styles the logo image */
-.section.global-footer-container .icon-logo {
-    display: inline-block;
-}
-
-.section.global-footer-container .icon-logo img {
-    width: 100px; /* Standard logo width */
-    height: auto;
-    /* Invert filter is used to turn a black/dark SVG/image to white/light */
-    filter: invert(1);
+.section.global-footer-container .icon-nvidia-logo {
+display: block;
+    float: left;
+    height: 20px;
+    margin: 0 auto 15px;
+    width: 110px;
 }
 
 /* --- Links Styling --- */
 
 /* Targets the paragraph containing all the links and separators */
 .section.global-footer-container .default-content-wrapper p:nth-child(2) {
-    text-align: left;
-    margin-bottom: 15px; /* Space above copyright */
-    color: #a7a7a7; /* Color for the pipe separators (|) */
-    line-height: 20px;
+    clear: both;
+        list-style-type: none;
+        margin: 0 0 4px;
+        padding: 0;
 }
 
 /* Styles the individual links */
 .section.global-footer-container .default-content-wrapper p:nth-child(2) a {
-    color: #a7a7a7; /* Link color */
-    text-decoration: none;
+ /*    text-decoration: none;
     font-weight: 500;
-    white-space: nowrap; /* Keep link text from wrapping onto a new line */
+    white-space: nowrap; *//* Keep link text from wrapping onto a new line */
+        display: inline-block;
+       /* margin-right: 5px;*/
+        padding-right: 10px;
+        position: relative;
+        color: #666;
+            font-size: 1pc;
+            line-height: 24px;
+            text-decoration: none;
+background-color: transparent;
+padding-left: 5px;
+}
+.section.global-footer-container .default-content-wrapper p:nth-child(2) > a:last-child {
+    margin-right: 0;
+    padding: 0;
+    padding-left: 5px;
 }
 
 .section.global-footer-container .default-content-wrapper p:nth-child(2) a:hover {
-    color: #000; /* NVIDIA Green on hover */
-    text-decoration: none;
+    color: #000;
 }
 
 /* --- Copyright Styling --- */
 
 /* Targets the paragraph containing the copyright notice */
 .section.global-footer-container .default-content-wrapper p:last-child {
-    text-align: left;
-    color: #a7a7a7;
-    margin-top: 0;
-    font-size: 13px; /* Slightly smaller than links */
+ clear: both;
+     color: #666;
+     font-size: 9pt;
+     line-height: 1pc;
 }
 
 
 /* --- Mobile Responsiveness --- */
-@media (max-width: 768px) {
+@media (max-width: 639px) {
+ .section.global-footer-container {
+margin-bottom: 0;
+        text-align: center;
+        }
     /* Stack links vertically or allow wrapping on small screens */
     .section.global-footer-container .default-content-wrapper p:nth-child(2) {
         /* Use flex to allow controlled wrapping of the inline elements */
@@ -414,8 +478,4 @@ footer {
         padding: 0 10px;
     }
 
-    /* Reduce logo size on small screens */
-    .section.global-footer-container .icon-logo img {
-        width: 70px;
-    }
 }
