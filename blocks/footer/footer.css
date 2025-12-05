@@ -1,13 +1,24 @@
-/* --- FOOTER GENERAL STYLES --- */
 footer {
   color: #fff;
   font-family: var(--body-font-family);
-  padding: 60px 30px;
 }
 
-.footer .footer-container {
+.footer .page-footer-wrapper {
   max-width: 1290px;
   margin: 0 auto;
+}
+
+.footer .section.page-footer-links{
+  background-color: #000 !important;
+  padding: 60px 30px;
+  padding-bottom: 0px;
+  margin: 0;
+}
+
+.footer .section.page-footer-subscribe {
+  background-color: #000 !important;
+  padding: 60px 30px;
+  margin: 0;
 }
 
 .footer .columns > div {
@@ -21,15 +32,13 @@ footer {
   min-width: 280px;
 }
 
-/* Styles for H1 in the main footer columns AND footer links section */
-.footer h1,
-.section.page-footer-links h1 {
+.footer h1 {
   border-bottom: 1px solid #747474;
   color: #eee;
   font-size: 24px;
   font-weight: 700;
   line-height: 26px;
-  padding-bottom: 9pt; /* 12px */
+  padding-bottom: 9pt;
   text-align: left;
   text-transform: none;
 }
@@ -44,438 +53,242 @@ footer {
   margin-bottom: 5px;
 }
 
-/* Styles for all links in the main footer columns AND footer links section */
-.footer a,
-.section.page-footer-links ul li a {
+.footer a:hover {
+  text-decoration: underline;
+}
+
+/* Specific rule for footer links to ensure correct styling */
+.footer.block .page-footer-links ul li a {
   color: #76b900;
   font-size: 1pc; /* 16px */
   line-height: 30px;
   text-decoration: none;
 }
 
-.footer a:hover,
-.section.page-footer-links ul li a:hover {
-  text-decoration: underline;
-}
-
-/* Specific rule for the footer links/subscribe sections */
-.section.page-footer-links,
+/* Subscribe and Social Sections */
 .section.page-footer-subscribe {
-  background-color: #000;
-      margin: 0 auto;
-  /* margin: 0 auto; - Removed, as containing element should handle width/center if needed. */
+  padding: 30px 15px;
 }
 
-/* --- FOOTER SUBSCRIBE AND SOCIAL STYLES --- */
-
-/* Main container for subscription and social sections */
-.page-footer-subscribe {
-  background-color: #1a1a1a;
-  color: white;
-  padding: 20px 0;
+.section.page-footer-subscribe .columns > div > div {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
-/* Base style for columns in the subscribe section (subscription block) */
-.page-footer-subscribe > .columns-wrapper:first-child {
-  flex-basis: 675px;
-  max-width: 675px;
-}
-
-.page-footer-subscribe > .columns-wrapper:first-child .columns-1-cols > div > div {
-  max-width: 675px;
-  margin: 0 auto;
-  display: flex;
   align-items: center;
-  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
-/* Logo and Text Styling (Combined Paragraph) */
-.page-footer-subscribe > .columns-wrapper:first-child p:first-child {
-  /*display: flex;
-  align-items: center;*/
-  /*margin: 0;*/
-  font-size: 18px;
-  line-height: 1;
-  color: white;
-      float: left;
-      display: inline-block;
-      position: relative;
-      top: 16px;
-      margin-left: 30px;
-    align-items: flex-start;
-    margin-top: -25px;
+
+
+.section.page-footer-subscribe .columns-wrapper:nth-of-type(2) > div > div p:first-child{
+color: #747474;
+font-size: 1pc;
+    padding-top: 2px;
+    vertical-align: top;
 }
 
-/* Logo Styling */
-.page-footer-subscribe .icon-envelope {
-  display: inline-block;
-  width: 50px;
-  height: 36px;
-  position: relative;
-  margin-right: 30px;
-}
-
-.page-footer-subscribe .icon-envelope img {
-  width: 100%;
-  height: 100%;
-  filter: invert(1);
-}
-
-.page-footer-subscribe > .columns-wrapper:first-child p:first-child::after {
-  content: "";
-  display: inline-block;
-  width: 30px;
-}
-
-/* Subscribe Button Styling */
-.page-footer-subscribe .button-container {
-  margin: 0;
-  margin-left: 30px;
-  position: relative;
-  top: -3px;
-}
-
-.page-footer-subscribe .button-container a.button {
-  display: inline-block;
-  text-decoration: none;
-  background-color: #76b900;
-  color: #1a1a1a;
-  border: none;
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 1.25;
-  text-align: center;
-  cursor: pointer;
-  white-space: nowrap;
-  transition: background-color 0.2s;
-  border-radius: 0px;
-
-      min-width: 50px;
-      padding: 13px 15px;
-      position: relative;
-      -webkit-transition: background-color .2s
-  ease-out;
-}
-
-.page-footer-subscribe .button-container a.button:hover {
-  background-color: #8acc00;
-}
-
-/* Social Media Container Styling (Second column in the subscribe section) */
-.page-footer-subscribe > .columns-wrapper:nth-child(2) {
-  flex-basis: auto;
-  max-width: 100%;
-  padding-left: 50px;
-      -webkit-box-pack: end;
-      -ms-flex-pack: end;
-      -webkit-box-align: center;
-      -ms-flex-align: center;
-      align-items: center;
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: flex;
-      justify-content: end;
-      text-align: right;
-      width: 33%;
-}
-
-.page-footer-subscribe > .columns-wrapper:nth-child(2) .columns-1-cols > div > div {
-  display: flex;
-  align-items: center;
-  padding-top: 0;
-  margin: 0;
-  width: auto;
-}
-
-/* "Follow NVIDIA" Text Styling */
-.page-footer-subscribe > .columns-wrapper:nth-child(2) p:first-child {
-/*  font-size: 16px;
-  font-weight: bold;
-  color: white;
-  margin: 0;
-  margin-right: 15px;
-  white-space: nowrap;*/
-      color: #747474;
-      display: inline-block;
-      font-size: 1pc;
-      margin-right: 30px;
-      padding-top: 2px;
-      vertical-align: top;
-}
-
-/* Social Icon Links Container Styling */
-.page-footer-subscribe > .columns-wrapper:nth-child(2) p:last-child {
-  margin: 0;
+.section.page-footer-subscribe .columns-wrapper:nth-of-type(2) > div > div p:nth-of-type(2)  {
   display: flex;
   gap: 10px;
 }
 
-/* Individual Social Icon Link */
-.page-footer-subscribe > .columns-wrapper:nth-child(2) p:last-child a {
-  display: inline-block;
-  width: 30px;
-  height: 30px;
+.section.page-footer-subscribe p:first-child {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.section.page-footer-subscribe .icon-envelope {
+  width: 48px;
+  height: 36px;
+}
+
+.section.page-footer-subscribe .icon-envelope img {
+  /* Removed filter: invert(1) to restore original color */
+}
+
+.section.page-footer-subscribe .button-container {
+  margin: 0;
+  padding:0px;
+}
+
+.section.page-footer-subscribe a.button {
+  background-color: #76b900;
+  color: #000;
+  font-weight: 700;
+  padding: 13px 15px;
+  border-radius: 0;
   text-decoration: none;
-  transition: opacity 0.2s;
+  white-space: nowrap;
 }
 
-.page-footer-subscribe > .columns-wrapper:nth-child(2) p:last-child a:hover {
-  opacity: 0.8;
+.section.page-footer-subscribe a.button:hover {
+  background-color: #91c733;
 }
 
-/* Social Icon Image Styling (SVG) */
-.page-footer-subscribe .icon img {
-  width: 100%;
-  height: 100%;
-  filter: invert(1);
+/* Global Footer */
+.section.global-footer-container {
+  background-color: #fff;
+  padding: 30px;
+}
+
+.section.global-footer-container .default-content-wrapper {
+  max-width: 1290px;
+  margin: 0 auto;
+  color: #666;
+}
+
+.section.global-footer-container p {
+  margin: 0;
+  color: #666;
+}
+
+.section.global-footer-container a {
+  color: #666;
+  text-decoration: none;
+}
+
+.section.global-footer-container a:hover {
+  color: #1a1a1a;
+}
+
+/* Corrected logo class and styles */
+.section.global-footer-container .icon-nvidia-logo {
+  display: block;
+  float: left;
+  height: 20px;
+  width: 110px;
+  margin: 0 auto 15px;
+}
+
+.section.global-footer-container p:nth-of-type(2) {
+  clear: both;
+}
+
+.section.global-footer-container p:nth-of-type(2) a {
+  display: inline-block;
+  margin-right: 5px;
+  padding-right: 10px;
+  position: relative;
+  font-size: 1pc;
+  line-height: 24px;
+}
+
+.section.global-footer-container p:nth-of-type(2) a:not(:last-child)::after {
+  content: '';
+  background: #666;
+  height: 14px;
+  width: 1px;
+  position: absolute;
+  right: 0;
+  top: 5px;
+}
+
+.section.global-footer-container p:last-of-type {
+  clear: both;
+  font-size: 9pt;
+  line-height: 1pc;
+  margin-top: 10px;
 }
 
 /* --- MEDIA QUERIES --- */
 
-/* Tablet layout: 2x2 grid (640px to 1023px) */
-@media (min-width: 640px) and (max-width: 1023px) {
-  .footer .columns > div {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-  }
-}
-
-/* Mobile Accordion Styles (max-width: 1023px) */
 @media (max-width: 1023px) {
   .footer .columns > div {
     flex-direction: column;
   }
 
   .footer h1 {
-    cursor: pointer;
-    position: relative;
-  }
-
-  .footer h1::after {
-    content: '▼';
-    position: absolute;
-    right: 0;
-    font-size: 14px;
-    transition: transform 0.3s;
-  }
-
-  .footer h1.active::after {
-    transform: rotate(180deg);
+    text-align: center;
   }
 
   .footer ul {
-    display: none;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease-out;
-  }
-
-  .footer ul.active {
-    display: block;
-    max-height: 500px; /* Adjust as needed */
-  }
-}
-
-/* 💻 DESKTOP ALIGNMENT (Right-Most - min-width: 1350px) */
-@media screen and (min-width: 1350px) {
-  .page-footer-subscribe {
-    justify-content: flex-end;
-    padding-right: 20px;
-  }
-}
-
-/* 📱 TABLET & MOBILE ALIGNMENT (Centered - max-width: 1349px) */
-@media screen and (max-width: 1349px) {
-  .page-footer-subscribe {
-    justify-content: center;
-    padding: 20px 0;
-  }
-
-  .page-footer-subscribe > .columns-wrapper:first-child,
-  .page-footer-subscribe > .columns-wrapper:nth-child(2) {
-    flex-basis: 100%;
-    /*max-width: 675px;*/
-    padding-left: 0;
-    margin-top: 10px;
-  }
-
-  .page-footer-subscribe > .columns-wrapper:nth-child(2) .columns-1-cols > div > div {
-    justify-content: center;
-  }
-}
-
-/* Small Screens (320px to 639px) - Stacking Elements */
-@media screen and (max-width: 639px) {
-  .page-footer-subscribe > .columns-wrapper:first-child .columns-1-cols > div > div {
-    flex-direction: column;
     text-align: center;
-    width: 100%;
-    max-width: none;
-    padding: 0 15px;
-    align-items: center; /* Ensures content is centered */
   }
 
-  .page-footer-subscribe > .columns-wrapper:first-child p:first-child {
-    flex-direction: column;
-    margin-bottom: 20px;
-  }
-
-  .page-footer-subscribe > .columns-wrapper:first-child p:first-child::after {
-    display: none;
-  }
-
-  .page-footer-subscribe .icon-envelope {
-    top: 0;
-    margin-bottom: 10px;
-  }
-
-  .page-footer-subscribe .button-container {
-    margin-left: 0;
-    margin-top: 10px;
-    top: 0;
-  }
-
-  .page-footer-subscribe > .columns-wrapper:nth-child(2) .columns-1-cols > div > div {
-    text-align: center;
-    padding: 20px 15px;
-  }
-
-  .page-footer-subscribe > .columns-wrapper:nth-child(2) p:last-child {
+  .section.page-footer-subscribe .columns > div {
     justify-content: center;
   }
+}
 
-
-  .page-footer-subscribe > .columns-wrapper:nth-child(2) p:first-child {
-    margin-right: 0;
-    margin-bottom: 10px;
+@media (min-width: 1024px) {
+  .section.page-footer-subscribe .columns-wrapper:nth-of-type(2) .columns > div > div {
+    justify-content: end;
   }
 }
 
-/*Global footer styles*/
-/*
- * Styles to emulate the NVIDIA Global Footer look for your AEM structure.
- * Background, color, and font sizes are based on the reference site.
- */
-
-/* --- Main Container & Layout --- */
-.section.global-footer-container {
-background-color: #fff;
-    margin: 0 auto;
-    width: 100%;
-
-/*background-color: #fff;
-    color: #666;
-    padding: 30px;
-    margin: 0 auto;*/
+@media (min-width: 640px) and (max-width: 1023px) {
+  .footer .section.page-footer-links .columns > div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
 }
 
-.section.global-footer-container .default-content-wrapper {
-background: #fff;
-    margin: 0 auto;
-    max-width: 1290px;
-    padding: 30px;
-
-    /*font-size: 14px;
-    line-height: 1.5;*/
-}
-
-/* --- Logo Styling --- */
-
-/*
-.global-footer__logo {
-    display: block;
-    float: left;
-    height: 20px;
-    margin: 0 auto 15px;
-    width: 110px;
-}
-
-*/
-
-/* Targets the paragraph containing the logo */
-/*.section.global-footer-container .default-content-wrapper p:first-child {
-    text-align: left;
-    margin-bottom: 25px; *//* Space below the logo *//*
-    margin-top: 0;
-}*/
-
-/* Centers and styles the logo image */
-.section.global-footer-container .icon-nvidia-logo {
-display: block;
-    float: left;
-    height: 20px;
-    margin: 0 auto 15px;
-    width: 110px;
-}
-
-/* --- Links Styling --- */
-
-/* Targets the paragraph containing all the links and separators */
-.section.global-footer-container .default-content-wrapper p:nth-child(2) {
-    clear: both;
-        list-style-type: none;
-        margin: 0 0 4px;
-        padding: 0;
-}
-
-/* Styles the individual links */
-.section.global-footer-container .default-content-wrapper p:nth-child(2) a {
- /*    text-decoration: none;
-    font-weight: 500;
-    white-space: nowrap; *//* Keep link text from wrapping onto a new line */
-        display: inline-block;
-       /* margin-right: 5px;*/
-        padding-right: 10px;
-        position: relative;
-        color: #666;
-            font-size: 1pc;
-            line-height: 24px;
-            text-decoration: none;
-background-color: transparent;
-padding-left: 5px;
-}
-.section.global-footer-container .default-content-wrapper p:nth-child(2) > a:last-child {
-    margin-right: 0;
-    padding: 0;
-    padding-left: 5px;
-}
-
-.section.global-footer-container .default-content-wrapper p:nth-child(2) a:hover {
-    color: #000;
-}
-
-/* --- Copyright Styling --- */
-
-/* Targets the paragraph containing the copyright notice */
-.section.global-footer-container .default-content-wrapper p:last-child {
- clear: both;
-     color: #666;
-     font-size: 9pt;
-     line-height: 1pc;
-}
-
-
-/* --- Mobile Responsiveness --- */
 @media (max-width: 639px) {
- .section.global-footer-container {
-margin-bottom: 0;
-        text-align: center;
-        }
-    /* Stack links vertically or allow wrapping on small screens */
-    .section.global-footer-container .default-content-wrapper p:nth-child(2) {
-        /* Use flex to allow controlled wrapping of the inline elements */
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 5px 10px; /* Space between wrapped items */
-        line-height: 1.3;
-        padding: 0 10px;
-    }
+  .section.global-footer-container .default-content-wrapper,
+  .section.global-footer-container p:nth-of-type(2) {
+    text-align: center;
+  }
 
+  /* Target the div containing the icon+text and button */
+  .footer .section.page-footer-subscribe .columns-wrapper .columns.block.columns-1-cols > div > div:first-child {
+    display: flex; /* Make it a flex container */
+    flex-direction: column; /* Stack children vertically */
+    align-items: center; /* Center items horizontally */
+    gap: 10px; /* Space between icon+text and button */
+  }
+
+  /* Ensure the p with icon+text is also a flex container to align its children */
+  .footer .section.page-footer-subscribe .columns-wrapper .columns.block.columns-1-cols > div > div:first-child p:first-child {
+    display: flex;
+    flex-direction: column; /* Stack icon and text vertically */
+    align-items: center; /* Center icon and text horizontally */
+    gap: 5px; /* Space between icon and text */
+    margin: 0; /* Remove default paragraph margin */
+  }
+
+  /* Reset position/float for icon */
+  .footer .section.page-footer-subscribe .columns-wrapper .columns.block.columns-1-cols .icon-envelope {
+    position: static; /* Remove relative positioning */
+    top: auto;
+    float: none;
+    margin-bottom: 5px; /* Add some space below the icon */
+  }
+
+  /* Reset margin for subscribe text */
+  .footer .section.page-footer-subscribe .columns-wrapper .columns.block.columns-1-cols p:first-child span {
+    margin-left: 0;
+  }
+
+  /* Center the button */
+  .footer .section.page-footer-subscribe .columns-wrapper .columns.block.columns-1-cols .button-container {
+    margin-left: 0;
+  }
+
+  /*Center the nvidia-logo in global footer*/
+  .footer .section.global-footer-container .icon-nvidia-logo {
+   float: none;
+}
+ /* Make UL horizontal */
+  .footer .columns.block.columns-3-cols ul {
+    display: flex;
+    flex-wrap: wrap;       /* allow items to wrap on small screens */
+    gap: 10px 20px;        /* spacing between items */
+   justify-content: flex-start; /* LEFT align the items */
+       text-align: left;
+  }
+
+ .footer .columns.block.columns-3-cols h1 {
+ font-size: 1pc;
+ }
+
+  /* Remove vertical spacing */
+  .footer .columns.block.columns-3-cols li {
+    margin-bottom: 0;
+  }
 }
