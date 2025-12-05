@@ -26,6 +26,12 @@ main > .section.carousel-container > div {
   justify-content: space-between;
 }
 
+/* Info-only header styling */
+.carousel-header-info {
+  position: relative;
+  margin-bottom: 30px;
+}
+
 .carousel-header-title {
   font-size: 48px;
   font-weight: 700;
@@ -137,8 +143,16 @@ main > .section.carousel-container > div {
 /* Info Slide */
 .carousel-info-slide {
   padding: 40px;
-  width: 600px;
-  min-height: 400px;
+  width: 100%;
+  max-width: 600px;
+  min-height: auto;
+}
+
+/* Info slide when used standalone (not in carousel track) */
+.carousel > .carousel-info-slide {
+  padding: 40px 0;
+  width: 100%;
+  max-width: none;
 }
 
 .carousel-info-content {
