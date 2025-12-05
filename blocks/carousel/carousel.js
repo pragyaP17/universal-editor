@@ -2,7 +2,7 @@ import { createOptimizedPicture } from '../../scripts/aem.js';
 import { moveInstrumentation } from '../../scripts/scripts.js';
 
 export default function decorate(block) {
-  if (block.querySelector('.carousel-card-description').textContent.trim() === '') {
+  if (block.querySelector('.carousel-card-description')?.textContent.trim() === '') {
     return;
   }
 
