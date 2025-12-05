@@ -6,6 +6,67 @@ export default function decorate(block) {
 
   if (!rows.length) return;
 
+  // Helper function to recursively check if an element has any non-empty text content
+  function hasContent(element) {
+    if (!element) return false;
+
+    // Get all text content recursively, trim whitespace
+    const textContent = element.textContent?.trim();
+    if (textContent) return true;
+
+    // Check if it has any child elements with content
+    return Array.from(element.children).some((child) => hasContent(child));
+  }
+
+  // Helper function to recursively find a picture element
+  function hasPicture(element) {
+    if (!element) return false;
+
+    // Direct check
+    if (element.querySelector('picture')) return true;
+
+    // Check all nested children
+    return Array.from(element.children).some((child) => hasPicture(child));
+  }
+
+  // Helper function to recursively find a link element
+  function hasLink(element) {
+    if (!element) return false;
+
+    // Direct check
+    if (element.querySelector('a')) return true;
+
+    // Check all nested children
+    return Array.from(element.children).some((child) => hasLink(child));
+  }
+
+  // Validate that all required fields are filled
+  let allFieldsFilled = true;
+
+  rows.forEach((row) => {
+    const cells = [...row.children];
+    const cellCount = cells.length;
+
+    if (cellCount === 4) {
+      // Info component: title (0), description (1) are required
+      if (!hasContent(cells[0]) || !hasContent(cells[1])) {
+        allFieldsFilled = false;
+      }
+    } else if (cellCount >= 5) {
+      // Card component: image (0), tagline (1), title (2), description (3), link (4) are required
+      if (!hasPicture(cells[0])
+          || !hasContent(cells[1])
+          || !hasContent(cells[2])
+          || !hasContent(cells[3])
+          || !hasLink(cells[4])) {
+        allFieldsFilled = false;
+      }
+    }
+  });
+
+  // Don't render if any fields are empty
+  if (!allFieldsFilled) return;
+
   // Detect if this is a mixed carousel (info + cards) or standalone component
   // Check all rows to determine the structure
   const cellCounts = rows.map((row) => row.children.length);
