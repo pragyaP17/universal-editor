@@ -2,11 +2,79 @@ import { createOptimizedPicture } from '../../scripts/aem.js';
 import { moveInstrumentation } from '../../scripts/scripts.js';
 
 export default function decorate(block) {
-  if (block.querySelector('.carousel-card-description')?.textContent.trim() === '') {
+  const rows = [...block.children];
+
+  if (!rows.length) return;
+
+  // Detect if this is a mixed carousel (info + cards) or standalone component
+  // Check all rows to determine the structure
+  const cellCounts = rows.map((row) => row.children.length);
+  const hasInfoRow = cellCounts.includes(4);
+  const hasCardRows = cellCounts.some((count) => count >= 5);
+
+  // If only info row (4 cells), render standalone info
+  if (hasInfoRow && !hasCardRows && rows.length === 1) {
+    const cells = [...rows[0].children];
+    const title = cells[0]?.textContent.trim() || '';
+    const description = cells[1]?.innerHTML || '';
+    const quickLinks = cells[3]?.querySelector('ul');
+
+    // Create header
+    const header = document.createElement('div');
+    header.className = 'carousel-header carousel-header-info';
+
+    const headerTitle = document.createElement('h2');
+    headerTitle.className = 'carousel-header-title';
+    headerTitle.textContent = title;
+    header.appendChild(headerTitle);
+
+    // Create info slide
+    const infoSlide = document.createElement('div');
+    infoSlide.className = 'carousel-info-slide';
+
+    const content = document.createElement('div');
+    content.className = 'carousel-info-content';
+
+    const descElement = document.createElement('div');
+    descElement.className = 'carousel-info-description';
+    descElement.innerHTML = description;
+    content.appendChild(descElement);
+
+    // Add quick links if available
+    if (quickLinks) {
+      const quickLinksContainer = document.createElement('div');
+      quickLinksContainer.className = 'carousel-quick-links';
+
+      const toggle = document.createElement('button');
+      toggle.className = 'carousel-quick-links-toggle';
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.innerHTML = '<span class="quick-links-text">Quick Links</span><span class="quick-links-icon"></span>';
+
+      const quickLinksContent = document.createElement('div');
+      quickLinksContent.className = 'carousel-quick-links-content';
+      quickLinksContent.style.maxHeight = '0';
+      quickLinksContent.appendChild(quickLinks.cloneNode(true));
+
+      toggle.addEventListener('click', () => {
+        const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!isExpanded));
+        quickLinksContainer.classList.toggle('expanded', !isExpanded);
+        quickLinksContent.style.maxHeight = isExpanded ? '0' : `${quickLinksContent.scrollHeight}px`;
+      });
+
+      quickLinksContainer.append(toggle, quickLinksContent);
+      content.appendChild(quickLinksContainer);
+    }
+
+    infoSlide.appendChild(content);
+
+    // Replace block content
+    block.textContent = '';
+    block.append(header, infoSlide);
     return;
   }
 
-  // Create main carousel structure
+  // Render full carousel (with or without info slide)
   const carouselContainer = document.createElement('div');
   carouselContainer.className = 'carousel-slides-container';
 
@@ -17,24 +85,24 @@ export default function decorate(block) {
   let headerTitle = '';
 
   // Process each row
-  [...block.children].forEach((row, index) => {
+  rows.forEach((row, index) => {
     const cells = [...row.children];
+    const cellCount = cells.length;
 
-    // First row is the info slide
-    if (index === 0) {
+    // Info slide (4 cells)
+    if (cellCount === 4) {
       const slide = document.createElement('div');
       slide.className = 'carousel-slide carousel-info-slide';
-      slide.dataset.slideIndex = '0';
 
       const content = document.createElement('div');
       content.className = 'carousel-info-content';
 
-      // Extract title for sticky header
+      // Extract title for header
       if (cells[0]) {
         headerTitle = cells[0].textContent.trim();
       }
 
-      // Description (second cell)
+      // Description
       if (cells[1]) {
         const desc = document.createElement('div');
         desc.className = 'carousel-info-description';
@@ -42,48 +110,41 @@ export default function decorate(block) {
         content.appendChild(desc);
       }
 
-      // Quick Links (fourth cell with ul)
+      // Quick Links
       if (cells[3] && cells[3].querySelector('ul')) {
         const quickLinksContainer = document.createElement('div');
         quickLinksContainer.className = 'carousel-quick-links';
 
-        const quickLinksToggle = document.createElement('button');
-        quickLinksToggle.className = 'carousel-quick-links-toggle';
-        quickLinksToggle.setAttribute('aria-expanded', 'false');
-        quickLinksToggle.innerHTML = `
-          <span class="quick-links-text">Quick Links</span>
-          <span class="quick-links-icon"></span>
-        `;
+        const toggle = document.createElement('button');
+        toggle.className = 'carousel-quick-links-toggle';
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.innerHTML = '<span class="quick-links-text">Quick Links</span><span class="quick-links-icon"></span>';
 
         const quickLinksContent = document.createElement('div');
         quickLinksContent.className = 'carousel-quick-links-content';
         quickLinksContent.style.maxHeight = '0';
+        quickLinksContent.appendChild(cells[3].querySelector('ul').cloneNode(true));
 
-        const linksList = cells[3].querySelector('ul').cloneNode(true);
-        quickLinksContent.appendChild(linksList);
-
-        // Toggle functionality
-        quickLinksToggle.addEventListener('click', () => {
-          const isExpanded = quickLinksToggle.getAttribute('aria-expanded') === 'true';
-          quickLinksToggle.setAttribute('aria-expanded', !isExpanded);
+        toggle.addEventListener('click', () => {
+          const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+          toggle.setAttribute('aria-expanded', String(!isExpanded));
           quickLinksContainer.classList.toggle('expanded', !isExpanded);
-
-          if (!isExpanded) {
-            quickLinksContent.style.maxHeight = `${quickLinksContent.scrollHeight}px`;
-          } else {
-            quickLinksContent.style.maxHeight = '0';
-          }
+          quickLinksContent.style.maxHeight = isExpanded ? '0' : `${quickLinksContent.scrollHeight}px`;
         });
 
-        quickLinksContainer.appendChild(quickLinksToggle);
-        quickLinksContainer.appendChild(quickLinksContent);
+        quickLinksContainer.append(toggle, quickLinksContent);
         content.appendChild(quickLinksContainer);
       }
 
       slide.appendChild(content);
       slides.push(slide);
-    } else {
-      // Card slides
+    } else if (cellCount >= 5) {
+      // Card slide (5+ cells)
+      // Use first card title as header if no info slide
+      if (!headerTitle && cells[2]) {
+        headerTitle = cells[2].textContent.trim();
+      }
+
       const slide = document.createElement('div');
       slide.className = 'carousel-slide carousel-card-slide';
       slide.dataset.slideIndex = index;
