@@ -2,6 +2,10 @@ import { createOptimizedPicture } from '../../scripts/aem.js';
 import { moveInstrumentation } from '../../scripts/scripts.js';
 
 export default function decorate(block) {
+  if (block.querySelector('.carousel-card-description').textContent.trim() === '') {
+    return;
+  }
+
   // Create main carousel structure
   const carouselContainer = document.createElement('div');
   carouselContainer.className = 'carousel-slides-container';
@@ -219,7 +223,7 @@ export default function decorate(block) {
     const thumbPosition = scrollPercentage * (trackWidth - thumbWidth);
 
     scrollbarThumb.style.width = `${thumbWidth}px`;
-    scrollbarThumb.style.transform = `translateX(${thumbPosition}px`;
+    scrollbarThumb.style.transform = `translateX(${thumbPosition}px)`;
 
     // Buttons are always enabled for looping behavior
     prevButton.disabled = false;
