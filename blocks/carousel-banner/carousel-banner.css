@@ -1,0 +1,460 @@
+/* stylelint-disable selector-class-pattern */
+
+/* Carousel Banner Block */
+.carousel-banner {
+  position: relative;
+  width: 100vw;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  background-color: #000;
+  color: #fff;
+  overflow: hidden;
+}
+
+/* Slides Container */
+.carousel-banner__slides {
+  position: relative;
+  width: 100%;
+  height: 600px;
+}
+
+/* Individual Slide */
+.carousel-banner__slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.6s ease-in-out, visibility 0.6s ease-in-out;
+}
+
+.carousel-banner__slide.active {
+  opacity: 1;
+  visibility: visible;
+  z-index: 1;
+}
+
+/* Background Image */
+.carousel-banner__image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.carousel-banner__image picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.carousel-banner__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Content Container - Split Layout */
+.carousel-banner__content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1440px;
+  margin: 0 auto;
+  height: 100%;
+  padding: 0 80px;
+  gap: 40px;
+}
+
+/* Left Content - Text */
+.carousel-banner__text-content {
+  flex: 0 0 50%;
+  max-width: 600px;
+}
+
+.carousel-banner__tagline {
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #fff;
+  margin-bottom: 16px;
+}
+
+.carousel-banner__title {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0 0 24px;
+  color: #fff;
+}
+
+.carousel-banner__description {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #e0e0e0;
+  margin-bottom: 32px;
+}
+
+.carousel-banner__description p {
+  margin: 0 0 16px;
+}
+
+.carousel-banner__description p:last-child {
+  margin-bottom: 0;
+}
+
+/* Dark theme for alternating slides */
+.carousel-banner__slide--dark .carousel-banner__tagline {
+  color: #000;
+}
+
+.carousel-banner__slide--dark .carousel-banner__title {
+  color: #000;
+}
+
+.carousel-banner__slide--dark .carousel-banner__description {
+  color: #000;
+}
+
+.carousel-banner__slide--dark .carousel-banner__description p {
+  color: #000;
+}
+
+.carousel-banner__cta {
+  display: inline-block;
+  padding: 12px 32px;
+  background-color: #76b900;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+a:any-link.carousel-banner__cta {
+    color: #000;
+    text-decoration: none;
+}
+
+.carousel-banner__cta:hover {
+  background-color: #86c91a;
+  color: #fff;
+  text-decoration: none;
+  transform: translateY(-2px);
+}
+
+.carousel-banner__cta:active {
+  transform: translateY(0);
+  text-decoration: none;
+  color: white;
+}
+
+.carousel-banner__cta:visited {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Right Content - Logo/Partner */
+.carousel-banner__logo-content {
+  display: none;
+}
+
+/* Pagination */
+.carousel-banner__pagination-wrapper {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+.carousel-banner__pagination-container {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 30px;
+  max-width: 1291px;
+  margin: 0 auto;
+  user-select: none;
+  justify-content: center;
+}
+
+.carousel-banner__progress-box {
+  width: 100%;
+  max-width: 150px;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+  opacity: 0.6;
+}
+
+.carousel-banner__progress-box.active {
+  opacity: 1;
+}
+
+.carousel-banner__progress-label {
+  font-size: 10px;
+  font-weight: 700;
+  color: rgb(255 255 255 / 60%);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+  transition: color 0.3s ease;
+}
+
+/* When slides 0,2,4 are active - all pagination text becomes black */
+.carousel-banner__pagination-container--dark .carousel-banner__progress-label {
+  color: rgb(0 0 0 / 60%);
+}
+
+.carousel-banner__progress-box.active .carousel-banner__progress-label {
+  color: rgb(255 255 255 / 100%);
+}
+
+/* Hover states for pagination labels */
+.carousel-banner__progress-box:hover .carousel-banner__progress-label {
+  color: rgb(255 255 255 / 100%);
+}
+
+.carousel-banner__pagination-container--dark .carousel-banner__progress-box.active .carousel-banner__progress-label {
+  color: rgb(0 0 0 / 100%);
+}
+
+.carousel-banner__pagination-container--dark .carousel-banner__progress-box:hover .carousel-banner__progress-label {
+  color: rgb(0 0 0 / 100%);
+}
+
+.carousel-banner__progress-desc {
+  font-size: 14px;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.carousel-banner__progress-desc p {
+  margin: 0;
+  color: rgb(255 255 255 / 60%);
+  transition: color 0.3s ease;
+}
+
+/* When slides 0,2,4 are active - all pagination descriptions become black */
+.carousel-banner__pagination-container--dark .carousel-banner__progress-desc p {
+  color: rgb(0 0 0 / 90%);
+}
+
+.carousel-banner__progress-box.active .carousel-banner__progress-desc p {
+  color: rgb(255 255 255 / 100%);
+}
+
+/* Hover states for pagination descriptions */
+.carousel-banner__progress-box:hover .carousel-banner__progress-desc p {
+  color: rgb(255 255 255 / 100%);
+}
+
+.carousel-banner__pagination-container--dark .carousel-banner__progress-box.active .carousel-banner__progress-desc p {
+  color: rgb(0 0 0 / 100%);
+}
+
+.carousel-banner__pagination-container--dark .carousel-banner__progress-box:hover .carousel-banner__progress-desc p {
+  color: rgb(0 0 0 / 100%);
+}
+
+.carousel-banner__progress-wrapper {
+  background-color: rgb(255 255 255 / 20%);
+  height: 4px;
+  width: 100%;
+  position: relative;
+  margin-bottom: 15px;
+}
+
+/* When slides 0,2,4 are active - progress bar background becomes black */
+.carousel-banner__pagination-container--dark .carousel-banner__progress-wrapper {
+  background-color: rgb(0 0 0 / 20%);
+}
+
+.carousel-banner__progress-filled {
+  height: 4px;
+  width: 0;
+  background-color: #76b900;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.carousel-banner__progress-box.active .carousel-banner__progress-filled {
+  animation: progress-bar 7000ms linear;
+  animation-fill-mode: both;
+  background-color: #76b900;
+}
+
+@keyframes progress-bar {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+/* Tablet: 640px to 1023px */
+@media (640px <= width <= 1023px) {
+  .carousel-banner__slides {
+    height: 500px;
+  }
+
+  .carousel-banner__content {
+    padding: 0 40px;
+    gap: 30px;
+  }
+
+  .carousel-banner__text-content {
+    max-width: 500px;
+    margin-top: -100px
+  }
+
+  .carousel-banner__title {
+    font-size: 36px;
+    margin-bottom: 20px;
+  }
+
+  .carousel-banner__description {
+    font-size: 16px;
+    margin-bottom: 24px;
+  }
+
+  .carousel-banner__tagline {
+    font-size: 13px;
+    margin-bottom: 12px;
+  }
+
+  .carousel-banner__pagination-container {
+    max-width: 630px;
+    gap: 15px;
+  }
+
+  .carousel-banner__progress-box {
+    min-width: auto;
+  }
+
+  .carousel-banner__progress-label,
+  .carousel-banner__progress-desc {
+    display: none;
+  }
+}
+
+/* Mobile: up to 639px */
+@media (width <= 639px) {
+  .carousel-banner__slides {
+    height: 600px;
+  }
+
+  .carousel-banner__content {
+    flex-direction: column;
+    padding: 40px 20px 120px;
+    gap: 20px;
+    justify-content: flex-end;
+  }
+
+  .carousel-banner__text-content {
+    flex: 1;
+    max-width: 100%;
+  }
+
+  .carousel-banner__logo-content {
+    display: none;
+  }
+
+  .carousel-banner__title {
+    font-size: 28px;
+    margin-bottom: 16px;
+  }
+
+  .carousel-banner__description {
+    font-size: 15px;
+    margin-bottom: 20px;
+  }
+
+  .carousel-banner__tagline {
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+
+  .carousel-banner__cta {
+    padding: 10px 24px;
+    font-size: 15px;
+  }
+
+  .carousel-banner__pagination-container {
+    max-width: 650px;
+    gap: 10px;
+  }
+
+  .carousel-banner__progress-box {
+    min-width: auto;
+  }
+
+  .carousel-banner__progress-label,
+  .carousel-banner__progress-desc {
+    display: none;
+  }
+
+  .carousel-banner__pagination-wrapper {
+    padding-bottom: 0;
+  }
+
+  .carousel-banner__pagination-progress {
+    height: 2px;
+  }
+}
+
+/* Laptop: 1024px to 1349px */
+@media (1024px <= width <= 1349px) {
+  .carousel-banner__content {
+    padding: 0 60px;
+  }
+
+  .carousel-banner__text-content {
+    margin-top: -100px
+  }
+
+  .carousel-banner__title {
+    font-size: 42px;
+  }
+
+  .carousel-banner__description {
+    font-size: 17px;
+  }
+
+  .carousel-banner__pagination-container {
+    max-width: 953px;
+    gap: 20px;
+  }
+}
+
+/* Desktop: 1350px and up */
+@media (width >= 1350px) {
+  .carousel-banner__content {
+    padding: 0 80px;
+  }
+
+  .carousel-banner__text-content {
+    margin-top: -100px
+  }
+}

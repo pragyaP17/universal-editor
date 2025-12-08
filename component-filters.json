@@ -22,13 +22,20 @@
       "video-banner",
       "multi-purpose-cards",
       "immersive-cards",
-      "tabs"
+      "tabs",
+      "carousel-banner"
     ]
   },
   {
     "id": "cards",
     "components": [
       "card"
+    ]
+  },
+  {
+    "id": "carousel-banner",
+    "components": [
+      "carousel-banner-slide"
     ]
   },
   {
