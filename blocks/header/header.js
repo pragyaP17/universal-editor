@@ -32,6 +32,13 @@ function createSVGSymbols() {
 <line class="n24-icon-close-cls-2" x1="4.5" y1="4.5" x2="19.5" y2="19.5"></line>
 <line class="n24-icon-close-cls-2" x1="4.5" y1="19.5" x2="19.5" y2="4.5"></line>`,
     },
+    'n24-search': {
+      viewBox: '0 0 24 24',
+      content: `<title>Search</title>
+<desc>Search icon</desc>
+<circle cx="9.9" cy="9.9" r="5.85" stroke="#666" stroke-width="1.5" fill="none"></circle>
+<line x1="15" y1="15" x2="19.875" y2="19.875" stroke="#666" stroke-width="1.5"></line>`,
+    },
   };
 
   Object.keys(symbols).forEach((id) => {
@@ -505,7 +512,7 @@ function createDesktopNav(navData, rightMenuData, iconItems) {
   return desktopNav;
 }
 
-function createMobileNav(navData) {
+function createMobileNav(navData, rightMenuData, iconItems) {
   const mobileNav = document.createElement('div');
   mobileNav.className = 'mobile-nav';
 
@@ -567,6 +574,26 @@ function createMobileNav(navData) {
   menuButtonItem.appendChild(menuButton);
   navHeaderList.appendChild(menuButtonItem);
 
+  const searchItem = document.createElement('li');
+  searchItem.className = 'nav-header-item search-item';
+  searchItem.setAttribute('tabindex', '0');
+  searchItem.id = 'nv-search-box-mobile';
+  const searchLink = document.createElement('a');
+  searchLink.className = 'toplevel';
+  searchLink.href = '#';
+  searchLink.setAttribute('aria-haspopup', 'true');
+  searchLink.setAttribute('aria-label', 'Search NVIDIA');
+  const searchIconSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  searchIconSvg.classList.add('n24-icon', 'nav-search-icon');
+  searchIconSvg.setAttribute('width', '24');
+  searchIconSvg.setAttribute('height', '24');
+  const searchIconUse = document.createElementNS('http://www.w3.org/2000/svg', 'use');
+  searchIconUse.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', '#n24-search');
+  searchIconSvg.appendChild(searchIconUse);
+  searchLink.appendChild(searchIconSvg);
+  searchItem.appendChild(searchLink);
+  navHeaderList.appendChild(searchItem);
+
   const brandItem = document.createElement('li');
   brandItem.className = 'nav-header-item brand-container';
 
@@ -588,6 +615,52 @@ function createMobileNav(navData) {
   brandItem.appendChild(logoLink);
   navHeaderList.appendChild(brandItem);
 
+  iconItems.forEach((item) => {
+    const iconName = item.icon.className.split('icon-')[1];
+
+    if (iconName === 'globe') {
+      const csItem = document.createElement('li');
+      csItem.className = 'nav-header-item cs-item cs-right-padding';
+      csItem.id = 'nv-cs-item-mob';
+      csItem.setAttribute('role', 'none');
+      const csLink = document.createElement('a');
+      csLink.setAttribute('aria-expanded', 'false');
+      csLink.setAttribute('aria-haspopup', 'true');
+      csLink.setAttribute('aria-label', 'Country Selector');
+      csLink.className = 'nav-cs-link menu-level-1';
+      csLink.href = '#';
+      csLink.appendChild(item.icon.cloneNode(true));
+      if (item.text) {
+        const textSpan = document.createElement('span');
+        textSpan.className = 'cs-loc-txt';
+        textSpan.textContent = item.text.replace(/\s/g, '');
+        csLink.appendChild(textSpan);
+      }
+      csItem.appendChild(csLink);
+      navHeaderList.appendChild(csItem);
+    } else if (iconName === 'profile') {
+      const profileItem = document.createElement('li');
+      profileItem.className = 'nav-header-item profile-item account-icon';
+      profileItem.id = 'acc-menu-dropdown-container-mob';
+      const profileLink = document.createElement('a');
+      profileLink.id = 'nv-login-mob';
+      profileLink.title = item.text || 'Sign In';
+      profileLink.className = 'nav-profile-link toplevel';
+      const accountDiv = document.createElement('div');
+      accountDiv.className = 'account-icon-anonuser';
+      accountDiv.appendChild(item.icon.cloneNode(true));
+      if (item.text) {
+        const labelSpan = document.createElement('span');
+        labelSpan.id = 'account-icon-anonuser-mobile-label';
+        labelSpan.textContent = item.text;
+        accountDiv.appendChild(labelSpan);
+      }
+      profileLink.appendChild(accountDiv);
+      profileItem.appendChild(profileLink);
+      navHeaderList.appendChild(profileItem);
+    }
+  });
+
   navToolsContainer.appendChild(navHeaderList);
   navHeaderContainer.appendChild(navToolsContainer);
   navHeader.appendChild(navHeaderContainer);
@@ -605,52 +678,145 @@ function createMobileNav(navData) {
   accordionMenu.className = 'accordion-menu';
   accordionMenu.setAttribute('aria-label', 'Accordion Navigation');
 
-  navData.forEach((item, index) => {
+  navData.slice(0, 3).forEach((item, index) => {
     const menuItem = document.createElement('div');
-    menuItem.className = 'menu-item';
+    menuItem.className = 'menu-item l1-item';
 
     if (item.categories.length > 0) {
       const accordionBtn = document.createElement('button');
-      accordionBtn.className = 'accordion-btn';
+      accordionBtn.className = 'accordion-btn l1-accordion-btn';
       accordionBtn.setAttribute('aria-expanded', 'false');
-      accordionBtn.setAttribute('aria-controls', `submenu-${index}`);
-      accordionBtn.id = `menu-btn-${index}`;
-      accordionBtn.innerHTML = `${item.title}<span class="caret" aria-hidden="true"></span>`;
+      accordionBtn.setAttribute('aria-controls', `l1-submenu-${index}`);
+      accordionBtn.id = `l1-menu-btn-${index}`;
+
+      const btnText = document.createElement('span');
+      btnText.textContent = item.title;
+      accordionBtn.appendChild(btnText);
+
+      const caret = document.createElement('span');
+      caret.className = 'accordion-chevron';
+      caret.setAttribute('aria-hidden', 'true');
+      accordionBtn.appendChild(caret);
       menuItem.appendChild(accordionBtn);
 
-      const submenu = document.createElement('div');
-      submenu.className = 'submenu level-3-menu';
-      submenu.id = `submenu-${index}`;
-      submenu.setAttribute('role', 'menu');
-      submenu.setAttribute('aria-labelledby', `menu-btn-${index}`);
+      const l1Submenu = document.createElement('div');
+      l1Submenu.className = 'submenu l1-submenu';
+      l1Submenu.id = `l1-submenu-${index}`;
+      l1Submenu.setAttribute('role', 'menu');
+      l1Submenu.setAttribute('aria-labelledby', `l1-menu-btn-${index}`);
 
-      item.categories.forEach((category) => {
-        if (category.title) {
-          const catTitle = document.createElement('div');
-          catTitle.className = 'submenu-category-title';
-          catTitle.textContent = category.title;
-          submenu.appendChild(catTitle);
-        }
+      const isIndustries = item.title.toLowerCase() === 'industries';
 
-        const submenuList = document.createElement('ul');
-        category.items.forEach((subItem) => {
-          const subLi = document.createElement('li');
-          const subLink = document.createElement('a');
-          subLink.href = subItem.href;
-          subLink.textContent = subItem.title;
-          subLi.appendChild(subLink);
-          submenuList.appendChild(subLi);
+      if (isIndustries) {
+        const industriesContainer = document.createElement('div');
+        industriesContainer.className = 'mobile-industries-container';
+
+        item.categories.forEach((category) => {
+          const categoryLink = document.createElement('a');
+          categoryLink.href = category.href || category.items[0]?.href || '#';
+          categoryLink.className = 'mobile-industry-link';
+
+          const linkContent = document.createElement('div');
+          linkContent.className = 'mobile-industry-content';
+
+          const linkText = document.createElement('span');
+          linkText.className = 'mobile-industry-text';
+          linkText.textContent = category.title;
+          linkContent.appendChild(linkText);
+
+          const chevron = document.createElement('span');
+          chevron.className = 'industries-chevron';
+          linkContent.appendChild(chevron);
+
+          categoryLink.appendChild(linkContent);
+          industriesContainer.appendChild(categoryLink);
         });
 
-        submenu.appendChild(submenuList);
-      });
+        l1Submenu.appendChild(industriesContainer);
+      } else {
+        item.categories.forEach((category, catIndex) => {
+          const l2MenuItem = document.createElement('div');
+          l2MenuItem.className = 'menu-item l2-item';
 
-      menuItem.appendChild(submenu);
+          const l2AccordionBtn = document.createElement('button');
+          l2AccordionBtn.className = 'accordion-btn l2-accordion-btn';
+          l2AccordionBtn.setAttribute('aria-expanded', 'false');
+          l2AccordionBtn.setAttribute('aria-controls', `l2-submenu-${index}-${catIndex}`);
+          l2AccordionBtn.id = `l2-menu-btn-${index}-${catIndex}`;
+
+          const l2BtnText = document.createElement('span');
+          l2BtnText.textContent = category.title;
+          l2AccordionBtn.appendChild(l2BtnText);
+
+          const l2Caret = document.createElement('span');
+          l2Caret.className = 'accordion-chevron';
+          l2Caret.setAttribute('aria-hidden', 'true');
+          l2AccordionBtn.appendChild(l2Caret);
+
+          l2MenuItem.appendChild(l2AccordionBtn);
+
+          const l2Submenu = document.createElement('div');
+          l2Submenu.className = 'submenu l2-submenu';
+          l2Submenu.id = `l2-submenu-${index}-${catIndex}`;
+          l2Submenu.setAttribute('role', 'menu');
+          l2Submenu.setAttribute('aria-labelledby', `l2-menu-btn-${index}-${catIndex}`);
+
+          const l2ItemsList = document.createElement('div');
+          l2ItemsList.className = 'l2-items-list';
+
+          category.items.forEach((subItem) => {
+            const itemCard = document.createElement('a');
+            itemCard.className = 'mobile-item-card';
+            itemCard.href = subItem.href;
+
+            const cardContent = document.createElement('div');
+            cardContent.className = 'mobile-item-card-content';
+
+            const btnContainer = document.createElement('div');
+            btnContainer.className = 'mobile-item-cta';
+
+            const itemBtnText = document.createElement('span');
+            itemBtnText.className = 'mobile-item-text';
+            itemBtnText.textContent = subItem.title;
+            btnContainer.appendChild(itemBtnText);
+
+            const chevron = document.createElement('span');
+            chevron.className = 'mobile-cta-chevron';
+            btnContainer.appendChild(chevron);
+
+            cardContent.appendChild(btnContainer);
+
+            if (subItem.description) {
+              const desc = document.createElement('p');
+              desc.className = 'mobile-item-description';
+              desc.textContent = subItem.description;
+              cardContent.appendChild(desc);
+            }
+
+            itemCard.appendChild(cardContent);
+            l2ItemsList.appendChild(itemCard);
+          });
+
+          l2Submenu.appendChild(l2ItemsList);
+          l2MenuItem.appendChild(l2Submenu);
+
+          l2AccordionBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isExpanded = l2AccordionBtn.getAttribute('aria-expanded') === 'true';
+            l2AccordionBtn.setAttribute('aria-expanded', !isExpanded);
+            l2Submenu.classList.toggle('open');
+          });
+
+          l1Submenu.appendChild(l2MenuItem);
+        });
+      }
+
+      menuItem.appendChild(l1Submenu);
 
       accordionBtn.addEventListener('click', () => {
         const isExpanded = accordionBtn.getAttribute('aria-expanded') === 'true';
         accordionBtn.setAttribute('aria-expanded', !isExpanded);
-        submenu.classList.toggle('open');
+        l1Submenu.classList.toggle('open');
       });
     } else {
       const link = document.createElement('a');
@@ -660,6 +826,17 @@ function createMobileNav(navData) {
       menuItem.appendChild(link);
     }
 
+    accordionMenu.appendChild(menuItem);
+  });
+
+  rightMenuData.forEach((item) => {
+    const menuItem = document.createElement('div');
+    menuItem.className = 'menu-item right-menu-item';
+    const link = document.createElement('a');
+    link.href = item.href;
+    link.className = 'menu-item-link';
+    link.textContent = item.title;
+    menuItem.appendChild(link);
     accordionMenu.appendChild(menuItem);
   });
 
@@ -703,7 +880,7 @@ export default async function decorate(block) {
   const desktopNav = createDesktopNav(navData, rightMenuData, iconItems);
   globalNav.appendChild(desktopNav);
 
-  const mobileNav = createMobileNav(navData);
+  const mobileNav = createMobileNav(navData, rightMenuData, iconItems);
   globalNav.appendChild(mobileNav);
 
   navigationWrapper.appendChild(globalNav);
