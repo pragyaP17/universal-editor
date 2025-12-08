@@ -471,7 +471,7 @@
   transition: transform 0.3s ease, color 0.3s ease;
 }
 
-.chevron::before {
+.header .chevron::before {
   content: '\f105';
 }
 
