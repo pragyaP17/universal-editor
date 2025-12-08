@@ -15,7 +15,6 @@ main > .section.carousel-container > div {
 
 /* Sticky Header with Title and Navigation */
 .carousel-header {
-  position: sticky;
   top: 0;
   background-color: #fff;
   z-index: 100;
