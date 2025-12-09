@@ -8,7 +8,7 @@
           "page": {
             "resourceType": "core/franklin/components/columns/v1/columns",
             "template": {
-              "columns": "1",
+              "columns": "2",
               "rows": "1"
             }
           }
@@ -26,13 +26,20 @@
     {
       "id": "agreement-header",
       "components": [
-        "header-item"
+        "header-left",
+        "header-right"
       ]
     },
     {
-      "id": "header-item",
+      "id": "header-left",
       "components": [
-        "header-link"
+        "button"
+      ]
+    },
+    {
+      "id": "header-right",
+      "components": [
+        "button"
       ]
     }
   ]

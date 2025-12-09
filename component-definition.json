@@ -92,7 +92,7 @@
               "page": {
                 "resourceType": "core/franklin/components/columns/v1/columns",
                 "template": {
-                  "columns": "1",
+                  "columns": "2",
                   "rows": "1"
                 }
               }

@@ -29,13 +29,20 @@
   {
     "id": "agreement-header",
     "components": [
-      "header-item"
+      "header-left",
+      "header-right"
     ]
   },
   {
-    "id": "header-item",
+    "id": "header-left",
     "components": [
-      "header-link"
+      "button"
+    ]
+  },
+  {
+    "id": "header-right",
+    "components": [
+      "button"
     ]
   },
   {
