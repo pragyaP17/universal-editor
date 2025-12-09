@@ -213,6 +213,42 @@
     ]
   },
   {
+    "id": "agreement-button",
+    "fields": [
+      {
+        "component": "text",
+        "name": "buttonName",
+        "label": "Button Name",
+        "valueType": "string",
+        "required": true
+      },
+      {
+        "component": "aem-content",
+        "name": "buttonLink",
+        "label": "Button Link",
+        "valueType": "string",
+        "required": true
+      },
+      {
+        "component": "select",
+        "name": "buttonType",
+        "label": "Button Type",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Primary",
+            "value": "primary"
+          },
+          {
+            "name": "Secondary",
+            "value": "secondary"
+          }
+        ],
+        "required": true
+      }
+    ]
+  },
+  {
     "id": "banner",
     "fields": [
       {

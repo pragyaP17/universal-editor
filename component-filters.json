@@ -26,6 +26,12 @@
     ]
   },
   {
+    "id": "agreement-header",
+    "components": [
+      "agreement-button"
+    ]
+  },
+  {
     "id": "cards",
     "components": [
       "card"

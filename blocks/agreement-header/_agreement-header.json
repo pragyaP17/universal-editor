@@ -1,0 +1,80 @@
+{
+  "definitions": [
+    {
+      "title": "Agreement Header",
+      "id": "agreement-header",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Agreement Header",
+              "filter": "agreement-header"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Agreement Button",
+      "id": "agreement-button",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "Agreement Button",
+              "model": "agreement-button"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "agreement-button",
+      "fields": [
+        {
+          "component": "text",
+          "name": "buttonName",
+          "label": "Button Name",
+          "valueType": "string",
+          "required": true
+        },
+        {
+          "component": "aem-content",
+          "name": "buttonLink",
+          "label": "Button Link",
+          "valueType": "string",
+          "required": true
+        },
+        {
+          "component": "select",
+          "name": "buttonType",
+          "label": "Button Type",
+          "valueType": "string",
+          "options": [
+            {
+              "name": "Primary",
+              "value": "primary"
+            },
+            {
+              "name": "Secondary",
+              "value": "secondary"
+            }
+          ],
+          "required": true
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "agreement-header",
+      "components": [
+        "agreement-button"
+      ]
+    }
+  ]
+}
