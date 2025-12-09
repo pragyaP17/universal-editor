@@ -467,6 +467,7 @@ function createDesktopNav(navData, rightMenuData, iconItems) {
       regionLink.href = '#';
       regionLink.className = 'nav-region-link';
       regionLink.setAttribute('role', 'menuitem');
+      regionLink.setAttribute('aria-label', 'Region selector');
       regionLink.appendChild(item.icon);
       if (item.text) {
         const textSpan = document.createElement('span');
