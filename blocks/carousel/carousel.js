@@ -327,8 +327,15 @@ export default function decorate(block) {
   block.appendChild(scrollbarContainer);
 
   // Optimize images
-  block.querySelectorAll('picture > img').forEach((img) => {
-    const optimizedPic = createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }]);
+  block.querySelectorAll('picture > img').forEach((img, imgIndex) => {
+    // LCP optimization: first image gets eager loading
+    const isFirstImage = imgIndex === 0;
+    const optimizedPic = createOptimizedPicture(img.src, img.alt, isFirstImage, [{ width: '750' }]);
+    // Add fetchpriority to first image for better LCP
+    if (isFirstImage) {
+      const optimizedImg = optimizedPic.querySelector('img');
+      optimizedImg.fetchPriority = 'high';
+    }
     moveInstrumentation(img, optimizedPic.querySelector('img'));
     img.closest('picture').replaceWith(optimizedPic);
   });
