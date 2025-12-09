@@ -334,8 +334,10 @@ main > .section.carousel-container > div {
 
 .carousel-card-image img {
   width: 100%;
+  aspect-ratio: 16 / 9;
   height: auto;
   display: block;
+  object-fit: cover;
 }
 
 .carousel-card-content {
