@@ -448,6 +448,7 @@ function createDesktopNav(navData, rightMenuData, iconItems) {
   iconItems.forEach((item) => {
     const li = document.createElement('li');
     li.className = 'nv-menu-item';
+    li.setAttribute('role', 'none');
 
     const iconName = item.icon.className.split('icon-')[1];
 
@@ -456,6 +457,7 @@ function createDesktopNav(navData, rightMenuData, iconItems) {
       const searchLink = document.createElement('a');
       searchLink.href = '#';
       searchLink.className = 'nav-search-link';
+      searchLink.setAttribute('role', 'menuitem');
       searchLink.setAttribute('aria-label', 'Search');
       searchLink.appendChild(item.icon);
       li.appendChild(searchLink);
@@ -464,6 +466,7 @@ function createDesktopNav(navData, rightMenuData, iconItems) {
       const regionLink = document.createElement('a');
       regionLink.href = '#';
       regionLink.className = 'nav-region-link';
+      regionLink.setAttribute('role', 'menuitem');
       regionLink.appendChild(item.icon);
       if (item.text) {
         const textSpan = document.createElement('span');
@@ -477,6 +480,7 @@ function createDesktopNav(navData, rightMenuData, iconItems) {
       const userLink = document.createElement('a');
       userLink.href = '#';
       userLink.className = 'nav-user-link';
+      userLink.setAttribute('role', 'menuitem');
       userLink.appendChild(item.icon);
       if (item.text) {
         const textSpan = document.createElement('span');
