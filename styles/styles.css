@@ -297,6 +297,16 @@ main>.section:first-of-type {
   margin: 0;
 }
 
+.section.p-y-75-top {
+  padding-top: 75px;
+  margin: 0;
+}
+
+.section.p-y-75-bottom {
+  padding-bottom: 75px;
+  margin: 0;
+}
+
 .section.p-y-75 {
   padding-block: 75px;
   margin: 0;

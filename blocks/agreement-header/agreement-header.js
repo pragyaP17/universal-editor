@@ -1,44 +1,157 @@
-/**
- * Decorates the agreement header block
- * @param {Element} block The agreement header block element
- */
+import { decorateIcons } from '../../scripts/aem.js';
+
 export default function decorate(block) {
-  // Create main container
-  const container = document.createElement('div');
-  container.classList.add('agreement-header-container');
+  console.warn('agreement-header block loaded');
 
-  // Create left content container
-  const leftContainer = document.createElement('div');
-  leftContainer.classList.add('agreement-left-content');
+  // Check if we have the expected DOM structure with ul/li elements
+  const existingList = block.querySelector('ul');
+  if (existingList) {
+    // If we already have a navigation list, just wrap it properly
+    const wrapper = document.createElement('div');
+    wrapper.className = 'agreement-header-block';
 
-  // Create right content container
-  const rightContainer = document.createElement('div');
-  rightContainer.classList.add('agreement-right-content');
+    // Move the existing content to the left side
+    const left = document.createElement('div');
+    left.className = 'agreement-left agreement-desktop';
+    left.appendChild(existingList.cloneNode(true));
 
-  // Process the block content
-  const rows = [...block.children];
-  
-  if (rows.length >= 1) {
-    // First row contains left content
-    const leftRow = rows[0];
-    if (leftRow.children.length > 0) {
-      leftContainer.innerHTML = leftRow.children[0].innerHTML;
+    // Look for the "Stay Informed" button
+    const stayInformedBtn = block.querySelector('a.button.primary');
+    const right = document.createElement('div');
+    right.className = 'agreement-right';
+    
+    if (stayInformedBtn) {
+      right.appendChild(stayInformedBtn.cloneNode(true));
+    }
+
+    // Create mobile version
+    const mobileRow = document.createElement('div');
+    mobileRow.className = 'agreement-mobile';
+
+    const mobileToggle = document.createElement('button');
+    mobileToggle.className = 'agreement-mobile-toggle';
+    mobileToggle.innerHTML = `
+      <span class="text">Navigation</span>
+      <span class="icon icon-arrow-down"></span>
+    `;
+    mobileRow.appendChild(mobileToggle);
+
+    // Create mobile dropdown with all navigation items
+    const dropdown = document.createElement('div');
+    dropdown.className = 'agreement-dropdown';
+    
+    const navLinks = existingList.querySelectorAll('a');
+    navLinks.forEach(link => {
+      const dropdownItem = document.createElement('a');
+      dropdownItem.className = 'dropdown-item';
+      dropdownItem.href = link.href;
+      dropdownItem.title = link.title;
+      dropdownItem.textContent = link.textContent;
+      dropdown.appendChild(dropdownItem);
+    });
+
+    left.appendChild(mobileRow);
+    left.appendChild(dropdown);
+
+    wrapper.appendChild(left);
+    wrapper.appendChild(right);
+
+    // Replace block content
+    block.textContent = '';
+    block.appendChild(wrapper);
+
+    // Mobile dropdown functionality
+    mobileToggle.addEventListener('click', () => {
+      dropdown.classList.toggle('open');
+      mobileToggle.classList.toggle('expanded');
+    });
+
+    // Close dropdown when clicking any dropdown item
+    dropdown.querySelectorAll('.dropdown-item').forEach(item => {
+      item.addEventListener('click', () => {
+        dropdown.classList.remove('open');
+        mobileToggle.classList.remove('expanded');
+      });
+    });
+
+  } else {
+    // Fallback to original behavior if no list found
+    const links = block.querySelectorAll('a.button');
+    if (links.length < 2) return;
+
+    const agreementsBtn = links[0];
+    const pdfBtn = links[1];
+
+    const wrapper = document.createElement('div');
+    wrapper.className = 'agreement-header-block';
+
+    const left = document.createElement('div');
+    left.className = 'agreement-left';
+
+    const desktopRow = document.createElement('div');
+    desktopRow.className = 'agreement-desktop';
+
+    const desktopLink = document.createElement('a');
+    desktopLink.className = 'button secondary';
+    desktopLink.href = agreementsBtn.href;
+    desktopLink.title = agreementsBtn.title;
+    desktopLink.textContent = agreementsBtn.textContent;
+
+    desktopRow.appendChild(desktopLink);
+
+    const mobileRow = document.createElement('div');
+    mobileRow.className = 'agreement-mobile';
+
+    const mobileToggle = document.createElement('button');
+    mobileToggle.className = 'agreement-mobile-toggle';
+    mobileToggle.innerHTML = `
+      <span class="text">${agreementsBtn.textContent}</span>
+      <span class="icon icon-arrow-down"></span>
+    `;
+    mobileRow.appendChild(mobileToggle);
+
+    const dropdown = document.createElement('div');
+    dropdown.className = 'agreement-dropdown';
+    dropdown.innerHTML = `
+      <a href="${agreementsBtn.href}" class="dropdown-item">${agreementsBtn.textContent}</a>
+    `;
+
+    left.appendChild(desktopRow);
+    left.appendChild(mobileRow);
+    left.appendChild(dropdown);
+
+    const right = document.createElement('div');
+    right.className = 'agreement-right';
+
+    const pdfLink = document.createElement('a');
+    pdfLink.className = 'button primary';
+    pdfLink.href = pdfBtn.href;
+    pdfLink.title = pdfBtn.title;
+    pdfLink.textContent = pdfBtn.textContent;
+    pdfLink.setAttribute('role', 'button');
+
+    right.appendChild(pdfLink);
+
+    wrapper.appendChild(left);
+    wrapper.appendChild(right);
+
+    block.textContent = '';
+    block.appendChild(wrapper);
+
+    mobileToggle.addEventListener('click', () => {
+      dropdown.classList.toggle('open');
+      mobileToggle.classList.toggle('expanded');
+    });
+
+    const dropdownItem = dropdown.querySelector('.dropdown-item');
+    if (dropdownItem) {
+      dropdownItem.addEventListener('click', () => {
+        dropdown.classList.remove('open');
+        mobileToggle.classList.remove('expanded');
+      });
     }
   }
-  
-  if (rows.length >= 2) {
-    // Second row contains right content
-    const rightRow = rows[1];
-    if (rightRow.children.length > 0) {
-      rightContainer.innerHTML = rightRow.children[0].innerHTML;
-    }
-  }
 
-  // Add containers to main container
-  container.appendChild(leftContainer);
-  container.appendChild(rightContainer);
-
-  // Replace block content with decorated structure
-  block.textContent = '';
-  block.appendChild(container);
+  // Decorate icons after DOM is built
+  decorateIcons(block);
 }
