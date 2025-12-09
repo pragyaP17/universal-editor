@@ -99,6 +99,13 @@ body.appear {
   min-height: 90px;
 }
 
+/* Mobile viewport - banner is taller due to text wrapping */
+@media (width <=639px) {
+  #onetrust-banner-sdk {
+    min-height: 120px;
+  }
+}
+
 header {
   height: var(--nav-height);
 }
@@ -327,9 +334,10 @@ main>.section:first-of-type {
   width: 100%;
   padding: 0;
 }
-.align-right-cta .button-container{
-      display: flex;
-    justify-content: end;
+
+.align-right-cta .button-container {
+  display: flex;
+  justify-content: end;
 }
 
 
