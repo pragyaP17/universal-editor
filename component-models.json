@@ -213,21 +213,19 @@
     ]
   },
   {
-    "id": "columns",
+    "id": "agreement-header-model",
     "fields": [
       {
-        "component": "text",
-        "valueType": "number",
-        "name": "columns",
-        "value": null,
-        "label": "No of Columns"
+        "component": "richtext",
+        "name": "leftContent",
+        "label": "Left Content",
+        "value": ""
       },
       {
-        "component": "text",
-        "valueType": "number",
-        "name": "rows",
-        "value": null,
-        "label": "No of Rows"
+        "component": "richtext",
+        "name": "rightContent",
+        "label": "Right Content",
+        "value": ""
       }
     ]
   },

@@ -3,16 +3,12 @@
     {
       "title": "Agreement Header",
       "id": "agreement-header",
-      "model": "columns",
+      "model": "agreement-header-model",
       "plugins": {
         "xwalk": {
           "page": {
-            "resourceType": "core/franklin/components/columns/v1/columns",
-            "blockName": "agreement-header",
-            "template": {
-              "columns": "2",
-              "rows": "1"
-            }
+            "resourceType": "core/franklin/components/block/v1/block",
+            "blockNameOverride": "agreement-header"
           }
         }
       }
@@ -20,21 +16,19 @@
   ],
   "models": [
     {
-      "id": "columns",
+      "id": "agreement-header-model",
       "fields": [
         {
-          "component": "text",
-          "valueType": "number",
-          "name": "columns",
-          "value": null,
-          "label": "No of Columns"
+          "component": "richtext",
+          "name": "leftContent",
+          "label": "Left Content",
+          "value": ""
         },
         {
-          "component": "text",
-          "valueType": "number",
-          "name": "rows",
-          "value": null,
-          "label": "No of Rows"
+          "component": "richtext",
+          "name": "rightContent",
+          "label": "Right Content",
+          "value": ""
         }
       ]
     }
