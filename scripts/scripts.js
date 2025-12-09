@@ -127,6 +127,9 @@ async function loadLazy(doc) {
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   loadFonts();
+
+  // Load OneTrust after main content to prevent CLS
+  await loadOneTrust();
 }
 
 /**
@@ -140,7 +143,6 @@ function loadDelayed() {
 }
 
 async function loadPage() {
-  await loadOneTrust();
   await loadEager(document);
   await loadLazy(document);
   loadDelayed();
