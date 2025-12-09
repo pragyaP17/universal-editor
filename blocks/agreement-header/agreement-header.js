@@ -25,7 +25,11 @@ export default function decorate(block) {
 
     const mobileToggle = document.createElement('button');
     mobileToggle.className = 'agreement-mobile-toggle';
-    mobileToggle.innerHTML = `<span class="text">Navigation</span>`;
+    
+    // Use the first navigation item's text as the toggle label
+    const firstNavLink = existingList.querySelector('a');
+    const toggleText = firstNavLink ? firstNavLink.textContent : 'Navigation';
+    mobileToggle.innerHTML = `<span class="text">${toggleText}</span>`;
 
     mobileRow.appendChild(mobileToggle);
 

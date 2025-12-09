@@ -38,7 +38,7 @@ main .section .agreement-header-wrapper {
   width: 100%;
   max-width: 954px;
   margin: 0 auto;
-  padding: 0;
+  padding: 0 16px;
   box-sizing: border-box;
 }
 
@@ -81,6 +81,12 @@ main .section .agreement-header-wrapper {
   border-bottom-color: #76b900;
 }
 
+/* Active/current page styling - Introduction has active state */
+.agreement-header li:first-child a {
+  border-bottom-color: #76b900;
+  font-weight: 400;
+}
+
 /* ============================================================
    LEFT SIDE — MOBILE VERSION
 ============================================================ */
@@ -111,10 +117,19 @@ main .section .agreement-header-wrapper {
 }
 
 .agreement-mobile-toggle::after {
-  content: "•••";
-  font-size: 20px;
-  line-height: 1;
-  margin-left: auto;
+content: "\f107";
+    color: #76b900;
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    line-height: 1;
+    font-size: 0.95em;
+    display: inline-block;
+    transition: transform 0.3s ease;
+    margin-left: 8px;
+}
+
+.agreement-mobile-toggle.expanded::after {
+  transform: rotate(180deg);
 }
 
 /* Arrow animation */
@@ -147,7 +162,7 @@ main .section .agreement-header-wrapper {
   width: auto;
   max-width: 100%;
   box-sizing: border-box;
-  padding: 16px 0;
+  padding: 16px;
   z-index: 2000;
 }
 
@@ -156,12 +171,16 @@ main .section .agreement-header-wrapper {
 }
 
 .agreement-dropdown .dropdown-item {
-  color: #76b900;
+  color: white;
   text-decoration: none;
   font-size: 16px;
   font-weight: 500;
   display: block;
-  padding: 8px 20px;
+    margin: 15px 0
+}
+
+.agreement-dropdown .dropdown-item:first-child {
+  color: #76b900;
 }
 
 .agreement-dropdown .dropdown-item:hover {
@@ -203,6 +222,10 @@ main .section .agreement-header-wrapper {
 
   main .section.agreement-header-container {
     min-height: 60px;
+  }
+
+  .agreement-header-wrapper {
+    padding: 0 24px;
   }
 
   /* Desktop navigation shows */
