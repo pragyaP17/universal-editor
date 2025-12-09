@@ -85,30 +85,15 @@
       "id": "blocks",
       "components": [
         {
-          "title": "Agreement Header",
-          "id": "agreement-header",
+          "title": "Secondary Header",
+          "id": "secondary-header",
           "plugins": {
             "xwalk": {
               "page": {
-                "resourceType": "core/franklin/components/block/v1/block",
+                "resourceType": "core/franklin/components/columns/v1/columns",
                 "template": {
-                  "name": "Agreement Header",
-                  "filter": "agreement-header"
-                }
-              }
-            }
-          }
-        },
-        {
-          "title": "Agreement Button",
-          "id": "agreement-button",
-          "plugins": {
-            "xwalk": {
-              "page": {
-                "resourceType": "core/franklin/components/block/v1/block/item",
-                "template": {
-                  "name": "Agreement Button",
-                  "model": "agreement-button"
+                  "columns": "1",
+                  "rows": "1"
                 }
               }
             }

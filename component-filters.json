@@ -27,9 +27,15 @@
     ]
   },
   {
-    "id": "agreement-header",
+    "id": "secondary-header",
     "components": [
-      "agreement-button"
+      "header-item"
+    ]
+  },
+  {
+    "id": "header-item",
+    "components": [
+      "header-link"
     ]
   },
   {
