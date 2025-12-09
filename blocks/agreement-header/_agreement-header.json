@@ -1,8 +1,8 @@
 {
   "definitions": [
     {
-      "title": "Secondary Header",
-      "id": "secondary-header",
+      "title": "Agreement Header",
+      "id": "agreement-header",
       "plugins": {
         "xwalk": {
           "page": {
@@ -18,13 +18,13 @@
   ],
   "models": [
     {
-      "id": "secondary-header",
+      "id": "agreement-header",
       "fields": []
     }
   ],
   "filters": [
     {
-      "id": "secondary-header",
+      "id": "agreement-header",
       "components": [
         "header-item"
       ]

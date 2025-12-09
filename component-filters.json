@@ -27,7 +27,7 @@
     ]
   },
   {
-    "id": "secondary-header",
+    "id": "agreement-header",
     "components": [
       "header-item"
     ]

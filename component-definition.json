@@ -85,8 +85,8 @@
       "id": "blocks",
       "components": [
         {
-          "title": "Secondary Header",
-          "id": "secondary-header",
+          "title": "Agreement Header",
+          "id": "agreement-header",
           "plugins": {
             "xwalk": {
               "page": {
