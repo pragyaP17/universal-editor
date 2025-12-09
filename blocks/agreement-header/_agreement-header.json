@@ -14,80 +14,38 @@
           }
         }
       }
-    },
-    {
-      "title": "Header Left",
-      "id": "header-left",
-      "plugins": {
-        "xwalk": {
-          "page": {
-            "resourceType": "core/franklin/components/block/v1/block/item",
-            "template": {
-              "name": "Header Left",
-              "model": "header-left"
-            }
-          }
-        }
-      }
-    },
-    {
-      "title": "Header Right",
-      "id": "header-right",
-      "plugins": {
-        "xwalk": {
-          "page": {
-            "resourceType": "core/franklin/components/block/v1/block/item",
-            "template": {
-              "name": "Header Right",
-              "model": "header-right"
-            }
-          }
-        }
-      }
     }
   ],
   "models": [
     {
-      "id": "agreement-header",
-      "fields": []
-    },
-    {
-      "id": "header-left",
+      "id": "columns",
       "fields": [
         {
-          "component": "container",
-          "name": "content",
-          "label": "Content"
-        }
-      ]
-    },
-    {
-      "id": "header-right",
-      "fields": [
+          "component": "text",
+          "valueType": "number",
+          "name": "columns",
+          "value": "",
+          "label": "No of Columns"
+        },
         {
-          "component": "container",
-          "name": "content",
-          "label": "Content"
+          "component": "text",
+          "valueType": "number",
+          "name": "rows",
+          "value": "",
+          "label": "No of Rows"
         }
       ]
     }
   ],
   "filters": [
     {
-      "id": "agreement-header",
+      "id": "columns",
       "components": [
-        "header-left",
-        "header-right"
+        "column"
       ]
     },
     {
-      "id": "header-left",
-      "components": [
-        "button"
-      ]
-    },
-    {
-      "id": "header-right",
+      "id": "column",
       "components": [
         "button"
       ]

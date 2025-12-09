@@ -213,26 +213,21 @@
     ]
   },
   {
-    "id": "agreement-header",
-    "fields": []
-  },
-  {
-    "id": "header-left",
+    "id": "columns",
     "fields": [
       {
-        "component": "container",
-        "name": "content",
-        "label": "Content"
-      }
-    ]
-  },
-  {
-    "id": "header-right",
-    "fields": [
+        "component": "text",
+        "valueType": "number",
+        "name": "columns",
+        "value": "",
+        "label": "No of Columns"
+      },
       {
-        "component": "container",
-        "name": "content",
-        "label": "Content"
+        "component": "text",
+        "valueType": "number",
+        "name": "rows",
+        "value": "",
+        "label": "No of Rows"
       }
     ]
   },

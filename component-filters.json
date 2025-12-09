@@ -27,20 +27,13 @@
     ]
   },
   {
-    "id": "agreement-header",
+    "id": "columns",
     "components": [
-      "header-left",
-      "header-right"
+      "column"
     ]
   },
   {
-    "id": "header-left",
-    "components": [
-      "button"
-    ]
-  },
-  {
-    "id": "header-right",
+    "id": "column",
     "components": [
       "button"
     ]
