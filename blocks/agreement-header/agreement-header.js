@@ -10,30 +10,23 @@ export default function decorate(block) {
     const wrapper = document.createElement('div');
     wrapper.className = 'agreement-header-block';
 
-    // Move the existing content to the left side
+    // Create left side container
     const left = document.createElement('div');
-    left.className = 'agreement-left agreement-desktop';
-    left.appendChild(existingList.cloneNode(true));
+    left.className = 'agreement-left';
 
-    // Look for the "Stay Informed" button
-    const stayInformedBtn = block.querySelector('a.button.primary');
-    const right = document.createElement('div');
-    right.className = 'agreement-right';
-    
-    if (stayInformedBtn) {
-      right.appendChild(stayInformedBtn.cloneNode(true));
-    }
+    // Desktop navigation - move the existing list
+    const desktopRow = document.createElement('div');
+    desktopRow.className = 'agreement-desktop';
+    desktopRow.appendChild(existingList.cloneNode(true));
 
-    // Create mobile version
+    // Mobile navigation toggle
     const mobileRow = document.createElement('div');
     mobileRow.className = 'agreement-mobile';
 
     const mobileToggle = document.createElement('button');
     mobileToggle.className = 'agreement-mobile-toggle';
-    mobileToggle.innerHTML = `
-      <span class="text">Navigation</span>
-      <span class="icon icon-arrow-down"></span>
-    `;
+    mobileToggle.innerHTML = `<span class="text">Navigation</span>`;
+
     mobileRow.appendChild(mobileToggle);
 
     // Create mobile dropdown with all navigation items
@@ -50,9 +43,22 @@ export default function decorate(block) {
       dropdown.appendChild(dropdownItem);
     });
 
+    // Add elements to left container
+    left.appendChild(desktopRow);
     left.appendChild(mobileRow);
     left.appendChild(dropdown);
 
+    // Create right side for button
+    const right = document.createElement('div');
+    right.className = 'agreement-right';
+    
+    // Look for the "Stay Informed" button
+    const stayInformedBtn = block.querySelector('a.button.primary');
+    if (stayInformedBtn) {
+      right.appendChild(stayInformedBtn.cloneNode(true));
+    }
+
+    // Build final structure
     wrapper.appendChild(left);
     wrapper.appendChild(right);
 
@@ -104,10 +110,7 @@ export default function decorate(block) {
 
     const mobileToggle = document.createElement('button');
     mobileToggle.className = 'agreement-mobile-toggle';
-    mobileToggle.innerHTML = `
-      <span class="text">${agreementsBtn.textContent}</span>
-      <span class="icon icon-arrow-down"></span>
-    `;
+    mobileToggle.innerHTML = `<span class="text">${agreementsBtn.textContent}</span>`;
     mobileRow.appendChild(mobileToggle);
 
     const dropdown = document.createElement('div');

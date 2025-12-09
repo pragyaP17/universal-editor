@@ -76,6 +76,11 @@ main .section .agreement-header-wrapper {
   border-bottom: 3px solid transparent;
 }
 
+.agreement-header li a:hover {
+  color: #fff;
+  border-bottom-color: #76b900;
+}
+
 /* ============================================================
    LEFT SIDE — MOBILE VERSION
 ============================================================ */
@@ -95,13 +100,21 @@ main .section .agreement-header-wrapper {
   background: none;
   border: none;
   color: #fff;
-  font-size: 18px;
-  font-weight: 600;
+  font-size: 16px;
+  font-weight: 400;
   cursor: pointer;
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 0;
+  padding: 18px 0;
+  position: relative;
+}
+
+.agreement-mobile-toggle::after {
+  content: "•••";
+  font-size: 20px;
+  line-height: 1;
+  margin-left: auto;
 }
 
 /* Arrow animation */

@@ -28,6 +28,13 @@
           "valueType": "string"
         },
         {
+          "component": "text",
+          "name": "id",
+          "label": "Section ID",
+          "description": "Adds an HTML id attribute to the section",
+          "valueType": "string"
+        },
+        {
           "component": "multiselect",
           "name": "style",
           "label": "Style",
@@ -105,12 +112,12 @@
               "name": "Padding Y 75",
               "value": "p-y-75"
             },
-             {
-              "name": "Padding Y 75",
+            {
+              "name": "Padding Y 75 Top",
               "value": "p-y-75-top"
             },
-             {
-              "name": "Padding Y 75",
+            {
+              "name": "Padding Y 75 Bottom",
               "value": "p-y-75-bottom"
             }
           ]
