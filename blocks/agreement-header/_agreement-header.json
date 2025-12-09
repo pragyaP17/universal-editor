@@ -14,12 +14,62 @@
           }
         }
       }
+    },
+    {
+      "title": "Header Left",
+      "id": "header-left",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "Header Left",
+              "model": "header-left"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Header Right",
+      "id": "header-right",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "Header Right",
+              "model": "header-right"
+            }
+          }
+        }
+      }
     }
   ],
   "models": [
     {
       "id": "agreement-header",
       "fields": []
+    },
+    {
+      "id": "header-left",
+      "fields": [
+        {
+          "component": "container",
+          "name": "content",
+          "label": "Content"
+        }
+      ]
+    },
+    {
+      "id": "header-right",
+      "fields": [
+        {
+          "component": "container",
+          "name": "content",
+          "label": "Content"
+        }
+      ]
     }
   ],
   "filters": [

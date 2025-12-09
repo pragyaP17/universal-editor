@@ -217,6 +217,26 @@
     "fields": []
   },
   {
+    "id": "header-left",
+    "fields": [
+      {
+        "component": "container",
+        "name": "content",
+        "label": "Content"
+      }
+    ]
+  },
+  {
+    "id": "header-right",
+    "fields": [
+      {
+        "component": "container",
+        "name": "content",
+        "label": "Content"
+      }
+    ]
+  },
+  {
     "id": "banner",
     "fields": [
       {
