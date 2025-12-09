@@ -87,10 +87,12 @@
         {
           "title": "Agreement Header",
           "id": "agreement-header",
+          "model": "columns",
           "plugins": {
             "xwalk": {
               "page": {
                 "resourceType": "core/franklin/components/columns/v1/columns",
+                "blockName": "agreement-header",
                 "template": {
                   "columns": "2",
                   "rows": "1"

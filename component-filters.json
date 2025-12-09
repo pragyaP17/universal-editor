@@ -27,18 +27,6 @@
     ]
   },
   {
-    "id": "columns",
-    "components": [
-      "column"
-    ]
-  },
-  {
-    "id": "column",
-    "components": [
-      "button"
-    ]
-  },
-  {
     "id": "cards",
     "components": [
       "card"

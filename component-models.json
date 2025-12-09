@@ -219,14 +219,14 @@
         "component": "text",
         "valueType": "number",
         "name": "columns",
-        "value": "",
+        "value": null,
         "label": "No of Columns"
       },
       {
         "component": "text",
         "valueType": "number",
         "name": "rows",
-        "value": "",
+        "value": null,
         "label": "No of Rows"
       }
     ]
