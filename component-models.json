@@ -213,19 +213,19 @@
     ]
   },
   {
-    "id": "agreement-header-model",
+    "id": "agreement-header",
     "fields": [
       {
         "component": "richtext",
         "name": "leftContent",
         "label": "Left Content",
-        "value": ""
+        "valueType": "string"
       },
       {
         "component": "richtext",
         "name": "rightContent",
         "label": "Right Content",
-        "value": ""
+        "valueType": "string"
       }
     ]
   },

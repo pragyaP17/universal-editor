@@ -87,12 +87,14 @@
         {
           "title": "Agreement Header",
           "id": "agreement-header",
-          "model": "agreement-header-model",
           "plugins": {
             "xwalk": {
               "page": {
                 "resourceType": "core/franklin/components/block/v1/block",
-                "blockNameOverride": "agreement-header"
+                "template": {
+                  "name": "Agreement Header",
+                  "model": "agreement-header"
+                }
               }
             }
           }
