@@ -1,190 +1,164 @@
-import { createOptimizedPicture } from '../../scripts/aem.js';
-import { moveInstrumentation } from '../../scripts/scripts.js';
+/**
+ * Explore AI Robotics Block
+ * Creates a two-column layout with text content on the left and article cards on the right
+ * Features fade-in animations and hover effects
+ */
 
 /**
- * Process links and return a container with formatted links
- * @param {string} content Content that may contain links
- * @returns {Object} Object containing processed content and links container
+ * Creates intersection observer for fade-in animation on scroll
+ * @param {HTMLElement} block - The block element
  */
-function processLinks(content) {
-  // Create a temporary div to parse the content
-  const tempDiv = document.createElement('div');
-  tempDiv.innerHTML = content;
-  
-  // Find all links in the content
-  const links = tempDiv.querySelectorAll('a');
-  
-  // Create links container
-  const linksContainer = document.createElement('div');
-  linksContainer.className = 'cmp-teaser__action-container';
-  linksContainer.setAttribute('data-ctaexpand', 'false');
-  
-  // Process each link
-  if (links.length > 0) {
-    links.forEach(link => {
-      // Create link with NVIDIA styling
-      const formattedLink = document.createElement('a');
-      formattedLink.className = 'cmp-teaser__action-link nv-teaser-text-link';
-      formattedLink.href = link.href;
-      formattedLink.target = link.target || '_self';
-      formattedLink.textContent = link.textContent;
-      
-      // Add the arrow icon
-      const iconSpan = document.createElement('span');
-      iconSpan.className = 'cmp-teaser__action-link-icon fa-solid fa-angle-right';
-      formattedLink.appendChild(iconSpan);
-      
-      // Add to container
-      linksContainer.appendChild(formattedLink);
-      
-      // Remove the link from the original content
-      link.remove();
-    });
-  }
-  
-  // Return both the processed content and links container
-  return {
-    processedContent: tempDiv.innerHTML,
-    linksContainer
+function initScrollAnimation(block) {
+  const cards = block.querySelectorAll('.columns-with-cards');
+
+  const observerOptions = {
+    threshold: 0.2, // Trigger when 20% of the card is visible
+    rootMargin: '0px 0px -50px 0px'
   };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, index) => {
+      if (entry.isIntersecting) {
+        // Add staggered delay for multiple cards
+        setTimeout(() => {
+          entry.target.classList.add('is-visible');
+        }, index * 150); // 150ms delay between cards
+
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  cards.forEach(card => observer.observe(card));
 }
 
+/**
+ * Processes card data and creates card element
+ * @param {Object} cardData - Card data object with title, body, and CTA info
+ * @returns {HTMLElement} Card element
+ */
+function createCard(cardData) {
+  const card = document.createElement('div');
+  card.className = 'columns-with-cards';
+
+  // Card title
+  const title = document.createElement('h3');
+  title.className = 'columns-with-cards-title';
+  title.textContent = cardData.cardTitle || '';
+
+  // Card description
+  const description = document.createElement('div');
+  description.className = 'columns-with-cards-description';
+  description.innerHTML = cardData.cardBody || '';
+
+  // CTA links container
+  const ctasContainer = document.createElement('div');
+  ctasContainer.className = 'columns-with-cards-ctas';
+
+  // Create CTA links (up to 2)
+  if (cardData.cta1Label && cardData.cta1URL) {
+    const cta1 = document.createElement('a');
+    cta1.className = 'columns-with-cards-cta';
+    cta1.href = cardData.cta1URL;
+    cta1.textContent = cardData.cta1Label;
+    ctasContainer.appendChild(cta1);
+  }
+
+  if (cardData.cta2Label && cardData.cta2URL) {
+    const cta2 = document.createElement('a');
+    cta2.className = 'columns-with-cards-cta';
+    cta2.href = cardData.cta2URL;
+    cta2.textContent = cardData.cta2Label;
+    ctasContainer.appendChild(cta2);
+  }
+
+  // Assemble card
+  card.appendChild(title);
+  card.appendChild(description);
+  card.appendChild(ctasContainer);
+
+  return card;
+}
+
+/**
+ * Main decorate function for the block
+ * @param {HTMLElement} block - The block element
+ */
 export default function decorate(block) {
-  // Set up the main container
-  const mainContainer = document.createElement('div');
-  mainContainer.className = 'columns-with-cards-container';
-  
-  // Get the content rows
+  // Extract the data from the block
   const rows = [...block.children];
-  if (rows.length < 3) {
-    // We need at least 3 rows: title/content, card1, card2
-    console.warn('columns-with-cards block requires at least 3 rows');
+
+  if (rows.length < 2) {
+    console.warn('columns-with-cards block requires at least 2 rows (headline/body and cards)');
     return;
   }
 
-  // Create left column (content)
-  const leftColumn = document.createElement('div');
-  leftColumn.className = 'columns-with-cards-content general-container';
-  
-  // Extract title and content from first row
-  const titleRow = rows[0];
-  if (titleRow && titleRow.children.length >= 2) {
-    const titleContent = titleRow.children[0].innerHTML;
-    const mainContent = titleRow.children[1].innerHTML;
-    
-    // Create title element with appropriate HTML structure
-    const titleEl = document.createElement('div');
-    titleEl.className = 'columns-with-cards-title';
-    
-    // Create title container with proper text alignment classes
-    const titleTextContainer = document.createElement('div');
-    titleTextContainer.className = 'text-left lap-text-left tab-text-left mob-text-left';
-    
-    // Create and set the title heading
-    const heading = document.createElement('h2');
-    heading.className = 'title';
-    heading.style.color = '#000000';
-    heading.innerHTML = titleContent;
-    
-    titleTextContainer.appendChild(heading);
-    titleEl.appendChild(titleTextContainer);
-    
-    // Create content element with proper structure
-    const contentEl = document.createElement('div');
-    contentEl.className = 'columns-with-cards-description';
-    
-    // Create text container with alignment classes
-    const textContainer = document.createElement('div');
-    textContainer.className = 'text-left lap-text-left tab-text-center mob-text-center';
-    
-    // Create description container
-    const descContainer = document.createElement('div');
-    descContainer.className = 'description';
-    descContainer.innerHTML = mainContent;
-    
-    textContainer.appendChild(descContainer);
-    contentEl.appendChild(textContainer);
-    
-    // Add title and content to left column
-    leftColumn.appendChild(titleEl);
-    leftColumn.appendChild(contentEl);
+  // Create main container
+  const container = document.createElement('div');
+  container.className = 'columns-with-cards-container';
+
+  // Left column - Content
+  const contentColumn = document.createElement('div');
+  contentColumn.className = 'columns-with-cards-content';
+
+  // Extract headline and body from first row
+  const contentRow = rows[0];
+  if (contentRow && contentRow.children.length >= 2) {
+    const headlineText = contentRow.children[0].textContent.trim();
+    const bodyHTML = contentRow.children[1].innerHTML;
+
+    // Create headline
+    const headline = document.createElement('h2');
+    headline.className = 'columns-with-cards-headline';
+    headline.textContent = headlineText;
+
+    // Create body
+    const body = document.createElement('div');
+    body.className = 'columns-with-cards-body';
+    body.innerHTML = bodyHTML;
+
+    contentColumn.appendChild(headline);
+    contentColumn.appendChild(body);
   }
-  
-  // Create right column (cards)
-  const rightColumn = document.createElement('div');
-  rightColumn.className = 'columns-with-cards-cards nv-flexbox d-col-1 l-col-1 t-col-2 p-col-1 d-justify-center l-justify-center t-justify-center p-justify-center flex-align-stretch';
-  
-  // Process card rows (rows 1 and 2)
-  for (let i = 1; i < Math.min(rows.length, 3); i++) {
+
+  // Right column - Cards
+  const cardsColumn = document.createElement('div');
+  cardsColumn.className = 'columns-with-cardss';
+
+  // Process card rows (remaining rows after first)
+  for (let i = 1; i < rows.length; i++) {
     const cardRow = rows[i];
     if (cardRow && cardRow.children.length >= 2) {
-      const cardTitle = cardRow.children[0].innerHTML;
-      const cardContent = cardRow.children[1].innerHTML;
-      
-      // Process content to extract links
-      const { processedContent, linksContainer } = processLinks(cardContent);
-      
-      // Create card element with appropriate classes to match the original structure
-      const card = document.createElement('div');
-      card.className = 'columns-with-cards-card nv-teaser teaser nv-teaser--card nv-teaser--cta-column nv-teaser--bg-white';
-      
-      // Create teaser container
-      const teaserContainer = document.createElement('div');
-      teaserContainer.className = 'cmp-teaser';
-      teaserContainer.setAttribute('data-title-style', 'manual');
-      
-      // Create holder div
-      const holderDiv = document.createElement('div');
-      holderDiv.className = 'nv-teaser--holder';
-      
-      // Create text container
-      const textContainer = document.createElement('div');
-      textContainer.className = 'general-container-text';
-      
-      // Create text alignment container
-      const textAlignDiv = document.createElement('div');
-      textAlignDiv.className = 'text-left lap-text-left tab-text-left mob-text-left';
-      textAlignDiv.style.padding = '0px 20px';
-      textAlignDiv.style.width = 'calc(100% - 40px)';
-      
-      // Create card title with proper structure
-      const cardTitleEl = document.createElement('h2');
-      cardTitleEl.className = 'cmp-teaser__title h--smaller';
-      cardTitleEl.setAttribute('data-titlerow', 'One');
-      cardTitleEl.setAttribute('data-titlerowlaptop', 'One');
-      cardTitleEl.setAttribute('data-titlerowtablet', 'One');
-      cardTitleEl.style.color = '#333333';
-      cardTitleEl.innerHTML = cardTitle;
-      
-      // Create card content container
-      const cardContentEl = document.createElement('div');
-      cardContentEl.className = 'cmp-teaser__description';
-      cardContentEl.style.color = '#333333';
-      cardContentEl.innerHTML = processedContent;
-      
-      // Assemble the card structure
-      textAlignDiv.appendChild(cardTitleEl);
-      textAlignDiv.appendChild(cardContentEl);
-      textAlignDiv.appendChild(linksContainer);
-      
-      textContainer.appendChild(textAlignDiv);
-      teaserContainer.appendChild(holderDiv);
-      teaserContainer.appendChild(textContainer);
-      card.appendChild(teaserContainer);
-      
-      // Add card to right column
-      rightColumn.appendChild(card);
+      // Extract card data from row
+      const cardData = {
+        cardTitle: cardRow.children[0]?.textContent.trim() || '',
+        cardBody: cardRow.children[1]?.innerHTML || ''
+      };
+
+      // Extract CTAs if present (columns 2-5 for CTA labels and URLs)
+      if (cardRow.children.length >= 4) {
+        cardData.cta1Label = cardRow.children[2]?.textContent.trim() || '';
+        cardData.cta1URL = cardRow.children[3]?.textContent.trim() || '';
+      }
+
+      if (cardRow.children.length >= 6) {
+        cardData.cta2Label = cardRow.children[4]?.textContent.trim() || '';
+        cardData.cta2URL = cardRow.children[5]?.textContent.trim() || '';
+      }
+
+      const card = createCard(cardData);
+      cardsColumn.appendChild(card);
     }
   }
-  
-  // Add left and right columns to main container
-  mainContainer.appendChild(leftColumn);
-  mainContainer.appendChild(rightColumn);
-  
-  // Replace block content with our structure
+
+  // Assemble the block
+  container.appendChild(contentColumn);
+  container.appendChild(cardsColumn);
+
+  // Replace block content
   block.textContent = '';
-  block.appendChild(mainContainer);
-  
-  // Add responsive classes
-  block.classList.add('columns-with-cards-block');
+  block.appendChild(container);
+
+  // Initialize scroll animation
+  initScrollAnimation(block);
 }

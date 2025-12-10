@@ -22,21 +22,21 @@
       "fields": [
         {
           "component": "text",
-          "name": "title",
-          "label": "Title",
-          "description": "Main heading for the left content section"
+          "name": "headline",
+          "label": "Headline",
+          "description": "Main headline text (e.g., 'Explore the Next Wave of AI')"
         },
         {
           "component": "richtext",
-          "name": "content",
-          "label": "Content",
-          "description": "Main content text for the left column with support for HTML formatting"
+          "name": "body",
+          "label": "Body Content",
+          "description": "Body paragraphs with optional inline hyperlinks"
         },
         {
           "component": "collection",
           "name": "cards",
-          "label": "Cards",
-          "description": "Cards that appear in the right column",
+          "label": "Article Cards",
+          "description": "Article cards displayed on the right side",
           "minItems": 1,
           "maxItems": 2,
           "fields": [
@@ -44,40 +44,37 @@
               "component": "text",
               "name": "cardTitle",
               "label": "Card Title",
-              "description": "Title for this card"
+              "description": "Article headline (bold, medium font)"
             },
             {
               "component": "richtext",
-              "name": "cardContent",
-              "label": "Card Content",
-              "description": "Content text for this card"
+              "name": "cardBody",
+              "label": "Card Description",
+              "description": "Description paragraph for the card"
             },
             {
-              "component": "aem-content",
-              "name": "cardLinks",
-              "label": "Links",
-              "description": "Add links to be displayed at the bottom of the card"
-            }
-          ]
-        },
-        {
-          "component": "select",
-          "name": "layout",
-          "label": "Layout",
-          "description": "Layout style for the columns",
-          "defaultValue": "7-5",
-          "options": [
-            {
-              "name": "7-5 Split (Default)",
-              "value": "7-5"
+              "component": "text",
+              "name": "cta1Label",
+              "label": "CTA 1 Label",
+              "description": "Label for first call-to-action link"
             },
             {
-              "name": "6-6 Split (Equal)",
-              "value": "6-6"
+              "component": "text",
+              "name": "cta1URL",
+              "label": "CTA 1 URL",
+              "description": "URL for first call-to-action link"
             },
             {
-              "name": "8-4 Split (Wide Content)",
-              "value": "8-4"
+              "component": "text",
+              "name": "cta2Label",
+              "label": "CTA 2 Label",
+              "description": "Label for second call-to-action link (optional)"
+            },
+            {
+              "component": "text",
+              "name": "cta2URL",
+              "label": "CTA 2 URL",
+              "description": "URL for second call-to-action link (optional)"
             }
           ]
         }
@@ -86,7 +83,7 @@
   ],
   "filters": [
     {
-      "id": "columns-with-cards"
+      "id": "ecolumns-with-cards"
     }
   ]
 }
