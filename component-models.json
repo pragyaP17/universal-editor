@@ -207,6 +207,22 @@
           {
             "name": "Padding Y 75",
             "value": "p-y-75"
+          },
+          {
+            "name": "GTC Text",
+            "value": "gtcText"
+          },
+          {
+            "name": "Page Footer Links",
+            "value": "page-footer-links"
+          },
+          {
+            "name": "Global Footer Container",
+            "value": "global-footer-container"
+          },
+          {
+            "name": "Page Footer Subscribe",
+            "value": "page-footer-subscribe"
           }
         ]
       }
@@ -465,6 +481,42 @@
         "component": "aem-content",
         "name": "reference",
         "label": "Reference"
+      }
+    ]
+  },
+  {
+    "id": "gtcText",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "gtcTitle",
+        "label": "GTC Title",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "name": "description",
+        "value": "",
+        "label": "GTC Description",
+        "valueType": "string"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "GTC Logo",
+        "multi": false
+      },
+      {
+        "component": "aem-content",
+        "name": "ctaLink",
+        "label": "CTA Link"
+      },
+      {
+        "component": "text",
+        "name": "ctaText",
+        "label": "CTA Text"
       }
     ]
   },

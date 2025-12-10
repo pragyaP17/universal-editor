@@ -23,7 +23,8 @@
       "multi-purpose-cards",
       "immersive-cards",
       "tabs",
-      "carousel-banner"
+      "carousel-banner",
+      "GTC"
     ]
   },
   {
@@ -58,6 +59,12 @@
       "image",
       "button",
       "title"
+    ]
+  },
+  {
+    "id": "gtc",
+    "components": [
+      "gtcText"
     ]
   },
   {
