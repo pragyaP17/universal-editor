@@ -1,1 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zm0-272a40 40 0 1 1 0 80 40 40 0 1 1 0-80zm0 168a152 152 0 1 1 0-304 152 152 0 1 1 0 304zM120 256a136 136 0 1 0 272 0 136 136 0 1 0-272 0z"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <!-- Outer circle -->
+  <circle cx="100" cy="100" r="75" fill="none" stroke="#5a5f66" stroke-width="8"/>
+  
+  <!-- Head circle -->
+  <circle cx="100" cy="75" r="20" fill="none" stroke="#5a5f66" stroke-width="8"/>
+  
+  <!-- Shoulders/body -->
+  <path d="M 60 145 Q 60 115 80 110 L 120 110 Q 140 115 140 145" 
+        fill="none" stroke="#5a5f66" stroke-width="8" stroke-linecap="round"/>
+</svg>
