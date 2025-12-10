@@ -60,7 +60,11 @@ function createSlide(slide, index) {
 
   // Mobile fallback (default img tag)
   const img = document.createElement('img');
-  img.loading = 'eager';
+  // LCP optimization: first slide gets eager + fetchpriority, others get lazy
+  img.loading = index === 0 ? 'eager' : 'lazy';
+  if (index === 0) {
+    img.fetchPriority = 'high';
+  }
   img.alt = imageAlt || '';
 
   if (mobilePicture) {

@@ -102,9 +102,9 @@ async function loadEager(doc) {
 
   try {
     /* if desktop (proxy for fast connection) or fonts already loaded, load fonts.css */
-    if (window.innerWidth >= 900 || sessionStorage.getItem('fonts-loaded')) {
+    //if (window.innerWidth >= 900 || sessionStorage.getItem('fonts-loaded')) {
       loadFonts();
-    }
+    //}
   } catch (e) {
     // do nothing
   }
@@ -127,6 +127,9 @@ async function loadLazy(doc) {
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   loadFonts();
+
+  // Load OneTrust after main content to prevent CLS
+  await loadOneTrust();
 }
 
 /**
@@ -140,7 +143,6 @@ function loadDelayed() {
 }
 
 async function loadPage() {
-  await loadOneTrust();
   await loadEager(document);
   await loadLazy(document);
   loadDelayed();

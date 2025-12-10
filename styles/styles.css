@@ -20,8 +20,8 @@
   --link-hover-color: #1d3ecf;
 
   /* fonts */
-  --body-font-family: 'NVIDIA Sans', roboto, roboto-fallback, sans-serif;
-  --heading-font-family: 'NVIDIA Sans', roboto-condensed, roboto-condensed-fallback, sans-serif;
+  --body-font-family: 'NVIDIA Sans', nvidia-sans-fallback, roboto, roboto-fallback, sans-serif;
+  --heading-font-family: 'NVIDIA Sans', nvidia-sans-fallback, roboto-condensed, roboto-condensed-fallback, sans-serif;
 
   /* body sizes */
   --body-font-size-m: 22px;
@@ -41,6 +41,15 @@
 }
 
 /* fallback fonts */
+@font-face {
+  font-family: nvidia-sans-fallback;
+  size-adjust: 97.5%;
+  ascent-override: 100%;
+  descent-override: 25%;
+  line-gap-override: 0%;
+  src: local('Arial');
+}
+
 @font-face {
   font-family: roboto-condensed-fallback;
   size-adjust: 88.82%;
@@ -83,6 +92,18 @@ body {
 
 body.appear {
   display: block;
+}
+
+/* Reserve space for OneTrust banner to prevent CLS */
+#onetrust-banner-sdk {
+  min-height: 90px;
+}
+
+/* Mobile viewport - banner is taller due to text wrapping */
+@media (width <=639px) {
+  #onetrust-banner-sdk {
+    min-height: 120px;
+  }
 }
 
 header {
@@ -313,9 +334,10 @@ main>.section:first-of-type {
   width: 100%;
   padding: 0;
 }
-.align-right-cta .button-container{
-      display: flex;
-    justify-content: end;
+
+.align-right-cta .button-container {
+  display: flex;
+  justify-content: end;
 }
 
 

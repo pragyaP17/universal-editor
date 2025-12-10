@@ -448,6 +448,7 @@ function createDesktopNav(navData, rightMenuData, iconItems) {
   iconItems.forEach((item) => {
     const li = document.createElement('li');
     li.className = 'nv-menu-item';
+    li.setAttribute('role', 'none');
 
     const iconName = item.icon.className.split('icon-')[1];
 
@@ -456,6 +457,7 @@ function createDesktopNav(navData, rightMenuData, iconItems) {
       const searchLink = document.createElement('a');
       searchLink.href = '#';
       searchLink.className = 'nav-search-link';
+      searchLink.setAttribute('role', 'menuitem');
       searchLink.setAttribute('aria-label', 'Search');
       searchLink.appendChild(item.icon);
       li.appendChild(searchLink);
@@ -464,6 +466,8 @@ function createDesktopNav(navData, rightMenuData, iconItems) {
       const regionLink = document.createElement('a');
       regionLink.href = '#';
       regionLink.className = 'nav-region-link';
+      regionLink.setAttribute('role', 'menuitem');
+      regionLink.setAttribute('aria-label', 'Region selector');
       regionLink.appendChild(item.icon);
       if (item.text) {
         const textSpan = document.createElement('span');
@@ -477,6 +481,7 @@ function createDesktopNav(navData, rightMenuData, iconItems) {
       const userLink = document.createElement('a');
       userLink.href = '#';
       userLink.className = 'nav-user-link';
+      userLink.setAttribute('role', 'menuitem');
       userLink.appendChild(item.icon);
       if (item.text) {
         const textSpan = document.createElement('span');
@@ -537,6 +542,7 @@ function createMobileNav(navData, rightMenuData, iconItems) {
 
   const menuButtonItem = document.createElement('li');
   menuButtonItem.className = 'nav-header-item mobile-menu-button-item';
+  menuButtonItem.setAttribute('role', 'listitem');
 
   const menuButton = document.createElement('button');
   menuButton.id = 'menu-toggle';
@@ -576,6 +582,7 @@ function createMobileNav(navData, rightMenuData, iconItems) {
 
   const searchItem = document.createElement('li');
   searchItem.className = 'nav-header-item search-item';
+  searchItem.setAttribute('role', 'listitem');
   searchItem.setAttribute('tabindex', '0');
   searchItem.id = 'nv-search-box-mobile';
   const searchLink = document.createElement('a');
@@ -596,6 +603,7 @@ function createMobileNav(navData, rightMenuData, iconItems) {
 
   const brandItem = document.createElement('li');
   brandItem.className = 'nav-header-item brand-container';
+  brandItem.setAttribute('role', 'listitem');
 
   const logoLink = document.createElement('a');
   logoLink.className = 'brand-link pull-left nvidia-logo toplevel';
@@ -622,7 +630,7 @@ function createMobileNav(navData, rightMenuData, iconItems) {
       const csItem = document.createElement('li');
       csItem.className = 'nav-header-item cs-item cs-right-padding';
       csItem.id = 'nv-cs-item-mob';
-      csItem.setAttribute('role', 'none');
+      csItem.setAttribute('role', 'listitem');
       const csLink = document.createElement('a');
       csLink.setAttribute('aria-expanded', 'false');
       csLink.setAttribute('aria-haspopup', 'true');
@@ -642,6 +650,7 @@ function createMobileNav(navData, rightMenuData, iconItems) {
       const profileItem = document.createElement('li');
       profileItem.className = 'nav-header-item profile-item account-icon';
       profileItem.id = 'acc-menu-dropdown-container-mob';
+      profileItem.setAttribute('role', 'listitem');
       const profileLink = document.createElement('a');
       profileLink.id = 'nv-login-mob';
       profileLink.title = item.text || 'Sign In';
@@ -698,11 +707,11 @@ function createMobileNav(navData, rightMenuData, iconItems) {
       caret.setAttribute('aria-hidden', 'true');
       accordionBtn.appendChild(caret);
       menuItem.appendChild(accordionBtn);
-
       const l1Submenu = document.createElement('div');
       l1Submenu.className = 'submenu l1-submenu';
       l1Submenu.id = `l1-submenu-${index}`;
-      l1Submenu.setAttribute('role', 'menu');
+      l1Submenu.setAttribute('role', 'group');
+      l1Submenu.setAttribute('aria-labelledby', `l1-menu-btn-${index}`);
       l1Submenu.setAttribute('aria-labelledby', `l1-menu-btn-${index}`);
 
       const isIndustries = item.title.toLowerCase() === 'industries';
@@ -758,7 +767,7 @@ function createMobileNav(navData, rightMenuData, iconItems) {
           const l2Submenu = document.createElement('div');
           l2Submenu.className = 'submenu l2-submenu';
           l2Submenu.id = `l2-submenu-${index}-${catIndex}`;
-          l2Submenu.setAttribute('role', 'menu');
+          l2Submenu.setAttribute('role', 'group');
           l2Submenu.setAttribute('aria-labelledby', `l2-menu-btn-${index}-${catIndex}`);
 
           const l2ItemsList = document.createElement('div');
