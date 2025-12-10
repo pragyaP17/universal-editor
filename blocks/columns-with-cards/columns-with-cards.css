@@ -93,6 +93,19 @@
   color: #333;
 }
 
+/* Ensure text is visible in all areas */
+.columns-with-cards-card-title h2,
+.columns-with-cards-card-content p,
+.columns-with-cards-description p,
+.columns-with-cards-title h2 {
+  color: #333;
+}
+
+/* Specific color for card title */
+.columns-with-cards-card-title {
+  color: #000;
+}
+
 .columns-with-cards-card-content p {
   margin: 0 0 1em 0;
 }

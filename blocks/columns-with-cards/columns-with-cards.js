@@ -153,11 +153,13 @@ export default function decorate(block) {
       cardTitleEl.setAttribute('data-titlerow', 'One');
       cardTitleEl.setAttribute('data-titlerowlaptop', 'One');
       cardTitleEl.setAttribute('data-titlerowtablet', 'One');
+      cardTitleEl.style.color = '#333333';
       cardTitleEl.innerHTML = cardTitle;
       
       // Create card content container
       const cardContentEl = document.createElement('div');
       cardContentEl.className = 'cmp-teaser__description';
+      cardContentEl.style.color = '#333333';
       cardContentEl.innerHTML = processedContent;
       
       // Assemble the card structure
