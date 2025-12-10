@@ -23,6 +23,7 @@
       "multi-purpose-cards",
       "immersive-cards",
       "tabs",
+      "columns-with-cards",
       "agreement-header"
     ]
   },
@@ -38,6 +39,9 @@
       "carousel-info",
       "carousel-card"
     ]
+  },
+  {
+    "id": "columns-with-cards"
   },
   {
     "id": "columns",
