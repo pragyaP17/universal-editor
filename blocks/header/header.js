@@ -205,7 +205,7 @@ function createDesktopNav(navData, rightMenuData, iconItems) {
 
   const logoLink = document.createElement('a');
   logoLink.className = 'brand-link pull-left nvidia-logo';
-  logoLink.href = '/';
+  logoLink.href = '/en-us';
   logoLink.setAttribute('aria-labelledby', 'nvidia_logo_desktop');
   logoLink.title = 'NVIDIA';
 
@@ -803,8 +803,16 @@ function createMobileNav(navData, rightMenuData, iconItems) {
           l2AccordionBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             const isExpanded = l2AccordionBtn.getAttribute('aria-expanded') === 'true';
-            l2AccordionBtn.setAttribute('aria-expanded', !isExpanded);
-            l2Submenu.classList.toggle('open');
+            const l2Btns = l1Submenu.querySelectorAll('.accordion-btn.l2-accordion-btn');
+            const l2Submenus = l1Submenu.querySelectorAll('.submenu.l2-submenu');
+            l2Btns.forEach((btn, idx) => {
+              btn.setAttribute('aria-expanded', 'false');
+              l2Submenus[idx].classList.remove('open');
+            });
+            if (!isExpanded) {
+              l2AccordionBtn.setAttribute('aria-expanded', 'true');
+              l2Submenu.classList.add('open');
+            }
           });
 
           l1Submenu.appendChild(l2MenuItem);
@@ -815,8 +823,16 @@ function createMobileNav(navData, rightMenuData, iconItems) {
 
       accordionBtn.addEventListener('click', () => {
         const isExpanded = accordionBtn.getAttribute('aria-expanded') === 'true';
-        accordionBtn.setAttribute('aria-expanded', !isExpanded);
-        l1Submenu.classList.toggle('open');
+        const l1Btns = accordionMenu.querySelectorAll('.accordion-btn.l1-accordion-btn');
+        const l1Submenus = accordionMenu.querySelectorAll('.submenu.l1-submenu');
+        l1Btns.forEach((btn, idx) => {
+          btn.setAttribute('aria-expanded', 'false');
+          l1Submenus[idx].classList.remove('open');
+        });
+        if (!isExpanded) {
+          accordionBtn.setAttribute('aria-expanded', 'true');
+          l1Submenu.classList.add('open');
+        }
       });
     } else {
       const link = document.createElement('a');
