@@ -9,6 +9,10 @@
   padding: 0 20px 60px;
 }
 
+main:has(.carousel-container) {
+  overflow: hidden;
+}
+
 main > .section.carousel-container > div {
     max-width: none;
 }
@@ -24,6 +28,12 @@ main > .section.carousel-container > div {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+/* Info-only header styling */
+.carousel-header-info {
+  position: relative;
+  margin-bottom: 30px;
 }
 
 .carousel-header-title {
@@ -137,8 +147,16 @@ main > .section.carousel-container > div {
 /* Info Slide */
 .carousel-info-slide {
   padding: 40px;
-  width: 600px;
-  min-height: 400px;
+  width: 100%;
+  max-width: 600px;
+  min-height: auto;
+}
+
+/* Info slide when used standalone (not in carousel track) */
+.carousel > .carousel-info-slide {
+  padding: 40px 0;
+  width: 100%;
+  max-width: none;
 }
 
 .carousel-info-content {
@@ -321,8 +339,10 @@ main > .section.carousel-container > div {
 
 .carousel-card-image img {
   width: 100%;
+  aspect-ratio: 16 / 9;
   height: auto;
   display: block;
+  object-fit: cover;
 }
 
 .carousel-card-content {

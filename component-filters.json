@@ -24,13 +24,20 @@
       "immersive-cards",
       "tabs",
       "columns-with-cards",
-      "agreement-header"
+      "agreement-header",
+      "carousel-banner"
     ]
   },
   {
     "id": "cards",
     "components": [
       "card"
+    ]
+  },
+  {
+    "id": "carousel-banner",
+    "components": [
+      "carousel-banner-slide"
     ]
   },
   {

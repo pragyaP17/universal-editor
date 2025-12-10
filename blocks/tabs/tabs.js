@@ -73,38 +73,15 @@ async function loadFragment(path, container) {
       existingLink.remove();
     }
 
-    const response = await fetch(`${path}.plain.html`);
-    if (!response.ok) {
-      throw new Error(`Failed to load fragment: ${response.status}`);
-    }
+    // Import fragment utilities
+    const { loadFragment: loadFragmentUtil } = await import('../fragment/fragment.js');
+    const fragment = await loadFragmentUtil(path);
 
-    const html = await response.text();
-    const fragmentDiv = document.createElement('div');
-    fragmentDiv.innerHTML = html;
-
-    // Decorate fragment content
-    const fragmentContent = fragmentDiv.querySelector('div');
-    if (fragmentContent) {
-      container.appendChild(fragmentContent);
-
-      // Import and decorate blocks within the fragment
-      const blocks = fragmentContent.querySelectorAll('[class*="block"]');
-      blocks.forEach(async (block) => {
-        const blockName = Array.from(block.classList)
-          .find((className) => className !== 'block')
-          ?.replace(/^block-/, '');
-
-        if (blockName) {
-          try {
-            const mod = await import(`../${blockName}/${blockName}.js`);
-            if (mod.default) {
-              await mod.default(block);
-            }
-          } catch (error) {
-            // Block decoration failed, but continue
-          }
-        }
-      });
+    if (fragment) {
+      const fragmentSection = fragment.querySelector(':scope .section');
+      if (fragmentSection) {
+        container.appendChild(fragmentSection);
+      }
     }
   } catch (error) {
     container.innerHTML = '<p>Error loading content</p>';
