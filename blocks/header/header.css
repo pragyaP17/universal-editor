@@ -946,6 +946,7 @@
   text-decoration: none;
   font-size: 14px;
   font-weight: 600;
+  word-break: break-all;
   transition: background-color 0.2s ease;
 }
 
