@@ -505,11 +505,6 @@ function decorateSections(main) {
             .filter((style) => style)
             .map((style) => toClassName(style.trim()));
           styles.forEach((style) => section.classList.add(style));
-        } else if (key === 'id') {
-          // Set the HTML id attribute for the section
-          if (meta[key]) {
-            section.id = meta[key];
-          }
         } else {
           section.dataset[toCamelCase(key)] = meta[key];
         }
