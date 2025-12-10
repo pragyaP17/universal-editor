@@ -23,6 +23,13 @@
       "displayName": "GTC Text Item",
       "fields": [
         {
+          "component": "reference",
+          "valueType": "string",
+          "name": "image",
+          "label": "GTC Logo",
+          "multi": false
+        },
+        {
           "component": "text",
           "valueType": "string",
           "name": "gtcTitle",
@@ -35,23 +42,6 @@
           "value": "",
           "label": "GTC Description",
           "valueType": "string"
-        },
-        {
-          "component": "reference",
-          "valueType": "string",
-          "name": "image",
-          "label": "GTC Logo",
-          "multi": false
-        },
-        {
-          "component": "text",
-          "name": "ctaLink",
-          "label": "CTA Link URL"
-        },
-        {
-          "component": "text",
-          "name": "ctaText",
-          "label": "CTA Text"
         }
       ]
     }
