@@ -486,6 +486,7 @@
   },
   {
     "id": "gtcText",
+    "displayName": "GTC Text Item",
     "fields": [
       {
         "component": "text",
@@ -509,9 +510,9 @@
         "multi": false
       },
       {
-        "component": "aem-content",
+        "component": "text",
         "name": "ctaLink",
-        "label": "CTA Link"
+        "label": "CTA Link URL"
       },
       {
         "component": "text",
