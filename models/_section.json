@@ -18,20 +18,23 @@
   "models": [
     {
       "id": "section",
-      "displayName": "name",
       "fields": [
         {
           "component": "text",
           "name": "name",
           "label": "Section Name",
-          "description": "The label shown for this section in the Content Tree",
-          "valueType": "string"
+          "description": "The label shown for this section in the Content Tree"
+        },
+        {
+          "component": "text",
+          "name": "id",
+          "label": "Section ID",
+          "description": "Adds an HTML id attribute to the section"
         },
         {
           "component": "multiselect",
           "name": "style",
           "label": "Style",
-          "valueType": "string",
           "options": [
             {
               "name": "General Container",
@@ -104,6 +107,14 @@
             {
               "name": "Padding Y 75",
               "value": "p-y-75"
+            },
+            {
+              "name": "Padding Y 75 Top",
+              "value": "p-y-75-top"
+            },
+            {
+              "name": "Padding Y 75 Bottom",
+              "value": "p-y-75-bottom"
             }
           ]
         }
@@ -129,6 +140,8 @@
         "multi-purpose-cards",
         "immersive-cards",
         "tabs",
+        "columns-with-cards",
+        "agreement-header",
         "carousel-banner"
       ]
     }
