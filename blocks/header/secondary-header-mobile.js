@@ -1,6 +1,5 @@
 // Secondary Header Mobile Menu JavaScript
 export function initSecondaryHeaderMobile(retryCount = 0) {
-    console.log(`Initializing secondary header mobile menu (Attempt ${retryCount + 1})...`);
 
     const secondaryHeader = document.querySelector('.sub-brand-nav');
     if (!secondaryHeader) {
@@ -151,7 +150,6 @@ export function initSecondaryHeaderMobile(retryCount = 0) {
     // Toggle mobile menu
     newHamburger.addEventListener('click', (e) => {
         e.preventDefault();
-        console.log('Hamburger menu clicked');
         mobileMenuContainer.classList.toggle('active');
         secondaryHeader.classList.toggle('menu-open');
 

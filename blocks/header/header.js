@@ -2,7 +2,6 @@
 import { loadFragment } from '../fragment/fragment.js';
 import { initSecondaryHeaderMobile } from './secondary-header-mobile.js';
 
-
 function createSVGSymbols() {
   const svgNS = 'http://www.w3.org/2000/svg';
   const svg = document.createElementNS(svgNS, 'svg');
@@ -54,6 +53,173 @@ function createSVGSymbols() {
   return svg;
 }
 
+function parseSecondaryHeader(section) {
+  // Section can be the div.section element itself
+  const wrapper = section.querySelector('.default-content-wrapper');
+  if (!wrapper) {
+    return null;
+  }
+
+  const h2 = wrapper.querySelector('h2');
+  const mainUl = wrapper.querySelector('ul');
+
+  if (!h2 || !mainUl) {
+    return null;
+  }
+
+  // Extract brand title and clean up the &nbsp; and extra spaces
+  const brandTitle = h2.textContent.trim().replace(/\s+/g, ' ').replace(/^\s*NVIDIA\s*/i, 'NVIDIA ');
+
+  // Create secondary header structure
+  const subBrandNav = document.createElement('div');
+  subBrandNav.className = 'sub-brand-nav';
+
+  const container = document.createElement('div');
+  container.className = 'sub-brand-nav-container';
+
+  const brandNavLeft = document.createElement('div');
+  brandNavLeft.className = 'brand-nav-left';
+
+  // Brand title
+  const subBrand = document.createElement('div');
+  subBrand.id = 'sub-brand';
+
+  const brandLink = document.createElement('a');
+  brandLink.className = 'sub-brand-name';
+  brandLink.href = '/en-us/industries/robotics';
+
+  const brandLabel = document.createElement('span');
+  brandLabel.className = 'sub-brand-label size-small';
+  brandLabel.textContent = brandTitle;
+
+  brandLink.appendChild(brandLabel);
+  subBrand.appendChild(brandLink);
+  brandNavLeft.appendChild(subBrand);
+
+  // Parse navigation items - each top level li with a p>strong and nested ul
+  const topLevelItems = mainUl.querySelectorAll(':scope > li');
+
+  topLevelItems.forEach((li) => {
+    // Look for the category title in p > strong
+    const titleP = li.querySelector(':scope > p');
+    if (!titleP) return;
+
+    const titleStrong = titleP.querySelector('strong');
+    const title = titleStrong ? titleStrong.textContent.trim() : titleP.textContent.trim();
+    const subUl = li.querySelector(':scope > ul');
+
+    if (!subUl) return;
+
+    const subBrandItem = document.createElement('div');
+    subBrandItem.className = 'sub-brand-item';
+
+    const subBrandLink = document.createElement('span');
+    subBrandLink.className = 'sub-brand-link button-dropdown';
+    subBrandLink.textContent = `${title} `;
+
+    // Add dropdown arrow SVG
+    const arrowDiv = document.createElement('div');
+    arrowDiv.className = 'ic-arrow-dropdown';
+    const arrowSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    arrowSvg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+    arrowSvg.setAttribute('width', '24');
+    arrowSvg.setAttribute('height', '24');
+    arrowSvg.setAttribute('viewBox', '0 0 24 24');
+    const arrowPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    arrowPath.setAttribute('d', 'M7 10l5 5 5-5z');
+    arrowPath.setAttribute('fill', 'currentColor');
+    const arrowPathNone = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    arrowPathNone.setAttribute('d', 'M0 0h24v24H0z');
+    arrowPathNone.setAttribute('fill', 'none');
+    arrowSvg.appendChild(arrowPath);
+    arrowSvg.appendChild(arrowPathNone);
+    arrowDiv.appendChild(arrowSvg);
+    subBrandLink.appendChild(arrowDiv);
+
+    // Create dropdown menu
+    const dropdownMenu = document.createElement('ul');
+    dropdownMenu.className = 'dropdown-menu bullet';
+    dropdownMenu.setAttribute('role', 'menu');
+    dropdownMenu.style.minWidth = '163px';
+
+    const dropdownItems = subUl.querySelectorAll(':scope > li');
+    dropdownItems.forEach((item) => {
+      // Look for link in strong > a or just a
+      const link = item.querySelector('strong > a, a');
+      if (!link) return;
+
+      const menuLi = document.createElement('li');
+      menuLi.setAttribute('role', 'none');
+
+      const menuLink = document.createElement('a');
+      menuLink.href = link.href;
+      menuLink.target = link.getAttribute('target') || '_self';
+      menuLink.className = 'global-nav-link';
+      menuLink.setAttribute('role', 'menuitem');
+
+      const titleDiv = document.createElement('div');
+      titleDiv.className = 'title no-submenu';
+      titleDiv.textContent = link.textContent.trim();
+
+      menuLink.appendChild(titleDiv);
+      menuLi.appendChild(menuLink);
+      dropdownMenu.appendChild(menuLi);
+    });
+
+    // Add arrow span for dropdown pointer
+    const nvArrow = document.createElement('span');
+    nvArrow.className = 'nvArrow';
+    nvArrow.style.right = '-30px';
+    dropdownMenu.insertBefore(nvArrow, dropdownMenu.firstChild);
+
+    subBrandItem.appendChild(subBrandLink);
+    subBrandItem.appendChild(dropdownMenu);
+    brandNavLeft.appendChild(subBrandItem);
+  });
+
+  container.appendChild(brandNavLeft);
+
+  // Add mobile menu toggle (right side)
+  const brandNavRight = document.createElement('div');
+  brandNavRight.className = 'brand-nav-right';
+
+  const icMenu = document.createElement('a');
+  icMenu.className = 'ic-menu unsubset';
+  icMenu.title = 'Menu';
+  icMenu.href = '#';
+  icMenu.setAttribute('aria-label', 'Toggle mobile menu');
+
+  const menuSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  menuSvg.id = 'menu-icon';
+  menuSvg.setAttribute('version', '1.1');
+  menuSvg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+  menuSvg.setAttribute('x', '0px');
+  menuSvg.setAttribute('y', '0px');
+  menuSvg.setAttribute('viewBox', '0 0 24 24');
+
+  // Create 3 horizontal lines for hamburger menu
+  for (let i = 0; i < 3; i += 1) {
+    const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    line.classList.add('menu-line');
+    const yPos = 7.5 + (i * 4.5);
+    line.setAttribute('x1', '1');
+    line.setAttribute('y1', yPos.toString());
+    line.setAttribute('x2', '23');
+    line.setAttribute('y2', yPos.toString());
+    line.setAttribute('stroke-width', '2.4');
+    line.setAttribute('stroke', '#fff');
+    line.setAttribute('vector-effect', 'non-scaling-stroke');
+    menuSvg.appendChild(line);
+  }
+
+  icMenu.appendChild(menuSvg);
+  brandNavRight.appendChild(icMenu);
+  container.appendChild(brandNavRight);
+
+  subBrandNav.appendChild(container);
+  return subBrandNav;
+}
+
 function parseNavFragment(fragment) {
   const navData = [];
   const rightMenuData = [];
@@ -64,7 +230,6 @@ function parseNavFragment(fragment) {
 
   // Select only top-level div.section elements
   const sections = fragment.querySelectorAll(':scope > div.section');
-  console.log('Found', sections.length, 'sections in fragment');
 
   if (sections[0]) {
     const navList = sections[0].querySelector('ul');
@@ -195,182 +360,12 @@ function parseNavFragment(fragment) {
     secondaryHeaderHTML = parseSecondaryHeader(sections[2]);
   }
 
-  return { navData, rightMenuData, iconItems, secondaryHeaderHTML };
-}
-
-function parseSecondaryHeader(section) {
-  // Section can be the div.section element itself
-  const wrapper = section.querySelector('.default-content-wrapper');
-  if (!wrapper) {
-    console.warn('No .default-content-wrapper found in secondary header section');
-    return null;
-  }
-
-  const h2 = wrapper.querySelector('h2');
-  const mainUl = wrapper.querySelector('ul');
-
-  if (!h2 || !mainUl) {
-    console.warn('No h2 or ul found in secondary header wrapper');
-    return null;
-  }
-
-  // Extract brand title and clean up the &nbsp; and extra spaces
-  const brandTitle = h2.textContent.trim().replace(/\s+/g, ' ').replace(/^\s*NVIDIA\s*/i, 'NVIDIA ');
-
-  console.log('Creating secondary header with title:', brandTitle);
-
-  // Create secondary header structure
-  const subBrandNav = document.createElement('div');
-  subBrandNav.className = 'sub-brand-nav';
-
-  const container = document.createElement('div');
-  container.className = 'sub-brand-nav-container';
-
-  const brandNavLeft = document.createElement('div');
-  brandNavLeft.className = 'brand-nav-left';
-
-  // Brand title
-  const subBrand = document.createElement('div');
-  subBrand.id = 'sub-brand';
-
-  const brandLink = document.createElement('a');
-  brandLink.className = 'sub-brand-name';
-  brandLink.href = '/en-us/industries/robotics';
-
-  const brandLabel = document.createElement('span');
-  brandLabel.className = 'sub-brand-label size-small';
-  brandLabel.textContent = brandTitle;
-
-  brandLink.appendChild(brandLabel);
-  subBrand.appendChild(brandLink);
-  brandNavLeft.appendChild(subBrand);
-
-  // Parse navigation items - each top level li with a p>strong and nested ul
-  const topLevelItems = mainUl.querySelectorAll(':scope > li');
-
-  console.log('Found', topLevelItems.length, 'navigation items');
-
-  topLevelItems.forEach((li) => {
-    // Look for the category title in p > strong
-    const titleP = li.querySelector(':scope > p');
-    if (!titleP) return;
-
-    const titleStrong = titleP.querySelector('strong');
-    const title = titleStrong ? titleStrong.textContent.trim() : titleP.textContent.trim();
-    const subUl = li.querySelector(':scope > ul');
-
-    if (!subUl) return;
-
-    const subBrandItem = document.createElement('div');
-    subBrandItem.className = 'sub-brand-item';
-
-    const subBrandLink = document.createElement('span');
-    subBrandLink.className = 'sub-brand-link button-dropdown';
-    subBrandLink.textContent = title + ' ';
-
-    // Add dropdown arrow SVG
-    const arrowDiv = document.createElement('div');
-    arrowDiv.className = 'ic-arrow-dropdown';
-    const arrowSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-    arrowSvg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
-    arrowSvg.setAttribute('width', '24');
-    arrowSvg.setAttribute('height', '24');
-    arrowSvg.setAttribute('viewBox', '0 0 24 24');
-    const arrowPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-    arrowPath.setAttribute('d', 'M7 10l5 5 5-5z');
-    arrowPath.setAttribute('fill', 'currentColor');
-    const arrowPathNone = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-    arrowPathNone.setAttribute('d', 'M0 0h24v24H0z');
-    arrowPathNone.setAttribute('fill', 'none');
-    arrowSvg.appendChild(arrowPath);
-    arrowSvg.appendChild(arrowPathNone);
-    arrowDiv.appendChild(arrowSvg);
-    subBrandLink.appendChild(arrowDiv);
-
-    // Create dropdown menu
-    const dropdownMenu = document.createElement('ul');
-    dropdownMenu.className = 'dropdown-menu bullet';
-    dropdownMenu.setAttribute('role', 'menu');
-    dropdownMenu.style.minWidth = '163px';
-
-    const dropdownItems = subUl.querySelectorAll(':scope > li');
-    dropdownItems.forEach((item) => {
-      // Look for link in strong > a or just a
-      const link = item.querySelector('strong > a, a');
-      if (!link) return;
-
-      const menuLi = document.createElement('li');
-      menuLi.setAttribute('role', 'none');
-
-      const menuLink = document.createElement('a');
-      menuLink.href = link.href;
-      menuLink.target = link.getAttribute('target') || '_self';
-      menuLink.className = 'global-nav-link';
-      menuLink.setAttribute('role', 'menuitem');
-
-      const titleDiv = document.createElement('div');
-      titleDiv.className = 'title no-submenu';
-      titleDiv.textContent = link.textContent.trim();
-
-      menuLink.appendChild(titleDiv);
-      menuLi.appendChild(menuLink);
-      dropdownMenu.appendChild(menuLi);
-    });
-
-    // Add arrow span for dropdown pointer
-    const nvArrow = document.createElement('span');
-    nvArrow.className = 'nvArrow';
-    nvArrow.style.right = '-30px';
-    dropdownMenu.insertBefore(nvArrow, dropdownMenu.firstChild);
-
-    subBrandItem.appendChild(subBrandLink);
-    subBrandItem.appendChild(dropdownMenu);
-    brandNavLeft.appendChild(subBrandItem);
-  });
-
-  container.appendChild(brandNavLeft);
-
-  // Add mobile menu toggle (right side)
-  const brandNavRight = document.createElement('div');
-  brandNavRight.className = 'brand-nav-right';
-
-  const icMenu = document.createElement('a');
-  icMenu.className = 'ic-menu unsubset';
-  icMenu.title = 'Menu';
-  icMenu.href = '#';
-  icMenu.setAttribute('aria-label', 'Toggle mobile menu');
-
-  const menuSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-  menuSvg.id = 'menu-icon';
-  menuSvg.setAttribute('version', '1.1');
-  menuSvg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
-  menuSvg.setAttribute('x', '0px');
-  menuSvg.setAttribute('y', '0px');
-  menuSvg.setAttribute('viewBox', '0 0 24 24');
-
-  // Create 3 horizontal lines for hamburger menu
-  for (let i = 0; i < 3; i++) {
-    const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-    line.classList.add('menu-line');
-    const yPos = 7.5 + (i * 4.5);
-    line.setAttribute('x1', '1');
-    line.setAttribute('y1', yPos.toString());
-    line.setAttribute('x2', '23');
-    line.setAttribute('y2', yPos.toString());
-    line.setAttribute('stroke-width', '2.4');
-    line.setAttribute('stroke', '#fff');
-    line.setAttribute('vector-effect', 'non-scaling-stroke');
-    menuSvg.appendChild(line);
-  }
-
-  icMenu.appendChild(menuSvg);
-  brandNavRight.appendChild(icMenu);
-  container.appendChild(brandNavRight);
-
-  subBrandNav.appendChild(container);
-
-  console.log('Secondary header created successfully');
-  return subBrandNav;
+  return {
+    navData,
+    rightMenuData,
+    iconItems,
+    secondaryHeaderHTML,
+  };
 }
 
 function createDesktopNav(navData, rightMenuData, iconItems) {
@@ -1071,7 +1066,12 @@ export default async function decorate(block) {
   const navPath = navMeta ? new URL(navMeta, window.location).pathname : '/nav';
   const fragment = await loadFragment(navPath);
 
-  const { navData, rightMenuData, iconItems, secondaryHeaderHTML } = parseNavFragment(fragment);
+  const {
+    navData,
+    rightMenuData,
+    iconItems,
+    secondaryHeaderHTML,
+  } = parseNavFragment(fragment);
 
   block.textContent = '';
 
