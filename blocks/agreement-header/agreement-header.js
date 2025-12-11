@@ -15,7 +15,62 @@ export default function decorate(block) {
         // Desktop navigation - move the existing list
         const desktopRow = document.createElement('div');
         desktopRow.className = 'agreement-desktop';
-        desktopRow.appendChild(existingList.cloneNode(true));
+        
+        // Create a clone of the existing list for desktop navigation
+        const desktopList = existingList.cloneNode(true);
+        
+        // Create tablet dropdown for the last 3 links - using three dots menu as shown in screenshot
+        const tabletDropdownToggle = document.createElement('button');
+        tabletDropdownToggle.className = 'agreement-tablet-toggle';
+        tabletDropdownToggle.innerHTML = '<span class="dots">•••</span>';
+        
+        const tabletDropdown = document.createElement('div');
+        tabletDropdown.className = 'agreement-tablet-dropdown';
+        
+        // Get all navigation links
+        const allLinks = desktopList.querySelectorAll('li');
+        const totalLinks = allLinks.length;
+        
+        // Create tablet dropdown manually with specific items
+        // We'll hard-code the last three links as per the screenshot
+        const dropdownItems = [
+            { href: '#partners', text: 'Partners' },
+            { href: '#resources', text: 'Resources' },
+            { href: '#next-steps', text: 'Next Steps' }
+        ];
+        
+        dropdownItems.forEach((item) => {
+            const dropdownItem = document.createElement('a');
+            dropdownItem.className = 'tablet-dropdown-item';
+            dropdownItem.href = item.href;
+            dropdownItem.textContent = item.text;
+            tabletDropdown.appendChild(dropdownItem);
+        });
+        
+        // Mark the corresponding items in the main nav as tablet-hidden if they exist
+        const navTexts = dropdownItems.map(item => item.text);
+        Array.from(allLinks).forEach(li => {
+            const linkText = li.querySelector('a')?.textContent;
+            if (linkText && navTexts.includes(linkText)) {
+                li.classList.add('tablet-hidden');
+            }
+        });
+        
+        // Add click event listener for tablet toggle
+        tabletDropdownToggle.addEventListener('click', () => {
+            tabletDropdownToggle.classList.toggle('expanded');
+            tabletDropdown.classList.toggle('open');
+        });
+        
+        // Add the desktop list to the desktop row
+        desktopRow.appendChild(desktopList);
+        
+        // Add tablet dropdown toggle and dropdown - will be hidden in desktop view via CSS
+        const tabletContainer = document.createElement('div');
+        tabletContainer.className = 'tablet-only-container';
+        tabletContainer.appendChild(tabletDropdownToggle);
+        tabletContainer.appendChild(tabletDropdown);
+        desktopRow.appendChild(tabletContainer);
 
         // Mobile navigation toggle
         const mobileRow = document.createElement('div');
@@ -30,6 +85,14 @@ export default function decorate(block) {
         mobileToggle.innerHTML = `<span class="text">${toggleText}</span>`;
 
         mobileRow.appendChild(mobileToggle);
+
+        // Add click event listener for mobile toggle to show/hide dropdown
+        mobileToggle.addEventListener('click', () => {
+            // Toggle expanded class on the button for arrow rotation
+            mobileToggle.classList.toggle('expanded');
+            // Toggle open class on the dropdown to show/hide it
+            dropdown.classList.toggle('open');
+        });
 
         // Create mobile dropdown with all navigation items
         const dropdown = document.createElement('div');

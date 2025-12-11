@@ -507,6 +507,9 @@ function decorateSections(main) {
           styles.forEach((style) => section.classList.add(style));
         } else {
           section.dataset[toCamelCase(key)] = meta[key];
+          if(key==='id'){
+            section.id = meta[key];
+          }
         }
       });
       sectionMeta.parentNode.remove();

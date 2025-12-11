@@ -338,7 +338,8 @@ main>.section:first-of-type {
 .section.general-container .columns-wrapper,
 .section.general-container .tabs,
 .section.general-container .immersive-cards-wrapper,
-.section.general-container .multi-purpose-cards-wrapper {
+.section.general-container .multi-purpose-cards-wrapper,
+.section.general-container .columns-with-cards-grid {
   max-width: 984px;
   margin: 0 auto;
   width: 100%;
@@ -398,7 +399,11 @@ main>.section:first-of-type {
 
   .section.general-container .default-content-wrapper,
   .section.general-container .banner-wrapper,
-  .section.general-container .columns-wrapper {
+  .section.general-container .columns-wrapper,
+  .section.general-container .tabs,
+  .section.general-container .immersive-cards-wrapper,
+  .section.general-container .multi-purpose-cards-wrapper,
+  .section.general-container .columns-with-cards-grid {
     max-width: 660px;
     margin: 0 auto;
     width: 100%;
