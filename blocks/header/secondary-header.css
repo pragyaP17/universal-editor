@@ -315,6 +315,37 @@
     pointer-events: none;
 }
 
+/* Transform hamburger to X when menu is open */
+.sub-brand-nav.menu-open .brand-nav-right .ic-menu .menu-line {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s, stroke 0.3s;
+    transform-origin: center;
+    stroke: #76b900 !important;
+    /* Force Nvidia Green when open */
+}
+
+/* Hide middle line */
+.sub-brand-nav.menu-open .brand-nav-right .ic-menu .menu-line:nth-child(2) {
+    opacity: 0;
+}
+
+/* Rotate top line */
+.sub-brand-nav.menu-open .brand-nav-right .ic-menu .menu-line:nth-child(1) {
+    transform-origin: 12px 6px;
+    /* Center of top line */
+    transform: translateY(7px) rotate(45deg);
+}
+
+/* Rotate bottom line */
+.sub-brand-nav.menu-open .brand-nav-right .ic-menu .menu-line:nth-child(3) {
+    transform-origin: 14px 18px;
+    /* Center of bottom line */
+    transform: translateY(-5px) rotate(-45deg);
+}
+
+.sub-brand-nav.menu-open .brand-nav-right .ic-menu {
+    transform: none;
+}
+
 /* ====================================
    MOBILE MENU (NVIDIA Style)
    ==================================== */
@@ -327,9 +358,16 @@
     opacity: 0;
     padding: 0;
     position: fixed;
-    right: -100%;
+    right: 0;
+    /* Anchor to right */
     top: 46px;
-    transition: right 0.3s ease-in-out, opacity 0.3s ease-in-out;
+
+    /* Transform: Start above (hidden) */
+    transform: translateY(-100%);
+
+    /* Animate transform (slide) and opacity */
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+
     width: 100%;
     z-index: 1000;
     overflow-y: auto;
@@ -344,8 +382,13 @@
 
 .sub-brand-nav .mobile-menu-container.active {
     right: 0;
+    /* Keep anchored right */
+    transform: translateY(0);
+    /* Slide down into view */
     opacity: 1;
     z-index: 100000;
+    overflow-y: hidden;
+    /* Remove scroll */
 }
 
 @media (max-width: 639px) {
@@ -514,7 +557,6 @@
 .sub-brand-nav .mobile-menu-container ul.mobile-menu li.active>ul.submenu {
     right: 0;
     min-height: 100vh;
-    margin: 0;
 }
 
 /* Lightbox overlay for tablet */
@@ -531,4 +573,25 @@
 
 .sub-brand-nav.menu-open .lightbox-background {
     display: block;
+}
+
+@keyframes slideHeaderUp {
+    0% {
+        top: 46px;
+    }
+
+    100% {
+        top: 0;
+    }
+}
+
+.sub-brand-nav.menu-open:has(.mobile-menu-container.active) {
+    position: fixed;
+    top: 46px;
+    /* Initial state during delay */
+    left: 0;
+    width: 100%;
+    z-index: 100000;
+    /* Animation: Name | Duration | Easing | Delay | Fill-Mode */
+    animation: slideHeaderUp 0.3s ease-in-out 0s forwards;
 }
