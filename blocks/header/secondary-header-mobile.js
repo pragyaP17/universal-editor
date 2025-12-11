@@ -48,24 +48,20 @@ export function initSecondaryHeaderMobile(retryCount = 0) {
             const dropdown = item.querySelector('.dropdown-menu');
 
             if (link && dropdown) {
+                // Right arrow (Sibling to link)
+                const arrow = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+                arrow.classList.add('right-arrow');
+                arrow.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+                arrow.setAttribute('viewBox', '0 0 32 32');
+                const arrowPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                arrowPath.classList.add('a');
+                arrowPath.setAttribute('d', 'M11.45,22.12,17.56,16,11.45,9.88,13.33,8l8,8-8,8Z');
+                arrow.appendChild(arrowPath);
+                menuItem.appendChild(arrow);
+
                 const itemLink = document.createElement('a');
                 itemLink.textContent = link.textContent.replace(/\s+/g, ' ').trim();
                 itemLink.href = '#';
-
-                // Add right arrow
-                const arrow = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-                arrow.classList.add('right-arrow');
-                arrow.setAttribute('width', '32');
-                arrow.setAttribute('height', '32');
-                arrow.setAttribute('viewBox', '0 0 24 24');
-                const arrowPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-                arrowPath.setAttribute('d', 'M9 6l6 6-6 6');
-                arrowPath.setAttribute('fill', 'none');
-                arrowPath.setAttribute('stroke', '#ccc');
-                arrowPath.setAttribute('stroke-width', '2');
-                arrow.appendChild(arrowPath);
-                itemLink.appendChild(arrow);
-
                 menuItem.appendChild(itemLink);
 
                 // Create submenu
@@ -75,23 +71,30 @@ export function initSecondaryHeaderMobile(retryCount = 0) {
                 // Back button
                 const backItem = document.createElement('li');
                 backItem.className = 'back';
-                const backLink = document.createElement('a');
-                backLink.href = '#';
+
+                // Back Arrow Container
+                const backArrowDiv = document.createElement('div');
+                backArrowDiv.className = 'mobile-arrow-left';
 
                 const backArrow = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-                backArrow.classList.add('mobile-arrow-left');
-                backArrow.setAttribute('width', '32');
-                backArrow.setAttribute('height', '32');
-                backArrow.setAttribute('viewBox', '0 0 24 24');
-                const backPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-                backPath.setAttribute('d', 'M15 18l-6-6 6-6');
-                backPath.setAttribute('fill', 'none');
-                backPath.setAttribute('stroke', '#ccc');
-                backPath.setAttribute('stroke-width', '2');
-                backArrow.appendChild(backPath);
-                backLink.appendChild(backArrow);
-                backLink.appendChild(document.createTextNode(' Back'));
+                backArrow.classList.add('left-arrow');
+                backArrow.setAttribute('version', '1.1');
+                backArrow.setAttribute('viewBox', '0 0 512 512');
+                backArrow.setAttribute('xml:space', 'preserve');
+                backArrow.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+
+                const backPolygon = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
+                backPolygon.setAttribute('points', '352,128.4 319.7,96 160,256 160,256 160,256 319.7,416 352,383.6 224.7,256');
+                backArrow.appendChild(backPolygon);
+                backArrowDiv.appendChild(backArrow);
+
+                backItem.appendChild(backArrowDiv);
+
+                const backLink = document.createElement('a');
+                backLink.href = '#';
+                backLink.textContent = 'Back';
                 backItem.appendChild(backLink);
+
                 submenu.appendChild(backItem);
 
                 // Menu title
@@ -117,14 +120,18 @@ export function initSecondaryHeaderMobile(retryCount = 0) {
                 menuItem.appendChild(submenu);
 
                 // Click handler for opening submenu
-                itemLink.addEventListener('click', (e) => {
+                // Trigger on li click (covers arrow) but ignore submenu clicks
+                menuItem.addEventListener('click', (e) => {
+                    if (e.target.closest('.submenu')) return;
                     e.preventDefault();
                     menuItem.classList.add('active');
                 });
 
                 // Click handler for back button
-                backLink.addEventListener('click', (e) => {
+                // Click on the whole item triggers back
+                backItem.addEventListener('click', (e) => {
                     e.preventDefault();
+                    e.stopPropagation(); // Stop propagation to menuItem
                     menuItem.classList.remove('active');
                 });
             }

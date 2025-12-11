@@ -235,7 +235,7 @@ function parseSecondaryHeader(section) {
 
   const brandLink = document.createElement('a');
   brandLink.className = 'sub-brand-name';
-  brandLink.href = '#';
+  brandLink.href = '/en-us/industries/robotics';
 
   const brandLabel = document.createElement('span');
   brandLabel.className = 'sub-brand-label size-small';
