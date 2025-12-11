@@ -1,0 +1,173 @@
+/* Main Container */
+.section .gtc-container{
+margin: 0px;
+}
+
+.gtc-container {
+    background-color: #F1F1F1;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.gtc-wrapper {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+/* Grid Layout for the Block */
+.gtc {
+    display: grid;
+    /* Mobile grid (default) */
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 15px;
+    padding: 30px 0;
+    box-sizing: border-box;
+}
+
+/* Reset and Defaults */
+.gtc div {
+    box-sizing: border-box;
+}
+
+.gtc p {
+    margin: 0;
+    font-family: "NVIDIA Sans", "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+    color: #333;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Image Section */
+.gtc>div:nth-child(1) {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.gtc>div:nth-child(1) img {
+    /* Mobile width */
+    width: 70px;
+    height: auto;
+    display: block;
+}
+
+/* Title Section */
+.gtc>div:nth-child(2) p {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #000;
+    margin-bottom: 5px;
+}
+
+/* Description & Link Section */
+.gtc>div:nth-child(3) p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+}
+
+/* Link Style */
+.gtc>div:nth-child(3) a {
+    color: #000;
+    text-decoration: none;
+    font-weight: 700;
+    display: inline-block;
+}
+
+/* Link Hover Effect & Arrow */
+.gtc>div:nth-child(3) a::after {
+    content: "›";
+    /* Chevron character */
+    display: inline-block;
+    color: #76b900;
+    font-size: 24px;
+    line-height: 1;
+    margin-left: 3px;
+    vertical-align: -2px;
+    transition: all 0.3s ease;
+    font-weight: 400;
+}
+
+.gtc>div:nth-child(3) a:hover::after {
+    color: #000;
+    margin-left: 6px;
+}
+
+/* -----------------------------------------------------------
+   Media Queries
+   ----------------------------------------------------------- */
+
+/* Tablet: 640px to 1023px */
+@media screen and (min-width: 640px) and (max-width: 1023px) {
+    .gtc {
+        grid-template-columns: auto 1fr;
+        grid-template-rows: auto auto;
+        /* Image in col 1, Text in col 2 */
+        column-gap: 25px;
+        row-gap: 0;
+        /* Text needs to flow */
+        align-items: start;
+    }
+
+    .gtc>div:nth-child(1) {
+        grid-row: 1 / span 2;
+        grid-column: 1;
+        padding-top: 5px;
+        /* Visual alignment */
+    }
+
+    .gtc>div:nth-child(1) img {
+        width: 80px;
+    }
+
+    .gtc>div:nth-child(2) {
+        grid-row: 1;
+        grid-column: 2;
+    }
+
+    .gtc>div:nth-child(3) {
+        grid-row: 2;
+        grid-column: 2;
+    }
+}
+
+/* Laptop: 1024px to 1349px */
+@media screen and (min-width: 1024px) {
+    .gtc {
+        grid-template-columns: auto 1fr;
+        grid-template-rows: auto auto;
+        column-gap: 30px;
+        padding: 40px 0;
+    }
+
+    .gtc>div:nth-child(1) {
+        grid-row: 1 / span 2;
+        grid-column: 1;
+    }
+
+    .gtc>div:nth-child(1) img {
+        width: 100px;
+        /* Estimate for laptop/desktop */
+    }
+
+    .gtc>div:nth-child(2) {
+        grid-row: 1;
+        grid-column: 2;
+    }
+
+    .gtc>div:nth-child(2) p {
+        font-size: 28px;
+        /* Larger title */
+    }
+
+    .gtc>div:nth-child(3) {
+        grid-row: 2;
+        grid-column: 2;
+    }
+
+    .gtc>div:nth-child(3) p {
+        font-size: 18px;
+    }
+}
