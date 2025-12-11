@@ -25,7 +25,8 @@
       "tabs",
       "columns-with-cards",
       "agreement-header",
-      "carousel-banner"
+      "carousel-banner",
+      "gtc"
     ]
   },
   {
@@ -63,6 +64,12 @@
       "image",
       "button",
       "title"
+    ]
+  },
+  {
+    "id": "gtc",
+    "components": [
+      "gtc"
     ]
   },
   {
