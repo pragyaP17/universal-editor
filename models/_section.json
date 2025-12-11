@@ -115,6 +115,22 @@
             {
               "name": "Padding Y 75 Bottom",
               "value": "p-y-75-bottom"
+            },
+			{
+              "name":"Margin Y 60",
+			  "value": "m-y-60"
+            },
+            {
+              "name":"Margin Y 75",
+			  "value": "m-y-75"
+            },
+			 {
+              "name":"Margin Y 75 top",
+			  "value": "m-y-75-top"
+            },
+			 {
+              "name":"Margin Y 75 bottom",
+			  "value": "m-y-75-bottom"
             }
           ]
         }
@@ -142,7 +158,8 @@
         "tabs",
         "columns-with-cards",
         "agreement-header",
-        "carousel-banner"
+        "carousel-banner",
+        "gtc"
       ]
     }
   ]

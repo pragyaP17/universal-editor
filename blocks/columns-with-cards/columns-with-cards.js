@@ -1,164 +1,161 @@
 /**
- * Explore AI Robotics Block
- * Creates a two-column layout with text content on the left and article cards on the right
- * Features fade-in animations and hover effects
+ * Columns with Cards Block
+ * Creates a two-column layout with text content on the left and cards on the right
+ * Matches the NVIDIA robotics page design
+ * 
+ * This block expects multiple instances within the same section container.
+ * The first block contains the headline and body text (left column).
+ * Subsequent blocks contain cards (right column).
  */
 
 /**
- * Creates intersection observer for fade-in animation on scroll
- * @param {HTMLElement} block - The block element
- */
-function initScrollAnimation(block) {
-  const cards = block.querySelectorAll('.columns-with-cards');
-
-  const observerOptions = {
-    threshold: 0.2, // Trigger when 20% of the card is visible
-    rootMargin: '0px 0px -50px 0px'
-  };
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, index) => {
-      if (entry.isIntersecting) {
-        // Add staggered delay for multiple cards
-        setTimeout(() => {
-          entry.target.classList.add('is-visible');
-        }, index * 150); // 150ms delay between cards
-
-        observer.unobserve(entry.target);
-      }
-    });
-  }, observerOptions);
-
-  cards.forEach(card => observer.observe(card));
-}
-
-/**
- * Processes card data and creates card element
- * @param {Object} cardData - Card data object with title, body, and CTA info
- * @returns {HTMLElement} Card element
- */
-function createCard(cardData) {
-  const card = document.createElement('div');
-  card.className = 'columns-with-cards';
-
-  // Card title
-  const title = document.createElement('h3');
-  title.className = 'columns-with-cards-title';
-  title.textContent = cardData.cardTitle || '';
-
-  // Card description
-  const description = document.createElement('div');
-  description.className = 'columns-with-cards-description';
-  description.innerHTML = cardData.cardBody || '';
-
-  // CTA links container
-  const ctasContainer = document.createElement('div');
-  ctasContainer.className = 'columns-with-cards-ctas';
-
-  // Create CTA links (up to 2)
-  if (cardData.cta1Label && cardData.cta1URL) {
-    const cta1 = document.createElement('a');
-    cta1.className = 'columns-with-cards-cta';
-    cta1.href = cardData.cta1URL;
-    cta1.textContent = cardData.cta1Label;
-    ctasContainer.appendChild(cta1);
-  }
-
-  if (cardData.cta2Label && cardData.cta2URL) {
-    const cta2 = document.createElement('a');
-    cta2.className = 'columns-with-cards-cta';
-    cta2.href = cardData.cta2URL;
-    cta2.textContent = cardData.cta2Label;
-    ctasContainer.appendChild(cta2);
-  }
-
-  // Assemble card
-  card.appendChild(title);
-  card.appendChild(description);
-  card.appendChild(ctasContainer);
-
-  return card;
-}
-
-/**
- * Main decorate function for the block
+ * Decorate function for the columns-with-cards block
  * @param {HTMLElement} block - The block element
  */
 export default function decorate(block) {
-  // Extract the data from the block
-  const rows = [...block.children];
+  const section = block.closest('.section');
+  if (!section) return;
 
-  if (rows.length < 2) {
-    console.warn('columns-with-cards block requires at least 2 rows (headline/body and cards)');
+  // Check if this section has already been restructured
+  if (section.querySelector('.columns-with-cards-grid')) {
     return;
   }
 
-  // Create main container
-  const container = document.createElement('div');
-  container.className = 'columns-with-cards-container';
+  // Get all blocks in this section
+  const allBlocks = Array.from(section.querySelectorAll('.columns-with-cards'));
 
-  // Left column - Content
-  const contentColumn = document.createElement('div');
-  contentColumn.className = 'columns-with-cards-content';
-
-  // Extract headline and body from first row
-  const contentRow = rows[0];
-  if (contentRow && contentRow.children.length >= 2) {
-    const headlineText = contentRow.children[0].textContent.trim();
-    const bodyHTML = contentRow.children[1].innerHTML;
-
-    // Create headline
-    const headline = document.createElement('h2');
-    headline.className = 'columns-with-cards-headline';
-    headline.textContent = headlineText;
-
-    // Create body
-    const body = document.createElement('div');
-    body.className = 'columns-with-cards-body';
-    body.innerHTML = bodyHTML;
-
-    contentColumn.appendChild(headline);
-    contentColumn.appendChild(body);
+  // We need at least 2 blocks (1 for content, 1+ for cards)
+  if (allBlocks.length < 2) {
+    return;
   }
 
-  // Right column - Cards
-  const cardsColumn = document.createElement('div');
-  cardsColumn.className = 'columns-with-cardss';
+  // Only process this once from the last block's perspective
+  const isLastBlock = block === allBlocks[allBlocks.length - 1];
+  if (!isLastBlock) {
+    return;
+  }
 
-  // Process card rows (remaining rows after first)
-  for (let i = 1; i < rows.length; i++) {
-    const cardRow = rows[i];
-    if (cardRow && cardRow.children.length >= 2) {
-      // Extract card data from row
-      const cardData = {
-        cardTitle: cardRow.children[0]?.textContent.trim() || '',
-        cardBody: cardRow.children[1]?.innerHTML || ''
-      };
+  // Create the grid structure
+  const grid = document.createElement('div');
+  grid.className = 'columns-with-cards-grid';
 
-      // Extract CTAs if present (columns 2-5 for CTA labels and URLs)
-      if (cardRow.children.length >= 4) {
-        cardData.cta1Label = cardRow.children[2]?.textContent.trim() || '';
-        cardData.cta1URL = cardRow.children[3]?.textContent.trim() || '';
-      }
+  // Left column - Main content from first block
+  const leftColumn = document.createElement('div');
+  leftColumn.className = 'columns-with-cards-left';
 
-      if (cardRow.children.length >= 6) {
-        cardData.cta2Label = cardRow.children[4]?.textContent.trim() || '';
-        cardData.cta2URL = cardRow.children[5]?.textContent.trim() || '';
-      }
+  const firstBlock = allBlocks[0];
+  const firstBlockRows = firstBlock.querySelectorAll(':scope > div');
 
-      const card = createCard(cardData);
-      cardsColumn.appendChild(card);
+  // Extract headline (first row, first cell)
+  if (firstBlockRows[0]) {
+    const headlineCell = firstBlockRows[0].querySelector('div');
+    if (headlineCell) {
+      const headline = document.createElement('h2');
+      headline.className = 'columns-with-cards-headline';
+      headline.textContent = headlineCell.textContent.trim();
+      leftColumn.appendChild(headline);
     }
   }
 
-  // Assemble the block
-  container.appendChild(contentColumn);
-  container.appendChild(cardsColumn);
+  // Extract body (second row, first cell)
+  if (firstBlockRows[1]) {
+    const bodyCell = firstBlockRows[1].querySelector('div');
+    if (bodyCell) {
+      const body = document.createElement('div');
+      body.className = 'columns-with-cards-body';
+      body.innerHTML = bodyCell.innerHTML;
+      leftColumn.appendChild(body);
+    }
+  }
 
-  // Replace block content
-  block.textContent = '';
-  block.appendChild(container);
+  // Right column - Cards from remaining blocks
+  const rightColumn = document.createElement('div');
+  rightColumn.className = 'columns-with-cards-right';
 
-  // Initialize scroll animation
-  initScrollAnimation(block);
+  for (let i = 1; i < allBlocks.length; i++) {
+    const cardBlock = allBlocks[i];
+    const card = createCard(cardBlock);
+    if (card) {
+      rightColumn.appendChild(card);
+    }
+  }
+
+  // Assemble grid
+  grid.appendChild(leftColumn);
+  grid.appendChild(rightColumn);
+
+  // Replace section content
+  // The section itself has the columns-with-cards-container class
+  if (section.classList.contains('columns-with-cards-container')) {
+    section.innerHTML = '';
+    section.appendChild(grid);
+  }
+}
+
+/**
+ * Create a card from a block
+ * @param {HTMLElement} block - The block element
+ * @returns {HTMLElement} The card element
+ */
+function createCard(block) {
+  const card = document.createElement('div');
+  card.className = 'columns-with-cards-card';
+
+  const rows = block.querySelectorAll(':scope > div');
+
+  // Title from first row
+  if (rows[0]) {
+    const titleCell = rows[0].querySelector('div');
+    if (titleCell) {
+      const title = document.createElement('h3');
+      title.className = 'columns-with-cards-card-title';
+      title.textContent = titleCell.textContent.trim();
+      card.appendChild(title);
+    }
+  }
+
+  // Description and CTAs from second row
+  if (rows[1]) {
+    const contentCell = rows[1].querySelector('div');
+    if (contentCell) {
+      // Description
+      const description = document.createElement('div');
+      description.className = 'columns-with-cards-card-description';
+
+      const paragraphs = contentCell.querySelectorAll('p:not(.button-container)');
+      paragraphs.forEach(p => {
+        const newP = document.createElement('p');
+        newP.innerHTML = p.innerHTML;
+        description.appendChild(newP);
+      });
+
+      if (description.children.length > 0) {
+        card.appendChild(description);
+      }
+
+      // CTAs
+      const ctaContainer = document.createElement('div');
+      ctaContainer.className = 'columns-with-cards-card-ctas';
+
+      const buttonContainers = contentCell.querySelectorAll('.button-container');
+      buttonContainers.forEach(container => {
+        const link = container.querySelector('a');
+        if (link) {
+          const cta = document.createElement('a');
+          cta.className = 'columns-with-cards-card-cta';
+          cta.href = link.href;
+          cta.textContent = link.textContent.trim();
+          if (link.target) cta.target = link.target;
+
+          ctaContainer.appendChild(cta);
+        }
+      });
+
+      if (ctaContainer.children.length > 0) {
+        card.appendChild(ctaContainer);
+      }
+    }
+  }
+
+  return card;
 }
