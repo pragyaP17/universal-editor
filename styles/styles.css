@@ -103,13 +103,30 @@ body.appear {
 /* Reserve space for OneTrust banner to prevent CLS */
 #onetrust-banner-sdk {
   min-height: 90px;
+  contain: layout style;
 }
 
 /* Mobile viewport - banner is taller due to text wrapping */
 @media (width <=639px) {
   #onetrust-banner-sdk {
-    min-height: 410px;
+    min-height: 120px;
+    contain: layout style;
   }
+}
+
+/* Additional CLS prevention for main content sections */
+main > .section {
+  min-height: 50px;
+  contain: layout;
+}
+
+/* Prevent layout shifts during font loading */
+.fa, .fas, .far, .fab {
+  font-family: "Font Awesome 6 Free", "Font Awesome 6 Free-fallback", Arial, sans-serif;
+}
+
+.fa-brands, .fab {
+  font-family: "Font Awesome 6 Brands", "Font Awesome 6 Brands-fallback", Arial, sans-serif;
 }
 
 header {

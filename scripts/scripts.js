@@ -51,7 +51,13 @@ export function moveInstrumentation(from, to) {
  * load fonts.css and set a session storage flag
  */
 async function loadFonts() {
+  // Add font loading detection to minimize CLS
+  if (document.fonts && document.fonts.ready) {
+    await document.fonts.ready;
+  }
+
   await loadCSS(`${window.hlx.codeBasePath}/styles/fonts.css`);
+
   try {
     if (!window.location.hostname.includes('localhost')) sessionStorage.setItem('fonts-loaded', 'true');
   } catch (e) {
@@ -86,7 +92,7 @@ function ensureAccessibleLinks() {
 
     const href = link.getAttribute('href');
     if (!href || href === '#' || href.startsWith('javascript:')) return;
-    
+
     // Check for icon first (most common case for icon-only links)
     const icon = link.querySelector('.icon');
     if (icon) {
@@ -97,14 +103,14 @@ function ensureAccessibleLinks() {
         return;
       }
     }
-    
+
     // Check for image alt
     const img = link.querySelector('img[alt]');
     if (img?.alt) {
       link.setAttribute('aria-label', img.alt);
       return;
     }
-    
+
     // Check SVG title (header logo case)
     const svgTitle = link.querySelector('svg title');
     if (svgTitle?.textContent) {
@@ -143,9 +149,9 @@ async function loadEager(doc) {
 
   try {
     /* if desktop (proxy for fast connection) or fonts already loaded, load fonts.css */
-    //if (window.innerWidth >= 900 || sessionStorage.getItem('fonts-loaded')) {
-      loadFonts();
-    //}
+    // if (window.innerWidth >= 900 || sessionStorage.getItem('fonts-loaded')) {
+    loadFonts();
+    // }
   } catch (e) {
     // do nothing
   }
