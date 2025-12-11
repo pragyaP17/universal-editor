@@ -44,8 +44,8 @@
 @font-face {
   font-family: nvidia-sans-fallback;
   size-adjust: 97.5%;
-  ascent-override: 100%;
-  descent-override: 25%;
+  ascent-override: 105%;
+  descent-override: 35%;
   line-gap-override: 0%;
   src: local('Arial');
 }
@@ -53,12 +53,18 @@
 @font-face {
   font-family: roboto-condensed-fallback;
   size-adjust: 88.82%;
+  ascent-override: 100%;
+  descent-override: 25%;
+  line-gap-override: 0%;
   src: local('Arial');
 }
 
 @font-face {
   font-family: roboto-fallback;
   size-adjust: 99.529%;
+  ascent-override: 100%;
+  descent-override: 25%;
+  line-gap-override: 0%;
   src: local('Arial');
 }
 
