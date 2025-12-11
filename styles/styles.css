@@ -108,7 +108,7 @@ body.appear {
 /* Mobile viewport - banner is taller due to text wrapping */
 @media (width <=639px) {
   #onetrust-banner-sdk {
-    min-height: 120px;
+    min-height: 410px;
   }
 }
 
