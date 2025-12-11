@@ -21,6 +21,12 @@
           "name": "keywords",
           "multi": true,
           "label": "Keywords"
+        },
+        {
+          "component": "aem-content",
+          "valueType": "string",
+          "name": "nav",
+          "label": "Navigating path"
         }
       ]
     }
