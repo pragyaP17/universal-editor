@@ -73,6 +73,47 @@ function buildAutoBlocks() {
 }
 
 /**
+ * Ensures all links have accessible names for screen readers
+ * Optimized to run without blocking page load
+ */
+function ensureAccessibleLinks() {
+  // Use simpler selector and batch process
+  const links = document.querySelectorAll('a:not([aria-label]):not([aria-labelledby])');
+  
+  links.forEach((link) => {
+    // Quick text check - most links have text
+    if (link.textContent?.trim()) return;
+
+    const href = link.getAttribute('href');
+    if (!href || href === '#' || href.startsWith('javascript:')) return;
+    
+    // Check for icon first (most common case for icon-only links)
+    const icon = link.querySelector('.icon');
+    if (icon) {
+      const iconClass = [...icon.classList].find((c) => c.startsWith('icon-'));
+      if (iconClass) {
+        const name = iconClass.slice(5).replace(/-/g, ' ');
+        link.setAttribute('aria-label', name.charAt(0).toUpperCase() + name.slice(1));
+        return;
+      }
+    }
+    
+    // Check for image alt
+    const img = link.querySelector('img[alt]');
+    if (img?.alt) {
+      link.setAttribute('aria-label', img.alt);
+      return;
+    }
+    
+    // Check SVG title (header logo case)
+    const svgTitle = link.querySelector('svg title');
+    if (svgTitle?.textContent) {
+      link.setAttribute('aria-label', svgTitle.textContent.trim());
+    }
+  });
+}
+
+/**
  * Decorates the main element.
  * @param {Element} main The main element
  */
@@ -139,7 +180,8 @@ async function loadLazy(doc) {
 function loadDelayed() {
   // eslint-disable-next-line import/no-cycle
   window.setTimeout(() => import('./delayed.js'), 3000);
-  // load anything that can be postponed to the latest here
+  // Ensure all links have accessible names (non-blocking)
+  window.setTimeout(() => ensureAccessibleLinks(), 100);
 }
 
 async function loadPage() {

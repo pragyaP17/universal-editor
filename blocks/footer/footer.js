@@ -6,31 +6,51 @@ import { loadFragment } from '../fragment/fragment.js';
  * @param {Element} footer The footer element
  */
 function addAccessibilityLabels(footer) {
-  const socialMediaMap = {
+  if (!footer) return;
+  
+  const socialMedia = {
     'facebook.com': 'Facebook',
     'instagram.com': 'Instagram',
     'linkedin.com': 'LinkedIn',
     'twitter.com': 'Twitter',
-    'x.com': 'X (Twitter)',
+    'x.com': 'X (formerly Twitter)',
     'youtube.com': 'YouTube',
   };
 
-  // Find all links in the footer
-  const links = footer.querySelectorAll('a');
+  // Only query links without text content for performance
+  const links = footer.querySelectorAll('a:not([aria-label]):not([aria-labelledby])');
+  
   links.forEach((link) => {
-    // Skip if link already has aria-label or has visible text content
-    if (link.getAttribute('aria-label') || (link.textContent && link.textContent.trim().length > 0)) {
-      return;
-    }
+    // Quick exit if link has text
+    if (link.textContent?.trim()) return;
 
-    const href = link.href || '';
+    const href = link.getAttribute('href');
+    if (!href || href === '#') return;
     
-    // Check if it's a social media link
-    Object.keys(socialMediaMap).forEach((domain) => {
-      if (href.includes(domain) && !link.getAttribute('aria-label')) {
-        link.setAttribute('aria-label', socialMediaMap[domain]);
+    // Check social media (most common case for footer)
+    for (const [domain, label] of Object.entries(socialMedia)) {
+      if (href.includes(domain)) {
+        link.setAttribute('aria-label', label);
+        return;
       }
-    });
+    }
+    
+    // Check icon class
+    const icon = link.querySelector('.icon');
+    if (icon) {
+      const iconClass = [...icon.classList].find((c) => c.startsWith('icon-'));
+      if (iconClass) {
+        const name = iconClass.slice(5).replace(/-/g, ' ');
+        link.setAttribute('aria-label', name.charAt(0).toUpperCase() + name.slice(1));
+        return;
+      }
+    }
+    
+    // Check image alt
+    const img = link.querySelector('img[alt]');
+    if (img?.alt) {
+      link.setAttribute('aria-label', img.alt);
+    }
   });
 }
 

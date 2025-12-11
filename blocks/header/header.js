@@ -230,7 +230,7 @@ function createDesktopNav(navData, rightMenuData, iconItems) {
   menuList.id = 'main-menu-navigation';
   menuList.className = 'nv-menu-list left';
   menuList.setAttribute('role', 'menu');
-  menuList.setAttribute('aria-label', 'menu');
+  menuList.setAttribute('aria-label', 'Main navigation');
 
   navData.slice(0, 3).forEach((item, index) => {
     const menuItem = document.createElement('li');
@@ -241,11 +241,12 @@ function createDesktopNav(navData, rightMenuData, iconItems) {
     menuItem.setAttribute('aria-expanded', 'false');
 
     if (item.categories.length > 0) {
-      const label = document.createElement('label');
-      label.className = 'nv-menu-button menu-level-1';
-      label.textContent = item.title;
-      label.setAttribute('tabindex', '0');
-      menuItem.appendChild(label);
+      const button = document.createElement('button');
+      button.className = 'nv-menu-button menu-level-1';
+      button.textContent = item.title;
+      button.setAttribute('type', 'button');
+      button.setAttribute('aria-label', `${item.title} menu`);
+      menuItem.appendChild(button);
 
       const megaMenuContainer = document.createElement('div');
       megaMenuContainer.className = 'nv-n-n25';
@@ -395,7 +396,7 @@ function createDesktopNav(navData, rightMenuData, iconItems) {
       megaMenuContainer.appendChild(menuContainer);
       menuItem.appendChild(megaMenuContainer);
 
-      label.addEventListener('click', (e) => {
+      button.addEventListener('click', (e) => {
         e.preventDefault();
         e.stopPropagation();
 
@@ -429,7 +430,7 @@ function createDesktopNav(navData, rightMenuData, iconItems) {
   const rightMenu = document.createElement('ul');
   rightMenu.className = 'nv-menu-list right';
   rightMenu.setAttribute('role', 'menu');
-  rightMenu.setAttribute('aria-label', 'menu');
+  rightMenu.setAttribute('aria-label', 'Secondary navigation');
 
   rightMenuData.forEach((item) => {
     const li = document.createElement('li');
