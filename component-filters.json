@@ -67,12 +67,6 @@
     ]
   },
   {
-    "id": "gtc",
-    "components": [
-      "gtc"
-    ]
-  },
-  {
     "id": "immersive-cards",
     "components": [
       "immersive-card-item"

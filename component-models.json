@@ -560,8 +560,7 @@
     ]
   },
   {
-    "id": "gtcText",
-    "displayName": "GTC Text Item",
+    "id": "gtc",
     "fields": [
       {
         "component": "reference",
