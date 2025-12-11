@@ -37,15 +37,15 @@
   --heading-font-size-xs: 22px;
 
   /* nav height */
-  --nav-height: 64px;
+  --nav-height: 45px;
 }
 
 /* fallback fonts */
 @font-face {
   font-family: nvidia-sans-fallback;
-  size-adjust: 97.5%;
-  ascent-override: 105%;
-  descent-override: 35%;
+  size-adjust: 99.85%;
+  ascent-override: 100%;
+  descent-override: 26%;
   line-gap-override: 0%;
   src: local('Arial');
 }
