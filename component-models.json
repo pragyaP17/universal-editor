@@ -121,20 +121,23 @@
   },
   {
     "id": "section",
-    "displayName": "name",
     "fields": [
       {
         "component": "text",
         "name": "name",
         "label": "Section Name",
-        "description": "The label shown for this section in the Content Tree",
-        "valueType": "string"
+        "description": "The label shown for this section in the Content Tree"
+      },
+      {
+        "component": "text",
+        "name": "id",
+        "label": "Section ID",
+        "description": "Adds an HTML id attribute to the section"
       },
       {
         "component": "multiselect",
         "name": "style",
         "label": "Style",
-        "valueType": "string",
         "options": [
           {
             "name": "General Container",
@@ -207,8 +210,33 @@
           {
             "name": "Padding Y 75",
             "value": "p-y-75"
+          },
+          {
+            "name": "Padding Y 75 Top",
+            "value": "p-y-75-top"
+          },
+          {
+            "name": "Padding Y 75 Bottom",
+            "value": "p-y-75-bottom"
           }
         ]
+      }
+    ]
+  },
+  {
+    "id": "agreement-header",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "leftContent",
+        "label": "Left Content",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "rightContent",
+        "label": "Right Content",
+        "valueType": "string"
       }
     ]
   },
@@ -408,6 +436,69 @@
         "name": "link",
         "label": "Card Link URL",
         "value": ""
+      }
+    ]
+  },
+  {
+    "id": "columns-with-cards",
+    "fields": [
+      {
+        "component": "text",
+        "name": "headline",
+        "label": "Headline",
+        "description": "Main headline text (e.g., 'Explore the Next Wave of AI')"
+      },
+      {
+        "component": "richtext",
+        "name": "body",
+        "label": "Body Content",
+        "description": "Body paragraphs with optional inline hyperlinks"
+      },
+      {
+        "component": "collection",
+        "name": "cards",
+        "label": "Article Cards",
+        "description": "Article cards displayed on the right side",
+        "minItems": 1,
+        "maxItems": 2,
+        "fields": [
+          {
+            "component": "text",
+            "name": "cardTitle",
+            "label": "Card Title",
+            "description": "Article headline (bold, medium font)"
+          },
+          {
+            "component": "richtext",
+            "name": "cardBody",
+            "label": "Card Description",
+            "description": "Description paragraph for the card"
+          },
+          {
+            "component": "text",
+            "name": "cta1Label",
+            "label": "CTA 1 Label",
+            "description": "Label for first call-to-action link"
+          },
+          {
+            "component": "text",
+            "name": "cta1URL",
+            "label": "CTA 1 URL",
+            "description": "URL for first call-to-action link"
+          },
+          {
+            "component": "text",
+            "name": "cta2Label",
+            "label": "CTA 2 Label",
+            "description": "Label for second call-to-action link (optional)"
+          },
+          {
+            "component": "text",
+            "name": "cta2URL",
+            "label": "CTA 2 URL",
+            "description": "URL for second call-to-action link (optional)"
+          }
+        ]
       }
     ]
   },
