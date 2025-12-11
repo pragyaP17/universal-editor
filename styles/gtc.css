@@ -1,0 +1,128 @@
+/* GTC Banner Styles */
+.section.gtctext {
+  background-color: #f7f7f7;
+  padding: 15px 0;
+}
+
+.gtctext .default-content-wrapper {
+  display: flex;
+  align-items: center;
+  max-width: 1290px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.gtctext .icon-nvidia-gtc-logo {
+  flex-shrink: 0;
+  width: 90px;
+  height: 90px;
+  margin-right: 25px;
+}
+
+.gtctext .text-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.gtctext h4,
+.gtctext p {
+  margin: 0;
+  padding: 0;
+  display: block; /* Ensure they stack vertically within their container */
+}
+
+.gtctext h4 {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.gtctext p {
+  font-size: 22px;
+  line-height: 1.75em;
+  margin-top: 0.25em;
+}
+
+.gtctext p strong {
+  white-space: nowrap;
+  color: #76b900;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.gtctext p strong:hover {
+  color: #000;
+  text-decoration: underline;
+}
+
+.gtctext p .icon-chevron-right {
+  width: 18px;
+  height: 18px;
+  margin-left: 1px;
+  transition: .4s ease-out;
+  filter: invert(55%) sepia(99%) saturate(448%) hue-rotate(41deg) brightness(95%) contrast(91%);
+}
+
+.gtctext p strong:hover .icon-chevron-right {
+  margin-left: 4px;
+  padding-right: 0;
+  filter: invert(0%) sepia(100%) saturate(0%) hue-rotate(240deg) brightness(105%) contrast(101%);
+}
+
+/* Media Queries */
+@media (min-width: 1024px) and (max-width: 1349px) {
+  .gtctext .default-content-wrapper {
+    max-width: 984px;
+  }
+}
+
+/* Tablet View (640px to 1023px) */
+@media (min-width: 640px) and (max-width: 1023px) {
+  .gtctext .default-content-wrapper {
+    padding-left: 25px;
+    padding-right: 25px;
+    align-items: center; /* Keep items vertically centered */
+  }
+
+  .gtctext .icon-nvidia-gtc-logo {
+    width: 80px;
+    height: 80px;
+  }
+
+  .gtctext h4,
+  .gtctext p {
+    text-align: left; /* Align text to the left */
+  }
+}
+
+/* Mobile View (max-width: 639px) */
+@media (max-width: 639px) {
+  .gtctext .default-content-wrapper {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .gtctext .icon-nvidia-gtc-logo {
+    width: 70px;
+    height: 70px;
+    margin-right: 0;
+    margin-bottom: 15px;
+  }
+
+  .gtctext h4,
+  .gtctext p {
+    text-align: center;
+  }
+
+  .gtctext p {
+    margin: 15px 0 0 0;
+    font-size: 18px;
+  }
+
+  .gtctext h4 {
+    font-size: 18px;
+  }
+
+}
