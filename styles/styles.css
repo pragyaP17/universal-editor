@@ -166,7 +166,7 @@ pre {
 }
 
 main>div {
-  margin: 40px 16px;
+ /* margin: 40px 16px;*/
 }
 
 input,
@@ -251,9 +251,9 @@ main img {
 }
 
 /* sections */
-main>.section {
+/*main>.section {
   margin: 40px 0;
-}
+}*/
 
 main>.section>div {
   max-width: 1200px;
@@ -395,4 +395,366 @@ main .section.highlight {
   background-color: var(--light-color);
   margin: 0;
   padding: 40px 0;
+}
+
+/* GTC Banner Styles */
+.section.gtctext {
+  background-color: #F1F1F1;
+  padding: 15px 0;
+}
+
+.gtctext .default-content-wrapper {
+  position: relative;
+  max-width: 1290px;
+  margin: 0 auto;
+  padding: 0 15px;
+  display: flex;
+  align-items: left;
+  min-height: 90px; /* Height of the icon */
+  margin-left: 100px;
+      margin-right: 100px;
+}
+
+.gtctext .icon-nvidia-gtc-logo {
+  flex-shrink: 0;
+  width: 85px;
+  height: 85px;
+  margin-right: 25px;
+}
+
+.gtctext .text-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.gtctext h4,
+.gtctext p {
+  margin: 0;
+  padding: 0;
+}
+
+.gtctext h2 {
+    font-size: 25px;
+    font-weight: 700;
+    line-height: 1.25em;
+}
+
+.gtctext h4 {
+  font-size: 22px;
+  font-weight: 700;
+  align-items: center;
+}
+
+.gtctext p:last-child {
+  font-size: 18px;
+    font-weight: 400;
+  line-height: 1.75em;
+  margin-left: 0px;
+}
+
+.gtctext p strong {
+  white-space: nowrap;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.gtctext p .icon-chevron-right {
+  width: 18px;
+  height: 18px;
+   cursor: pointer;
+  margin-left: 1px; /* Changing property */
+    transition: .4s ease-out; /* Transition is defined here */
+   /* filter: invert(55%) sepia(99%) saturate(448%) hue-rotate(41deg) brightness(95%) contrast(91%);*/
+}
+
+.gtctext p strong:hover .icon-chevron-right {
+  margin-left: 4px; /* Move the icon 3px to the right */
+  padding-right: 0;
+
+  /* Hover Icon Color (Black/Dark Gray) */
+  filter: invert(0%) sepia(100%) saturate(0%) hue-rotate(240deg) brightness(105%) contrast(101%);
+}
+
+.gtctext p strong:hover{
+  margin-left: 4px;
+  padding-right: 0;
+  /*filter: invert(0%) sepia(100%) saturate(0%) hue-rotate(240deg) brightness(105%) contrast(101%);*/
+
+}
+
+/* Media Queries */
+@media (min-width: 1024px) and (max-width: 1349px) {
+  .gtctext .default-content-wrapper {
+    max-width: 984px;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  .gtctext .default-content-wrapper {
+    padding-left: 25px;
+    padding-right: 25px;
+    margin-left: -8px;
+  }
+}
+
+@media (min-width: 640px) {
+    /* 1. Make the wrapper a block container for the float to work */
+    .gtctext .default-content-wrapper {
+        display: block; /* Overrides the default display: flex; for desktop/tablet */
+        align-items: flex-start; /* Resetting align-items */
+        min-height: 90px;
+         padding-left: 35px;
+    }
+
+    /* 2. Float the Icon (First <p> child) to the left to create the first column */
+    .gtctext .default-content-wrapper > p:first-child {
+        float: left;
+        margin-right: 15px;
+        margin-bottom: 15px;
+        position: relative;
+                top: -10px;
+    }
+
+    /* 3. Clear the floating icon and set the left margin for the text elements
+       (90px icon width + 25px margin-right = 115px margin-left) */
+
+    .gtctext h2 {
+        /* This is the top element in the right column */
+        margin-left: 115px;
+         margin-right: 115px;
+        margin-top: 0;
+        margin-bottom: 0;
+        display: block;
+    }
+
+    .gtctext .default-content-wrapper > p:last-child {
+        /* This is the bottom element in the right column, forced to the next line */
+        margin-left: 115px;
+        margin-right: 115px;
+        margin-top: 5px; /* Spacing below the H2 */
+        margin-bottom: 0;
+        display: block;
+    }
+
+    /* 4. Center the entire wrapper content vertically if needed
+       (This requires adding a bit of padding/spacing to the banner section) */
+    .section.gtctext {
+        padding: 40px 0;
+        margin: 0px;
+    }
+}
+
+@media (max-width: 1023px) {
+  .gtctext .default-content-wrapper {
+    flex-direction: column;
+    text-align: left;
+  }
+
+  .gtctext .icon-nvidia-gtc-logo {
+    width: 80px;
+    height: 80px;
+    margin-right: 0;
+    margin-bottom: 15px;
+  }
+
+  .gtctext h4,
+  .gtctext p {
+    text-align: left;
+  }
+
+  .gtctext p {
+    margin: 15px 0 0 0;
+  }
+}
+
+@media (max-width: 639px) {
+  .gtctext .icon-nvidia-gtc-logo {
+    width: 70px;
+    height: 70px;
+    text-align: left;
+  }
+
+  .gtctext h4,
+  .gtctext p {
+    font-size: 18px;
+    text-align: left;
+  }
+
+}/* Main Container */
+.gtc-block-container {
+    background-color: #F1F1F1;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.gtc-block-wrapper {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+/* Grid Layout for the Block */
+.gtc-block {
+    display: grid;
+    /* Mobile grid (default) */
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 15px;
+    padding: 30px 0;
+    box-sizing: border-box;
+}
+
+/* Reset and Defaults */
+.gtc-block div {
+    box-sizing: border-box;
+}
+
+.gtc-block p {
+    margin: 0;
+    font-family: "NVIDIA Sans", "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+    color: #333;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Image Section */
+.gtc-block>div:nth-child(1) {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.gtc-block>div:nth-child(1) img {
+    /* Mobile width */
+    width: 70px;
+    height: auto;
+    display: block;
+}
+
+/* Title Section */
+.gtc-block>div:nth-child(2) p {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #000;
+    margin-bottom: 5px;
+}
+
+/* Description & Link Section */
+.gtc-block>div:nth-child(3) p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+}
+
+/* Link Style */
+.gtc-block>div:nth-child(3) a {
+    color: #000;
+    text-decoration: none;
+    font-weight: 700;
+    display: inline-block;
+}
+
+/* Link Hover Effect & Arrow */
+.gtc-block>div:nth-child(3) a::after {
+    content: "›";
+    /* Chevron character */
+    display: inline-block;
+    color: #76b900;
+    font-size: 24px;
+    line-height: 1;
+    margin-left: 3px;
+    vertical-align: -2px;
+    transition: all 0.3s ease;
+    font-weight: 400;
+}
+
+.gtc-block>div:nth-child(3) a:hover::after {
+    color: #000;
+    margin-left: 6px;
+}
+
+/* -----------------------------------------------------------
+   Media Queries 
+   ----------------------------------------------------------- */
+
+/* Tablet: 640px to 1023px */
+@media screen and (min-width: 640px) and (max-width: 1023px) {
+    .gtc-block {
+        grid-template-columns: auto 1fr;
+        grid-template-rows: auto auto;
+        /* Image in col 1, Text in col 2 */
+        column-gap: 25px;
+        row-gap: 0;
+        /* Text needs to flow */
+        align-items: start;
+    }
+
+    .gtc-block>div:nth-child(1) {
+        grid-row: 1 / span 2;
+        grid-column: 1;
+        padding-top: 5px;
+        /* Visual alignment */
+    }
+
+    .gtc-block>div:nth-child(1) img {
+        width: 80px;
+    }
+
+    .gtc-block>div:nth-child(2) {
+        grid-row: 1;
+        grid-column: 2;
+    }
+
+    .gtc-block>div:nth-child(3) {
+        grid-row: 2;
+        grid-column: 2;
+    }
+}
+
+/* Laptop: 1024px to 1349px */
+@media screen and (min-width: 1024px) {
+    .gtc-block {
+        grid-template-columns: auto 1fr;
+        grid-template-rows: auto auto;
+        column-gap: 30px;
+        padding: 40px 0;
+    }
+
+    .gtc-block>div:nth-child(1) {
+        grid-row: 1 / span 2;
+        grid-column: 1;
+    }
+
+    .gtc-block>div:nth-child(1) img {
+        width: 100px;
+        /* Estimate for laptop/desktop */
+    }
+
+    .gtc-block>div:nth-child(2) {
+        grid-row: 1;
+        grid-column: 2;
+    }
+
+    .gtc-block>div:nth-child(2) p {
+        font-size: 28px;
+        /* Larger title */
+    }
+
+    .gtc-block>div:nth-child(3) {
+        grid-row: 2;
+        grid-column: 2;
+    }
+
+    .gtc-block>div:nth-child(3) p {
+        font-size: 18px;
+        /* Larger text */
+    }
+}
+
+/* Desktop: 1350px and up - Specific refinements if any from ref.html */
+@media screen and (min-width: 1350px) {
+    /* Matches ref.html separators heights if we had them, 
+       but here we control padding/typography */
 }

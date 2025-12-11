@@ -165,5 +165,12 @@
 
     .gtc-block>div:nth-child(3) p {
         font-size: 18px;
+        /* Larger text */
     }
+}
+
+/* Desktop: 1350px and up - Specific refinements if any from ref.html */
+@media screen and (min-width: 1350px) {
+    /* Matches ref.html separators heights if we had them, 
+       but here we control padding/typography */
 }
