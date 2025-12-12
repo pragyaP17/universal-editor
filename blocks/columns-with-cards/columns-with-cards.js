@@ -2,11 +2,79 @@
  * Columns with Cards Block
  * Creates a two-column layout with text content on the left and cards on the right
  * Matches the NVIDIA robotics page design
- * 
+ *
  * This block expects multiple instances within the same section container.
  * The first block contains the headline and body text (left column).
  * Subsequent blocks contain cards (right column).
  */
+
+/**
+ * Create a card from a block
+ * @param {HTMLElement} block - The block element
+ * @returns {HTMLElement} The card element
+ */
+function createCard(block) {
+  const card = document.createElement('div');
+  card.className = 'columns-with-cards-card';
+
+  const rows = block.querySelectorAll(':scope > div');
+
+  // Title from first row
+  if (rows[0]) {
+    const titleCell = rows[0].querySelector('div');
+    if (titleCell) {
+      const title = document.createElement('h3');
+      title.className = 'columns-with-cards-card-title';
+      title.textContent = titleCell.textContent.trim();
+      card.appendChild(title);
+    }
+  }
+
+  // Description and CTAs from second row
+  if (rows[1]) {
+    const contentCell = rows[1].querySelector('div');
+    if (contentCell) {
+      // Description
+      const description = document.createElement('div');
+      description.className = 'columns-with-cards-card-description';
+
+      const paragraphs = contentCell.querySelectorAll('p:not(.button-container)');
+      paragraphs.forEach((p) => {
+        const newP = document.createElement('p');
+        newP.innerHTML = p.innerHTML;
+        description.appendChild(newP);
+      });
+
+      if (description.children.length > 0) {
+        card.appendChild(description);
+      }
+
+      // CTAs
+      const ctaContainer = document.createElement('div');
+      ctaContainer.className = 'columns-with-cards-card-ctas';
+
+      const buttonContainers = contentCell.querySelectorAll('.button-container');
+      buttonContainers.forEach((container) => {
+        const link = container.querySelector('a');
+        if (link) {
+          const cta = document.createElement('a');
+          cta.className = 'columns-with-cards-card-cta';
+          cta.href = link.href;
+          cta.textContent = link.textContent.trim();
+          if (link.target) cta.target = link.target;
+
+          ctaContainer.appendChild(cta);
+        }
+      });
+
+      if (ctaContainer.children.length > 0) {
+        card.appendChild(ctaContainer);
+      }
+    }
+  }
+
+  return card;
+}
 
 /**
  * Decorate function for the columns-with-cards block
@@ -72,7 +140,7 @@ export default function decorate(block) {
   const rightColumn = document.createElement('div');
   rightColumn.className = 'columns-with-cards-right';
 
-  for (let i = 1; i < allBlocks.length; i++) {
+  for (let i = 1; i < allBlocks.length; i += 1) {
     const cardBlock = allBlocks[i];
     const card = createCard(cardBlock);
     if (card) {
@@ -90,72 +158,4 @@ export default function decorate(block) {
     section.innerHTML = '';
     section.appendChild(grid);
   }
-}
-
-/**
- * Create a card from a block
- * @param {HTMLElement} block - The block element
- * @returns {HTMLElement} The card element
- */
-function createCard(block) {
-  const card = document.createElement('div');
-  card.className = 'columns-with-cards-card';
-
-  const rows = block.querySelectorAll(':scope > div');
-
-  // Title from first row
-  if (rows[0]) {
-    const titleCell = rows[0].querySelector('div');
-    if (titleCell) {
-      const title = document.createElement('h3');
-      title.className = 'columns-with-cards-card-title';
-      title.textContent = titleCell.textContent.trim();
-      card.appendChild(title);
-    }
-  }
-
-  // Description and CTAs from second row
-  if (rows[1]) {
-    const contentCell = rows[1].querySelector('div');
-    if (contentCell) {
-      // Description
-      const description = document.createElement('div');
-      description.className = 'columns-with-cards-card-description';
-
-      const paragraphs = contentCell.querySelectorAll('p:not(.button-container)');
-      paragraphs.forEach(p => {
-        const newP = document.createElement('p');
-        newP.innerHTML = p.innerHTML;
-        description.appendChild(newP);
-      });
-
-      if (description.children.length > 0) {
-        card.appendChild(description);
-      }
-
-      // CTAs
-      const ctaContainer = document.createElement('div');
-      ctaContainer.className = 'columns-with-cards-card-ctas';
-
-      const buttonContainers = contentCell.querySelectorAll('.button-container');
-      buttonContainers.forEach(container => {
-        const link = container.querySelector('a');
-        if (link) {
-          const cta = document.createElement('a');
-          cta.className = 'columns-with-cards-card-cta';
-          cta.href = link.href;
-          cta.textContent = link.textContent.trim();
-          if (link.target) cta.target = link.target;
-
-          ctaContainer.appendChild(cta);
-        }
-      });
-
-      if (ctaContainer.children.length > 0) {
-        card.appendChild(ctaContainer);
-      }
-    }
-  }
-
-  return card;
 }
