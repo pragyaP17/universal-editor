@@ -24,7 +24,8 @@ main .section.agreement-header-container {
   position: sticky;
   /* Position below main header (45px) + secondary header (46px mobile) = 91px */
   top: 91px;
-  z-index: 1000;
+  /* Lower z-index than secondary header dropdowns (1000) and mobile menu (100000) */
+  z-index: 500;
   background: #000;
   width: 100%;
   height: 60px;
@@ -169,7 +170,8 @@ main .section .agreement-header-wrapper {
   max-width: 100%;
   box-sizing: border-box;
   padding: 16px;
-  z-index: 2000;
+  /* Lower than secondary header dropdowns (1000) but higher than container (500) */
+  z-index: 600;
 }
 
 .agreement-dropdown.open {
@@ -314,7 +316,8 @@ main .section .agreement-header-wrapper {
     right: 0;
     background: #f1f1f1;
     min-width: 220px;
-    z-index: 2000;
+    /* Lower than secondary header dropdowns (1000) but higher than container (500) */
+    z-index: 600;
     padding: 0;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
