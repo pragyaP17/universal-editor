@@ -108,6 +108,12 @@ main .section .agreement-header-wrapper {
   display: none;
 }
 
+.agreement-header button:hover,
+.agreement-header button:focus {
+  background-color: unset;
+}
+
+
 /* MOBILE TOGGLE */
 .agreement-mobile-toggle {
   background: none;

@@ -433,3 +433,64 @@ main .section.highlight {
   margin: 0;
   padding: 40px 0;
 }
+
+/* Responsive Typography for default-content-wrapper */
+@media (640px <=width <=1023px) {
+  .default-content-wrapper h1 {
+    font-size: 36px;
+  }
+
+  .default-content-wrapper h2 {
+    font-size: 30px;
+  }
+
+  .default-content-wrapper h3 {
+    font-size: 24px;
+  }
+
+  .default-content-wrapper h4 {
+    font-size: 20px;
+  }
+
+  .default-content-wrapper h5 {
+    font-size: 18px;
+  }
+
+  .default-content-wrapper h6 {
+    font-size: 16px;
+  }
+
+  .default-content-wrapper p {
+    font-size: 18px;
+  }
+}
+
+@media (width <=639px) {
+  .default-content-wrapper h1 {
+    font-size: 28px;
+  }
+
+  .default-content-wrapper h2 {
+    font-size: 24px;
+  }
+
+  .default-content-wrapper h3 {
+    font-size: 20px;
+  }
+
+  .default-content-wrapper h4 {
+    font-size: 18px;
+  }
+
+  .default-content-wrapper h5 {
+    font-size: 16px;
+  }
+
+  .default-content-wrapper h6 {
+    font-size: 14px;
+  }
+
+  .default-content-wrapper p {
+    font-size: 16px;
+  }
+}

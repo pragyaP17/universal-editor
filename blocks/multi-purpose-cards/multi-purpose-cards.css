@@ -647,6 +647,10 @@
     font-size: 16px;
   }
 
+  .multi-purpose-cards {
+    padding: 0 20px;
+  }
+
   .video-modal-content {
     width: 95%;
   }
