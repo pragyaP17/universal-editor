@@ -108,12 +108,6 @@ main .section .agreement-header-wrapper {
   display: none;
 }
 
-.agreement-header button:hover,
-.agreement-header button:focus {
-  background-color: unset;
-}
-
-
 /* MOBILE TOGGLE */
 .agreement-mobile-toggle {
   background: none;
@@ -193,7 +187,7 @@ main .section .agreement-header-wrapper {
   margin: 15px 0
 }
 
-.agreement-dropdown .dropdown-item:first-child {
+.agreement-dropdown .dropdown-item.active {
   color: #76b900;
 }
 

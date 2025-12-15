@@ -63,7 +63,7 @@
   grid-column: 1 / -1;
   grid-row: 1 / -1;
   border-radius: 0;
-  z-index: 9999;
+  z-index: 99;
   margin: 0;
   overflow: visible;
 }
@@ -262,7 +262,7 @@
 }
 
 /* Responsive Design */
-@media (width <= 900px) {
+@media (width <=900px) {
   .immersive-cards {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: auto;
@@ -316,7 +316,7 @@
   }
 }
 
-@media (width <= 600px) {
+@media (width <=600px) {
   .immersive-cards {
     grid-template-columns: 1fr;
     grid-template-rows: auto;
@@ -408,7 +408,7 @@
   }
 }
 
-@media (width >= 768px) {
+@media (width >=768px) {
   .immersive-cards:has(.card-item.expanded) {
     display: flex;
     min-height: 500px;

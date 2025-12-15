@@ -136,12 +136,20 @@ export default function decorate(block) {
                     });
                 }
             }
+
+            // Handle active state for dropdown items
+            if (link.classList.contains('dropdown-item')) {
+                const allItems = link.closest('.agreement-dropdown, .agreement-tablet-dropdown').querySelectorAll('a');
+                allItems.forEach(item => item.classList.remove('active'));
+                link.classList.add('active');
+            }
         };
 
         const navLinks = existingList.querySelectorAll('a');
-        navLinks.forEach(link => {
+        navLinks.forEach((link, index) => {
             const dropdownItem = document.createElement('a');
             dropdownItem.className = 'dropdown-item';
+            if (index === 0) dropdownItem.classList.add('active');
             dropdownItem.href = link.href;
             dropdownItem.title = link.title;
             dropdownItem.textContent = link.textContent;
