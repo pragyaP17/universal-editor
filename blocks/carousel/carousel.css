@@ -151,11 +151,18 @@ main > .section.carousel-container > div {
   min-height: auto;
 }
 
-/* Info slide when used standalone (not in carousel track) */
+/* Info slide when positioned between header and track (desktop and mobile) */
 .carousel > .carousel-info-slide {
   padding: 40px 0;
   width: 100%;
   max-width: none;
+}
+
+/* Info slide when inside carousel track (desktop only) */
+.carousel-track > .carousel-info-slide {
+  padding: 40px;
+  width: 100%;
+  max-width: 600px;
 }
 
 .carousel-info-content {
@@ -453,7 +460,7 @@ main > .section.carousel-container > div {
 
 @media (width <= 600px) {
   .carousel {
-    padding: 0 10px 40px;
+    padding: 0;
   }
 
   .carousel-header {
@@ -468,8 +475,7 @@ main > .section.carousel-container > div {
   }
 
   .carousel-controls {
-    gap: 4px;
-    align-self: flex-end;
+    display: none;
   }
 
   .carousel-nav-button {
@@ -477,8 +483,10 @@ main > .section.carousel-container > div {
     height: 30px;
   }
 
-  .carousel-info-slide {
-    display: none;
+  /* Info slide appears between header and carousel track on mobile */
+  .carousel > .carousel-info-slide {
+    padding: 20px 0;
+    margin-bottom: 20px;
   }
 
   .carousel-info-description {
@@ -491,7 +499,11 @@ main > .section.carousel-container > div {
   }
 
   .carousel-card-slide {
-    padding: 10px;
+    width: 320px;
+  }
+
+  .carousel-card-slide:first-child {
+    padding-left: 0;
   }
 
   .carousel-card-content {
@@ -510,5 +522,9 @@ main > .section.carousel-container > div {
 
   .carousel-card-description {
     font-size: 14px;
+  }
+
+  .carousel-track {
+    margin: 0 10px;
   }
 }
