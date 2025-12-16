@@ -17,7 +17,7 @@ function sampleRUM(checkpoint, data) {
   try {
     window.hlx = window.hlx || {};
     if (!window.hlx.rum) {
-      sampleRUM.enhance = () => {};
+      sampleRUM.enhance = () => { };
       const param = new URLSearchParams(window.location.search).get('rum');
       const weight = (param === 'on' && 1)
         || (window.SAMPLE_PAGEVIEWS_AT_RATE === 'high' && 10)
@@ -507,7 +507,7 @@ function decorateSections(main) {
           styles.forEach((style) => section.classList.add(style));
         } else {
           section.dataset[toCamelCase(key)] = meta[key];
-          if(key==='id'){
+          if (key === 'id') {
             section.id = meta[key];
           }
         }
@@ -671,6 +671,11 @@ async function loadSection(section, loadCallback) {
     if (loadCallback) await loadCallback(section);
     section.dataset.sectionStatus = 'loaded';
     section.style.display = null;
+
+    // Add data-section-id as a class name
+    if (section.dataset.sectionId) {
+      section.classList.add(section.dataset.sectionId);
+    }
   }
 }
 
