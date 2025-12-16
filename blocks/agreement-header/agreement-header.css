@@ -197,19 +197,6 @@ main .section .agreement-header-wrapper {
 .agreement-dropdown .dropdown-item.active {
   color: #76b900;
   font-weight: 600;
-  position: relative;
-  padding-left: 5px;
-}
-
-.agreement-dropdown .dropdown-item.active::before {
-  content: "";
-  position: absolute;
-  left: -5px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 4px;
-  height: 16px;
-  background-color: #76b900;
 }
 
 .agreement-dropdown .dropdown-item:hover {
@@ -357,15 +344,15 @@ main .section .agreement-header-wrapper {
     border-bottom: 1px solid #e5e5e5;
   }
 
-.agreement-tablet-dropdown .tablet-dropdown-item:hover {
-  background-color: #e8e8e8;
-}
+  .agreement-tablet-dropdown .tablet-dropdown-item:hover {
+    background-color: #e8e8e8;
+  }
 
-.agreement-tablet-dropdown .tablet-dropdown-item.active {
-  color: #76b900;
-  font-weight: 600;
-  background-color: #f9fcf5;
-}
+  .agreement-tablet-dropdown .tablet-dropdown-item.active {
+    color: #76b900;
+    font-weight: 600;
+    background-color: #f9fcf5;
+  }
 
   .agreement-tablet-dropdown .tablet-dropdown-item:last-child {
     border-bottom: none;
@@ -386,7 +373,7 @@ main .section .agreement-header-wrapper {
     /* Main header (45px) + Secondary header (66px desktop) + Agreement header (70px) = 181px */
     scroll-padding-top: 181px !important;
   }
-  
+
   html {
     scroll-padding-top: 181px !important;
   }
