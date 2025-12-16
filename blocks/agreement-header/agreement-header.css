@@ -11,10 +11,17 @@ body {
   padding: 0;
   /* Main header (45px) + Secondary header (46px) + Agreement header (60px) = 151px */
   scroll-padding-top: 151px;
+  transition: scroll-padding-top 0.3s ease-in-out;
 
   /* Prevent iOS Safari scroll bounce that can break sticky */
   -webkit-overflow-scrolling: touch;
   overflow-x: hidden;
+}
+
+/* Adjust scroll padding when main header is hidden */
+body:has(#main-header.header-hidden) {
+  /* Secondary header (46px) + Agreement header (60px) = 106px */
+  scroll-padding-top: 106px;
 }
 
 
@@ -31,6 +38,7 @@ main .section.agreement-header-container {
   height: 60px;
   min-height: 60px;
   max-height: 60px;
+  transition: top 0.3s ease-in-out;
 
   /* POSITION RELATIVE HERE → dropdown anchors to full black bar */
 
@@ -38,6 +46,11 @@ main .section.agreement-header-container {
   align-items: center;
   justify-content: center;
   margin: 0;
+}
+
+/* Adjust position when main header is hidden */
+#main-header.header-hidden ~ main .section.agreement-header-container {
+  top: 46px;
 }
 
 /* Wrapper (centered content, NOT the dropdown anchor) */
@@ -360,6 +373,12 @@ main .section .agreement-header-wrapper {
     scroll-padding-top: 181px;
   }
 
+  /* Adjust scroll padding when main header is hidden on desktop */
+  body:has(#main-header.header-hidden) {
+    /* Secondary header (66px) + Agreement header (70px) = 136px */
+    scroll-padding-top: 136px;
+  }
+
   /* Navigation list responsive adjustments */
   .agreement-header ul {
     gap: 30px;
@@ -378,6 +397,11 @@ main .section .agreement-header-wrapper {
     top: 111px;
     height: 100%;
     max-height: 70px;
+  }
+
+  /* Adjust position when main header is hidden on desktop */
+  #main-header.header-hidden ~ main .section.agreement-header-container {
+    top: 66px;
   }
 
   .agreement-header-wrapper {

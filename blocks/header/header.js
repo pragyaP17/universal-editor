@@ -1108,5 +1108,61 @@ export default async function decorate(block) {
   if (secondaryHeaderHTML) {
     // Use setTimeout to ensure DOM is fully rendered
     setTimeout(() => initSecondaryHeaderMobile(), 0);
+
+    // Implement scroll behavior to hide/show main header
+    let lastScrollTop = 0;
+    let scrollTimeout;
+    const mainHeader = header;
+    const scrollThreshold = 10; // Minimum scroll distance to trigger
+
+    const handleScroll = () => {
+      clearTimeout(scrollTimeout);
+
+      scrollTimeout = setTimeout(() => {
+        const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+        const secondaryHeader = document.querySelector('.sub-brand-nav');
+        const agreementHeader = document.querySelector('.agreement-header-container');
+        const isDesktop = window.innerWidth >= 1024;
+
+        // Only apply if scrolled past threshold
+        if (Math.abs(currentScroll - lastScrollTop) < scrollThreshold) {
+          return;
+        }
+
+        if (currentScroll > lastScrollTop && currentScroll > 45) {
+          // Scrolling down - hide main header
+          // Skip if mobile menu is open
+          if (secondaryHeader && secondaryHeader.classList.contains('menu-open')) {
+            return;
+          }
+
+          mainHeader.classList.add('header-hidden');
+          if (secondaryHeader) {
+            secondaryHeader.style.top = '0';
+          }
+          if (agreementHeader) {
+            agreementHeader.style.top = isDesktop ? '66px' : '46px';
+          }
+        } else if (currentScroll < lastScrollTop) {
+          // Scrolling up - show main header
+          // Skip if mobile menu is open
+          if (secondaryHeader && secondaryHeader.classList.contains('menu-open')) {
+            return;
+          }
+
+          mainHeader.classList.remove('header-hidden');
+          if (secondaryHeader) {
+            secondaryHeader.style.top = '45px';
+          }
+          if (agreementHeader) {
+            agreementHeader.style.top = isDesktop ? '111px' : '91px';
+          }
+        }
+
+        lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+      }, 10);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
   }
 }

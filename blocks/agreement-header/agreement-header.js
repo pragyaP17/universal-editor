@@ -115,21 +115,56 @@ export default function decorate(block) {
             }
 
             // Only handle internal links for smooth scrolling
-            if (href && href.startsWith('#')) {
+            if (href && (href.startsWith('#') || href.includes('#'))) {
                 e.preventDefault();
-                const targetId = href.substring(1);
+                
+                // Extract the hash part from full URLs
+                const hashIndex = href.indexOf('#');
+                const targetId = hashIndex !== -1 ? href.substring(hashIndex + 1) : null;
+                
+                if (!targetId) return;
+                
                 const targetElement = document.getElementById(targetId);
 
                 if (targetElement) {
                     // Update URL without jump
                     history.pushState(null, null, href);
 
-                    // content wrapper scroll offset
-                    // Mobile/Tablet: Main(45) + Secondary(46) + Agreement(60) = 151
-                    // Desktop: Main(45) + Secondary(66) + Agreement(70) = 181
-                    const headerOffset = window.innerWidth >= 1024 ? 180 : 120;
+                    // Calculate actual header offset based on current state and viewport
+                    const windowWidth = window.innerWidth;
+                    const isDesktop = windowWidth >= 1024;
+                    const isTablet = windowWidth >= 768 && windowWidth < 1024;
+                    const mainHeader = document.querySelector('#main-header');
+                    const secondaryHeader = document.querySelector('.sub-brand-nav');
+                    const agreementHeader = document.querySelector('.agreement-header-container');
+                    const isMainHeaderHidden = mainHeader && mainHeader.classList.contains('header-hidden');
+                    
+                    // Get actual computed heights
+                    const mainHeaderHeight = mainHeader ? mainHeader.offsetHeight : 0;
+                    const secondaryHeaderHeight = secondaryHeader ? secondaryHeader.offsetHeight : 0;
+                    const agreementHeaderHeight = agreementHeader ? agreementHeader.offsetHeight : 0;
+                    
+                    let headerOffset;
+                    if (isDesktop) {
+                        // Use actual measured heights
+                        headerOffset = isMainHeaderHidden 
+                            ? secondaryHeaderHeight + agreementHeaderHeight 
+                            : mainHeaderHeight + secondaryHeaderHeight + agreementHeaderHeight;
+                    } else if (isTablet) {
+                        // Use actual measured heights
+                        headerOffset = isMainHeaderHidden 
+                            ? secondaryHeaderHeight + agreementHeaderHeight 
+                            : mainHeaderHeight + secondaryHeaderHeight + agreementHeaderHeight;
+                    } else {
+                        // Mobile: Use actual measured heights
+                        headerOffset = isMainHeaderHidden 
+                            ? secondaryHeaderHeight + agreementHeaderHeight 
+                            : mainHeaderHeight + secondaryHeaderHeight + agreementHeaderHeight;
+                    }
+                    
                     const elementPosition = targetElement.getBoundingClientRect().top;
                     const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                    
                     window.scrollTo({
                         top: offsetPosition,
                         behavior: "smooth"

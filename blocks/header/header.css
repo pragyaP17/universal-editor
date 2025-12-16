@@ -43,9 +43,20 @@
   height: 45px;
   min-height: 45px;
   max-height: 45px;
+  transition: transform 0.3s ease-in-out;
 
   --link-color: inherit;
   --link-hover-color: inherit;
+}
+
+/* Hide main header on scroll down when secondary header exists */
+#main-header.header-hidden {
+  transform: translateY(-100%);
+}
+
+/* Adjust secondary header position when main header is hidden */
+#main-header.header-hidden ~ * .sub-brand-nav {
+  top: 0;
 }
 
 .mega-nav-close-menu-icon,
@@ -318,6 +329,7 @@
   padding: 30px 60px;
   max-height: 600px;
   overflow-y: auto;
+  background-color: #f7f7f7;
 }
 
 .nav-row-container {
