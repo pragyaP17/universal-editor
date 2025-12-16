@@ -144,6 +144,7 @@ export default function decorate(block) {
 
   const slides = [];
   let headerTitle = '';
+  let infoSlideElement = null;
 
   // Process each row
   rows.forEach((row, index) => {
@@ -198,6 +199,7 @@ export default function decorate(block) {
       }
 
       slide.appendChild(content);
+      infoSlideElement = slide;
       slides.push(slide);
     } else if (cellCount >= 5) {
       // Card slide (5+ cells)
@@ -268,7 +270,16 @@ export default function decorate(block) {
   });
 
   // Add slides to track
-  slides.forEach((slide) => carouselTrack.appendChild(slide));
+  // On desktop, info slide goes in track; on mobile, it's placed separately
+  const isMobile = () => window.innerWidth <= 600;
+
+  slides.forEach((slide) => {
+    if (slide.classList.contains('carousel-info-slide') && isMobile()) {
+      // Skip adding info slide to track on mobile
+      return;
+    }
+    carouselTrack.appendChild(slide);
+  });
   carouselContainer.appendChild(carouselTrack);
 
   // Create sticky header with title and navigation
@@ -323,8 +334,34 @@ export default function decorate(block) {
   // Clear block and add new structure
   block.textContent = '';
   block.appendChild(header);
+
+  // Add info slide between header and carousel track (only on mobile)
+  if (infoSlideElement && isMobile()) {
+    block.appendChild(infoSlideElement);
+  }
+
   block.appendChild(carouselContainer);
   block.appendChild(scrollbarContainer);
+
+  // Handle window resize to move info slide between track and standalone
+  let resizeTimeout;
+  const handleInfoSlidePosition = () => {
+    if (!infoSlideElement) return;
+
+    const currentlyMobile = isMobile();
+    const infoInBlock = infoSlideElement.parentElement === block;
+    const infoInTrack = infoSlideElement.parentElement === carouselTrack;
+
+    if (currentlyMobile && infoInTrack) {
+      // Move from track to block
+      carouselTrack.removeChild(infoSlideElement);
+      block.insertBefore(infoSlideElement, carouselContainer);
+    } else if (!currentlyMobile && infoInBlock) {
+      // Move from block to track (as first child)
+      block.removeChild(infoSlideElement);
+      carouselTrack.insertBefore(infoSlideElement, carouselTrack.firstChild);
+    }
+  };
 
   // Optimize images
   block.querySelectorAll('picture > img').forEach((img, imgIndex) => {
@@ -437,10 +474,10 @@ export default function decorate(block) {
   carouselContainer.addEventListener('scroll', updateScrollbar);
 
   // Handle window resize
-  let resizeTimeout;
   window.addEventListener('resize', () => {
     clearTimeout(resizeTimeout);
     resizeTimeout = setTimeout(() => {
+      handleInfoSlidePosition();
       updateScrollbar();
     }, 100);
   });
