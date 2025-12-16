@@ -10,11 +10,18 @@ body {
   margin: 0;
   padding: 0;
   /* Main header (45px) + Secondary header (46px) + Agreement header (60px) = 151px */
-  scroll-padding-top: 151px;
+  scroll-padding-top: 151px !important;
+  /* Adding !important to override any conflicting styles */
 
   /* Prevent iOS Safari scroll bounce that can break sticky */
   -webkit-overflow-scrolling: touch;
   overflow-x: hidden;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 151px !important;
+  /* Adding to html element as well for better browser support */
 }
 
 
@@ -88,10 +95,10 @@ main .section .agreement-header-wrapper {
   border-bottom-color: #76b900;
 }
 
-/* Active/current page styling - Introduction has active state */
-.agreement-header li:first-child a {
+/* Active/current page styling */
+.agreement-header li a.active {
   border-bottom-color: #76b900;
-  font-weight: 400;
+  font-weight: 500;
 }
 
 /* ============================================================
@@ -189,6 +196,20 @@ main .section .agreement-header-wrapper {
 
 .agreement-dropdown .dropdown-item.active {
   color: #76b900;
+  font-weight: 600;
+  position: relative;
+  padding-left: 5px;
+}
+
+.agreement-dropdown .dropdown-item.active::before {
+  content: "";
+  position: absolute;
+  left: -5px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 16px;
+  background-color: #76b900;
 }
 
 .agreement-dropdown .dropdown-item:hover {
@@ -336,9 +357,15 @@ main .section .agreement-header-wrapper {
     border-bottom: 1px solid #e5e5e5;
   }
 
-  .agreement-tablet-dropdown .tablet-dropdown-item:hover {
-    background-color: #e8e8e8;
-  }
+.agreement-tablet-dropdown .tablet-dropdown-item:hover {
+  background-color: #e8e8e8;
+}
+
+.agreement-tablet-dropdown .tablet-dropdown-item.active {
+  color: #76b900;
+  font-weight: 600;
+  background-color: #f9fcf5;
+}
 
   .agreement-tablet-dropdown .tablet-dropdown-item:last-child {
     border-bottom: none;
@@ -357,7 +384,11 @@ main .section .agreement-header-wrapper {
 @media (width >=1024px) {
   body {
     /* Main header (45px) + Secondary header (66px desktop) + Agreement header (70px) = 181px */
-    scroll-padding-top: 181px;
+    scroll-padding-top: 181px !important;
+  }
+  
+  html {
+    scroll-padding-top: 181px !important;
   }
 
   /* Navigation list responsive adjustments */
