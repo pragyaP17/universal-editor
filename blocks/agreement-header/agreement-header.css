@@ -187,7 +187,7 @@ main .section .agreement-header-wrapper {
   margin: 15px 0
 }
 
-.agreement-dropdown .dropdown-item:first-child {
+.agreement-dropdown .dropdown-item.active {
   color: #76b900;
 }
 

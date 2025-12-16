@@ -15,22 +15,22 @@ export default function decorate(block) {
         // Desktop navigation - move the existing list
         const desktopRow = document.createElement('div');
         desktopRow.className = 'agreement-desktop';
-        
+
         // Create a clone of the existing list for desktop navigation
         const desktopList = existingList.cloneNode(true);
-        
+
         // Create tablet dropdown for the last 3 links - using three dots menu as shown in screenshot
         const tabletDropdownToggle = document.createElement('button');
         tabletDropdownToggle.className = 'agreement-tablet-toggle';
         tabletDropdownToggle.innerHTML = '<span class="dots">•••</span>';
-        
+
         const tabletDropdown = document.createElement('div');
         tabletDropdown.className = 'agreement-tablet-dropdown';
-        
+
         // Get all navigation links
         const allLinks = desktopList.querySelectorAll('li');
         const totalLinks = allLinks.length;
-        
+
         // Create tablet dropdown manually with specific items
         // We'll hard-code the last three links as per the screenshot
         const dropdownItems = [
@@ -38,7 +38,7 @@ export default function decorate(block) {
             { href: '#resources', text: 'Resources' },
             { href: '#next-steps', text: 'Next Steps' }
         ];
-        
+
         dropdownItems.forEach((item) => {
             const dropdownItem = document.createElement('a');
             dropdownItem.className = 'tablet-dropdown-item';
@@ -46,7 +46,7 @@ export default function decorate(block) {
             dropdownItem.textContent = item.text;
             tabletDropdown.appendChild(dropdownItem);
         });
-        
+
         // Mark the corresponding items in the main nav as tablet-hidden if they exist
         const navTexts = dropdownItems.map(item => item.text);
         Array.from(allLinks).forEach(li => {
@@ -55,16 +55,16 @@ export default function decorate(block) {
                 li.classList.add('tablet-hidden');
             }
         });
-        
+
         // Add click event listener for tablet toggle
         tabletDropdownToggle.addEventListener('click', () => {
             tabletDropdownToggle.classList.toggle('expanded');
             tabletDropdown.classList.toggle('open');
         });
-        
+
         // Add the desktop list to the desktop row
         desktopRow.appendChild(desktopList);
-        
+
         // Add tablet dropdown toggle and dropdown - will be hidden in desktop view via CSS
         const tabletContainer = document.createElement('div');
         tabletContainer.className = 'tablet-only-container';
@@ -98,14 +98,76 @@ export default function decorate(block) {
         const dropdown = document.createElement('div');
         dropdown.className = 'agreement-dropdown';
 
+        // Helper function for smooth scrolling with offset
+        const handleSmoothScroll = (e) => {
+            const link = e.currentTarget;
+            const href = link.getAttribute('href');
+
+            // Close dropdowns if they are open (unconditionally for any link click)
+            if (mobileToggle.classList.contains('expanded')) {
+                mobileToggle.classList.remove('expanded');
+                dropdown.classList.remove('open');
+            }
+
+            if (tabletDropdownToggle.classList.contains('expanded')) {
+                tabletDropdownToggle.classList.remove('expanded');
+                tabletDropdown.classList.remove('open');
+            }
+
+            // Only handle internal links for smooth scrolling
+            if (href && href.startsWith('#')) {
+                e.preventDefault();
+                const targetId = href.substring(1);
+                const targetElement = document.getElementById(targetId);
+
+                if (targetElement) {
+                    // Update URL without jump
+                    history.pushState(null, null, href);
+
+                    // content wrapper scroll offset
+                    // Mobile/Tablet: Main(45) + Secondary(46) + Agreement(60) = 151
+                    // Desktop: Main(45) + Secondary(66) + Agreement(70) = 181
+                    const headerOffset = window.innerWidth >= 1024 ? 180 : 120;
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: "smooth"
+                    });
+                }
+            }
+
+            // Handle active state for dropdown items
+            if (link.classList.contains('dropdown-item')) {
+                const allItems = link.closest('.agreement-dropdown, .agreement-tablet-dropdown').querySelectorAll('a');
+                allItems.forEach(item => item.classList.remove('active'));
+                link.classList.add('active');
+            }
+        };
+
         const navLinks = existingList.querySelectorAll('a');
-        navLinks.forEach(link => {
+        navLinks.forEach((link, index) => {
             const dropdownItem = document.createElement('a');
             dropdownItem.className = 'dropdown-item';
+            if (index === 0) dropdownItem.classList.add('active');
             dropdownItem.href = link.href;
             dropdownItem.title = link.title;
             dropdownItem.textContent = link.textContent;
+
+            // Add click event listener for smooth scroll and closing dropdown
+            dropdownItem.addEventListener('click', handleSmoothScroll);
+
             dropdown.appendChild(dropdownItem);
+        });
+
+        // Add smooth scroll to desktop links as well
+        desktopList.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', handleSmoothScroll);
+        });
+
+        // Add smooth scroll to tablet dropdown items
+        tabletDropdown.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', handleSmoothScroll);
         });
 
         // Add elements to left container

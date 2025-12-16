@@ -5,14 +5,15 @@
 }
 
 
-.section.video-banner-container{
+.section.video-banner-container {
   margin: 0;
 }
 
-main > .section:has(.video-banner) > div { 
-    padding: 0;
-    margin: 0;
-    max-width: unset;
+main>.section:has(.video-banner)>div {
+  padding: 0;
+  margin: 0;
+  max-width: unset;
+  padding-top: 50px;
 }
 
 .video-banner-container {
@@ -124,7 +125,7 @@ main > .section:has(.video-banner) > div {
   display: block;
 }
 
-@media (width <= 1023px) {
+@media (width <=1023px) {
   .video-banner-video-desktop {
     display: none;
   }
@@ -157,10 +158,14 @@ main > .section:has(.video-banner) > div {
 }
 
 /* Large Desktop */
-@media (width >= 1350px) {
+@media (width >=1350px) {
   .video-banner-wrapper {
     min-height: 460px;
     max-height: 460px;
+  }
+
+  main>.section:has(.video-banner)>div {
+    padding-top: 60px;
   }
 
   .video-banner-content {
@@ -178,10 +183,14 @@ main > .section:has(.video-banner) > div {
 }
 
 /* Medium Desktop */
-@media (1024px <= width <= 1349px) {
+@media (1024px <=width <=1349px) {
   .video-banner-wrapper {
     min-height: 460px;
     max-height: 460px;
+  }
+
+  main>.section:has(.video-banner)>div {
+    padding-top: 60px;
   }
 
   .video-banner-content {
@@ -204,7 +213,7 @@ main > .section:has(.video-banner) > div {
 }
 
 /* Tablet Styles */
-@media (640px <= width <= 1023px) {
+@media (640px <=width <=1023px) {
   .video-banner-wrapper {
     min-height: 420px;
     max-height: 420px;
@@ -236,7 +245,7 @@ main > .section:has(.video-banner) > div {
 }
 
 /* Mobile Styles */
-@media (width <= 639px) {
+@media (width <=639px) {
   .video-banner-wrapper {
     min-height: 320px;
     max-height: 320px;
