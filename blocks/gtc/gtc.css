@@ -1,6 +1,6 @@
 /* Main Container */
-.section .gtc-container{
-margin: 0px;
+.section.gtc-container{
+    margin: -40px 0 0;
 }
 
 .gtc-container {

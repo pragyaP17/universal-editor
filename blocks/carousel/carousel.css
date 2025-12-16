@@ -460,7 +460,7 @@ main > .section.carousel-container > div {
 
 @media (width <= 600px) {
   .carousel {
-    padding: 0 10px 40px;
+    padding: 0;
   }
 
   .carousel-header {
@@ -506,10 +506,6 @@ main > .section.carousel-container > div {
     padding-left: 0;
   }
 
-  .carousel-card-slide:last-child {
-    padding-right: 0;
-  }
-
   .carousel-card-content {
     padding: 20px 15px;
   }
@@ -526,5 +522,9 @@ main > .section.carousel-container > div {
 
   .carousel-card-description {
     font-size: 14px;
+  }
+
+  .carousel-track {
+    margin: 0 10px;
   }
 }
