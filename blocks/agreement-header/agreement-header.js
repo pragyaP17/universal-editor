@@ -124,10 +124,22 @@ export default function decorate(block) {
                     // Update URL without jump
                     history.pushState(null, null, href);
 
-                    // content wrapper scroll offset
-                    // Mobile/Tablet: Main(45) + Secondary(46) + Agreement(60) = 151
-                    // Desktop: Main(45) + Secondary(66) + Agreement(70) = 181
-                    const headerOffset = window.innerWidth >= 1024 ? 180 : 120;
+                    // Calculate actual header offset based on current state
+                    const isDesktop = window.innerWidth >= 1024;
+                    const mainHeader = document.querySelector('#main-header');
+                    const isMainHeaderHidden = mainHeader && mainHeader.classList.contains('header-hidden');
+                    
+                    let headerOffset;
+                    if (isDesktop) {
+                        // Desktop: Main(45) + Secondary(66) + Agreement(70) = 181
+                        // When hidden: Secondary(66) + Agreement(70) = 136
+                        headerOffset = isMainHeaderHidden ? 136 : 181;
+                    } else {
+                        // Mobile: Main(45) + Secondary(46) + Agreement(60) = 151
+                        // When hidden: Secondary(46) + Agreement(60) = 106
+                        headerOffset = isMainHeaderHidden ? 106 : 151;
+                    }
+                    
                     const elementPosition = targetElement.getBoundingClientRect().top;
                     const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
                     window.scrollTo({
