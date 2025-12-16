@@ -15,22 +15,22 @@ export default function decorate(block) {
         // Desktop navigation - move the existing list
         const desktopRow = document.createElement('div');
         desktopRow.className = 'agreement-desktop';
-
+        
         // Create a clone of the existing list for desktop navigation
         const desktopList = existingList.cloneNode(true);
-
+        
         // Create tablet dropdown for the last 3 links - using three dots menu as shown in screenshot
         const tabletDropdownToggle = document.createElement('button');
         tabletDropdownToggle.className = 'agreement-tablet-toggle';
         tabletDropdownToggle.innerHTML = '<span class="dots">•••</span>';
-
+        
         const tabletDropdown = document.createElement('div');
         tabletDropdown.className = 'agreement-tablet-dropdown';
-
+        
         // Get all navigation links
         const allLinks = desktopList.querySelectorAll('li');
         const totalLinks = allLinks.length;
-
+        
         // Create tablet dropdown manually with specific items
         // We'll hard-code the last three links as per the screenshot
         const dropdownItems = [
@@ -38,7 +38,7 @@ export default function decorate(block) {
             { href: '#resources', text: 'Resources' },
             { href: '#next-steps', text: 'Next Steps' }
         ];
-
+        
         dropdownItems.forEach((item) => {
             const dropdownItem = document.createElement('a');
             dropdownItem.className = 'tablet-dropdown-item';
@@ -46,7 +46,7 @@ export default function decorate(block) {
             dropdownItem.textContent = item.text;
             tabletDropdown.appendChild(dropdownItem);
         });
-
+        
         // Mark the corresponding items in the main nav as tablet-hidden if they exist
         const navTexts = dropdownItems.map(item => item.text);
         Array.from(allLinks).forEach(li => {
@@ -55,16 +55,16 @@ export default function decorate(block) {
                 li.classList.add('tablet-hidden');
             }
         });
-
+        
         // Add click event listener for tablet toggle
         tabletDropdownToggle.addEventListener('click', () => {
             tabletDropdownToggle.classList.toggle('expanded');
             tabletDropdown.classList.toggle('open');
         });
-
+        
         // Add the desktop list to the desktop row
         desktopRow.appendChild(desktopList);
-
+        
         // Add tablet dropdown toggle and dropdown - will be hidden in desktop view via CSS
         const tabletContainer = document.createElement('div');
         tabletContainer.className = 'tablet-only-container';
@@ -349,78 +349,4 @@ export default function decorate(block) {
 
     // Decorate icons after DOM is built
     decorateIcons(block);
-
-    // Dynamic positioning to adjust based on header state (open dropdowns, etc.)
-    function updateAgreementHeaderPosition() {
-        const agreementHeaderContainer = block.closest('.agreement-header-container');
-        if (!agreementHeaderContainer) return;
-
-        // Query for main header and secondary header
-        const mainHeader = document.querySelector('header');
-        const secondaryHeader = document.querySelector('.secondary-header');
-
-        let totalHeaderHeight = 0;
-
-        // Add main header height
-        if (mainHeader) {
-            totalHeaderHeight += mainHeader.offsetHeight;
-        }
-
-        // Add secondary header height (including any open dropdowns)
-        if (secondaryHeader) {
-            totalHeaderHeight += secondaryHeader.offsetHeight;
-        }
-
-        // Set the sticky top position
-        agreementHeaderContainer.style.top = `${totalHeaderHeight}px`;
-    }
-
-    // Initial position update
-    setTimeout(updateAgreementHeaderPosition, 100);
-
-    // Watch for changes in the header (dropdown opens/closes, menu toggles, etc.)
-    const observer = new MutationObserver(() => {
-        updateAgreementHeaderPosition();
-    });
-
-    // Observe the entire header for class changes and DOM modifications
-    const mainHeader = document.querySelector('header');
-    const secondaryHeader = document.querySelector('.secondary-header');
-
-    if (mainHeader) {
-        observer.observe(mainHeader, {
-            attributes: true,
-            attributeFilter: ['class'],
-            subtree: true,
-            childList: true
-        });
-    }
-
-    if (secondaryHeader) {
-        observer.observe(secondaryHeader, {
-            attributes: true,
-            attributeFilter: ['class'],
-            subtree: true,
-            childList: true
-        });
-    }
-
-    // Also listen for window resize events
-    window.addEventListener('resize', updateAgreementHeaderPosition);
-
-    // Clean up observer when block is removed (optional, for good practice)
-    if (block.parentElement) {
-        const parentObserver = new MutationObserver((mutations) => {
-            mutations.forEach((mutation) => {
-                mutation.removedNodes.forEach((node) => {
-                    if (node === block || node.contains(block)) {
-                        observer.disconnect();
-                        window.removeEventListener('resize', updateAgreementHeaderPosition);
-                    }
-                });
-            });
-        });
-
-        parentObserver.observe(block.parentElement, { childList: true });
-    }
 }
