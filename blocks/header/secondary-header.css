@@ -34,6 +34,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    z-index: 10000000;
+    position: relative;
 }
 
 @media screen and (min-width: 640px) and (max-width: 1023px) {
@@ -364,7 +366,7 @@
     position: fixed;
     right: 0;
     /* Anchor to right */
-    top: 46px;
+    top: 80px;
 
     /* Transform: Start above (hidden) */
     transform: translateY(-100%);
@@ -375,6 +377,7 @@
     width: 100%;
     z-index: 1000;
     overflow-y: auto;
+    height: 100vw;
 }
 
 @media (min-width: 1024px) {
@@ -393,6 +396,7 @@
     z-index: 100000;
     overflow-y: hidden;
     /* Remove scroll */
+    height: 100vh;
 }
 
 @media (max-width: 639px) {
@@ -590,7 +594,7 @@
 }
 
 .sub-brand-nav.menu-open:has(.mobile-menu-container.active) {
-    position: fixed;
+    /* position: fixed; */
     top: 46px;
     /* Initial state during delay */
     left: 0;

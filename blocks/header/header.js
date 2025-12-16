@@ -1117,13 +1117,13 @@ export default async function decorate(block) {
 
     const handleScroll = () => {
       clearTimeout(scrollTimeout);
-      
+
       scrollTimeout = setTimeout(() => {
         const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
         const secondaryHeader = document.querySelector('.sub-brand-nav');
         const agreementHeader = document.querySelector('.agreement-header-container');
         const isDesktop = window.innerWidth >= 1024;
-        
+
         // Only apply if scrolled past threshold
         if (Math.abs(currentScroll - lastScrollTop) < scrollThreshold) {
           return;
@@ -1131,6 +1131,11 @@ export default async function decorate(block) {
 
         if (currentScroll > lastScrollTop && currentScroll > 45) {
           // Scrolling down - hide main header
+          // Skip if mobile menu is open
+          if (secondaryHeader && secondaryHeader.classList.contains('menu-open')) {
+            return;
+          }
+
           mainHeader.classList.add('header-hidden');
           if (secondaryHeader) {
             secondaryHeader.style.top = '0';
@@ -1140,6 +1145,11 @@ export default async function decorate(block) {
           }
         } else if (currentScroll < lastScrollTop) {
           // Scrolling up - show main header
+          // Skip if mobile menu is open
+          if (secondaryHeader && secondaryHeader.classList.contains('menu-open')) {
+            return;
+          }
+
           mainHeader.classList.remove('header-hidden');
           if (secondaryHeader) {
             secondaryHeader.style.top = '45px';

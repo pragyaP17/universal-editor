@@ -329,6 +329,7 @@
   padding: 30px 60px;
   max-height: 600px;
   overflow-y: auto;
+  background-color: #f7f7f7;
 }
 
 .nav-row-container {
