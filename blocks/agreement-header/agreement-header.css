@@ -24,6 +24,12 @@ body:has(#main-header.header-hidden) {
   scroll-padding-top: 106px;
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 151px !important;
+  /* Adding to html element as well for better browser support */
+}
+
 
 
 /* Sticky full-width black header (POSITION ROOT FOR DROPDOWN) */
@@ -101,10 +107,10 @@ main .section .agreement-header-wrapper {
   border-bottom-color: #76b900;
 }
 
-/* Active/current page styling - Introduction has active state */
-.agreement-header li:first-child a {
+/* Active/current page styling */
+.agreement-header li a.active {
   border-bottom-color: #76b900;
-  font-weight: 400;
+  font-weight: 500;
 }
 
 /* ============================================================
@@ -202,6 +208,7 @@ main .section .agreement-header-wrapper {
 
 .agreement-dropdown .dropdown-item.active {
   color: #76b900;
+  font-weight: 600;
 }
 
 .agreement-dropdown .dropdown-item:hover {
@@ -353,6 +360,12 @@ main .section .agreement-header-wrapper {
     background-color: #e8e8e8;
   }
 
+  .agreement-tablet-dropdown .tablet-dropdown-item.active {
+    color: #76b900;
+    font-weight: 600;
+    background-color: #f9fcf5;
+  }
+
   .agreement-tablet-dropdown .tablet-dropdown-item:last-child {
     border-bottom: none;
   }
@@ -370,7 +383,11 @@ main .section .agreement-header-wrapper {
 @media (width >=1024px) {
   body {
     /* Main header (45px) + Secondary header (66px desktop) + Agreement header (70px) = 181px */
-    scroll-padding-top: 181px;
+    scroll-padding-top: 181px !important;
+  }
+
+  html {
+    scroll-padding-top: 181px !important;
   }
 
   /* Adjust scroll padding when main header is hidden on desktop */

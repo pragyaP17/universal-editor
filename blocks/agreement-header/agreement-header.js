@@ -117,13 +117,13 @@ export default function decorate(block) {
             // Only handle internal links for smooth scrolling
             if (href && (href.startsWith('#') || href.includes('#'))) {
                 e.preventDefault();
-                
+
                 // Extract the hash part from full URLs
                 const hashIndex = href.indexOf('#');
                 const targetId = hashIndex !== -1 ? href.substring(hashIndex + 1) : null;
-                
+
                 if (!targetId) return;
-                
+
                 const targetElement = document.getElementById(targetId);
 
                 if (targetElement) {
@@ -138,46 +138,77 @@ export default function decorate(block) {
                     const secondaryHeader = document.querySelector('.sub-brand-nav');
                     const agreementHeader = document.querySelector('.agreement-header-container');
                     const isMainHeaderHidden = mainHeader && mainHeader.classList.contains('header-hidden');
-                    
+
                     // Get actual computed heights
                     const mainHeaderHeight = mainHeader ? mainHeader.offsetHeight : 0;
                     const secondaryHeaderHeight = secondaryHeader ? secondaryHeader.offsetHeight : 0;
                     const agreementHeaderHeight = agreementHeader ? agreementHeader.offsetHeight : 0;
-                    
+
                     let headerOffset;
                     if (isDesktop) {
                         // Use actual measured heights
-                        headerOffset = isMainHeaderHidden 
-                            ? secondaryHeaderHeight + agreementHeaderHeight 
+                        headerOffset = isMainHeaderHidden
+                            ? secondaryHeaderHeight + agreementHeaderHeight
                             : mainHeaderHeight + secondaryHeaderHeight + agreementHeaderHeight;
                     } else if (isTablet) {
                         // Use actual measured heights
-                        headerOffset = isMainHeaderHidden 
-                            ? secondaryHeaderHeight + agreementHeaderHeight 
+                        headerOffset = isMainHeaderHidden
+                            ? secondaryHeaderHeight + agreementHeaderHeight
                             : mainHeaderHeight + secondaryHeaderHeight + agreementHeaderHeight;
                     } else {
                         // Mobile: Use actual measured heights
-                        headerOffset = isMainHeaderHidden 
-                            ? secondaryHeaderHeight + agreementHeaderHeight 
+                        headerOffset = isMainHeaderHidden
+                            ? secondaryHeaderHeight + agreementHeaderHeight
                             : mainHeaderHeight + secondaryHeaderHeight + agreementHeaderHeight;
                     }
-                    
+
                     const elementPosition = targetElement.getBoundingClientRect().top;
                     const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                    
+
+                    // Use a forced approach to ensure reliable scrolling:
+
+                    // 1. Get header offset based on screen width
+                    const headerOffset1 = window.innerWidth >= 1024 ? 181 : 151;
+
+                    // 2. Get absolute position of the element
+                    const elementRect = targetElement.getBoundingClientRect();
+                    const absoluteTop = elementRect.top + window.pageYOffset;
+
+                    // 3. First scroll - perform initial smooth scroll
                     window.scrollTo({
-                        top: offsetPosition,
+                        top: absoluteTop - headerOffset1,
                         behavior: "smooth"
                     });
+
+                    // 4. Forced correction after animation with multiple checks
+                    const checkAndAdjust = () => {
+                        // Get element's position again after previous scroll
+                        const newRect = targetElement.getBoundingClientRect();
+
+                        // Calculate how far off we are from desired position
+                        const offset = newRect.top - headerOffset1;
+
+                        // If position is off by more than 2px, make immediate adjustment
+                        if (Math.abs(offset) > 2) {
+                            window.scrollTo(0, window.pageYOffset + offset);
+
+                            // Schedule another check for any residual offset
+                            setTimeout(checkAndAdjust, 100);
+                        }
+                    };
+
+                    // Start position checks after initial scroll animation
+                    setTimeout(checkAndAdjust, 750);
+
+                    // Make a final adjustment after everything is fully loaded
+                    setTimeout(checkAndAdjust, 1500);
+
+                    // Update active state in all navigations
+                    updateActiveLinks(targetId);
                 }
             }
 
-            // Handle active state for dropdown items
-            if (link.classList.contains('dropdown-item')) {
-                const allItems = link.closest('.agreement-dropdown, .agreement-tablet-dropdown').querySelectorAll('a');
-                allItems.forEach(item => item.classList.remove('active'));
-                link.classList.add('active');
-            }
+            // Handle active state for dropdown items is now handled by updateActiveLinks
         };
 
         const navLinks = existingList.querySelectorAll('a');
@@ -195,6 +226,12 @@ export default function decorate(block) {
             dropdown.appendChild(dropdownItem);
         });
 
+        // Make first desktop link active by default
+        const firstDesktopLink = desktopList.querySelector('li:first-child a');
+        if (firstDesktopLink) {
+            firstDesktopLink.classList.add('active');
+        }
+
         // Add smooth scroll to desktop links as well
         desktopList.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', handleSmoothScroll);
@@ -204,6 +241,168 @@ export default function decorate(block) {
         tabletDropdown.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', handleSmoothScroll);
         });
+
+        // Helper function to update active state in all navigation menus
+        const updateActiveLinks = (sectionId) => {
+            // First, remove active class from all navigation links
+            const allNavLinks = [
+                ...desktopList.querySelectorAll('a'),
+                ...dropdown.querySelectorAll('a'),
+                ...tabletDropdown.querySelectorAll('a')
+            ];
+
+            // Find the corresponding text for this section
+            let sectionText = '';
+            allNavLinks.forEach(link => {
+                const linkHref = link.getAttribute('href') || '';
+                if (linkHref.endsWith(`#${sectionId}`)) {
+                    sectionText = link.textContent;
+                }
+            });
+
+            // Update classes on all links
+            allNavLinks.forEach(link => {
+                link.classList.remove('active');
+                const linkHref = link.getAttribute('href') || '';
+                // If this is the link that points to the current section, add active class
+                if (linkHref.endsWith(`#${sectionId}`)) {
+                    link.classList.add('active');
+                }
+            });
+
+            // Always update mobile toggle text with current section
+            if (sectionText) {
+                mobileToggle.querySelector('.text').textContent = sectionText;
+            }
+
+            // For desktop view, we need to find the li elements and update their a elements
+            const desktopLinkElements = desktopList.querySelectorAll('li a');
+            desktopLinkElements.forEach(link => {
+                const linkHref = link.getAttribute('href') || '';
+                if (linkHref.endsWith(`#${sectionId}`)) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        };
+
+        // Setup Intersection Observer to detect when sections are in view
+        const setupSectionObserver = () => {
+            // Get all section IDs from the navigation links
+            const sectionIds = new Set();
+            const allLinks = [
+                ...desktopList.querySelectorAll('a'),
+                ...tabletDropdown.querySelectorAll('a')
+            ];
+
+            allLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                if (href && href.startsWith('#')) {
+                    sectionIds.add(href.substring(1));
+                }
+            });
+
+            // Setup observer with options
+            const observerOptions = {
+                root: null, // viewport
+                rootMargin: window.innerWidth >= 1024 ? '-181px 0px 0px 0px' : '-151px 0px 0px 0px', // adjust based on header height
+                threshold: 0.1 // trigger when at least 10% of the target is visible
+            };
+
+            const sectionObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    // When section enters viewport
+                    if (entry.isIntersecting) {
+                        // Get section text from links for this section
+                        const sectionId = entry.target.id;
+                        updateActiveLinks(sectionId);
+
+                        // Update URL without causing scroll (only if user is actually scrolling, not clicking)
+                        if (!window.isNavigatingByClick) {
+                            history.replaceState(null, null, `#${sectionId}`);
+
+                            // Force update of the mobile toggle text
+                            const allNavLinks = [
+                                ...desktopList.querySelectorAll('a'),
+                                ...dropdown.querySelectorAll('a'),
+                                ...tabletDropdown.querySelectorAll('a')
+                            ];
+
+                            let sectionText = '';
+                            allNavLinks.forEach(link => {
+                                const linkHref = link.getAttribute('href') || '';
+                                if (linkHref.endsWith(`#${sectionId}`)) {
+                                    sectionText = link.textContent;
+                                }
+                            });
+
+                            if (sectionText) {
+                                mobileToggle.querySelector('.text').textContent = sectionText;
+                            }
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all sections
+            sectionIds.forEach(id => {
+                const section = document.getElementById(id);
+                if (section) {
+                    sectionObserver.observe(section);
+                }
+            });
+        };
+
+        // Set up a flag to differentiate between scrolling and clicking
+        window.isNavigatingByClick = false;
+        const originalHandleSmoothScroll = handleSmoothScroll;
+
+        // Wrap the original function to set the flag
+        const wrappedHandleSmoothScroll = (e) => {
+            window.isNavigatingByClick = true;
+            originalHandleSmoothScroll(e);
+            setTimeout(() => {
+                window.isNavigatingByClick = false;
+            }, 1000); // Reset after animation completes
+        };
+
+        // Replace click handlers with wrapped version
+        desktopList.querySelectorAll('a').forEach(link => {
+            link.removeEventListener('click', handleSmoothScroll);
+            link.addEventListener('click', wrappedHandleSmoothScroll);
+        });
+
+        dropdown.querySelectorAll('a').forEach(link => {
+            link.removeEventListener('click', handleSmoothScroll);
+            link.addEventListener('click', wrappedHandleSmoothScroll);
+        });
+
+        tabletDropdown.querySelectorAll('a').forEach(link => {
+            link.removeEventListener('click', handleSmoothScroll);
+            link.addEventListener('click', wrappedHandleSmoothScroll);
+        });
+
+        // Initialize the section observer when DOM is fully loaded
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => {
+                setupSectionObserver();
+
+                // Check if there's a hash in the URL on load
+                if (window.location.hash) {
+                    const sectionId = window.location.hash.substring(1);
+                    updateActiveLinks(sectionId);
+                }
+            });
+        } else {
+            setupSectionObserver();
+
+            // Check if there's a hash in the URL on load
+            if (window.location.hash) {
+                const sectionId = window.location.hash.substring(1);
+                updateActiveLinks(sectionId);
+            }
+        }
 
         // Add elements to left container
         left.appendChild(desktopRow);
