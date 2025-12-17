@@ -8,7 +8,7 @@ footer {
   margin: 0 auto;
 }
 
-.footer .section.page-footer-links{
+.footer .section.page-footer-links {
   background-color: #000 !important;
   padding: 60px 30px;
   padding-bottom: 0px;
@@ -21,13 +21,13 @@ footer {
   margin: 0;
 }
 
-.footer .columns > div {
+.footer .columns>div {
   display: flex;
   flex-wrap: wrap;
   gap: 30px;
 }
 
-.footer .columns > div > div {
+.footer .columns>div>div {
   flex: 1;
   min-width: 280px;
 }
@@ -60,7 +60,8 @@ footer {
 /* Specific rule for footer links to ensure correct styling */
 .footer.block .page-footer-links ul li a {
   color: #76b900;
-  font-size: 1pc; /* 16px */
+  font-size: 1pc;
+  /* 16px */
   line-height: 30px;
   text-decoration: none;
 }
@@ -70,7 +71,7 @@ footer {
   padding: 30px 15px;
 }
 
-.section.page-footer-subscribe .columns > div > div {
+.section.page-footer-subscribe .columns>div>div {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -78,16 +79,14 @@ footer {
   gap: 10px;
 }
 
-
-
-.section.page-footer-subscribe .columns-wrapper:nth-of-type(2) > div > div p:first-child{
-color: #999;
-font-size: 1pc;
-    padding-top: 2px;
-    vertical-align: top;
+.section.page-footer-subscribe .columns-wrapper:nth-of-type(2)>div>div p:first-child {
+  color: #999;
+  font-size: 1pc;
+  padding-top: 2px;
+  vertical-align: top;
 }
 
-.section.page-footer-subscribe .columns-wrapper:nth-of-type(2) > div > div p:nth-of-type(2)  {
+.section.page-footer-subscribe .columns-wrapper:nth-of-type(2)>div>div p:nth-of-type(2) {
   display: flex;
   gap: 10px;
 }
@@ -113,7 +112,7 @@ font-size: 1pc;
 
 .section.page-footer-subscribe .button-container {
   margin: 0;
-  padding:0px;
+  padding: 0px;
 }
 
 .section.page-footer-subscribe a.button {
@@ -198,31 +197,31 @@ font-size: 1pc;
 /* --- MEDIA QUERIES --- */
 
 @media (max-width: 1023px) {
-  .footer .columns > div {
+  .footer .columns>div {
     flex-direction: column;
   }
 
   .footer h1 {
-    text-align: center;
+    text-align: left;
   }
 
   .footer ul {
-    text-align: center;
+    text-align: left;
   }
 
-  .section.page-footer-subscribe .columns > div {
+  .section.page-footer-subscribe .columns>div {
     justify-content: center;
   }
 }
 
 @media (min-width: 1024px) {
-  .section.page-footer-subscribe .columns-wrapper:nth-of-type(2) .columns > div > div {
+  .section.page-footer-subscribe .columns-wrapper:nth-of-type(2) .columns>div>div {
     justify-content: end;
   }
 }
 
 @media (min-width: 640px) and (max-width: 1023px) {
-  .footer .section.page-footer-links .columns > div {
+  .footer .section.page-footer-links .columns>div {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 30px;
@@ -230,34 +229,44 @@ font-size: 1pc;
 }
 
 @media (max-width: 639px) {
+
   .section.global-footer-container .default-content-wrapper,
   .section.global-footer-container p:nth-of-type(2) {
     text-align: center;
   }
 
+  .footer h1 {
+    text-align: center;
+    font-size: 1pc;
+    line-height: 30px;
+  }
+  .footer .section.page-footer-links {
+    padding: 15px;
+  }
+
   /* Target the div containing the icon+text and button */
-  .footer .section.page-footer-subscribe .columns-wrapper .columns.block.columns-1-cols > div > div:first-child {
-    display: flex; /* Make it a flex container */
-    flex-direction: column; /* Stack children vertically */
-    align-items: center; /* Center items horizontally */
-    gap: 10px; /* Space between icon+text and button */
+  .footer .section.page-footer-subscribe .columns-wrapper .columns.block.columns-1-cols>div>div:first-child {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
   }
 
   /* Ensure the p with icon+text is also a flex container to align its children */
-  .footer .section.page-footer-subscribe .columns-wrapper .columns.block.columns-1-cols > div > div:first-child p:first-child {
+  .footer .section.page-footer-subscribe .columns-wrapper .columns.block.columns-1-cols>div>div:first-child p:first-child {
     display: flex;
-    flex-direction: column; /* Stack icon and text vertically */
-    align-items: center; /* Center icon and text horizontally */
-    gap: 5px; /* Space between icon and text */
-    margin: 0; /* Remove default paragraph margin */
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    margin: 0;
   }
 
   /* Reset position/float for icon */
   .footer .section.page-footer-subscribe .columns-wrapper .columns.block.columns-1-cols .icon-envelope {
-    position: static; /* Remove relative positioning */
+    position: static;
     top: auto;
     float: none;
-    margin-bottom: 5px; /* Add some space below the icon */
+    margin-bottom: 5px;
   }
 
   /* Reset margin for subscribe text */
@@ -272,23 +281,83 @@ font-size: 1pc;
 
   /*Center the nvidia-logo in global footer*/
   .footer .section.global-footer-container .icon-nvidia-logo {
-   float: none;
-}
- /* Make UL horizontal */
-  .footer .columns.block.columns-3-cols ul {
-    display: flex;
-    flex-wrap: wrap;       /* allow items to wrap on small screens */
-    gap: 10px 20px;        /* spacing between items */
-   justify-content: flex-start; /* LEFT align the items */
-       text-align: left;
+    float: none;
   }
 
- .footer .columns.block.columns-3-cols h1 {
- font-size: 1pc;
- }
+  /* Make UL horizontal */
+  .footer .columns.block.columns-3-cols ul {
+    display: block;
+    padding: 0px 15px;
+    margin: 10px 0 0 0;
+    list-style: none;
+    font-size: 0;
+    text-align: left;
+  }
 
-  /* Remove vertical spacing */
+  /* Force 2 items per row using inline-block */
   .footer .columns.block.columns-3-cols li {
-    margin-bottom: 0;
+    display: inline-block;
+    vertical-align: top;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    font-size: 1pc;
+    margin-right: 25px;
+  }
+}
+
+@media (min-width: 1350px) {
+
+  /* Flex container for side-by-side layout */
+  .section.page-footer-subscribe {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* Center content to max 1290px while keeping background full width */
+    padding-left: calc(50% - 645px + 30px);
+    padding-right: calc(50% - 645px + 30px);
+  }
+
+  /* Adjust first column (Subscribe) */
+  .section.page-footer-subscribe .columns-wrapper:first-child {
+    flex: 0 0 auto;
+    width: auto;
+    height: auto;
+    margin: 0;
+    text-align: left;
+  }
+
+  /* Inner layout for Subscribe items */
+  .section.page-footer-subscribe .columns-wrapper:first-child .columns>div>div {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .section.page-footer-subscribe .columns-wrapper:first-child p:first-child {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    color: #fff;
+    margin: 0;
+  }
+
+  .section.page-footer-subscribe .columns-wrapper:first-child .icon-envelope {
+    width: 50px;
+    height: auto;
+    margin-right: 15px;
+  }
+
+  /* Button container positioning */
+  .section.page-footer-subscribe .columns-wrapper:first-child .button-container {
+    margin: 0;
+  }
+
+  /* Adjust second column (Follow/Social) */
+  .section.page-footer-subscribe .columns-wrapper:nth-of-type(2) {
+    flex: 0 0 auto;
+  }
+
+  .section.page-footer-subscribe .columns-wrapper:nth-of-type(2) .columns>div>div {
+    justify-content: flex-end;
   }
 }
