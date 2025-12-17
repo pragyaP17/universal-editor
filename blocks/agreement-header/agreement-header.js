@@ -168,7 +168,7 @@ export default function decorate(block) {
                     // Use a forced approach to ensure reliable scrolling:
 
                     // 1. Get header offset based on screen width
-                    const headerOffset = window.innerWidth >= 1024 ? 181 : 151;
+                    const headerOffset1 = window.innerWidth >= 1024 ? 181 : 151;
 
                     // 2. Get absolute position of the element
                     const elementRect = targetElement.getBoundingClientRect();
@@ -176,7 +176,7 @@ export default function decorate(block) {
 
                     // 3. First scroll - perform initial smooth scroll
                     window.scrollTo({
-                        top: absoluteTop - headerOffset,
+                        top: absoluteTop - headerOffset1,
                         behavior: "smooth"
                     });
 
@@ -186,7 +186,7 @@ export default function decorate(block) {
                         const newRect = targetElement.getBoundingClientRect();
 
                         // Calculate how far off we are from desired position
-                        const offset = newRect.top - headerOffset;
+                        const offset = newRect.top - headerOffset1;
 
                         // If position is off by more than 2px, make immediate adjustment
                         if (Math.abs(offset) > 2) {
