@@ -476,6 +476,8 @@ export default function decorate(block) {
         break;
       default:
         // console.warn('Unknown card type for multi-purpose-cards', cells);
+        buildLinkedCard(cells, card);
+        break;
     }
   });
 
