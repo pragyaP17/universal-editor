@@ -119,6 +119,7 @@ function createSlide(slide, index) {
     ctaBtn.className = 'carousel-banner__cta';
     ctaBtn.href = ctaLink;
     ctaBtn.textContent = ctaText;
+    ctaBtn.setAttribute('aria-label', `${ctaText} - Learn more about ${title || tagline || 'this topic'}`);
     leftContent.appendChild(ctaBtn);
   }
 
